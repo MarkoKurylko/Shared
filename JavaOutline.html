@@ -1,0 +1,261 @@
+<html>
+	<head>
+		<style>
+		</style>
+	</head>
+	<body>
+		<table id="toc">
+			<tr>
+				<td style="vertical-align:top;">
+					<h1>C</h1>
+				</td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2>
+							<a href="#classes">Classes</b></a>
+						</h2>
+						<h3 style="padding-left:1em">
+							<a href="#nesting">Nesting of <em>classes</em></a>
+						</h3>
+					</details>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="vertical-align:top;">
+					<h1>F</h1>
+				</td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2>
+							<a href="#e-final">Effectively <b>Final</b></a>
+						</h2>
+					</details>
+				</td>
+			</tr>
+
+				<td style="vertical-align:top;">
+					<h1>L</h1>
+				</td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2>
+							<a href="#lambdas">Lambda Expressions</a>
+						</h2>
+						<h3 style="padding-left:1em">
+							<a href="#lambdas-basis">Basis</a>
+						</h3>
+						<h3 style="padding-left:1em">
+							<a href="#lambdas-mr">Method references</a>
+						</h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align:top;">
+					<h1>N</h1>
+				</td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2>
+							<a href="#nesting">Nesting of classes</a>
+						</h2>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align:top;">
+					<h1>O</h1>
+				</td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2>
+							<a href="#optional"><em>Optional</em> class (since 1.8)</a>
+						</h2>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align:top;">
+					<h1>S</h1>
+				</td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
+					</details>
+				</td>
+			</tr>
+		</table>
+
+		<hr style="height:2px;">
+		
+		<div id="lambdas">
+			<h2>λ Lambda Expressions</h2>
+			<h3 id="lambdas-basis" style="padding-left:1em">Basis</h3>
+			<h3 id="lambdas-mr" style="padding-left:1em">Method references</h3>
+			
+			<table summary="Kinds of method references" border="1" style="margin-left:1em" class="withCounter">
+				<tbody>
+					<tr>
+						<th width="20px">#</th>
+						<th>Kind</th>
+						<th>Syntax</th>
+						<th>Description</th>
+						<th>Since</th>
+					</tr>
+  
+					<tr>
+						<td style="text-align: center;">#</td>
+						<td>Reference to a static method</td>
+						<td><code><em>ClassName</em>::<em>staticMethodName</em></code></td>
+						<td></td>
+						<td rowspan="4" style="color:blue;">1.8</td>
+					</tr>
+  
+					<tr>
+						<td style="text-align: center;">#</td>
+							<td>Reference to an instance method of a particular object</td>
+							<td><code><em>classInstance</em>::<em>instanceMethodName</em></code></td>
+							<td></td>
+					</tr>
+  
+					<tr>
+						<td style="text-align: center;">#</td>
+						<td style="background:Orange;">Reference to an instance method of an arbitrary object of a particular type</td>
+								<td><code><em>ClassName</em>::<em>instanceMethodName</em></code></td>
+								<td><code>Arrays.sort(stringArray, String::compareToIgnoreCase)</code><br>
+										where <code>static &ltT&gt void sort(T[] a, Comparator&lt? super T&gt c)</code><br>
+										<em>Comparator</em> is a Functional interface with method <code>int compare(<span style="background:Green;">T o1, T o2</span>)</code>,<br>
+										while <em>String</em> <code>int compareToIgnoreCase(<span style="background:Red;">String str</span>)</code><br>
+									The equivalent lambda expression for the method reference <code>String::compareToIgnoreCase</code> would have the <span style="background:LightBlue;">formal parameter list</span> <code><nobr style="background:LightGreen;">(String a, String b)</nobr></code>.
+									The method reference would invoke the method <code>a.compareToIgnoreCase(b)</code>.
+								</td>
+					</tr>
+  
+					<tr>
+								<td style="text-align: center;">#</td>
+									<td>Reference to a constructor</td>
+									<td><code><em>ClassName</em>::new</code></td>
+									<td><code>HashSet::new</code></td>
+					</tr>
+  
+				</tbody>
+			</table>
+		</div>
+		<hr>
+
+		<div id="nesting">
+			<h2>Nesting of classes</h2>
+			<table summary="Nesting" border="1" style="margin-left:1em" class="withCounter">
+				<tbody>
+					<tr>
+						<th width="20px">#</th>
+						<th colspan="2">Kind</th>
+						<th>Syntax</th>
+						<th>Description</th>
+						<th width="35%" colspan="2">When to use</th>
+						<th>Since</th>
+					</tr>
+  
+					<tr>
+						<td style="text-align: center;">#</td>
+						<td colspan="2" style="color:saddlebrown;">Local class</td>
+						<td><code>public <span style="color:grey;">[static]</span> void methodName {<br>
+										&nbsp;&nbsp;<b>class LocalClassName {}</b> <br>
+									}
+							</code>
+						</td>
+						<td>Local classes are classes that are defined in a <em>block</em>. I.e. inside <b>{}</b><br>
+							Local classes are similar to <span style="color:darkred;">inner classes</span> because they cannot define or declare any static members
+						</td>
+						<td colspan="2">Use it if you need to create more than one instance of a class, access its constructor, 
+							or introduce a new, named type (because, for example, you need to invoke additional methods later).<br>
+							<span style="color:grey;">And as it stems from its form: use local classes when you don't need of reuse it outside the <em>block</em></span>
+						</td>
+						<td style="color:black;">1.1</td>
+					</tr>
+  
+					<tr>
+						<td style="text-align: center;">#</td>
+							<td colspan="2" style="color:green;">Anonymous class</td>
+							<td><code><nobr>new ExistingClassName() {//implementation}</nobr><br>
+									  <nobr>new ExistingInterfaceName() {//implementation}</nobr><br>
+								</code>
+							</td>
+							<td>Anonymous classes are a convenient short form of <span style="color:darkred;">inner classes</span> that have no name, only an implementation</td>
+							<td colspan="2">Use it if you need to declare fields or additional methods.</td>
+							<td>1.1</td>
+					</tr>
+  
+					<tr>
+						<td style="text-align: center;">#</td>
+						<td colspan="2" style="color:blue;"><a href="#lambdas">Lambda</a></td>
+						<td><code>() -> {}</code></td>
+						<td>Extension of idea of <span style="color:green;">anonymous classes</span> in a more convenient way</td>
+						<td colspan="2"><ul>
+							<li>Use it if you are encapsulating a single unit of behavior that you want to pass to other code. For example, you would use a lambda expression if you want a certain action performed on each element of a collection, when a process is completed, or when a process encounters an error</li>
+							<li>Use it if you need a simple instance of a functional interface and none of the preceding criteria apply (for example, you do not need a constructor, a named type, fields, or additional methods)</li>
+							</ul>
+						</td>
+						<td style="color:blue;">1.8</td>
+					</tr>
+  
+								<tr>
+									<td style="text-align: center;">#</td>
+									<td rowspan="2" style="color:red;">Nested</td>
+									<td style="color:darkred;">Inner class <nobr><small>(non-static nested class)</small></nobr></td>
+									<td rowspan="2"><code>class OuterClass {<br>
+																		&nbsp;&nbsp; ...<br>
+																&nbsp;&nbsp;class InnerClass {<br>
+																	&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+																&nbsp;&nbsp;}<br>
+																&nbsp;&nbsp;static class StaticNestedClass {<br>
+																		&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+																	&nbsp;&nbsp;}<br>
+														 }
+										</code>
+									</td>
+									<td></td>
+									<td rowspan="2">Use it if your requirements are similar to those of a local class, you want to make the type more widely available, and you don't require access to local variables or method parameters</td>
+									<td>Use an inner class if you require access to an enclosing instance's non-public fields and methods</td>
+									<td>1.1</td>
+								</tr>
+
+								<tr>
+									<td style="text-align: center;">#</td>
+									<td style="color:magenta;"><nobr>Static nested class</nobr></td>
+									
+									<td></td>
+									<td>Use a static nested class if you <b>don't</b> require access to an enclosing instance's non-public fields and methods</td>
+									<td>1.1</td>
+								</tr>
+
+				</tbody>
+			</table>
+		</div>
+		<hr>
+		
+
+	</body>
+	<script>
+		const tables = document.getElementsByTagName('table');
+		
+		Array.from(tables).forEach( (table) => {
+				if (table.classList.contains('withCounter')) {
+					const rows = table.getElementsByTagName('tr'),
+						  text = 'textContent' in document ? 'textContent' : 'innerText';
+
+					for (let i = 1, len = rows.length; i < len; i++) {
+						rows[i].children[0][text] = " " + i + " ";
+					}	
+				}
+			}
+		); 
+	</script>
+</html>
