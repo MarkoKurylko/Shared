@@ -240,7 +240,7 @@
 			</table>
 		</div>
 		<hr>
-		
+		UserAgent: <span id="userAgent"></span>
 
 	</body>
 	<script>
@@ -256,6 +256,14 @@
 					}	
 				}
 			}
-		); 
+		);
+		const userAgent = navigator.userAgent;
+        	const userAgentSpan = document.getElementById("userAgent");
+		userAgentSpan.textContent = userAgent;
+		if (userAgent.includes("Chrome")) {
+			if (userAgent.includes("Android") || userAgent.includes("Mobile")) {
+				alert("Markup can be broken for this userAgent, sorry.");
+			}
+		}
 	</script>
 </html>
