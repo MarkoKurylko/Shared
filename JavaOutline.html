@@ -35,7 +35,21 @@
 					</details>
 				</td>
 			</tr>
+			<tr>
+				<td style="vertical-align:top;">
+					<h1>G</h1>
+				</td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2>
+							<a href="#generics">Generics</a>
+						</h2>
+					</details>
+				</td>
+			</tr>
 
+			<tr>
 				<td style="vertical-align:top;">
 					<h1>L</h1>
 				</td>
@@ -94,7 +108,21 @@
 		</table>
 
 		<hr style="height:2px;">
-		
+
+		<div id="generics">
+			<h2>Generics</h2>
+			<p> Since: 1.5 <br><br>
+				<code>
+					class Foo&ltT&gt {} // T is the <b>type parameter</b>
+				</code>
+				<br>
+				<code>
+					new Foo&ltString&gt() // String is the <b style="color:darkblue;">type argument</b>
+				</code>
+			</p>
+		</div>
+		<hr>
+
 		<div id="lambdas">
 			<h2>λ Lambda Expressions</h2>
 			<h3 id="lambdas-basis" style="padding-left:1em">Basis</h3>
@@ -109,7 +137,7 @@
 						<th>Description</th>
 						<th>Since</th>
 					</tr>
-  
+
 					<tr>
 						<td style="text-align: center;">#</td>
 						<td>Reference to a static method</td>
@@ -117,14 +145,14 @@
 						<td></td>
 						<td rowspan="4" style="color:blue;">1.8</td>
 					</tr>
-  
+
 					<tr>
 						<td style="text-align: center;">#</td>
 							<td>Reference to an instance method of a particular object</td>
 							<td><code><em>classInstance</em>::<em>instanceMethodName</em></code></td>
 							<td></td>
 					</tr>
-  
+
 					<tr>
 						<td style="text-align: center;">#</td>
 						<td style="background:Orange;">Reference to an instance method of an arbitrary object of a particular type</td>
@@ -137,14 +165,14 @@
 									The method reference would invoke the method <code>a.compareToIgnoreCase(b)</code>.
 								</td>
 					</tr>
-  
+
 					<tr>
 								<td style="text-align: center;">#</td>
 									<td>Reference to a constructor</td>
 									<td><code><em>ClassName</em>::new</code></td>
 									<td><code>HashSet::new</code></td>
 					</tr>
-  
+
 				</tbody>
 			</table>
 		</div>
@@ -162,7 +190,7 @@
 						<th width="35%" colspan="2">When to use</th>
 						<th>Since</th>
 					</tr>
-  
+
 					<tr>
 						<td style="text-align: center;">#</td>
 						<td colspan="2" style="color:saddlebrown;">Local class</td>
@@ -180,7 +208,7 @@
 						</td>
 						<td style="color:black;">1.1</td>
 					</tr>
-  
+
 					<tr>
 						<td style="text-align: center;">#</td>
 							<td colspan="2" style="color:green;">Anonymous class</td>
@@ -192,7 +220,7 @@
 							<td colspan="2">Use it if you need to declare fields or additional methods.</td>
 							<td>1.1</td>
 					</tr>
-  
+
 					<tr>
 						<td style="text-align: center;">#</td>
 						<td colspan="2" style="color:blue;"><a href="#lambdas">Lambda</a></td>
@@ -205,7 +233,7 @@
 						</td>
 						<td style="color:blue;">1.8</td>
 					</tr>
-  
+
 								<tr>
 									<td style="text-align: center;">#</td>
 									<td rowspan="2" style="color:red;">Nested</td>
@@ -218,7 +246,7 @@
 																&nbsp;&nbsp;static class StaticNestedClass {<br>
 																		&nbsp;&nbsp;&nbsp;&nbsp;...<br>
 																	&nbsp;&nbsp;}<br>
-														 }
+														}
 										</code>
 									</td>
 									<td></td>
@@ -245,7 +273,7 @@
 	</body>
 	<script>
 		const tables = document.getElementsByTagName('table');
-		
+
 		Array.from(tables).forEach( (table) => {
 				if (table.classList.contains('withCounter')) {
 					const rows = table.getElementsByTagName('tr'),
@@ -258,13 +286,12 @@
 			}
 		);
 		const userAgent = navigator.userAgent;
-        	const userAgentSpan = document.getElementById("userAgent");
+		const userAgentSpan = document.getElementById("userAgent");
 		userAgentSpan.textContent = userAgent;
 		if (userAgent.includes("Chrome")) {
 			if (userAgent.includes("Android") || userAgent.includes("Mobile")) {
 				alert("Markup can be broken for this userAgent, sorry.");
 			}
 		}
-		// test
 	</script>
 </html>
