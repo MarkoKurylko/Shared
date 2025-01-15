@@ -111,15 +111,22 @@
 
 		<div id="generics">
 			<h2>Generics</h2>
-			<p> Since: 1.5 <br><br>
+			<ul>
+			<li> Since: 1.5 </li><br>
+			<li>
 				<code>
-					class Foo&ltT&gt {} // T is the <b>type parameter</b>
-				</code>
-				<br>
-				<code>
+					class Foo&ltT&gt {} // T is the <b>type parameter</b><br>
 					new Foo&ltString&gt() // String is the <b style="color:darkblue;">type argument</b>
 				</code>
-			</p>
+			</li><br>
+			<li>
+				<code>
+					Foo&lt?&gt // <b style="color:peru;">unbounded</b> wildcard<br>
+					Foo&lt? extends Class&gt // <b style="color:green;">upper</b> bounded wildcard<br>
+					Foo&lt? super Class&gt // <b style="color:brown;">lower</b> bounded wildcard
+				</code>
+			</li>
+			</ul>
 		</div>
 		<hr>
 
