@@ -120,7 +120,7 @@
 				</code>
 			</li><br>
 			<li>
-				<code>
+				<code id="gerericsWildcards">
 					Foo&lt?&gt // <b style="color:peru;">unbounded</b> wildcard<br>
 					Foo&lt? extends Class&gt // <b style="color:green;">upper</b> bounded wildcard<br>
 					Foo&lt? super Class&gt // <b style="color:brown;">lower</b> bounded wildcard
@@ -165,7 +165,7 @@
 						<td style="background:Orange;">Reference to an instance method of an arbitrary object of a particular type</td>
 								<td><code><em>ClassName</em>::<em>instanceMethodName</em></code></td>
 								<td><code>Arrays.sort(stringArray, String::compareToIgnoreCase)</code><br>
-										where <code>static &ltT&gt void sort(T[] array, Comparator&lt? super T&gt c)</code><br>
+										where <code>static &ltT&gt void sort(T[] array, Comparator&lt? <a href="#gerericsWildcards">super</a> T&gt c)</code><br>
 										<em>Comparator</em> is a Functional interface with method <code>int compare(<span style="background:Green;">T o1, T o2</span>)</code>,<br>
 										while <em>String</em> <code>int compareToIgnoreCase(<span style="background:Red;">String str</span>)</code><br>
 									The equivalent lambda expression for the method reference <code>String::compareToIgnoreCase</code> would have the <span style="background:LightBlue;">formal parameter list</span> <code><nobr style="background:LightGreen;">(String a, String b)</nobr></code>.
