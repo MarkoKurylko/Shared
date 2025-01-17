@@ -21,6 +21,19 @@
 					</details>
 				</td>
 			</tr>
+			<tr>
+				<td style="vertical-align:top;">
+					<h1>D</h1>
+				</td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3 style="padding-left:1em">
+							<a href="#diamond">Diamond operator</a>
+						</h3>
+					</details>
+				</td>
+			</tr>
 
 			<tr>
 				<td style="vertical-align:top;">
@@ -102,6 +115,7 @@
 					<details>
 						<summary></summary>
 						<h3><a href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
+						<h3><a href="#safevarargs">@SafeVarargs</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -126,7 +140,26 @@
 					Foo&lt? extends Class&gt // <b style="color:green;">upper</b> bounded wildcard<br>
 					Foo&lt? super Class&gt // <b style="color:brown;">lower</b> bounded wildcard
 				</code>
-			</li>
+			</li><br>
+			<li>
+			<code id="safevarargs">@SafeVarargs</code>
+			<div style="height:4px;"></div>
+			<span style="color:peru;">Since: 1.7</span><br>
+			If you declare a varargs method that has parameters of a parameterized type, 
+			and you ensure that the body of the method does not throw a <code>ClassCastException</code> 
+			or other similar exception due to improper handling of the varargs formal parameter, 
+			you can prevent the warning that the compiler generates for these kinds of varargs methods 
+			by adding the annotation to method declarations:
+			<div style="height:4px;"></div>
+			<tt style="color:peru;">Since 1.7</tt>: static methods, final instance methods and constructors.<br>
+			<tt style="color:brown;">Since &nbsp;&nbsp;9</tt>: private instance methods also.
+			</li><br>
+			<li>
+				<h3 id="diamond"><b>&lt&gt</b>Diamond operator</h3>
+				<tt style="color:peru;">Since 1.7</tt>: <code>List&ltString&gt list = new ArrayList<b>&lt&gt</b>();</code><br>
+				<tt style="color:brown;">Since &nbsp;&nbsp;9</tt>: <code>List&ltString&gt list = new List<b>&lt&gt</b>() {...}; // added support of anonymous classes</code>
+
+			</li><br>
 			</ul>
 		</div>
 		<hr>
