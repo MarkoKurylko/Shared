@@ -142,6 +142,55 @@
 				</code>
 			</li><br>
 			<li>
+				<h3 id="diamond"><b>&lt&gt</b>Diamond operator</h3>
+				<tt style="color:peru;">Since 1.7</tt>: <code>List&ltString&gt list = new ArrayList<b>&lt&gt</b>();</code><br>
+				<tt style="color:brown;">Since &nbsp;&nbsp;9</tt>: <code>List&ltString&gt list = new List<b>&lt&gt</b>() {...}; // added support of anonymous classes</code>
+			</li><br>
+			<li>
+				<table border="1">
+					<caption><b>Types</b></caption>
+					<tr>
+						<th>Type</th>
+						<th>Examples</th>
+						<th>Description</th>
+					</tr>
+					<tr>
+						<td>Reifiable</td>
+						<td><code style="color:green">int</code><br>
+							<code style="color:darkgreen">Integer</code><br>
+							<code style="color:blue">List</code> //considering the class is List&ltT&gt<br>
+							<code style="color:darkblue">List&lt?&gt</code>
+						</td>
+						<td>A <em>reifiable</em> type is a type whose type information is fully available at runtime.<br>
+							This includes <span style="color:green">primitives</span>,
+							<span style="color:darkgreen">non-generic types</span>,
+							<span style="color:blue">raw types</span>,
+							and invocations of <span style="color:darkblue">unbound wildcards</span>
+						</td>
+					</tr>
+					<tr>
+						<td>Non-Reifiable</td>
+						<td><code>
+							List&ltNumber&gt<br>
+							List&lt? extends Number&gt<br>
+							List&lt? super Number&gt
+							</code>
+						</td>
+						<td><em>Non-reifiable</em> types are types where information has been removed at compile-time by type erasure.<br>
+							A non-reifiable type does not have all of its information available at runtime.<br>
+							The JVM cannot tell the difference between these types at runtime
+						</td>
+					</tr>
+				</table>
+			</li>
+
+			<li>
+				<h4>Heap pollution</h4>
+				Heap pollution occurs when a variable of a parameterized type refers to an object that is not of that parameterized type.<br>
+				Heap pollution occurs when mixing raw types and parameterized types or when performing unchecked casts
+			</li><br>
+
+			<li>
 			<code id="safevarargs">@SafeVarargs</code>
 			<div style="height:4px;"></div>
 			<span style="color:peru;">Since: 1.7</span><br>
@@ -153,12 +202,6 @@
 			<div style="height:4px;"></div>
 			<tt style="color:peru;">Since 1.7</tt>: static methods, final instance methods and constructors.<br>
 			<tt style="color:brown;">Since &nbsp;&nbsp;9</tt>: private instance methods also.
-			</li><br>
-			<li>
-				<h3 id="diamond"><b>&lt&gt</b>Diamond operator</h3>
-				<tt style="color:peru;">Since 1.7</tt>: <code>List&ltString&gt list = new ArrayList<b>&lt&gt</b>();</code><br>
-				<tt style="color:brown;">Since &nbsp;&nbsp;9</tt>: <code>List&ltString&gt list = new List<b>&lt&gt</b>() {...}; // added support of anonymous classes</code>
-
 			</li><br>
 			</ul>
 		</div>
