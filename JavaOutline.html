@@ -95,15 +95,20 @@
 				</td>
 			</tr>
 			<tr>
-				<td style="vertical-align:top;">
-					<h1>O</h1>
-				</td>
+				<td style="vertical-align:top;"><h1>O</h1></td>
 				<td>
 					<details>
 						<summary></summary>
-						<h2>
-							<a href="#optional"><em>Optional</em> class (since 1.8)</a>
-						</h2>
+						<h2><a href="#optional"><em>Optional</em> class (since 1.8)</a></h2>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align:top;"><h1>R</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#rtti">Runtime Type Identification (RTTI)</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -133,6 +138,14 @@
 					class Foo&ltT&gt {} // T is the <b>type parameter</b><br>
 					new Foo&ltString&gt() // String is the <b style="color:darkblue;">type argument</b>
 				</code>
+			</li><br>
+			<li>
+				Bounded Type Parameters:<br>
+				<code>&ltT&gt</code><br>
+				<code>&ltT extends Class1&gt</code><br>
+				<code>&ltT extends Class1 & Interface1 & InterfaceN&gt // if class type is present, it should be the first</code><br>
+				<code>&ltT extends Interface1 & ... & InterfaceN&gt</code><br>
+				P.S. No form with <em>super</em> keyword can be applied there -- compile error
 			</li><br>
 			<li>
 				<code id="gerericsWildcards">
@@ -186,7 +199,7 @@
 
 			<li>
 				<h4>Heap pollution</h4>
-				Heap pollution occurs when a variable of a parameterized type refers to an object that is not of that parameterized type.<br>
+				Heap pollution occurs when a variable of a parameterized type refers to an object that is not of that parameterized type<br>
 				Heap pollution occurs when mixing raw types and parameterized types or when performing unchecked casts
 			</li><br>
 
@@ -352,8 +365,15 @@
 			</table>
 		</div>
 		<hr>
-		UserAgent: <span id="userAgent"></span>
 
+		<div id="rtti">
+			<h3>RTTI</h3>
+			Java does <span style="color:red">NOT have</span> Runtime Type Identification, it is from C++, Object Pascal, Delphi and etc<br>
+			Java has <em><b>Type introspection</b></em> implemented by <code>instanceof</code> operator
+		</div>
+		<hr>
+
+		UserAgent: <span id="userAgent"></span>
 	</body>
 	<script>
 		function onLetterClick(event) {
