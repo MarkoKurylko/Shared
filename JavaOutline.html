@@ -1,8 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<style>
-		</style>
+		<title>Java Outline</title>
 	</head>
+	<style>
+		ul.ulWithMargin > li {margin: 10px 0;}
+		.border, .border th , .border td {
+			border: 1px solid;
+		}
+		#toc h1 {margin: 0;}
+	</style>
 	<body>
 		<table id="toc">
 			<tr>
@@ -13,7 +20,7 @@
 					<details>
 						<summary></summary>
 						<h2>
-							<a href="#classes">Classes</b></a>
+							<a id="classes" href="#classes">Classes</a>
 						</h2>
 						<h3 style="padding-left:1em">
 							<a href="#nesting">Nesting of <em>classes</em></a>
@@ -43,7 +50,7 @@
 					<details>
 						<summary></summary>
 						<h2>
-							<a href="#e-final">Effectively <b>Final</b></a>
+							<a id="e-final" href="#e-final">Effectively <b>Final</b></a>
 						</h2>
 					</details>
 				</td>
@@ -99,7 +106,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h2><a href="#optional"><em>Optional</em> class (since 1.8)</a></h2>
+						<h2><a id="optional" href="#optional"><em>Optional</em> class (since 1.8)</a></h2>
 					</details>
 				</td>
 			</tr>
@@ -119,7 +126,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
+						<h3><a id="strictfp" href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
 						<h3><a href="#safevarargs">@SafeVarargs</a></h3>
 					</details>
 				</td>
@@ -130,37 +137,37 @@
 
 		<div id="generics">
 			<h2>Generics</h2>
-			<ul>
-			<li> Since: 1.5 </li><br>
-			<li> The reason why Generics were added to the Java language — to enforce type safety at compile time</li><br>
+			<ul class="ulWithMargin">
+			<li> Since: 1.5</li>
+			<li> The reason why Generics were added to the Java language — to enforce type safety at compile time</li>
 			<li>
 				<code>
-					class Foo&ltT&gt {} // T is the <b>type parameter</b><br>
-					new Foo&ltString&gt() // String is the <b style="color:darkblue;">type argument</b>
+					class Foo&lt;T&gt; {} // T is the <b>type parameter</b><br>
+					new Foo&lt;String&gt;() // String is the <b style="color:darkblue;">type argument</b>
 				</code>
-			</li><br>
+			</li>
 			<li>
 				Bounded Type Parameters:<br>
-				<code>&ltT&gt</code><br>
-				<code>&ltT extends Class1&gt</code><br>
-				<code>&ltT extends Class1 & Interface1 & InterfaceN&gt // if class type is present, it should be the first</code><br>
-				<code>&ltT extends Interface1 & ... & InterfaceN&gt</code><br>
+				<code>&lt;T&gt;</code><br>
+				<code>&lt;T extends Class1&gt;</code><br>
+				<code>&lt;T extends Class1 & Interface1 & InterfaceN&gt; // if class type is present, it should be the first</code><br>
+				<code>&lt;T extends Interface1 & ... & InterfaceN&gt;</code><br>
 				P.S. No form with <em>super</em> keyword can be applied there -- compile error
-			</li><br>
+			</li>
 			<li>
-				<code id="gerericsWildcards">
-					Foo&lt?&gt // <b style="color:peru;">unbounded</b> wildcard<br>
-					Foo&lt? extends Class&gt // <b style="color:green;">upper</b> bounded wildcard<br>
-					Foo&lt? super Class&gt // <b style="color:brown;">lower</b> bounded wildcard
+				<code id="genericsWildcards">
+					Foo&lt;?&gt; // <b style="color:peru;">unbounded</b> wildcard<br>
+					Foo&lt;? extends Class&gt; // <b style="color:green;">upper</b> bounded wildcard<br>
+					Foo&lt;? super Class&gt; // <b style="color:brown;">lower</b> bounded wildcard
 				</code>
-			</li><br>
+			</li>
 			<li>
-				<h3 id="diamond"><b>&lt&gt</b>Diamond operator</h3>
-				<tt style="color:peru;">Since 1.7</tt>: <code>List&ltString&gt list = new ArrayList<b>&lt&gt</b>();</code><br>
-				<tt style="color:brown;">Since &nbsp;&nbsp;9</tt>: <code>List&ltString&gt list = new List<b>&lt&gt</b>() {...}; // added support of anonymous classes</code>
-			</li><br>
+				<h3 id="diamond" style="margin-bottom: 0;"><b>&lt;&gt;</b>Diamond operator</h3>
+				<samp style="color:peru;">Since 1.7</samp>: <code>List&lt;String&gt; list = new ArrayList<b>&lt;&gt;</b>();</code><br>
+				<samp style="color:brown;">Since &nbsp;&nbsp;9</samp>: <code>List&lt;String&gt; list = new List<b>&lt;&gt;</b>() {...}; // added support of anonymous classes</code>
+			</li>
 			<li>
-				<table border="1">
+				<table class="border">
 					<caption><b>Types</b></caption>
 					<tr>
 						<th>Type</th>
@@ -171,8 +178,8 @@
 						<td>Reifiable</td>
 						<td><code style="color:green">int</code><br>
 							<code style="color:darkgreen">Integer</code><br>
-							<code style="color:blue">List</code> //considering the class is List&ltT&gt<br>
-							<code style="color:darkblue">List&lt?&gt</code>
+							<code style="color:blue">List</code> //considering the class is List&lt;T&gt;<br>
+							<code style="color:darkblue">List&lt;?&gt;</code>
 						</td>
 						<td>A <em>reifiable</em> type is a type whose type information is fully available at runtime.<br>
 							This includes <span style="color:green">primitives</span>,
@@ -184,9 +191,9 @@
 					<tr>
 						<td>Non-Reifiable</td>
 						<td><code>
-							List&ltNumber&gt<br>
-							List&lt? extends Number&gt<br>
-							List&lt? super Number&gt
+							List&lt;Number&gt;<br>
+							List&lt;? extends Number&gt;<br>
+							List&lt;? super Number&gt;
 							</code>
 						</td>
 						<td><em>Non-reifiable</em> types are types where information has been removed at compile-time by type erasure.<br>
@@ -198,24 +205,24 @@
 			</li>
 
 			<li>
-				<h4>Heap pollution</h4>
+				<h4 style="margin-bottom: 0;">Heap pollution</h4>
 				Heap pollution occurs when a variable of a parameterized type refers to an object that is not of that parameterized type<br>
 				Heap pollution occurs when mixing raw types and parameterized types or when performing unchecked casts
-			</li><br>
+			</li>
 
 			<li>
 			<code id="safevarargs">@SafeVarargs</code>
 			<div style="height:4px;"></div>
-			<span style="color:peru;">Since: 1.7</span><br>
+			<span style="font-color:peru;">Since: 1.7</span><br>
 			If you declare a varargs method that has parameters of a parameterized type, 
 			and you ensure that the body of the method does not throw a <code>ClassCastException</code> 
 			or other similar exception due to improper handling of the varargs formal parameter, 
 			you can prevent the warning that the compiler generates for these kinds of varargs methods 
 			by adding the annotation to method declarations:
 			<div style="height:4px;"></div>
-			<tt style="color:peru;">Since 1.7</tt>: static methods, final instance methods and constructors.<br>
-			<tt style="color:brown;">Since &nbsp;&nbsp;9</tt>: private instance methods also.
-			</li><br>
+			<samp style="color:peru;">Since 1.7</samp>: static methods, final instance methods and constructors.<br>
+			<samp style="color:brown;">Since &nbsp;&nbsp;9</samp>: private instance methods also.
+			</li>
 			</ul>
 		</div>
 		<hr>
@@ -225,10 +232,11 @@
 			<h3 id="lambdas-basis" style="padding-left:1em">Basis</h3>
 			<h3 id="lambdas-mr" style="padding-left:1em">Method references</h3>
 			
-			<table summary="Kinds of method references" border="1" style="margin-left:1em" class="withCounter">
+			<table style="margin-left:1em" class="withCounter border">
+				<caption>Kinds of method references</caption>
 				<tbody>
 					<tr>
-						<th width="20px">#</th>
+						<th style="width:20px;">#</th>
 						<th>Kind</th>
 						<th>Syntax</th>
 						<th>Description</th>
@@ -240,7 +248,7 @@
 						<td>Reference to a static method</td>
 						<td><code><em>ClassName</em>::<em>staticMethodName</em></code></td>
 						<td></td>
-						<td rowspan="4" style="color:blue;">1.8</td>
+						<td rowspan="4" style="font-color:blue;">1.8</td>
 					</tr>
 
 					<tr>
@@ -255,7 +263,7 @@
 						<td style="background:Orange;">Reference to an instance method of an arbitrary object of a particular type</td>
 								<td><code><em>ClassName</em>::<em>instanceMethodName</em></code></td>
 								<td><code>Arrays.sort(stringArray, String::compareToIgnoreCase)</code><br>
-										where <code>static &ltT&gt void sort(T[] array, Comparator&lt? <a href="#gerericsWildcards">super</a> T&gt c)</code><br>
+										where <code>static &lt;T&gt; void sort(T[] array, Comparator&lt;? <a href="#genericsWildcards">super</a> T&gt; c)</code><br>
 										<em>Comparator</em> is a Functional interface with method <code>int compare(<span style="background:Green;">T o1, T o2</span>)</code>,<br>
 										while <em>String</em> <code>int compareToIgnoreCase(<span style="background:Red;">String str</span>)</code><br>
 									The equivalent lambda expression for the method reference <code>String::compareToIgnoreCase</code> would have the <span style="background:LightBlue;">formal parameter list</span> <code><nobr style="background:LightGreen;">(String a, String b)</nobr></code>.
@@ -277,14 +285,15 @@
 
 		<div id="nesting">
 			<h2>Nesting of classes</h2>
-			<table summary="Nesting" border="1" style="margin-left:1em" class="withCounter">
+			<table style="margin-left:1em" class="withCounter border">
+				<caption>Nesting</caption>
 				<tbody>
 					<tr>
-						<th width="20px">#</th>
+						<th style="width:20px;">#</th>
 						<th colspan="2">Kind</th>
 						<th>Syntax</th>
 						<th>Description</th>
-						<th width="35%" colspan="2">When to use</th>
+						<th style="width:35%;" colspan="2">When to use</th>
 						<th>Since</th>
 					</tr>
 
@@ -303,7 +312,7 @@
 							or introduce a new, named type (because, for example, you need to invoke additional methods later).<br>
 							<span style="color:grey;">And as it stems from its form: use local classes when you don't need of reuse it outside the <em>block</em></span>
 						</td>
-						<td style="color:black;">1.1</td>
+						<td style="font-color:black;">1.1</td>
 					</tr>
 
 					<tr>
@@ -320,21 +329,21 @@
 
 					<tr>
 						<td style="text-align: center;">#</td>
-						<td colspan="2" style="color:blue;"><a href="#lambdas">Lambda</a></td>
-						<td><code>() -> {}</code></td>
+						<td colspan="2" style="font-color:blue;"><a href="#lambdas">Lambda</a></td>
+						<td><code>() -&gt; {}</code></td>
 						<td>Extension of idea of <span style="color:green;">anonymous classes</span> in a more convenient way</td>
 						<td colspan="2"><ul>
 							<li>Use it if you are encapsulating a single unit of behavior that you want to pass to other code. For example, you would use a lambda expression if you want a certain action performed on each element of a collection, when a process is completed, or when a process encounters an error</li>
 							<li>Use it if you need a simple instance of a functional interface and none of the preceding criteria apply (for example, you do not need a constructor, a named type, fields, or additional methods)</li>
 							</ul>
 						</td>
-						<td style="color:blue;">1.8</td>
+						<td style="font-color:blue;">1.8</td>
 					</tr>
 
-								<tr>
+					<tr>
 									<td style="text-align: center;">#</td>
-									<td rowspan="2" style="color:red;">Nested</td>
-									<td style="color:darkred;">Inner class <nobr><small>(non-static nested class)</small></nobr></td>
+									<td rowspan="2" style="font-color:red;">Nested</td>
+									<td style="font-color:darkred;">Inner class <nobr><small>(non-static nested class)</small></nobr></td>
 									<td rowspan="2"><code>class OuterClass {<br>
 																		&nbsp;&nbsp; ...<br>
 																&nbsp;&nbsp;class InnerClass {<br>
@@ -350,16 +359,16 @@
 									<td rowspan="2">Use it if your requirements are similar to those of a local class, you want to make the type more widely available, and you don't require access to local variables or method parameters</td>
 									<td>Use an inner class if you require access to an enclosing instance's non-public fields and methods</td>
 									<td>1.1</td>
-								</tr>
+					</tr>
 
-								<tr>
+					<tr>
 									<td style="text-align: center;">#</td>
-									<td style="color:magenta;"><nobr>Static nested class</nobr></td>
+									<td style="font-color:magenta;"><nobr>Static nested class</nobr></td>
 									
 									<td></td>
 									<td>Use a static nested class if you <b>don't</b> require access to an enclosing instance's non-public fields and methods</td>
 									<td>1.1</td>
-								</tr>
+					</tr>
 
 				</tbody>
 			</table>
@@ -374,7 +383,7 @@
 		<hr>
 
 		UserAgent: <span id="userAgent"></span>
-	</body>
+</body>
 	<script>
 		function onLetterClick(event) {
 			let detailsTd;
@@ -401,7 +410,7 @@
 
 					for (let i = 1, len = rows.length; i < len; i++) {
 						rows[i].children[0][text] = " " + i + " ";
-					}	
+					}
 				}
 			}
 		);
