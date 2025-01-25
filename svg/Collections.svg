@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg viewBox="0 0 500 650" xmlns="http://www.w3.org/2000/svg">
-  <defs>
+   <defs>
+    <style>
+      .interface {
+        rx:10;
+        fill: white;
+        stroke: blue;
+        width: 140px;
+        height: 80px;
+      }
+      .line {
+        stroke: black;
+        stroke-width:1;
+      }
+      .arrow {
+        marker-end:url(#arrow)
+      }
+      .text, .text14, .text22 {
+        white-space: pre;
+        fill: rgb(51,51,51);
+        font-family: Arial, sans-serif;
+      }
+      .text {font-size: 28px;}
+      .text14 {font-size: 14px;}
+      .text22 {font-size: 22px;}
+    </style>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
-      <path d="M 0,0 10,5 0,10 Z" fill="blue" style="display:inline;opacity:1" />
+      <path d="M 0,0 10,5 0,10 Z" class="line" />
     </marker>
   </defs>
 
@@ -13,43 +37,40 @@
     <tspan x="25" y="190">Framework</tspan>
   </text>
 
-  <rect x="180" y="30"  width="140" height="80" rx="10" ry="10" style="fill: white; stroke: blue;"/>
-  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;"
-        x="205" y="60">Iterable</text>
+  <rect x="180" y="30" class="interface"/>
+  <text x="205" y="60" class="text">Iterable</text>
 
-  <line x1="250" y1="145" x2="250" y2="115" style="stroke:blue;stroke-width:1;marker-end:url(#arrow)" />
-  <rect x="180" y="145" width="140" height="80" rx="10" ry="10" style="fill: white; stroke: blue;"/>
-  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;"
-        x="190" y="175">Collection</text>
+  <line x1="250" y1="145" x2="250" y2="115" class="line arrow" />
+  <rect x="180" y="145" class="interface"/>
+  <text x="190" y="175" class="text">Collection</text>
 
-  <line x1="250" y1="260" x2="250" y2="230" style="stroke:blue;stroke-width:1;marker-end:url(#arrow)"/>
-  <line x1="100" y1="260" x2="400" y2="260" style="stroke:blue;stroke-width:1;"/>
-  <line x1="250" y1="290" x2="250" y2="260" style="stroke:blue;stroke-width:1"/>
-  <line x1="100" y1="290" x2="100" y2="260" style="stroke:blue;stroke-width:1"/>
-  <line x1="400" y1="290" x2="400" y2="260" style="stroke:blue;stroke-width:1"/>
+  <line x1="250" y1="260" x2="250" y2="230" class="line arrow"/>
+  <line x1="100" y1="260" x2="400" y2="260" class="line"/>
+  <line x1="250" y1="290" x2="250" y2="260" class="line"/>
+  <line x1="100" y1="290" x2="100" y2="260" class="line"/>
+  <line x1="400" y1="290" x2="400" y2="260" class="line"/>
 
-  <rect x="30"  y="290" style="fill: white; stroke: blue;" width="140" height="80" rx="10" ry="10"/>
-  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;"
-        x="75" y="320">List</text>
+  <line x1="100" y1="400" x2="100" y2="375" class="line arrow"/>
+  <rect x="30" y="400" class="interface"/>
+  <text x="75" y="430" class="text">List</text>
 
-  <rect x="180" y="290" style="fill: white; stroke: blue;" width="140" height="80" rx="10" ry="10"/>
-  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;"
-        x="225" y="320">Set</text>
+  <rect x="30" y="290" class="interface"/>
+  <text x="35" y="310" class="text14" >SequencedCollection</text>
+  <text x="35" y="360" class="text14" >Since: <tspan stroke="red">21</tspan></text>
 
-  <rect x="330" y="290" style="fill: white; stroke: blue;" width="140" height="80" rx="10" ry="10"/>
-  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;"
-        x="355" y="320">Queue</text>
+  <rect x="180" y="290" class="interface"/>
+  <text x="225" y="320" class="text">Set</text>
 
-  <line style="stroke:blue;stroke-width:1;marker-end:url(#arrow)"
-        x1="250" y1="400" x2="250" y2="375" />
-  <rect x="180" y="400" style="fill: white; stroke: blue;" width="140" height="80" rx="10" ry="10"/>
-  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;"
-        x="190" y="430">SortedSet</text>
+  <rect x="330" y="290" class="interface"/>
+  <text x="355" y="320" class="text">Queue</text>
 
-  <line style="stroke:blue;stroke-width:1;marker-end:url(#arrow)"
-        x1="250" y1="510" x2="250" y2="485" />
-  <rect x="180" y="510" style="fill: white; stroke: blue;" width="140" height="80" rx="10" ry="10"/>
-  <text style="white-space: pre; fill: black; font-family: Arial, sans-serif; font-size: 22px;"
-        x="185" y="540">NavigableSet</text>
+  <line x1="250" y1="400" x2="250" y2="375" class="line arrow"/>
+  <rect x="180" y="400" class="interface"/>
+  <text x="190" y="430" class="text">SortedSet</text>
+
+  <line x1="250" y1="510" x2="250" y2="485" class="line arrow"/>
+  <rect x="180" y="510" class="interface"/>
+  <text x="185" y="540" class="text22">NavigableSet</text>
+  <text x="185" y="580" class="text14">Since: <tspan stroke="green">1.6</tspan></text>
 
 </svg>
