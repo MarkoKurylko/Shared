@@ -25,6 +25,29 @@
       .text14 {font-size: 14px;}
       .text22 {font-size: 22px;}
     </style>
+    <script>
+        var javaVersion = 21;
+
+        function switchJavaVersion(element) {
+          const clickedVersion = element.id.substring(4);
+          const rectElement = document.getElementById(element.id + 'Rect');
+
+          let visibility = 'block';
+          if (clickedVersion == javaVersion) {
+            rectElement.style.fill = 'gray';
+            javaVersion--;
+            visibility = 'none';
+          } else {
+            rectElement.style.fill = 'white';
+            javaVersion = parseInt(clickedVersion);
+          }
+
+          const gArray = document.getElementsByClassName(element.id);
+          for (let g of gArray) {
+            g.style.display = visibility;
+          }
+        }
+    </script>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
       <path d="M 0,0 10,5 0,10 Z" class="line" />
     </marker>
@@ -37,6 +60,9 @@
     <tspan x="25" y="190">Framework</tspan>
   </text>
 
+  <rect x="465" y="10" id="java21Rect" width="20px" height="20px" style="fill: white; stroke: black; rx: 2"/>
+  <text x="467" y="25" id="java21" class="text text14" style="stroke: red; cursor: pointer; user-select: none;" onclick="switchJavaVersion(this)">21</text>
+
   <rect x="180" y="30" class="interface"/>
   <text x="205" y="60" class="text">Iterable</text>
 
@@ -47,16 +73,18 @@
   <line x1="250" y1="260" x2="250" y2="230" class="line arrow"/>
   <line x1="100" y1="260" x2="400" y2="260" class="line"/>
   <line x1="250" y1="290" x2="250" y2="260" class="line"/>
-  <line x1="100" y1="290" x2="100" y2="260" class="line"/>
+  <line x1="100" y1="370" x2="100" y2="260" class="line"/>
   <line x1="400" y1="290" x2="400" y2="260" class="line"/>
 
   <line x1="100" y1="400" x2="100" y2="375" class="line arrow"/>
   <rect x="30" y="400" class="interface"/>
   <text x="75" y="430" class="text">List</text>
 
-  <rect x="30" y="290" class="interface"/>
-  <text x="35" y="310" class="text14" >SequencedCollection</text>
-  <text x="35" y="360" class="text14" >Since: <tspan stroke="red">21</tspan></text>
+  <g class="java21">
+    <rect x="30" y="290" class="interface"/>
+    <text x="35" y="310" class="text14" >SequencedCollection</text>
+    <text x="35" y="360" class="text14" >Since: <tspan stroke="red">21</tspan></text>
+  </g>
 
   <rect x="180" y="290" class="interface"/>
   <text x="225" y="320" class="text">Set</text>
