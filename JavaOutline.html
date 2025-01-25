@@ -7,6 +7,7 @@
 		ul.ulWithMargin > li {margin: 10px 0;}
 		.border, .border th , .border td {
 			border: 1px solid;
+			border-color: black;
 		}
 		#toc h1 {margin: 0;}
 	</style>
@@ -233,7 +234,7 @@
 			<li>
 			<code id="safevarargs">@SafeVarargs</code>
 			<div style="height:4px;"></div>
-			<span style="font-color:peru;">Since: 1.7</span><br>
+			<span style="color:peru;">Since: 1.7</span><br>
 			If you declare a varargs method that has parameters of a parameterized type, 
 			and you ensure that the body of the method does not throw a <code>ClassCastException</code> 
 			or other similar exception due to improper handling of the varargs formal parameter, 
@@ -268,7 +269,7 @@
 						<td>Reference to a static method</td>
 						<td><code><em>ClassName</em>::<em>staticMethodName</em></code></td>
 						<td></td>
-						<td rowspan="4" style="font-color:blue;">1.8</td>
+						<td rowspan="4" style="color:blue;">1.8</td>
 					</tr>
 
 					<tr>
@@ -319,7 +320,7 @@
 
 					<tr>
 						<td style="text-align: center;">#</td>
-						<td colspan="2" style="color:saddlebrown;">Local class</td>
+						<td colspan="2"><span style="color:saddlebrown;">Local class</span></td>
 						<td><code>public <span style="color:grey;">[static]</span> void methodName {<br>
 										&nbsp;&nbsp;<b>class LocalClassName {}</b> <br>
 									}
@@ -332,38 +333,38 @@
 							or introduce a new, named type (because, for example, you need to invoke additional methods later).<br>
 							<span style="color:grey;">And as it stems from its form: use local classes when you don't need of reuse it outside the <em>block</em></span>
 						</td>
-						<td style="font-color:black;">1.1</td>
+						<td style="color:black;">1.1</td>
 					</tr>
 
 					<tr>
 						<td style="text-align: center;">#</td>
-							<td colspan="2" style="color:green;">Anonymous class</td>
+						<td colspan="2"><span style="color:green;">Anonymous class</span></td>
 							<td><code><nobr>new ExistingClassName() {//implementation}</nobr><br>
 									  <nobr>new ExistingInterfaceName() {//implementation}</nobr><br>
 								</code>
 							</td>
-							<td>Anonymous classes are a convenient short form of <span style="color:darkred;">inner classes</span> that have no name, only an implementation</td>
+							<td>Anonymous classes are a convenient short form of <span style="color: darkred;">inner classes</span> that have no name, only an implementation</td>
 							<td colspan="2">Use it if you need to declare fields or additional methods.</td>
 							<td>1.1</td>
 					</tr>
 
 					<tr>
 						<td style="text-align: center;">#</td>
-						<td colspan="2" style="font-color:blue;"><a href="#lambdas">Lambda</a></td>
+						<td colspan="2"><a style="color: blue;" href="#lambdas">Lambda</a></td>
 						<td><code>() -&gt; {}</code></td>
-						<td>Extension of idea of <span style="color:green;">anonymous classes</span> in a more convenient way</td>
+						<td>Extension of idea of <span style="color: green;">anonymous classes</span> in a more convenient way</td>
 						<td colspan="2"><ul>
 							<li>Use it if you are encapsulating a single unit of behavior that you want to pass to other code. For example, you would use a lambda expression if you want a certain action performed on each element of a collection, when a process is completed, or when a process encounters an error</li>
 							<li>Use it if you need a simple instance of a functional interface and none of the preceding criteria apply (for example, you do not need a constructor, a named type, fields, or additional methods)</li>
 							</ul>
 						</td>
-						<td style="font-color:blue;">1.8</td>
+						<td><span style="color: blue;">1.8</span></td>
 					</tr>
 
 					<tr>
 									<td style="text-align: center;">#</td>
-									<td rowspan="2" style="font-color:red;">Nested</td>
-									<td style="font-color:darkred;">Inner class <nobr><small>(non-static nested class)</small></nobr></td>
+									<td rowspan="2"><span style="color: red;">Nested</span></td>
+									<td style="color: darkred; border-color: black">Inner class <nobr><small>(non-static nested class)</small></nobr></td>
 									<td rowspan="2"><code>class OuterClass {<br>
 																		&nbsp;&nbsp; ...<br>
 																&nbsp;&nbsp;class InnerClass {<br>
@@ -383,7 +384,7 @@
 
 					<tr>
 									<td style="text-align: center;">#</td>
-									<td style="font-color:magenta;"><nobr>Static nested class</nobr></td>
+									<td style="color:magenta;"><nobr>Static nested class</nobr></td>
 									
 									<td></td>
 									<td>Use a static nested class if you <b>don't</b> require access to an enclosing instance's non-public fields and methods</td>
