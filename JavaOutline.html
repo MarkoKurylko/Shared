@@ -153,6 +153,24 @@
 					<td><img src="svg/redMark.svg" alt="red"/></td>
 				</tr>
 			</table>
+			<br>
+			<em><b>Notes:</b></em> Methods <code>addAll, removeAll, retainAll </code> etc.,
+			are not <em>transactional</em> by contract. It returns <code>true</code> if this collection has been modified by this call.
+			Getting a <code>true</code> value does <b>not</b> mean that all the elements of the other collection have been applied;
+			it means that <b>at least one</b> has been applied.
+			<br><br>
+			<b>ArrayList</b> vs <b>LinkedList</b><br>
+			What was true for linked lists when computing was invented in the 60's does not hold anymore,
+			and the capacity of linked lists to outperform arrays on insertion and deletion operations is greatly diminished by modern hardware, CPU caches, and pointer chasing.
+			Iterating over the elements of an <code>ArrayList</code> is much faster that over the elements of a <code>LinkedList</code>,
+			mainly due to pointer chasing and CPU cache misses.<br>
+			There are still cases where a linked list is faster than an array.
+			A doubly-linked list (LinkedList) can access its first and last element faster than an ArrayList can.
+			So if your application needs a Last In, First Out (LIFO) stack, or a First In, First Out (FIFO) waiting queue, then choosing a LinkedList is probably your best choice.
+			<br><br>
+			<b>SubList & SubSet</b><br>
+			<code>list.subList(start, end)</code> & <code>set.subSet(from, to)</code><br>
+			Note that the returned list/set is a <em>view</em> on the main list/set. Thus, any modification operation on the sub-collection is reflected on the main collection and vice versa.
 		</div>
 		<hr>
 

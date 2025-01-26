@@ -1,104 +1,166 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg viewBox="0 0 500 650" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 500 900" xmlns="http://www.w3.org/2000/svg">
    <defs>
     <style>
+      .rect, .interface, .class {
+        width: 140px;
+        height: 80px;
+      }
       .interface {
         rx:10;
         fill: white;
         stroke: blue;
-        width: 140px;
-        height: 80px;
+      }
+      .class {
+        fill: white;
+        stroke: green;
       }
       .line {
         stroke: black;
         stroke-width:1;
+        fill: none;
+      }
+      .marker {
+        fill: black
       }
       .arrow {
-        marker-end:url(#arrow)
+        marker-end:url(#arrow);
       }
-      .text, .text14, .text22 {
+      .text, .text14, .text20, .text22 {
         white-space: pre;
         fill: rgb(51,51,51);
         font-family: Arial, sans-serif;
       }
       .text {font-size: 28px;}
       .text14 {font-size: 14px;}
+      .text20 {font-size: 20px;}
       .text22 {font-size: 22px;}
+
+      .java2color  {stroke: chartreuse}
+      .java5color  {stroke: lightgreen}
+      .java6color  {stroke: green}
+      .java21color {stroke: red}
+
+      .javaSwitcherRect {
+        width: 20px;
+        height: 20px;
+        fill: white;
+        stroke: black;
+        rx: 2
+      }
+      .javaSwitcherSelected {
+        fill: gray;
+      }
+      .javaSwitcher {
+        cursor: pointer;
+        user-select: none;
+      }
     </style>
     <script>
         var javaVersion = 21;
+        const javaVersions = [5, 6, 21];
 
         function switchJavaVersion(element) {
           const clickedVersion = element.id.substring(4);
-          const rectElement = document.getElementById(element.id + 'Rect');
 
-          let visibility = 'block';
           if (clickedVersion == javaVersion) {
-            rectElement.style.fill = 'gray';
-            javaVersion--;
-            visibility = 'none';
-          } else {
-            rectElement.style.fill = 'white';
-            javaVersion = parseInt(clickedVersion);
+            return;
           }
 
-          const gArray = document.getElementsByClassName(element.id);
-          for (let g of gArray) {
-            g.style.display = visibility;
+          const prevRectButton = document.getElementById('java' + javaVersion + 'Rect');
+          prevRectButton.classList.remove("javaSwitcherSelected");
+          javaVersion = parseInt(clickedVersion);
+          const rectClicked = document.getElementById(element.id + 'Rect');
+          rectClicked.classList.add("javaSwitcherSelected");
+
+          for (let version of javaVersions) {
+            let visibility = version > javaVersion ? 'none' : 'block';
+            const gArray = document.getElementsByClassName('java' + version);
+            for (let g of gArray) {
+              g.style.display = visibility;
+            }
           }
         }
     </script>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
-      <path d="M 0,0 10,5 0,10 Z" class="line" />
+      <path d="M 0,0 10,5 0,10 Z" class="line marker"/>
     </marker>
   </defs>
 
-  <rect x="10" y="130" width="480" height="480" rx="1" ry="1" style="fill: none; stroke: grey; stroke-dasharray:5,5"/>
+  <rect id="JCF" x="10" y="130" width="480" height="750" rx="1" ry="1" style="fill: none; stroke: grey; stroke-dasharray:5,5"/>
   <text style="white-space: pre; fill: grey; font-family: Arial, sans-serif; font-size: 20px; font-style: italic">
     <tspan x="25" y="150">Java</tspan>
     <tspan x="25" y="170">Collections</tspan>
     <tspan x="25" y="190">Framework</tspan>
   </text>
 
-  <rect x="465" y="10" id="java21Rect" width="20px" height="20px" style="fill: white; stroke: black; rx: 2"/>
-  <text x="467" y="25" id="java21" class="text text14" style="stroke: red; cursor: pointer; user-select: none;" onclick="switchJavaVersion(this)">21</text>
+  <rect x="415" y="10" id="java5Rect" class="javaSwitcherRect"/>
+  <text x="415" y="25" id="java5" class="text text14 java5color javaSwitcher" onclick="switchJavaVersion(this)">1.5</text>
+
+  <rect x="440" y="10" id="java6Rect" class="javaSwitcherRect"/>
+  <text x="440" y="25" id="java6" class="text text14 java6color javaSwitcher" onclick="switchJavaVersion(this)">1.6</text>
+
+  <rect x="465" y="10" id="java21Rect" class="javaSwitcherRect javaSwitcherSelected"/>
+  <text x="468" y="25" id="java21" class="text text14 java21color javaSwitcher" onclick="switchJavaVersion(this)">21</text>
 
   <rect x="180" y="30" class="interface"/>
   <text x="205" y="60" class="text">Iterable</text>
+  <text x="185" y="100" class="text14">Since: <tspan class="java5color">1.5</tspan></text>
 
   <line x1="250" y1="145" x2="250" y2="115" class="line arrow" />
   <rect x="180" y="145" class="interface"/>
   <text x="190" y="175" class="text">Collection</text>
+  <text x="185" y="215" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
 
   <line x1="250" y1="260" x2="250" y2="230" class="line arrow"/>
   <line x1="100" y1="260" x2="400" y2="260" class="line"/>
   <line x1="250" y1="290" x2="250" y2="260" class="line"/>
-  <line x1="100" y1="370" x2="100" y2="260" class="line"/>
+  <line x1="100" y1="400" x2="100" y2="260" class="line" id="CollectionToList"/>
   <line x1="400" y1="290" x2="400" y2="260" class="line"/>
-
-  <line x1="100" y1="400" x2="100" y2="375" class="line arrow"/>
-  <rect x="30" y="400" class="interface"/>
-  <text x="75" y="430" class="text">List</text>
 
   <g class="java21">
     <rect x="30" y="290" class="interface"/>
     <text x="35" y="310" class="text14" >SequencedCollection</text>
-    <text x="35" y="360" class="text14" >Since: <tspan stroke="red">21</tspan></text>
+    <text x="35" y="360" class="text14" >Since: <tspan class="java21color">21</tspan></text>
+    <line x1="100" y1="400" x2="100" y2="375" class="line arrow"/>
   </g>
+
+  <rect x="30" y="400" class="interface"/>
+  <text x="75" y="430" class="text">List</text>
+  <text x="35" y="470" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
 
   <rect x="180" y="290" class="interface"/>
   <text x="225" y="320" class="text">Set</text>
+  <text x="185" y="360" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
 
   <rect x="330" y="290" class="interface"/>
   <text x="355" y="320" class="text">Queue</text>
+  <text x="335" y="360" class="text14">Since: <tspan class="java5color">1.5</tspan></text>
 
-  <line x1="250" y1="400" x2="250" y2="375" class="line arrow"/>
-  <rect x="180" y="400" class="interface"/>
-  <text x="190" y="430" class="text">SortedSet</text>
+  <line x1="250" y1="510" x2="250" y2="375" class="line arrow"/>
+  <g class="java21">
+    <rect x="180" y="400" class="interface"/>
+    <text x="185" y="425" class="text20">SequencedSet</text>
+    <text x="185" y="470" class="text14">Since: <tspan class="java21color">21</tspan></text>
+    <polyline points="180,440 175,440 175,390 130,390 130,375" class="line arrow"/>
+    <polyline points="320,550 330,550 330,390 280,390 280,375" class="line arrow"/>
+    <line x1="250" y1="510" x2="250" y2="485" class="line arrow"/>
+  </g>
 
-  <line x1="250" y1="510" x2="250" y2="485" class="line arrow"/>
   <rect x="180" y="510" class="interface"/>
-  <text x="185" y="540" class="text22">NavigableSet</text>
-  <text x="185" y="580" class="text14">Since: <tspan stroke="green">1.6</tspan></text>
+  <text x="190" y="540" class="text">SortedSet</text>
+  <text x="185" y="580" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
+
+  <line x1="250" y1="730" x2="250" y2="595" class="line arrow"/>
+  <g class="java6">
+    <rect x="180" y="620" class="interface"/>
+    <text x="185" y="645" class="text22">NavigableSet</text>
+    <text x="185" y="690" class="text14">Since: <tspan class="java6color">1.6</tspan></text>
+    <line x1="250" y1="730" x2="250" y2="705" class="line arrow"/>
+  </g>
+
+  <rect x="180" y="730" class="class"/>
+  <text x="195" y="760" class="text">TreeSet</text>
+  <text x="185" y="800" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
 
 </svg>
