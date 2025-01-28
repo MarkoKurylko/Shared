@@ -112,11 +112,7 @@
   <text x="190" y="175" class="text">Collection</text>
   <text x="185" y="215" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
 
-  <line x1="250" y1="260" x2="250" y2="230" class="line arrow"/>
-  <line x1="100" y1="260" x2="400" y2="260" class="line"/>
-  <line x1="250" y1="290" x2="250" y2="260" class="line"/>
-  <line x1="100" y1="400" x2="100" y2="260" class="line" id="CollectionToList"/>
-  <line x1="400" y1="290" x2="400" y2="260" class="line"/>
+  <polyline points="100,400 100,260 210,260 210,230" class="line arrow" id="ListToCollection"/>
 
   <g class="java21">
     <rect x="30" y="290" class="interface"/>
@@ -129,6 +125,7 @@
   <text x="75" y="430" class="text">List</text>
   <text x="35" y="470" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
 
+  <line x1="250" y1="290" x2="250" y2="230" class="line arrow"/>
   <rect x="180" y="290" class="interface"/>
   <text x="225" y="320" class="text">Set</text>
   <text x="185" y="360" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
@@ -138,9 +135,9 @@
     <rect x="180" y="400" class="interface"/>
     <text x="185" y="425" class="text20">SequencedSet</text>
     <text x="185" y="470" class="text14">Since: <tspan class="java21color">21</tspan></text>
-    <polyline points="180,440 175,440 175,390 130,390 130,375" class="line arrow"/>
-    <polyline points="320,550 323,550 323,390 280,390 280,375" class="line arrow" id="sortedSetToSet"/>
-    <polyline points="330,440 326,440 326,385 150,385 150,375" class="line arrow" id="dequeToThis"/>
+    <polyline points="180,440 175,440 175,390 130,390 130,375" class="line arrow" id="SStoSC"/>
+    <polyline points="320,550 323,550 323,390 280,390 280,375" class="line arrow" id="SortedSetToSet"/>
+    <polyline points="330,440 326,440 326,385 150,385 150,375" class="line arrow" id="DequeToSC"/>
     <line x1="250" y1="510" x2="250" y2="485" class="line arrow"/>
   </g>
 
@@ -161,6 +158,7 @@
   <text x="185" y="800" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
 
   <!-- Queues -->
+  <polyline points="400,290 400,260 290,260 290,230" class="line arrow" id="QueueToCollection"/>
   <rect x="330" y="290" class="interface"/>
   <text x="355" y="320" class="text">Queue</text>
   <text x="335" y="360" class="text14">Since: <tspan class="java5color">1.5</tspan></text>
