@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg viewBox="0 0 500 900" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg">
    <defs>
     <style>
       .rect, .interface, .class {
@@ -87,7 +87,7 @@
     </marker>
   </defs>
 
-  <rect id="JCF" x="10" y="130" width="480" height="750" rx="1" ry="1" style="fill: none; stroke: grey; stroke-dasharray:5,5"/>
+  <rect id="JCF" x="10" y="130" width="680" height="750" rx="1" ry="1" style="fill: none; stroke: grey; stroke-dasharray:5,5"/>
   <text style="white-space: pre; fill: grey; font-family: Arial, sans-serif; font-size: 20px; font-style: italic">
     <tspan x="25" y="150">Java</tspan>
     <tspan x="25" y="170">Collections</tspan>
@@ -133,17 +133,14 @@
   <text x="225" y="320" class="text">Set</text>
   <text x="185" y="360" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
 
-  <rect x="330" y="290" class="interface"/>
-  <text x="355" y="320" class="text">Queue</text>
-  <text x="335" y="360" class="text14">Since: <tspan class="java5color">1.5</tspan></text>
-
   <line x1="250" y1="510" x2="250" y2="375" class="line arrow"/>
   <g class="java21">
     <rect x="180" y="400" class="interface"/>
     <text x="185" y="425" class="text20">SequencedSet</text>
     <text x="185" y="470" class="text14">Since: <tspan class="java21color">21</tspan></text>
     <polyline points="180,440 175,440 175,390 130,390 130,375" class="line arrow"/>
-    <polyline points="320,550 330,550 330,390 280,390 280,375" class="line arrow"/>
+    <polyline points="320,550 323,550 323,390 280,390 280,375" class="line arrow" id="sortedSetToSet"/>
+    <polyline points="330,440 326,440 326,385 150,385 150,375" class="line arrow" id="dequeToThis"/>
     <line x1="250" y1="510" x2="250" y2="485" class="line arrow"/>
   </g>
 
@@ -162,5 +159,34 @@
   <rect x="180" y="730" class="class"/>
   <text x="195" y="760" class="text">TreeSet</text>
   <text x="185" y="800" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
+
+  <!-- Queues -->
+  <rect x="330" y="290" class="interface"/>
+  <text x="355" y="320" class="text">Queue</text>
+  <text x="335" y="360" class="text14">Since: <tspan class="java5color">1.5</tspan></text>
+
+  <g class="java6">
+    <rect x="330" y="400" class="interface"/>
+    <text x="355" y="430" class="text">Deque</text>
+    <text x="335" y="470" class="text14">Since: <tspan class="java6color">1.6</tspan></text>
+    <line x1="400" y1="400" x2="400" y2="375" class="line arrow"/>
+  </g>
+
+  <!-- Maps -->
+  <rect x="530" y="290" class="interface"/>
+  <text x="570" y="320" class="text">Map</text>
+  <text x="535" y="360" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
+
+  <line x1="600" y1="400" x2="600" y2="375" class="line arrow"/>
+  <rect x="530" y="400" class="interface"/>
+  <text x="532" y="430" class="text">SortedMap</text>
+  <text x="535" y="470" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
+
+  <g class="java6">
+    <line x1="600" y1="510" x2="600" y2="485" class="line arrow"/>
+    <rect x="530" y="510" class="interface"/>
+    <text x="535" y="540" class="text20">NavigableMap</text>
+    <text x="535" y="580" class="text14">Since: <tspan class="java6color">1.6</tspan></text>
+  </g>
 
 </svg>
