@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Java Connected Outline</title>
+    <style>
+        ul.ulWithMargin > li {margin: 10px 0;}
+        .border, .border th , .border td {
+            border: 1px solid;
+            border-color: black;
+        }
+        #toc h1 {margin: 0;}
+        #toc td:first-child {vertical-align:top}
+    </style>
+</head>
+<body>
+<table id="toc">
+    <tr>
+        <td><h1>R</h1></td>
+        <td>
+            <details>
+                <summary></summary>
+                <h2><a href="#redBlackTree">Red Black Tree</a></h2>
+            </details>
+        </td>
+    </tr>
+</table>
+
+<hr style="height:2px;">
+
+<div>
+    <h2 id="redBlackTree">Red Black Tree</h2>
+    <code><b>TreeMap</b></code> is based on RBT.<br>
+    RBT is a self-balancing binary search tree(BST) data structure.<br><br>
+    Requirements:<br>
+    From BST:
+    <ol style="margin-top: 0">
+        <li>Each key is greater than any key to the node's left subtree AND less than in its right subtree</li>
+    </ol>
+    From RBT:
+    <ol style="margin-top: 0">
+        <li>Every node is either red or black</li>
+        <li>All NIL nodes are considered black</li>
+        <li>A red node does not have a red child</li>
+        <li>Every path from a given node to any of its descendant NIL nodes goes through the same number of black nodes</li>
+        <li>(Conclusion) If a node <b>N</b> has exactly one child, the child must be red.<br>
+            <small>Because if it were black, its NIL descendants would sit at a different black depth than <b>N'</b>s
+                NIL child, violating requirement 4</small>
+        </li>
+    </ol>
+    <br>
+
+    RBT is a self-balancing, that means it must rearrange itself on add and delete operations.<br>
+    The inner self-balancing operation are: left and right shift (means switching parent and child), switch color.
+
+    <br><br>
+    Space Complexity: <b><em>O(n)</em></b> <small> The memory space that algorithm uses in the process of work, depending on amount of input data.</small>
+    <div style="height:5px;"></div>
+    Time complexity (Worst cases (and amortized)):<br>
+    Search, Insert and Delete: <b><em>O(log<sub>2</sub> n)</em></b><br>
+
+    <object width="1000" data="svg/RedBlackTree.svg"></object>
+</div>
+</body>
+
+<script>
+    function onLetterClick(event) {
+        let detailsTd;
+        if (event.target.nodeName === 'TD') {
+            detailsTd = event.target.nextSibling.nextSibling;
+        } else {
+            detailsTd = event.target.parentNode.nextSibling.nextSibling;
+        }
+        const details = detailsTd.getElementsByTagName('details');
+        details[0].open = !details[0].open;
+    }
+    const toc = document.getElementById('toc');
+    const tocRows = toc.getElementsByTagName('tr');
+    for (let i = 0, len = tocRows.length; i < len; i++) {
+        tocRows[i].children[0].onclick = onLetterClick;
+    }
+</script>
+
+</html>
