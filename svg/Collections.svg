@@ -26,20 +26,21 @@
       .arrow {
         marker-end:url(#arrow);
       }
-      .text, .text14, .text20, .text22 {
+      .text, .text14, .text19, .text20, .text22 {
         white-space: pre;
         fill: rgb(51,51,51);
         font-family: Arial, sans-serif;
       }
       .text {font-size: 28px;}
       .text14 {font-size: 14px;}
+      .text19 {font-size: 19px;}
       .text20 {font-size: 20px;}
       .text22 {font-size: 22px;}
 
-      .java2color  {stroke: chartreuse}
-      .java5color  {stroke: lightgreen}
-      .java6color  {stroke: green}
-      .java21color {stroke: red}
+      #java2,  .java2  tspan {stroke: chartreuse}
+      #java5,  .java5  tspan {stroke: lightgreen}
+      #java6,  .java6  tspan {stroke: green}
+      #java21, .java21 tspan {stroke: red}
 
       .javaSwitcherRect {
         width: 20px;
@@ -58,7 +59,7 @@
     </style>
     <script>
         var javaVersion = 21;
-        const javaVersions = [5, 6, 21];
+        const javaVersions = [2, 5, 6, 21];
 
         function switchJavaVersion(element) {
           const clickedVersion = element.id.substring(4);
@@ -94,47 +95,52 @@
     <tspan x="25" y="190">Framework</tspan>
   </text>
 
+  <rect x="385" y="10" id="java2Rect" class="javaSwitcherRect"/>
+  <text x="385" y="25" id="java2" class="text text14 javaSwitcher" onclick="switchJavaVersion(this)">1.2</text>
+
   <rect x="415" y="10" id="java5Rect" class="javaSwitcherRect"/>
-  <text x="415" y="25" id="java5" class="text text14 java5color javaSwitcher" onclick="switchJavaVersion(this)">1.5</text>
+  <text x="415" y="25" id="java5" class="text text14 javaSwitcher" onclick="switchJavaVersion(this)">1.5</text>
 
   <rect x="440" y="10" id="java6Rect" class="javaSwitcherRect"/>
-  <text x="440" y="25" id="java6" class="text text14 java6color javaSwitcher" onclick="switchJavaVersion(this)">1.6</text>
+  <text x="440" y="25" id="java6" class="text text14 javaSwitcher" onclick="switchJavaVersion(this)">1.6</text>
 
   <rect x="465" y="10" id="java21Rect" class="javaSwitcherRect javaSwitcherSelected"/>
-  <text x="468" y="25" id="java21" class="text text14 java21color javaSwitcher" onclick="switchJavaVersion(this)">21</text>
+  <text x="468" y="25" id="java21" class="text text14 javaSwitcher" onclick="switchJavaVersion(this)">21</text>
 
-  <rect x="180" y="30" class="interface"/>
-  <text x="205" y="60" class="text">Iterable</text>
-  <text x="185" y="100" class="text14">Since: <tspan class="java5color">1.5</tspan></text>
+  <g class="java5">
+    <rect x="180" y="30" class="interface"/>
+    <text x="205" y="60" class="text">Iterable</text>
+    <text x="185" y="100" class="text14">Since: <tspan>1.5</tspan></text>
+    <line x1="250" y1="145" x2="250" y2="115" class="line arrow" />
+  </g>
 
-  <line x1="250" y1="145" x2="250" y2="115" class="line arrow" />
   <rect x="180" y="145" class="interface"/>
   <text x="190" y="175" class="text">Collection</text>
-  <text x="185" y="215" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
+  <text x="185" y="215" class="text14 java2">Since: <tspan>1.2</tspan></text>
 
   <polyline points="100,400 100,260 210,260 210,230" class="line arrow" id="ListToCollection"/>
 
   <g class="java21">
     <rect x="30" y="290" class="interface"/>
     <text x="35" y="310" class="text14" >SequencedCollection</text>
-    <text x="35" y="360" class="text14" >Since: <tspan class="java21color">21</tspan></text>
+    <text x="35" y="360" class="text14" >Since: <tspan>21</tspan></text>
     <line x1="100" y1="400" x2="100" y2="375" class="line arrow"/>
   </g>
 
   <rect x="30" y="400" class="interface"/>
   <text x="75" y="430" class="text">List</text>
-  <text x="35" y="470" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
+  <text x="35" y="470" class="text14 java2">Since: <tspan>1.2</tspan></text>
 
   <line x1="250" y1="290" x2="250" y2="230" class="line arrow"/>
   <rect x="180" y="290" class="interface"/>
   <text x="225" y="320" class="text">Set</text>
-  <text x="185" y="360" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
+  <text x="185" y="360" class="text14 java2">Since: <tspan>1.2</tspan></text>
 
   <line x1="250" y1="510" x2="250" y2="375" class="line arrow"/>
   <g class="java21">
     <rect x="180" y="400" class="interface"/>
     <text x="185" y="425" class="text20">SequencedSet</text>
-    <text x="185" y="470" class="text14">Since: <tspan class="java21color">21</tspan></text>
+    <text x="185" y="470" class="text14">Since: <tspan>21</tspan></text>
     <polyline points="180,440 175,440 175,390 130,390 130,375" class="line arrow" id="SStoSC"/>
     <polyline points="320,550 323,550 323,390 280,390 280,375" class="line arrow" id="SortedSetToSet"/>
     <polyline points="330,440 326,440 326,385 150,385 150,375" class="line arrow" id="DequeToSC"/>
@@ -143,48 +149,57 @@
 
   <rect x="180" y="510" class="interface"/>
   <text x="190" y="540" class="text">SortedSet</text>
-  <text x="185" y="580" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
+  <text x="185" y="580" class="text14 java2">Since: <tspan>1.2</tspan></text>
 
   <line x1="250" y1="730" x2="250" y2="595" class="line arrow"/>
   <g class="java6">
     <rect x="180" y="620" class="interface"/>
     <text x="185" y="645" class="text22">NavigableSet</text>
-    <text x="185" y="690" class="text14">Since: <tspan class="java6color">1.6</tspan></text>
+    <text x="185" y="690" class="text14">Since: <tspan>1.6</tspan></text>
     <line x1="250" y1="730" x2="250" y2="705" class="line arrow"/>
   </g>
 
   <rect x="180" y="730" class="class"/>
   <text x="195" y="760" class="text">TreeSet</text>
-  <text x="185" y="800" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
+  <text x="185" y="800" class="text14 java2">Since: <tspan>1.2</tspan></text>
 
   <!-- Queues -->
-  <polyline points="400,290 400,260 290,260 290,230" class="line arrow" id="QueueToCollection"/>
-  <rect x="330" y="290" class="interface"/>
-  <text x="355" y="320" class="text">Queue</text>
-  <text x="335" y="360" class="text14">Since: <tspan class="java5color">1.5</tspan></text>
+  <g class="java5">
+    <polyline points="400,290 400,260 290,260 290,230" class="line arrow" id="QueueToCollection"/>
+    <rect x="330" y="290" class="interface"/>
+    <text x="355" y="320" class="text">Queue</text>
+    <text x="335" y="360" class="text14">Since: <tspan>1.5</tspan></text>
+  </g>
 
   <g class="java6">
     <rect x="330" y="400" class="interface"/>
     <text x="355" y="430" class="text">Deque</text>
-    <text x="335" y="470" class="text14">Since: <tspan class="java6color">1.6</tspan></text>
+    <text x="335" y="470" class="text14">Since: <tspan>1.6</tspan></text>
     <line x1="400" y1="400" x2="400" y2="375" class="line arrow"/>
   </g>
 
   <!-- Maps -->
   <rect x="530" y="290" class="interface"/>
   <text x="570" y="320" class="text">Map</text>
-  <text x="535" y="360" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
+  <text x="535" y="360" class="text14 java2">Since: <tspan>1.2</tspan></text>
+  <line x1="600" y1="510" x2="600" y2="375" class="line arrow"/>
 
-  <line x1="600" y1="400" x2="600" y2="375" class="line arrow"/>
-  <rect x="530" y="400" class="interface"/>
-  <text x="532" y="430" class="text">SortedMap</text>
-  <text x="535" y="470" class="text14">Since: <tspan class="java2color">1.2</tspan></text>
+  <g class="java21">
+    <rect x="530" y="400" class="interface"/>
+    <text x="535" y="430" class="text19">SequencedMap</text>
+    <text x="535" y="470" class="text14">Since: <tspan>21</tspan></text>
+    <line x1="600" y1="510" x2="600" y2="485" class="line arrow"/>
+  </g>
+
+  <rect x="530" y="510" class="interface"/>
+  <text x="532" y="540" class="text">SortedMap</text>
+  <text x="535" y="580" class="text14 java2">Since: <tspan>1.2</tspan></text>
 
   <g class="java6">
-    <line x1="600" y1="510" x2="600" y2="485" class="line arrow"/>
-    <rect x="530" y="510" class="interface"/>
-    <text x="535" y="540" class="text20">NavigableMap</text>
-    <text x="535" y="580" class="text14">Since: <tspan class="java6color">1.6</tspan></text>
+    <line x1="600" y1="620" x2="600" y2="595" class="line arrow"/>
+    <rect x="530" y="620" class="interface"/>
+    <text x="535" y="650" class="text20">NavigableMap</text>
+    <text x="535" y="690" class="text14">Since: <tspan>1.6</tspan></text>
   </g>
 
 </svg>
