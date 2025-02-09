@@ -168,6 +168,31 @@
 				if the list is structurally modified at any time after the iterator is created,
 				in any way except through the iterator's own <code>remove</code> or <code>add</code> methods, the iterator will throw a <code>ConcurrentModificationException</code>.
 			<br><i>Note</i>: the fail-fast behavior of iterators should be used only to detect bugs.
+			<br><br>
+			<table class="border">
+				<caption>SequencedCollection (since 21)</caption>
+				<tr>
+					<th>SequencedCollection</th>
+					<th>List</th>
+					<th>LinkedHashSet</th>
+				</tr>
+				<tr>
+					<td><code>getFirst()</code></td>
+					<td><code>list.get(0)</code></td>
+					<td>
+						<code>set.iterator().next()</code><br>
+						<code>set.stream.findFirst()</code>
+					</td>
+				</tr>
+				<tr>
+					<td><code>getLast()</code></td>
+					<td><code>list.get(list.size()-1)</code></td>
+					<td><code></code></td>
+				</tr>
+				<tr>
+					<td><code>addFirst addLast removeFirst removeLast reversed()</code></td>
+				</tr>
+			</table>
 
 		</div>
 		<hr>
