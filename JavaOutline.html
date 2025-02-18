@@ -5,8 +5,12 @@
 		<style>
 			ul.ulWithMargin > li {margin: 10px 0;}
 			.border, .border th , .border td {
-			border: 1px solid;
-			border-color: black;
+				border: 1px solid;
+				border-color: black;
+			}
+			.padding th , .padding td {
+				padding-left : 5px;
+				padding-right: 5px;
 			}
 			#toc h1 {margin: 0;}
 			#toc td:first-child {vertical-align:top}
@@ -98,8 +102,9 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a id="strictfp" href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
+						<h2><a href="#streams">Streams</a></h2>
 						<h3><a href="#safevarargs">@SafeVarargs</a></h3>
+						<h3><a id="strictfp" href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -111,21 +116,9 @@
 			<h2>Collections</h2>
 			<object width="700" data="svg/Collections.svg"></object>
 			<table class="border">
-				<tr>
-					<th>Feature <small>(according to the contract)</small></th>
-					<th>List</th>
-					<th>Set</th>
-				</tr>
-				<tr>
-					<td>Remembers the elements order</td>
-					<td><img src="svg/greenMark.svg" alt="green"/></td>
-					<td><img src="svg/redMark.svg" alt="red"/></td>
-				</tr>
-				<tr>
-					<td>Can have duplicates</td>
-					<td><img src="svg/greenMark.svg" alt="green"/></td>
-					<td><img src="svg/redMark.svg" alt="red"/></td>
-				</tr>
+				<tr><th>Feature <small>(according to the contract)</small></th><th>List</th><th>Set</th></tr>
+				<tr><td>Remembers the elements order</td><td>&#x2705;</td><td>&#x274C;</td></tr>
+				<tr><td>Can have duplicates</td><td>&#x2705;</td><td>&#x274C;</td></tr>
 			</table>
 			<br>
 			<em><b>Notes:</b></em> Methods <code>addAll, removeAll, retainAll </code> etc.,
@@ -164,7 +157,7 @@
 				Java 8+ with RBT - O(log n)
 			<br><br>
 			<em id="failFast">Fail-fast</em>: <code>ArrayList</code>:
-				The iterators returned by this class's <code>iterator</code> and <code>listIterator</code> methods are <i>fail-fast</i>>:
+				The iterators returned by this class's <code>iterator</code> and <code>listIterator</code> methods are <i>fail-fast</i>:
 				if the list is structurally modified at any time after the iterator is created,
 				in any way except through the iterator's own <code>remove</code> or <code>add</code> methods, the iterator will throw a <code>ConcurrentModificationException</code>.
 			<br><i>Note</i>: the fail-fast behavior of iterators should be used only to detect bugs.
@@ -291,9 +284,32 @@
 
 		<div id="lambdas">
 			<h2>λ Lambda Expressions</h2>
-			<h3 id="lambdas-basis" style="padding-left:1em">Basis</h3>
-			<h3 id="lambdas-mr" style="padding-left:1em">Method references</h3>
-			
+			<div style="padding-left:1em;">
+			<h3 id="lambdas-basis" style="margin-bottom:0;">Basis</h3>
+			<p style="margin-top: 4px;">Syntax: <code style="color:darkblue">() <b>-&gt;</b> {}</code>
+				or <code style="color:darkblue">ClassNameOrInstance<b>::</b>methodName</code><br>
+
+				Technically <em>lambda</em> expression becomes an anonymous method of an enclosing class.
+			</p>
+			<pre>
+	class LambdaExample {
+		void methodOne(int number) {
+			Function&lt;String,String&gt; f = value -&gt; value + i;
+			f.apply("str");
+		}
+	}
+			</pre>
+			Bytecode form:
+			<pre>
+	class LambdaExample {
+		...
+		private void lambda$methodOne$0(int, java.lang.String);
+	}
+			</pre>
+			The <code>int</code> parameter is a parameter <b>captured</b> from the <code>methodOne()</code>
+			</div>
+
+			<h3 id="lambdas-mr" style="padding-left:1em; margin-bottom:0;">Method references</h3>
 			<table style="margin-left:1em" class="withCounter border">
 				<caption>Kinds of method references</caption>
 				<tbody>
@@ -392,7 +408,7 @@
 					<tr>
 						<td style="text-align: center;">#</td>
 						<td colspan="2"><a style="color: blue;" href="#lambdas">Lambda</a></td>
-						<td><code>() -&gt; {}</code></td>
+						<td><code>() <b>-&gt;</b> {}<br>ClassNameOrInstance<b>::</b>methodName</code></td>
 						<td>Extension of idea of <span style="color: green;">anonymous classes</span> in a more convenient way</td>
 						<td colspan="2"><ul>
 							<li>Use it if you are encapsulating a single unit of behavior that you want to pass to other code. For example, you would use a lambda expression if you want a certain action performed on each element of a collection, when a process is completed, or when a process encounters an error</li>
@@ -403,7 +419,7 @@
 					</tr>
 
 					<tr>
-									<td style="text-align: center;">#</td>
+						<td style="text-align: center;">#</td>
 									<td rowspan="2"><span style="color: red;">Nested</span></td>
 									<td style="color: darkred; border-color: black">Inner class <nobr><small>(non-static nested class)</small></nobr></td>
 									<td rowspan="2"><code>class OuterClass {<br>
@@ -420,7 +436,7 @@
 									<td></td>
 									<td rowspan="2">Use it if your requirements are similar to those of a local class, you want to make the type more widely available, and you don't require access to local variables or method parameters</td>
 									<td>Use an inner class if you require access to an enclosing instance's non-public fields and methods</td>
-									<td>1.1</td>
+						<td>1.1</td>
 					</tr>
 
 					<tr>
@@ -441,6 +457,84 @@
 			<h3>RTTI</h3>
 			Java does <span style="color:red">NOT have</span> Runtime Type Identification, it is from C++, Object Pascal, Delphi and etc<br>
 			Java has <em><b>Type introspection</b></em> implemented by <code>instanceof</code> operator
+		</div>
+		<hr>
+
+		<div id="streams">
+			<h2 style="margin-bottom: 5px;">Streams</h2>
+			Since 1.8<br>
+			The <em>Stream</em> interface avoids creating intermediate structures to store mapped or filtered objects.<br>
+			A stream is an object that does not store any data.<br>
+			The Stream API has been designed in such a way that as long as you <span style="color: navy">do not create any non-stream object</span> in a stream pattern,
+			<span style="color: navy">no computation</span> of your data is conducted.<br>
+			<span style="color: orange; font-size: 20px;">&#9888;</span>
+			There are several exceptions to previous rule.<br>
+			<code>distinct()</code> and <code>sorted()</code> method needs to store the elements of your stream.
+			It does so in an internal <code>Set</code>.
+			<br>
+			<ul>
+				<li>
+					An operation that returns another stream is called an <span style="color: goldenrod">intermediate operation</span>.<br>
+					Every time you call an intermediate operation on an existing stream, you create a new stream
+				</li>
+				<li>An operation that returns something else, including void, is called a <span style="color: green">terminal operation</span></li>
+			</ul>
+			The Stream API gives <b>4</b> interfaces: <code>Stream</code>, <code>IntStream</code>, <code>LongStream</code> and <code>DoubleStream</code>.<br>
+			Last three streams use primitive types for numbers instead of the wrapper types to avoid boxing and unboxing.<br>
+			They have some terminal operations that do not exist in <code>Stream</code>:
+			<code>sum min max average summaryStatistics</code><br>
+			<em>Short-circuiting</em> methods in the Stream API can produce a result without having to process all the elements of your stream.<br>
+			<h4 style="margin-bottom: 0; margin-top: 10px;">Good practice</h4>
+			<ul style="margin-top: 0">
+				<li>A stream is an object connected to a source. This source should not be modified by the stream itself.
+					Doing so will lead to unspecified results</li>
+				<li>Writing an operation that modifies some variables or fields outside the stream itself is a bad idea that can always be avoided.
+					A stream should not have any <em>side effects</em></li>
+				<li>Putting a <span style="color: red">stream in a loop</span> is <b>not</b> a very nice pattern of code</li>
+				<li>
+					<code style="color: magenta">peek()</code> The purpose of this method is <span style="color: darkGreen">debugging</span>.
+					You should not use this method in your production code, because it may produce <i>side effects</i>
+				</li>
+				<li>
+					<b>Avoid</b> using a <code>reduce</code> method.
+					You need to make sure that the binary operator you provide is associative, then you need to know if it has an identity element.
+					You need to check many points to make sure your code is correct and produces the results you expect.
+					If you can avoid using the <code>reduce()</code> method, then you definitely should, because it's very easy to make mistakes with it.<br>
+					In fact, you should use a <code>reduce()</code> method as a last resort, only if you have no other solution
+				</li>
+			</ul>
+			(since 9) <code>dropWhile(predicate)</code> and <code>takeWhile(predicate)</code> work as "one-off" semaphore,
+			that means from the time <em>predicate</em> result is switched their value, there is no effect of switching its value back.
+			Moreover, for example for <code>dropWhile</code> you need to start predicate result equals <i>true</i>,
+			otherwise there will no 'dropping' actions occur at all. The next piece of code will result the same list as it was at start,
+			without dropping effect:<br>
+			<code>List.of(1, 2, 3, 4, 5, 6, 7, 8, 9).stream().dropWhile(i -> i > 5).toList()</code><br>
+			The <code>takeWhile</code> works in the same way but opposite. For e.g.<br>
+			<code>List.of(1, 2, 3, 4, 5, 6, 7, 8, 9).stream().takeWhile(i -> i > 5).toList()</code> will return empty list.
+			<div style="height:4px;"></div>
+			<code>Stream.concat()</code> vs <code>flatMap()</code>: <code>concat</code> takes only 2 parameters, but produces a <code>SIZED</code> stream.
+			While a <code>flatMap</code> may create an unknown number of elements to be processed in the resulting stream.
+			The Stream API loses track of the number of elements that will be processed in the resulting stream.<br><br>
+			<table class="border padding">
+				<tr>
+					<th>Method</th>
+					<th>Simplified signature</th>
+					<th>Example</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<td><code>map</code></td>
+					<td><code><span style="color:darkblue">Stream</span>&lt;R&gt; map(<span style="color:darkblue">Function</span>&lt;T,R&gt; mapper)</code></td>
+					<td><code>map(<span style="color:darkblue">String</span>::length)</code></td>
+					<td>Making a new stream of values returned by <em>mapper</em> function</td>
+				</tr>
+				<tr>
+					<td><code>flatMap</code></td>
+					<td><code><span style="color:darkblue">Stream</span>&lt;R&gt; map(<span style="color:darkblue">Function</span>&lt;T, <span style="color:darkblue">Stream</span>&lt;R&gt;&gt; mapper)</code></td>
+					<td><code>flatMap(<span style="color:darkblue">String</span>::lines)</code></td>
+					<td><em>Flattering</em>. It just concats the streams returned by <i>mapper</i> function</td>
+				</tr>
+			</table>
 		</div>
 		<hr>
 
