@@ -12,6 +12,9 @@
 				padding-left : 5px;
 				padding-right: 5px;
 			}
+			.nowrap {
+				white-space: nowrap;
+			}
 			#toc h1 {margin: 0;}
 			#toc td:first-child {vertical-align:top}
 		</style>
@@ -45,8 +48,9 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h2><a id="e-final" href="#e-final">Effectively <b>Final</b></a></h2>
+						<h3><a id="e-final" href="#e-final">Effectively <b>Final</b></a></h3>
 						<h3><a href="#failFast">Fail-Fast mechanism (iterator)</a></h3>
+						<h2><a href="#functionalInterfaces">Functional Interfaces</a></h2>
 					</details>
 				</td>
 			</tr>
@@ -113,7 +117,7 @@
 		<hr style="height:2px;">
 
 		<div id="collections">
-			<h2>Collections</h2>
+			<h2>Collections <small style="color:chartreuse">(Since 1.2)</small></h2>
 			<object width="700" data="svg/Collections.svg"></object>
 			<table class="border">
 				<tr><th>Feature <small>(according to the contract)</small></th><th>List</th><th>Set</th></tr>
@@ -190,10 +194,108 @@
 		</div>
 		<hr>
 
+		<div id="functionalInterfaces">
+			<h2 style="margin-bottom: 3px;">Functional Interfaces <small style="color:blue">(Since 1.8)</small></h2>
+			The <i>ootb</i> functional interfaces are annotated with <code><b>@FunctionalInterface</b></code>.
+			This annotation is not a requirement for the compiler to recognize an interface as a functional interface.
+			<table class="border padding">
+				<tr>
+					<th>Group</th><th colspan="2">Interface</th><th>Method</th><th>Example</th><th>Description</th>
+				</tr>
+				<tr>
+					<td rowspan="4" style="text-align:center"><span style="color:blue">Function</span></td>
+					<td colspan="2"><code>Function&lt;T,R&gt;</code></td>
+					<td><code class="nowrap">R apply(T t)</code></td>
+					<td><code>string -&gt; string.length()</code></td>
+					<td>Represents a function that accepts one argument and produces a result</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><code>UnaryOperator&lt;T&gt;</code></td>
+					<td><code class="nowrap">T apply(T t)</code></td>
+					<td><code>string -&gt; string.toUpperCase()</code></td>
+					<td>
+						<code>extends Function&lt;T,T&gt;</code><br>
+						Represents an operation on a single operand that produces a result of the same type as its operand.
+						This is a specialization of <code>Function</code> for the case where the operand and result are of the same type
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><code>BiFunction&lt;T,T2,R&gt;</code></td>
+					<td><code class="nowrap">R apply(T t, T2 t2)</code></td>
+					<td><code>BiFunction &lt;String, Integer, Object[]&gt; bf = <span class="nowrap">(string, integer) -> new Object[] {string, integer};</span></code></td>
+					<td>Represents a function that accepts two arguments and produces a result. This is the <b>two-arity</b> specialization of <code>Function</code></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><code>BinaryOperator&lt;T&gt;</code></td>
+					<td><code class="nowrap">T apply(T t, T t2)</code></td>
+					<td><code>(string1,string2) -&gt; string1 + string2</code></td>
+					<td>
+						<code>extends BiFunction&lt;T,T,T&gt;</code><br>
+						Represents an operation upon two operands of the same type, producing a result of the same type as the operands.
+						This is a specialization of <code>BiFunction</code> for the case where the operands and the result are of the same type
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2" style="text-align:center"><span style="color:brown">Consumer</span></td>
+					<td colspan="2"><code>Consumer&lt;T&gt;</code></td>
+					<td><code class="nowrap">void accept(T t)</code></td>
+					<td><code>Consumer&lt;String&gt; consumer = System.out::println;<br>consumer.accept("String");</code></td>
+					<td>
+						Represents an operation that accepts a single input argument and returns no result.
+						Unlike most other functional interfaces, <code>Consumer</code> is <span style="color:green">expected</span> to operate via <span style="color:red">side-effects</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><code>BiConsumer&lt;T,T2&gt;</code></td>
+					<td><code class="nowrap">void accept(T t, T2 t2)</code></td>
+					<td><code class="nowrap">BiConsumer&lt;String,Integer&gt; bc = (s, i) -> System.out.println(s + i);</code></td>
+					<td>
+						Represents an operation that accepts two input arguments and returns no result.
+						This is the <b>two-arity</b> specialization of <code>Consumer</code>.
+						Unlike most other functional interfaces, <code>BiConsumer</code> is <span style="color:green">expected</span> to operate via <span style="color:red">side-effects</span>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2" style="text-align:center"><span style="color:green">Supplier</span></td>
+					<td colspan="2"><code>Supplier&lt;T&gt;</code></td>
+					<td><code class="nowrap">T get()</code></td>
+					<td><code>Supplier&lt;LocalDateTime&gt; supplier = () -> LocalDateTime.now();<br>LocalDateTime time = supplier.get();</code></td>
+					<td>Represents a supplier of results. In other words it just returns something without any input parameters</td>
+				</tr>
+				<tr>
+					<td colspan="2"><code>BooleanSupplier</code></td>
+					<td><code class="nowrap">boolean getAsBoolean()</code></td>
+					<td><code>() -&gt; Math.random() &gt; 0.5</code></td>
+					<td>Represents a supplier of <b>boolean</b>-valued results. This is the <b>boolean</b>-producing primitive specialization of <code><b>Supplier</b></code></td>
+				</tr>
+				<tr>
+					<td rowspan="2" style="text-align:center"><span style="color:magenta">Predicate</span></td>
+					<td colspan="2"><code>Predicate&lt;T&gt;</code></td>
+					<td><code class="nowrap">boolean test(T t)</code></td>
+					<td><code>Predicate&lt;String&gt; p = String::isEmpty;</code></td>
+					<td>Represents a predicate (boolean-valued function) of one argument</td>
+				</tr>
+				<tr>
+					<td colspan="2"><code>BiPredicate&lt;T,T2&gt;</code></td>
+					<td><code class="nowrap">boolean test(T t, T2 t2)</code></td>
+					<td><code>BiPredicate&lt;String,Integer&gt; bp = (s, i) -> s.isEmpty() && i == 0;</code></td>
+					<td>Represents a predicate (boolean-valued function) of 2 arguments. This is the <b>two-arity</b> specialization of <code><b>Predicate</b></code></td>
+				</tr>
+				<tr>
+					<td style="text-align:center">Other</td>
+					<td colspan="5">Combinations of base 4 groups for Int*, Long*, Double*, Obj*, To*</td>
+				</tr>
+
+
+			</table>
+		</div>
+		<hr>
+
 		<div id="generics">
-			<h2>Generics</h2>
+			<h2>Generics <small style="color:lightgreen">(Since 1.5)</small></h2>
 			<ul class="ulWithMargin">
-			<li> Since: 1.5</li>
 			<li> The reason why Generics were added to the Java language — to enforce type safety at compile time</li>
 			<li>
 				<code>
@@ -283,7 +385,7 @@
 		<hr>
 
 		<div id="lambdas">
-			<h2>λ Lambda Expressions</h2>
+			<h2>λ Lambda Expressions <small style="color:blue">(Since 1.8)</small></h2>
 			<div style="padding-left:1em;">
 			<h3 id="lambdas-basis" style="margin-bottom:0;">Basis</h3>
 			<p style="margin-top: 4px;">Syntax: <code style="color:darkblue">() <b>-&gt;</b> {}</code>
@@ -318,7 +420,6 @@
 						<th>Kind</th>
 						<th>Syntax</th>
 						<th>Description</th>
-						<th>Since</th>
 					</tr>
 
 					<tr>
@@ -326,7 +427,6 @@
 						<td>Reference to a static method</td>
 						<td><code><em>ClassName</em>::<em>staticMethodName</em></code></td>
 						<td></td>
-						<td rowspan="4" style="color:blue;">1.8</td>
 					</tr>
 
 					<tr>
@@ -461,8 +561,7 @@
 		<hr>
 
 		<div id="streams">
-			<h2 style="margin-bottom: 5px;">Streams</h2>
-			Since 1.8<br>
+			<h2 style="margin-bottom: 5px;">Streams <small style="color:blue">(Since 1.8)</small></h2>
 			The <em>Stream</em> interface avoids creating intermediate structures to store mapped or filtered objects.<br>
 			A stream is an object that does not store any data.<br>
 			The Stream API has been designed in such a way that as long as you <span style="color: navy">do not create any non-stream object</span> in a stream pattern,
