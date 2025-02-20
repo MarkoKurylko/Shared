@@ -64,6 +64,15 @@
 				</td>
 			</tr>
 			<tr>
+				<td><h1>I</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#instanceof"><code>instanceof</code> operator</a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
 				<td><h1>L</h1></td>
 				<td>
 					<details>
@@ -88,7 +97,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h2><a id="optional" href="#optional"><em>Optional</em> class (since 1.8)</a></h2>
+						<h3><a href="#optional"><code>Optional</code> <small>class</small></a></h3>
 					</details>
 				</td>
 			</tr>
@@ -384,6 +393,15 @@
 		</div>
 		<hr>
 
+		<div id="instanceof">
+			<h3 style="margin-bottom:5px;"><code>instanceof</code> operator</h3>
+			The <code>instanceof</code> operator compares an object to a specified type.<br>
+			Keep in mind that <code>null</code> is not an instance of anything.<br>
+			<span style="color:red">Since java 16</span> <i>pattern matching</i> was added:<br>
+			<code>if (obj instanceof String <b>s</b>) int i = <b>s</b>.length();</code>
+		</div>
+		<hr>
+
 		<div id="lambdas">
 			<h2>λ Lambda Expressions <small style="color:blue">(Since 1.8)</small></h2>
 			<div style="padding-left:1em;">
@@ -550,6 +568,20 @@
 
 				</tbody>
 			</table>
+		</div>
+		<hr>
+
+		<div id="optional">
+			<h3 style="margin-bottom:5px;"><code>Optional</code> <small>class <span style="color:blue">(Since 1.8)</span></small></h3>
+			A container object which may or may not contain a non-<code>null</code> value.
+			If a value is present, <code>isPresent()</code> returns <code>true</code>.
+			If no value is present, the object is considered <i>empty</i> and <code>isPresent()</code> returns <code>false</code>.<br>
+			<span style="color: blue; font-size: 20px;">&#9888;</span>
+			The initial method to retrieve value was <code style="color:darkblue">get()</code>,
+			but in <span style="color:orange">java 10</span> the <code style="color:darkblue">orElseThrow()</code>
+			method was added with the same code as in <code style="color:darkblue">get()</code>.
+			The <i>Deprecated</i> annotation is not added to <code style="color:darkblue">get()</code>,
+			<i>apiNote</i> was added instead with note to use <code style="color:darkblue">orElseThrow()</code>.
 		</div>
 		<hr>
 
