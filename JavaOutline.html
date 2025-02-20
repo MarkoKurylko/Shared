@@ -16,7 +16,16 @@
 				white-space: nowrap;
 			}
 			#toc h1 {margin: 0;}
-			#toc td:first-child {vertical-align:top}
+			#toc td:first-child {vertical-align: top}
+			.java2  {color: ChartReuse}
+			.java5  {color: LightGreen}
+			.java6  {color: Green}
+			.java7  {color: LightSeaGreen}
+			.java8  {color: Blue}
+			.java9  {color: Magenta}
+			.java10 {color: Orange}
+			.java16 {color: Red}
+			.java21 {color: Red}
 		</style>
 	</head>
 	<body>
@@ -126,7 +135,7 @@
 		<hr style="height:2px;">
 
 		<div id="collections">
-			<h2>Collections <small style="color:chartreuse">(Since 1.2)</small></h2>
+			<h2>Collections <small class="java2">(Since 1.2)</small></h2>
 			<object width="700" data="svg/Collections.svg"></object>
 			<table class="border">
 				<tr><th>Feature <small>(according to the contract)</small></th><th>List</th><th>Set</th></tr>
@@ -303,7 +312,7 @@
 		<hr>
 
 		<div id="generics">
-			<h2>Generics <small style="color:lightgreen">(Since 1.5)</small></h2>
+			<h2>Generics <small class="java5">(Since 1.5)</small></h2>
 			<ul class="ulWithMargin">
 			<li> The reason why Generics were added to the Java language — to enforce type safety at compile time</li>
 			<li>
@@ -329,11 +338,11 @@
 			</li>
 			<li>
 				<h3 id="diamond" style="margin-bottom: 0;"><b>&lt;&gt;</b>Diamond operator</h3>
-				<samp style="color:peru;">Since 1.7</samp>: <code>List&lt;String&gt; list = new ArrayList<b>&lt;&gt;</b>();</code><br>
-				<samp style="color:brown;">Since &nbsp;&nbsp;9</samp>: <code>List&lt;String&gt; list = new List<b>&lt;&gt;</b>() {...}; // added support of anonymous classes</code>
+				<samp class="java7">Since 1.7</samp>: <code>List&lt;String&gt; list = new ArrayList<b>&lt;&gt;</b>();</code><br>
+				<samp class="java9">Since &nbsp;&nbsp;9</samp>: <code>List&lt;String&gt; list = new List<b>&lt;&gt;</b>() {...}; // added support of anonymous classes</code>
 			</li>
 			<li>
-				<table class="border">
+				<table class="border padding">
 					<caption><b>Types</b></caption>
 					<tr>
 						<th>Type</th>
@@ -344,7 +353,7 @@
 						<td>Reifiable</td>
 						<td><code style="color:green">int</code><br>
 							<code style="color:darkgreen">Integer</code><br>
-							<code style="color:blue">List</code> //considering the class is List&lt;T&gt;<br>
+							<code style="color:blue">List</code> <code>//considering the class is List&lt;T&gt;</code><br>
 							<code style="color:darkblue">List&lt;?&gt;</code>
 						</td>
 						<td>A <em>reifiable</em> type is a type whose type information is fully available at runtime.<br>
@@ -379,15 +388,15 @@
 			<li>
 			<code id="safevarargs">@SafeVarargs</code>
 			<div style="height:4px;"></div>
-			<span style="color:peru;">Since: 1.7</span><br>
+			<span class="java7">Since: 1.7</span><br>
 			If you declare a varargs method that has parameters of a parameterized type, 
 			and you ensure that the body of the method does not throw a <code>ClassCastException</code> 
 			or other similar exception due to improper handling of the varargs formal parameter, 
 			you can prevent the warning that the compiler generates for these kinds of varargs methods 
 			by adding the annotation to method declarations:
 			<div style="height:4px;"></div>
-			<samp style="color:peru;">Since 1.7</samp>: static methods, final instance methods and constructors.<br>
-			<samp style="color:brown;">Since &nbsp;&nbsp;9</samp>: private instance methods also.
+			<samp class="java7">Since 1.7</samp>: static methods, final instance methods and constructors.<br>
+			<samp class="java9">Since &nbsp;&nbsp;9</samp>: private instance methods also.
 			</li>
 			</ul>
 		</div>
@@ -397,13 +406,13 @@
 			<h3 style="margin-bottom:5px;"><code>instanceof</code> <small>operator</small></h3>
 			The <code>instanceof</code> operator compares an object to a specified type.<br>
 			Keep in mind that <code>null</code> is not an instance of anything.<br>
-			<span style="color:red">Since java 16</span> <i>pattern matching</i> was added:<br>
+			<span class="java16">Since 16</span> <i>pattern matching</i> was added:<br>
 			<code>if (obj instanceof String <b>s</b>) int i = <b>s</b>.length();</code>
 		</div>
 		<hr>
 
 		<div id="lambdas">
-			<h2>λ Lambda Expressions <small style="color:blue">(Since 1.8)</small></h2>
+			<h2>λ Lambda Expressions <small class="java8">(Since 1.8)</small></h2>
 			<div style="padding-left:1em;">
 			<h3 id="lambdas-basis" style="margin-bottom:0;">Basis</h3>
 			<p style="margin-top: 4px;">Syntax: <code style="color:darkblue">() <b>-&gt;</b> {}</code>
@@ -414,7 +423,7 @@
 			<pre>
 	class LambdaExample {
 		void methodOne(int number) {
-			Function&lt;String,String&gt; f = value -&gt; value + i;
+			Function&lt;String,String&gt; f = value -&gt; value + number;
 			f.apply("str");
 		}
 	}
@@ -423,7 +432,7 @@
 			<pre>
 	class LambdaExample {
 		...
-		private void lambda$methodOne$0(int, java.lang.String);
+		private java.lang.String lambda$methodOne$0(int, java.lang.String);
 	}
 			</pre>
 			The <code>int</code> parameter is a parameter <b>captured</b> from the <code>methodOne()</code>
@@ -533,7 +542,7 @@
 							<li>Use it if you need a simple instance of a functional interface and none of the preceding criteria apply (for example, you do not need a constructor, a named type, fields, or additional methods)</li>
 							</ul>
 						</td>
-						<td><span style="color: blue;">1.8</span></td>
+						<td><span class="java8">1.8</span></td>
 					</tr>
 
 					<tr>
@@ -572,13 +581,13 @@
 		<hr>
 
 		<div id="optional">
-			<h3 style="margin-bottom:5px;"><code>Optional</code> <small>class <span style="color:blue">(Since 1.8)</span></small></h3>
+			<h3 style="margin-bottom:5px;"><code>Optional</code> <small>class <span class="java8">(Since 1.8)</span></small></h3>
 			A container object which may or may not contain a non-<code>null</code> value.
 			If a value is present, <code>isPresent()</code> returns <code>true</code>.
 			If no value is present, the object is considered <i>empty</i> and <code>isPresent()</code> returns <code>false</code>.<br>
 			<span style="color: blue; font-size: 20px;">&#9888;</span>
 			The initial method to retrieve value was <code style="color:darkblue">get()</code>,
-			but in <span style="color:orange">java 10</span> the <code style="color:darkblue">orElseThrow()</code>
+			but in <span class="java10">java 10</span> the <code style="color:darkblue">orElseThrow()</code>
 			method was added with the same code as in <code style="color:darkblue">get()</code>.
 			The <i>Deprecated</i> annotation is not added to <code style="color:darkblue">get()</code>,
 			<i>apiNote</i> was added instead with note to use <code style="color:darkblue">orElseThrow()</code>.
@@ -593,7 +602,7 @@
 		<hr>
 
 		<div id="streams">
-			<h2 style="margin-bottom: 5px;">Streams <small style="color:blue">(Since 1.8)</small></h2>
+			<h2 style="margin-bottom: 5px;">Streams <small class="java8">(Since 1.8)</small></h2>
 			The <em>Stream</em> interface avoids creating intermediate structures to store mapped or filtered objects.<br>
 			A stream is an object that does not store any data.<br>
 			The Stream API has been designed in such a way that as long as you <span style="color: navy">do not create any non-stream object</span> in a stream pattern,
@@ -623,7 +632,7 @@
 					A stream should not have any <em>side effects</em></li>
 				<li>Putting a <span style="color: red">stream in a loop</span> is <b>not</b> a very nice pattern of code</li>
 				<li>
-					<code style="color: magenta">peek()</code> The purpose of this method is <span style="color: darkGreen">debugging</span>.
+					<code style="color: DarkMagenta">peek()</code> The purpose of this method is <span style="color: darkGreen">debugging</span>.
 					You should not use this method in your production code, because it may produce <i>side effects</i>
 				</li>
 				<li>
@@ -634,7 +643,7 @@
 					In fact, you should use a <code>reduce()</code> method as a last resort, only if you have no other solution
 				</li>
 			</ul>
-			(since 9) <code>dropWhile(predicate)</code> and <code>takeWhile(predicate)</code> work as "one-off" semaphore,
+			<span class="java9">(Since 9)</span> <code>dropWhile(predicate)</code> and <code>takeWhile(predicate)</code> work as "one-off" semaphore,
 			that means from the time <em>predicate</em> result is switched their value, there is no effect of switching its value back.
 			Moreover, for example for <code>dropWhile</code> you need to start predicate result equals <i>true</i>,
 			otherwise there will no 'dropping' actions occur at all. The next piece of code will result the same list as it was at start,
