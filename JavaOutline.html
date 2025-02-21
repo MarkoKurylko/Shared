@@ -15,8 +15,32 @@
 			.nowrap {
 				white-space: nowrap;
 			}
+			.indent {height: 8px}
+			.code {color: DarkBlue}
 			#toc h1 {margin: 0;}
 			#toc td:first-child {vertical-align: top}
+
+			.tooltip {
+				position: relative;
+				display: inline-block;
+			}
+			.tooltip .tooltip-text {
+				visibility: hidden;
+				background-color: grey;
+				color: #fff;
+				text-align: center;
+				border-radius: 6px;
+				padding: 5px 5px;
+				/* Position the tooltip */
+				position: absolute;
+				z-index: 1;
+				top: -10px;
+				left: 105%;
+			}
+			.tooltip:hover .tooltip-text {
+				visibility: visible;
+			}
+
 			.java2  {color: ChartReuse}
 			.java5  {color: LightGreen}
 			.java6  {color: Green}
@@ -218,14 +242,24 @@
 			This annotation is not a requirement for the compiler to recognize an interface as a functional interface.
 			<table class="border padding">
 				<tr>
-					<th>Group</th><th colspan="2">Interface</th><th>Method</th><th>Example</th><th>Description</th>
+					<th>Group</th><th colspan="2">Interface</th><th>Methods</th><th>Example</th><th>Description</th>
 				</tr>
 				<tr>
 					<td rowspan="4" style="text-align:center"><span style="color:blue">Function</span></td>
 					<td colspan="2"><code>Function&lt;T,R&gt;</code></td>
-					<td><code class="nowrap">R apply(T t)</code></td>
-					<td><code>string -&gt; string.length()</code></td>
-					<td>Represents a function that accepts one argument and produces a result</td>
+					<td>
+						<code class="nowrap">R apply(T t)</code><hr>
+						<code class="nowrap tooltip">Function.identity()<span class="tooltip-text">static</span></code>
+					</td>
+					<td>
+						<code>string -&gt; string.length()</code><hr>
+						<code>Function&lt;String,String&gt; f = Function.identity();</code><br>
+						<code>String s = f.apply("TheSame"); // s = "TheSame"</code>
+					</td>
+					<td>
+						Represents a function that accepts one argument and produces a result<hr>
+						Returns a function that always returns its input argument
+					</td>
 				</tr>
 				<tr>
 					<td></td>
@@ -387,14 +421,14 @@
 
 			<li>
 			<code id="safevarargs">@SafeVarargs</code>
-			<div style="height:4px;"></div>
+			<div class="indent"></div>
 			<span class="java7">Since: 1.7</span><br>
 			If you declare a varargs method that has parameters of a parameterized type, 
 			and you ensure that the body of the method does not throw a <code>ClassCastException</code> 
 			or other similar exception due to improper handling of the varargs formal parameter, 
 			you can prevent the warning that the compiler generates for these kinds of varargs methods 
 			by adding the annotation to method declarations:
-			<div style="height:4px;"></div>
+			<div class="indent"></div>
 			<samp class="java7">Since 1.7</samp>: static methods, final instance methods and constructors.<br>
 			<samp class="java9">Since &nbsp;&nbsp;9</samp>: private instance methods also.
 			</li>
@@ -569,7 +603,6 @@
 					<tr>
 									<td style="text-align: center;">#</td>
 									<td style="color:magenta;"><nobr>Static nested class</nobr></td>
-									
 									<td></td>
 									<td>Use a static nested class if you <b>don't</b> require access to an enclosing instance's non-public fields and methods</td>
 									<td>1.1</td>
@@ -586,11 +619,19 @@
 			If a value is present, <code>isPresent()</code> returns <code>true</code>.
 			If no value is present, the object is considered <i>empty</i> and <code>isPresent()</code> returns <code>false</code>.<br>
 			<span style="color: blue; font-size: 20px;">&#9888;</span>
-			The initial method to retrieve value was <code style="color:darkblue">get()</code>,
-			but in <span class="java10">java 10</span> the <code style="color:darkblue">orElseThrow()</code>
-			method was added with the same code as in <code style="color:darkblue">get()</code>.
-			The <i>Deprecated</i> annotation is not added to <code style="color:darkblue">get()</code>,
-			<i>apiNote</i> was added instead with note to use <code style="color:darkblue">orElseThrow()</code>.
+			The initial method to retrieve value was <code class="code">get()</code>,
+			but in <span class="java10">java 10</span> the <code class="code">orElseThrow()</code>
+			method was added with the same code as in <code class="code">get()</code>.
+			The <i>Deprecated</i> annotation is not added to <code class="code">get()</code>,
+			<i>apiNote</i> was added instead with note to use <code class="code">orElseThrow()</code>.
+			<div class="indent"></div>
+			<code class="code">orElseGet(Supplier&lt;T&gt; supplier)</code> method is preferable to use instead of <code class="code">orElse(T resultIfEmpty)</code>,
+			because in case <i>Optional</i> instance is <b>not</b> empty, it will not build <code>resultIfEmpty</code>. For e.g.<br>
+			<code class="code">optional.orElse("NullObject")</code> will create an instance of "NullObject" String anyway, while <br>
+			<code class="code">optional.orElseGet(() -&gt; "NullObject")</code> will not.
+			<div class="indent"></div>
+			<code class="code">OptionalInt</code>, <code class="code">OptionalLong</code> and <code class="code">OptionalDouble</code>
+			classes are available <i>ootb</i> for  respective primitive types.
 		</div>
 		<hr>
 
@@ -651,10 +692,17 @@
 			<code>List.of(1, 2, 3, 4, 5, 6, 7, 8, 9).stream().dropWhile(i -> i > 5).toList()</code><br>
 			The <code>takeWhile</code> works in the same way but opposite. For e.g.<br>
 			<code>List.of(1, 2, 3, 4, 5, 6, 7, 8, 9).stream().takeWhile(i -> i > 5).toList()</code> will return empty list.
-			<div style="height:4px;"></div>
+			<div class="indent"></div>
 			<code>Stream.concat()</code> vs <code>flatMap()</code>: <code>concat</code> takes only 2 parameters, but produces a <code>SIZED</code> stream.
 			While a <code>flatMap</code> may create an unknown number of elements to be processed in the resulting stream.
-			The Stream API loses track of the number of elements that will be processed in the resulting stream.<br><br>
+			The Stream API loses track of the number of elements that will be processed in the resulting stream.
+
+			<h5 style="margin-bottom: 0; margin-top: 8px;">Stateful operations</h5>
+			<code class="code">limit()</code>, <code class="code">skip()</code>,<code class="code">findFirst()</code>
+			need to remember in what order the elements of the stream are processed and need to count the elements to produce a correct result.
+			Thus, they are called <em>stateful operations</em>, because they need to carry an internal state to work.
+
+			<br><br>
 			<table class="border padding">
 				<tr>
 					<th>Method</th>
@@ -664,17 +712,40 @@
 				</tr>
 				<tr>
 					<td><code>map</code></td>
-					<td><code><span style="color:darkblue">Stream</span>&lt;R&gt; map(<span style="color:darkblue">Function</span>&lt;T,R&gt; mapper)</code></td>
-					<td><code>map(<span style="color:darkblue">String</span>::length)</code></td>
+					<td><code><span class="code">Stream</span>&lt;R&gt; map(<span class="code">Function</span>&lt;T,R&gt; mapper)</code></td>
+					<td><code>map(<span class="code">String</span>::length)</code></td>
 					<td>Making a new stream of values returned by <em>mapper</em> function</td>
 				</tr>
 				<tr>
 					<td><code>flatMap</code></td>
-					<td><code><span style="color:darkblue">Stream</span>&lt;R&gt; map(<span style="color:darkblue">Function</span>&lt;T, <span style="color:darkblue">Stream</span>&lt;R&gt;&gt; mapper)</code></td>
-					<td><code>flatMap(<span style="color:darkblue">String</span>::lines)</code></td>
+					<td><code class="nowrap"><span class="code">Stream</span>&lt;R&gt; map(<span class="code">Function</span>&lt;T, <span class="code">Stream</span>&lt;R&gt;&gt; mapper)</code></td>
+					<td><code>flatMap(<span class="code">String</span>::lines)</code></td>
 					<td><em>Flattering</em>. It just concats the streams returned by <i>mapper</i> function</td>
 				</tr>
+				<tr>
+					<td><code class="tooltip">Stream.generate<span class="tooltip-text">static</span></code></td>
+					<td><code class="nowrap"><span class="code">Stream</span>&lt;T&gt; generate(<span class="code">Supplier</span>&lt;T&gt; supplier)</code></td>
+					<td><code>generate(<span class="code">Math</span>::random)</code></td>
+					<td>
+						Returns an <b>infinite</b> sequential unordered stream where each element is generated by the provided <code>Supplier</code>.
+						That means it actually require an "end" condition like
+						<code class="code">limit()</code>, <code class="code">findFirst()</code>,<code class="code">findAny()</code> methods etc.
+						The same is true also for <code class="code">iterate()</code> methods
+					</td>
+				</tr>
 			</table>
+			<div class="indent"></div>
+			<em style="color: DarkBlue">Downstream collector</em> is a Collector that is passed to the methods of <code>Collectors</code> class:<br>
+			<code>List&lt;String&gt; list = stream.collect(Collectors.collectingAndThen(<b>Collectors.toList()</b>, Collections::unmodifiableList));</code><br>
+			The <code><b>Collectors.toList()</b></code> is a <em>Downstream collector</em>.<br><code>Collections::unmodifiableList</code> is a <i>finisher</i>.<br>
+			<div class="indent"></div>
+			<details>
+				<summary>Stating Some Rules to Use Parallel Streams Properly</summary>
+				<p><strong>Rule #1</strong> Do not optimize because it's fun; optimize because you have requirements, and you do not meet them</p>
+				<p><strong>Rule #2</strong> Choose your source of data with caution</p>
+				<p><strong>Rule #3</strong> Do not modify external state, and do not share mutable state</p>
+				<p><strong>Rule #4</strong> Do not guess; measure the performance of your code</p>
+			</details>
 		</div>
 		<hr>
 
