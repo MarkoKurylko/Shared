@@ -673,9 +673,9 @@
 			<b>Associativity</b>. An operator or function (&#x058E;) is associative if the following holds:
 			<span class="code-a">
 				<code>(a</code> &#x058E; <code>b)</code> &#x058E; <code>c == a</code> &#x058E; <code>(b</code> &#x058E; <code>c)</code>
-			</span>
-			<br>
-			<b>Stateless</b> function is a function whose result <span style="color:red">does not depend</span> on any state which might change during the execution of the stream pipeline.
+			</span><br>
+			<b>Stateless</b> function is a function whose result <span style="color:red">does not depend</span> on any state which might change during the execution of the stream pipeline.<br>
+			<b>Mutable reduction</b>. A <i>mutable reduction operation</i> accumulates input elements into a mutable result container.
 			<div class="indent"></div>
 			The Stream API gives <b>4</b> interfaces: <code>Stream</code>, <code>IntStream</code>, <code>LongStream</code> and <code>DoubleStream</code>.<br>
 			Last three streams use primitive types for numbers instead of the wrapper types to avoid boxing and unboxing.<br>
@@ -769,7 +769,26 @@
 						<small><code class="nowrap">combiner.apply(r, accumulator.apply(identity, t)) == accumulator.apply(r, t)</code></small>
 					</td>
 				</tr>
-
+				<tr>
+					<td rowspan="2"><code>collect</code></td>
+					<td><code class="nowrap"><b>R</b> collect(<span class="code">Collector</span>&lt;T,A,<b>R</b>&gt; collector)</code></td>
+					<td><code>collect(Collectors.toList())</code></td>
+					<td>Performs a <i>mutable reduction</i> operation on the elements of this stream using a <code class="code">Collector</code>.</td>
+				</tr>
+				<tr>
+					<td><code class="nowrap"><b>R</b> collect(<span class="code">Supplier</span>&lt;<b>R</b>&gt; supplier, <span class="code">BiConsumer</span>&lt;<b>R</b>,T&gt; accumulator, <span class="code">BiConsumer</span>&lt;<b>R</b>,<b>R</b>&gt; combiner)</code></td>
+					<td><code>collect(ArrayList::new, ArrayList::add, ArrayList::addAll)</code></td>
+					<td>
+						Performs a <i>mutable reduction</i> operation on the elements of this stream.<br>
+						<code class="code">collect</code> operations can be parallelized without requiring additional synchronization.
+						<div class="indent"></div>
+						<code><b>R</b></code> - it is implied that <code><b>R</b></code> is a mutable result container, like an <code>ArrayList</code>.<br>
+						<code class="code">supplier</code> - a function that creates a new mutable result container. For a parallel execution, this function may be called multiple times and must return a fresh value each time.<br>
+						<code class="code">accumulator</code> - an <em>associative</em>, <em>non-interfering</em>, <em>stateless</em> function that must <b>add</b> <small>(fold)</small> an element into a result container.<br>
+						<code class="code">combiner</code> - an <em>associative</em>, <em>non-interfering</em>, <em>stateless</em> function that accepts two partial result containers and merges them, which must be compatible with the accumulator function.
+						<small>The combiner function must fold the elements from the second result container into the first result container.</small>
+					</td>
+				</tr>
 			</table>
 			<div class="indent"></div>
 			<em style="color: DarkBlue">Downstream collector</em> is a Collector that is passed to the methods of <code>Collectors</code> class:<br>
