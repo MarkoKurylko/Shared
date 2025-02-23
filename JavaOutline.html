@@ -17,6 +17,10 @@
 			}
 			.indent {height: 8px}
 			.code {color: DarkBlue}
+			.code-a code{
+				color: DarkBlue;
+				font-size: 17px;
+			}
 			#toc h1 {margin: 0;}
 			#toc td:first-child {vertical-align: top}
 
@@ -258,7 +262,7 @@
 					</td>
 					<td>
 						Represents a function that accepts one argument and produces a result<hr>
-						Returns a function that always returns its input argument
+						Returns a function that always returns its input argument. <i>F(x) = x</i>
 					</td>
 				</tr>
 				<tr>
@@ -644,6 +648,8 @@
 
 		<div id="streams">
 			<h2 style="margin-bottom: 5px;">Streams <small class="java8">(Since 1.8)</small></h2>
+			Definition: The <em>Stream API</em> provides an implementation of the well-known <em>map-filter-reduce</em> algorithm to the JDK.
+			<div class="indent"></div>
 			The <em>Stream</em> interface avoids creating intermediate structures to store mapped or filtered objects.<br>
 			A stream is an object that does not store any data.<br>
 			The Stream API has been designed in such a way that as long as you <span style="color: navy">do not create any non-stream object</span> in a stream pattern,
@@ -660,6 +666,17 @@
 				</li>
 				<li>An operation that returns something else, including void, is called a <span style="color: green">terminal operation</span></li>
 			</ul>
+			Stream execution begins when the <span style="color: green"><b>terminal operation</b></span> is <span style="color: darkgreen">invoked</span>,
+			and <span style="color: red">ends</span> when the <span style="color: green"><b>terminal operation</b></span> <span style="color: darkred">completes</span>.
+			(Except for the escape-hatch operations <code>iterator()</code> and <code>spliterator()</code>).<br>
+			<b>Non-interference</b> <small>(for most data sources)</small> means ensuring that the data source is <i style="color: green">not modified at all</i> during the execution of the stream pipeline.<br>
+			<b>Associativity</b>. An operator or function (&#x058E;) is associative if the following holds:
+			<span class="code-a">
+				<code>(a</code> &#x058E; <code>b)</code> &#x058E; <code>c == a</code> &#x058E; <code>(b</code> &#x058E; <code>c)</code>
+			</span>
+			<br>
+			<b>Stateless</b> function is a function whose result <span style="color:red">does not depend</span> on any state which might change during the execution of the stream pipeline.
+			<div class="indent"></div>
 			The Stream API gives <b>4</b> interfaces: <code>Stream</code>, <code>IntStream</code>, <code>LongStream</code> and <code>DoubleStream</code>.<br>
 			Last three streams use primitive types for numbers instead of the wrapper types to avoid boxing and unboxing.<br>
 			They have some terminal operations that do not exist in <code>Stream</code>:
@@ -693,7 +710,7 @@
 			The <code>takeWhile</code> works in the same way but opposite. For e.g.<br>
 			<code>List.of(1, 2, 3, 4, 5, 6, 7, 8, 9).stream().takeWhile(i -> i > 5).toList()</code> will return empty list.
 			<div class="indent"></div>
-			<code>Stream.concat()</code> vs <code>flatMap()</code>: <code>concat</code> takes only 2 parameters, but produces a <code>SIZED</code> stream.
+			<code class="tooltip">Stream.concat()<span class="tooltip-text">static</span></code> vs <code>flatMap()</code>: <code>concat</code> takes only 2 parameters, but produces a <code>SIZED</code> stream.
 			While a <code>flatMap</code> may create an unknown number of elements to be processed in the resulting stream.
 			The Stream API loses track of the number of elements that will be processed in the resulting stream.
 
@@ -733,6 +750,26 @@
 						The same is true also for <code class="code">iterate()</code> methods
 					</td>
 				</tr>
+				<tr>
+					<td><code>reduce</code></td>
+					<td>
+						<code class="nowrap"><span class="code">Optional</span>&lt;R&gt; reduce(<span class="code">BinaryOperator</span>&lt;R&gt; combiner)</code><br>
+						<code class="nowrap">R reduce(R identity, <span class="code">BinaryOperator</span>&lt;R&gt; combiner)</code><br>
+						<code class="nowrap">R reduce(R identity, <span class="code">BiFunction</span>&lt;R,T,R&gt; accumulator, <span class="code">BinaryOperator</span>&lt;R&gt; combiner)</code>
+					</td>
+					<td><code>reduce(0, <span class="nowrap">(r, string) -> r + string.length()</span>, Integer::sum)</code></td>
+					<td>
+						Performs a reduction on the elements of this stream.
+						<div class="indent"></div>
+						<code>identity</code> - the identity value for the <code>combiner</code> function.
+						For all <code>r</code>, <code>combiner(identity, r) == r</code><br>
+						<code>accumulator</code> - an <em>associative</em>, <em>non-interfering</em>, <em>stateless</em> function for incorporating an additional element into a result<br>
+						<code>combiner</code> - an <em>associative</em>, <em>non-interfering</em>, <em>stateless</em> function for combining two values
+						<small>(which must be compatible with the accumulator function if any)</small>
+						<small><code class="nowrap">combiner.apply(r, accumulator.apply(identity, t)) == accumulator.apply(r, t)</code></small>
+					</td>
+				</tr>
+
 			</table>
 			<div class="indent"></div>
 			<em style="color: DarkBlue">Downstream collector</em> is a Collector that is passed to the methods of <code>Collectors</code> class:<br>
