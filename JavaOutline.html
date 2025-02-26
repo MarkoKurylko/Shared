@@ -15,10 +15,16 @@
 			.nowrap {
 				white-space: nowrap;
 			}
+			.text-align-center  {text-align:center }
+			.text-align-initial {text-align:initial}
 			.indent {height: 8px}
 			.code {color: DarkBlue}
 			.code-a code{
 				color: DarkBlue;
+				font-size: 17px;
+			}
+			.code-i code{
+				color: Blue;
 				font-size: 17px;
 			}
 			#toc h1 {margin: 0;}
@@ -66,6 +72,8 @@
 						<h2><a id="classes" href="#classes">Classes</a></h2>
 							<h3 style="padding-left:1em"><a href="#nesting">Nesting of <em>classes</em></a></h3>
 						<h2><a href="#collections">Collections</a></h2>
+							<h4 style="padding-left:1em"><a href="#synchronizedCollections">Synchronized Collections</a></h4>
+							<h4 style="padding-left:1em"><a href="#concurrentCollections"  >Concurrent Collections</a></h4>
 					</details>
 				</td>
 			</tr>
@@ -155,6 +163,26 @@
 						<h2><a href="#streams">Streams</a></h2>
 						<h3><a href="#safevarargs">@SafeVarargs</a></h3>
 						<h3><a id="strictfp" href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
+						<h3><a href="#synchronized" class="code-a"><code>synchronized</code></a></h3>
+						<h4><a href="#synchronizedCollections">Synchronized Collections</a></h4>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>V</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#volatile" class="code-a"><code>volatile</code></a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>W</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#weakly">Weakly consistence (iterator)</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -206,14 +234,20 @@
 				Java 7+ with LinkedList - O(n)<br>
 				Java 8+ with RBT - O(log n)
 			<br><br>
-			<em id="failFast">Fail-fast</em>: <code>ArrayList</code>:
+			<em id="failFast"><b>Fail-fast</b></em>: <code>ArrayList</code>:
 				The iterators returned by this class's <code>iterator</code> and <code>listIterator</code> methods are <i>fail-fast</i>:
 				if the list is structurally modified at any time after the iterator is created,
 				in any way except through the iterator's own <code>remove</code> or <code>add</code> methods, the iterator will throw a <code>ConcurrentModificationException</code>.
-			<br><i>Note</i>: the fail-fast behavior of iterators should be used only to detect bugs.
-			<br><br>
+			<br><i>Note</i>: the fail-fast behavior of iterators should be used only to detect bugs.<br>
+			<em id="weakly"><b>Weakly consistent</b></em> traversal of Iterators and Spliterators (in opposition to <i>Fail-Fast</i>):<br>
+			<ul style="margin-top: 0">
+				<li>they may proceed concurrently with other operations</li>
+				<li>they will <span style="color:green">never</span> throw <code class="code">ConcurrentModificationException</code></li>
+				<li>they are guaranteed to traverse elements as they existed upon construction exactly once, and may (but are not guaranteed to) reflect any modifications subsequent to construction</li>
+			</ul>
+
 			<table class="border">
-				<caption>SequencedCollection (since 21)</caption>
+				<caption>SequencedCollection <span class="java21">(since 21)</span></caption>
 				<tr>
 					<th>SequencedCollection</th>
 					<th>List</th>
@@ -237,14 +271,193 @@
 				</tr>
 			</table>
 
+			<h4 id="synchronizedCollections" style="margin-bottom:0">Synchronized Collections</h4>
+			The <span class="code-a"><code>Collections</code></span> class provides several static methods
+			to create synchronized <i>(thread-safe)</i> collections using wrapper pattern.
+			It simply makes a source collection to be an internal <i>mutex</i> and adds a <code class="code">synchronized (mutex)</code> block
+			to the every method of a new collection.<br>
+			<code class="code">synchronizedCollection</code>,
+			<code class="code">synchronizedList</code>,
+			<code class="code">synchronizedSet</code>,
+			<code class="code">synchronizedMap</code>,<br>
+			<code class="code">synchronizedSortedSet</code>, <code class="code">synchronizedSortedMap</code>,<br>
+			<span class="java8">(Since 1.8)</span>
+			<code class="code">synchronizedNavigableSet</code>, <code class="code">synchronizedNavigableMap</code><br>
+			Pay attention to that the <i>synchronized</i> collection does <span style="color:red"><b>not</b></span> mean they are <span style="color:red"><b>concurrent</b></span>.<br>
+			They are <i>thread-safe</i> and in case of concurrency their <span style="color:brown">performance</span> is expected to be very <span style="color:brown">low</span>.<br>
+			Moreover, despite they are called <i>tread-safe</i> they may fall into a <i>race condition</i>(TODO) or non-deterministic behavior in case of using it "as is".<br>
+			<i>Javadoc:</i> It is imperative that the user manually synchronize on the returned list when traversing it via <code class="code">Iterator</code>, <code class="code">Spliterator</code> or <code class="code">Stream</code>:
+			<pre style="margin-top:0">
+	List list = Collections.synchronizedList(new ArrayList());
+	<span class="code">synchronized</span> (list) {
+		Iterator i = list.iterator(); // Must be in synchronized block
+		while (i.hasNext()) foo(i.next());
+	}</pre>
+
+			<h4 id="concurrentCollections" style="margin-bottom:0">Concurrent Collections</h4>
+			Concurrent collections are also <i>thread-safe</i> as the <i>synchronized</i> collections, but not governed by a single exclusion lock.
+			<table class="border padding text-align-center">
+				<tr>
+					<th>Group</th>
+					<th>Base Interface</th>
+					<th><small>Base Collection/Map</small></th>
+					<th>Concurrent interface</th>
+					<th>Concurrent analog</th>
+					<th>Description</th>
+					<th>Since</th>
+				</tr>
+				<tr>
+					<td>List</td>
+					<td class="code-i"><code>List</code></td>
+					<td class="code-a"><code>ArrayList</code></td>
+					<td class="code-i"><code>-</code></td>
+					<td class="code-a"><code>CopyOnWriteArrayList</code></td>
+					<td class="text-align-initial">
+						A thread-safe variant of <code class="code">ArrayList</code> in which all mutative operations (<code>add</code>, <code>set</code>, and so on) are implemented by making a fresh copy of the underlying array.<br>
+						Element-changing operations on iterators themselves (<code>remove</code>, <code>set</code>, and <code>add</code>) are <span style="color:red">not supported</span>.
+						These methods throw <code class="code">UnsupportedOperationException</code>.
+						<div class="indent"></div>
+						All elements are permitted, including <code>null</code>.
+					</td>
+					<td class="java5">1.5</td>
+				</tr>
+				<tr>
+					<td rowspan="2">Set</td>
+					<td class="code-i"><code>SortedSet</code><br><code>NavigableSet</code></td>
+					<td class="code-a"><code>TreeSet</code></td>
+					<td class="code-i"><code>-</code></td>
+					<td class="code-a"><code>ConcurrentSkipListSet</code></td>
+					<td class="text-align-initial">
+						A scalable concurrent <code class="code">NavigableSet</code> implementation based on a <code class="code">ConcurrentSkipListMap</code>.<br>
+						Expected average <i>log(n)</i> time cost for the <code>contains</code>, <code>add</code>, and <code>remove</code> operations and their variants.<br>
+						Insertion, removal, and access operations safely execute concurrently by multiple threads.<br>
+						<div class="indent"></div>
+						Beware that, unlike in most collections, the <code>size</code> method is <em>not</em> a constant-time operation.
+						Because of the asynchronous nature of these sets, determining the current number of elements requires a traversal of the elements
+					</td>
+					<td class="java6">1.6</td>
+				</tr>
+				<tr>
+					<td class="code-i"><code>Set</code></td>
+					<td class="code-a"><code>-</code></td>
+					<td class="code-i"><code>-</code></td>
+					<td class="code-a"><code>CopyOnWriteArraySet</code></td>
+					<td class="text-align-initial">
+						A <code class="code">Set</code> that uses an internal <code class="code">CopyOnWriteArrayList</code> for all of its operations
+					</td>
+					<td class="java5">1.5</td>
+				</tr>
+				<tr>
+					<td rowspan="4">Queue</td>
+					<td class="code-i" rowspan="3"><code>Queue</code></td>
+					<td class="code-a"><code>-</code></td>
+					<td class="code-i"><code>-</code></td>
+					<td class="code-a"><code>ConcurrentLinkedQueue</code></td>
+					<td class="text-align-initial">
+						Supplies an efficient scalable thread-safe non-blocking FIFO queue.<br>
+						An unbounded thread-safe queue based on linked nodes.<br>
+						<div class="indent"></div>
+						Iterators and spliterators are <a href="#weakly"><i>weakly consistent</i></a>.
+						<div class="indent"></div>
+						Beware that, unlike in most collections, the <code>size</code> method is <i>not</i> a constant-time operation.
+					</td>
+					<td class="java5">1.5</td>
+				</tr>
+				<tr>
+					<td class="code-a">
+						<code>-</code><br>
+						<code>-</code><br>
+						<code>-</code><br>
+						<code>PriorityQueue</code><br>
+						<code>-</code><br>
+					</td>
+					<td class="code-i"><code>BlockingQueue</code></td>
+					<td class="code-a">
+						<code>LinkedBlockingQueue</code><br>
+						<code>ArrayBlockingQueue</code><br>
+						<code>SynchronousQueue</code><br>
+						<code>PriorityBlockingQueue</code><br>
+						<code>DelayQueue</code><br>
+					</td>
+					<td class="text-align-initial">
+						Cover the most common usage contexts for producer-consumer, messaging, parallel tasking, and related concurrent designs
+					</td>
+					<td class="java5">1.5</td>
+				</tr>
+				<tr>
+					<td class="code-a">
+						<code>-</code>
+					</td>
+					<td class="code-i">
+						<code>BlockingQueue</code><br>
+						<code>TransferQueue</code>
+					</td>
+					<td class="code-a">
+						<code> LinkedTransferQueue</code><br>
+					</td>
+					<td class="text-align-initial">
+						An unbounded <code>TransferQueue</code> based on linked nodes.<br>
+						introduce a synchronous <code>transfer</code> method (along with related features) in which a producer may optionally block awaiting its consumer.<br>
+						Beware that, unlike in most collections, the <code>size</code> method is <i>not</i> a constant-time operation.
+					</td>
+					<td class="java7">1.7</td>
+				</tr>
+
+				<tr>
+					<td class="code-i"><code>Deque</code></td>
+					<td class="code-a"><code>-</code></td>
+					<td class="code-i"><code>-</code></td>
+					<td class="code-a"><code>ConcurrentLinkedDeque</code></td>
+					<td class="text-align-initial">
+						Similar to <code>ConcurrentLinkedQueue</code>
+					</td>
+					<td class="java7">1.7</td>
+				</tr>
+
+				<tr>
+					<td rowspan="2">Map</td>
+					<td class="code-i"><code>Map</code></td>
+					<td class="code-a"><code>HashMap</code></td>
+					<td class="code-i"><code>ConcurrentMap</code></td>
+					<td class="code-a"><code>ConcurrentHashMap</code></td>
+					<td class="text-align-initial">
+						A hash table supporting full concurrency of retrievals and high expected concurrency for updates.<br>
+						Like <code>Hashtable</code> but unlike <code>HashMap</code>, this class does <span style="color:red">not</span> allow <code>null</code> to be used as a key or value.
+						<div class="indent"></div>
+						When many threads are expected to access a given collection,
+						a <code class="code">ConcurrentHashMap</code> is normally preferable to a synchronized <code class="code">HashMap</code>.
+					</td>
+					<td class="java5">1.5</td>
+				</tr>
+				<tr>
+					<td class="code-i"><code>SortedMap</code><br><code>NavigableMap</code></td>
+					<td class="code-a"><code>TreeMap</code></td>
+					<td class="code-i"><code>ConcurrentNavigableMap</code></td>
+					<td class="code-a"><code>ConcurrentSkipListMap</code></td>
+					<td class="text-align-initial">
+						A scalable concurrent <code class="code">ConcurrentNavigableMap</code> implementation.
+						The map is sorted according to the <i>natural ordering</i> of its keys, or by a <code class="code">Comparator</code> provided at map creation time, depending on which constructor is used.<br>
+						This class implements a concurrent variant of <i>SkipLists</i> providing expected average <i style="color:brown">O(log n)</i> time cost for the <code>containsKey</code>, <code>get</code>, <code>put</code> and <code>remove</code> operations and their variants.
+						<div class="indent"></div>
+						Iterators and spliterators are <a href="#weakly"><i>weakly consistent</i></a>.
+						<div class="indent"></div>
+						When many threads are expected to access a given collection,
+						a <code class="code">ConcurrentSkipListMap</code> is normally preferable to a synchronized <code class="code">TreeMap</code>.
+					</td>
+					<td class="java6">1.6</td>
+				</tr>
+			</table>
 		</div>
 		<hr>
 
 		<div id="functionalInterfaces">
 			<h2 style="margin-bottom: 3px;">Functional Interfaces <small style="color:blue">(Since 1.8)</small></h2>
 			The <i>ootb</i> functional interfaces are annotated with <code><b>@FunctionalInterface</b></code>.
-			This annotation is not a requirement for the compiler to recognize an interface as a functional interface.
+			This annotation is not a requirement for the compiler to recognize an interface as a functional interface.<br>
+			<i>Ootb</i> functional interfaces are located not only in <code class="code">java.util.function</code> package,
+			for e.g. <code class="code">java.lang.Runnable</code>
 			<table class="border padding">
+				<caption><code class="code">java.util.function</code></caption>
 				<tr>
 					<th>Group</th><th colspan="2">Interface</th><th>Methods</th><th>Example</th><th>Description</th>
 				</tr>
@@ -575,9 +788,10 @@
 						<td colspan="2"><a style="color: blue;" href="#lambdas">Lambda</a></td>
 						<td><code>() <b>-&gt;</b> {}<br>ClassNameOrInstance<b>::</b>methodName</code></td>
 						<td>Extension of idea of <span style="color: green;">anonymous classes</span> in a more convenient way</td>
-						<td colspan="2"><ul>
-							<li>Use it if you are encapsulating a single unit of behavior that you want to pass to other code. For example, you would use a lambda expression if you want a certain action performed on each element of a collection, when a process is completed, or when a process encounters an error</li>
-							<li>Use it if you need a simple instance of a functional interface and none of the preceding criteria apply (for example, you do not need a constructor, a named type, fields, or additional methods)</li>
+						<td colspan="2">
+							<ul>
+								<li>Use it if you are encapsulating a single unit of behavior that you want to pass to other code. For example, you would use a lambda expression if you want a certain action performed on each element of a collection, when a process is completed, or when a process encounters an error</li>
+								<li>Use it if you need a simple instance of a functional interface and none of the preceding criteria apply (for example, you do not need a constructor, a named type, fields, or additional methods)</li>
 							</ul>
 						</td>
 						<td><span class="java8">1.8</span></td>
@@ -805,7 +1019,50 @@
 		</div>
 		<hr>
 
-		UserAgent: <span id="userAgent"></span>
+		<div id="synchronized">
+			<h3 class="code-a"><code>synchronized</code></h3>
+			Synchronization is built around an internal entity known as the <i>intrinsic lock</i> or <i>monitor lock</i>.<br>
+			There are 2 types of usage:
+			<ul class="ulWithMargin">
+				<li>
+					Synchronized methods:<br>
+					<code>public <span style="color:gray">[static]</span> <span class="code">synchronized</span> void method() { print("String"); }</code><br>
+					When a thread invokes a synchronized method, it automatically acquires the <i>intrinsic lock</i> for <b>that method's object</b>
+					and releases it when the method returns (including if the return was caused by an uncaught exception).<br>
+					For the static methods the thread acquires the <i>intrinsic lock</i> for the <span class="code-a"><code>Class</code></span> object associated with the class
+				</li>
+				<li>
+					Synchronized statements(blocks):
+					<pre style="margin-top:0">public void method(String name) {
+	<span class="code">synchronized</span>(<span style="color:DarkGreen">object</span>) {
+		<span style="color:DarkGreen">object</span>.setName(name);
+	}
+	print(<span style="color:DarkGreen">object</span>.getName());
+}</pre>
+					where <span style="color:DarkGreen">object</span> is the object that provides the <i>intrinsic lock</i>,
+					it can be an instance or class field, or <span class="code">this</span> object
+				</li>
+			</ul>
+			<h4 style="margin-bottom: 0;"><em>Happens-before relationship</em></h4>
+			<i>Happens-before relationship</i> means that if it is established (between threads) on a <span style="color:darkred">variable</span>,
+			then the <span style="color:red">changes</span> on a <span style="color:darkred">variable</span> will be visible to the other threads
+			only if the <code class="code">write</code> operation in <span style="color:blue">one thread</span>
+			<i>happens before</i> the <code class="code">read</code> operation in <span style="color:green">another thread</span>.<br>
+			The <code class="code">synchronized</code> and <code class="code"><a href="#volatile">volatile</a></code> constructs, as well as the <code class="code">Thread.start()</code> and <code class="code">Thread.join()</code> methods, can form <em>happens-before</em> relationships.
+			<h5 style="margin-bottom: 0;">Reentrant Synchronization</h5>
+			Recall that a thread cannot acquire a lock owned by another thread. But a thread can acquire a lock that it already owns.
+			Allowing a thread to acquire the same lock more than once enables <i>reentrant synchronization</i>.
+			This describes a situation where synchronized code, directly or indirectly, invokes a method that also contains synchronized code, and both sets of code use the same lock.
+			Without reentrant synchronization, synchronized code would have to take many additional precautions to avoid having a thread cause itself to block.
+		</div>
+		<hr>
+
+		<div id="volatile">
+			<h3 class="code-a"><code>volatile</code></h3>
+		</div>
+		<hr>
+
+		UserAgent: <span id="userAgent"></span> <samp style="margin-left:2em">&copy; 2025</samp>
 	</body>
 	<script>
 		function onLetterClick(event) {
