@@ -162,6 +162,7 @@
 						<summary></summary>
 						<h2><a href="#streams">Streams</a></h2>
 						<h3><a href="#safevarargs">@SafeVarargs</a></h3>
+						<h3 class="code-a"><a href="#spliterator"><code>Spliterator</code></a></h3>
 						<h3><a id="strictfp" href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
 						<h3><a href="#synchronized" class="code-a"><code>synchronized</code></a></h3>
 						<h4><a href="#synchronizedCollections">Synchronized Collections</a></h4>
@@ -854,9 +855,62 @@
 		<hr>
 
 		<div id="rtti">
-			<h3>RTTI</h3>
+			<h3 style="margin-bottom:3px">RTTI</h3>
 			Java does <span style="color:red">NOT have</span> Runtime Type Identification, it is from C++, Object Pascal, Delphi and etc<br>
 			Java has <em><b>Type introspection</b></em> implemented by <a href="#instanceof"><code>instanceof</code></a> operator
+		</div>
+		<hr>
+
+		<div id="spliterator">
+			<h3 class="code-a" style="margin-bottom:3px"><code>Spliterator <span class="java8">(Since 1.8)</span></code></h3>
+			<code>public interface Spliterator&lt;T&gt;</code><br>
+			An object for traversing and partitioning elements of a source.<br>
+			A <code class="code">Spliterator</code> may traverse elements individually <code class="code">tryAdvance()</code> or sequentially in bulk <code class="code">forEachRemaining()</code>.<br>
+			Used in <a href="#streams">Streams</a> under the hood.
+			<table class="border padding">
+				<tr>
+					<th>Method</th>
+					<th>Simplified Signature</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<td><code class="code">tryAdvance()</code></td>
+					<td><code>boolean tryAdvance(Consumer&lt;T&gt; action)</code></td>
+					<td>
+						If a remaining element exists, performs the given action on it, returning <code>true</code>, else returns <code>false</code>.<br>
+						This is <b>not</b> <i>foreach</i> method.
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">forEachRemaining()</code></td>
+					<td><code class="nowrap">default void forEachRemaining(Consumer&lt;T&gt; action)</code></td>
+					<td>
+						Performs the given action for each remaining element, sequentially in the current thread, until all elements have been processed or the action throws an exception.
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">trySplit()</code></td>
+					<td><code>Spliterator&lt;T&gt; trySplit()</code></td>
+					<td>
+						Splits <code>this</code> spliterator into <b>two</b> if possible.
+						One part of elements stays in <code>this</code> spliterator, another part goes to the <i>returned</i> one.<br>
+						Returns <code>null</code> if this spliterator cannot be split.
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">characteristics()</code></td>
+					<td><code>int characteristics()</code></td>
+					<td>Can be <b>8</b> characteristics in OR conjunction:<br>
+						<code>ORDERED, DISTINCT, SORTED, SIZED, NONNULL, IMMUTABLE, CONCURRENT, SUBSIZED</code><br>
+						A top-level Spliterator <span style="color:red">should not</span> report both <code>CONCURRENT</code> and <code>IMMUTABLE</code>, since they are mutually exclusive.<br>
+						Sub-spliterators <span style="color:green">may report</span> <code>IMMUTABLE</code> <span style="color:green">and</span> <code>CONCURRENT</code>.
+						<div class="indent"></div>
+						Since it's an <code class="code">int</code> value, the check of particular <i>characteristic</i> should look like:<br>
+						<code>(characteristics() & CONCURRENT) == CONCURRENT</code>
+					</td>
+				</tr>
+			</table>
+
 		</div>
 		<hr>
 
@@ -866,7 +920,8 @@
 			<div class="indent"></div>
 			The <em>Stream</em> interface avoids creating intermediate structures to store mapped or filtered objects.<br>
 			A stream is an object that does not store any data.<br>
-			The Stream API has been designed in such a way that as long as you <span style="color: navy">do not create any non-stream object</span> in a stream pattern,
+			The Stream API has been designed in such a way that as long as you <span style="color: navy">do not create any non-stream object</span>
+			<small style="color: LightGreen">(means creating stream objects)</small> in a stream pattern,
 			<span style="color: navy">no computation</span> of your data is conducted.<br>
 			<span style="color: orange; font-size: 20px;">&#9888;</span>
 			There are several exceptions to previous rule.<br>
