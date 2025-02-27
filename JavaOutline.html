@@ -239,8 +239,9 @@
 				The iterators returned by this class's <code>iterator</code> and <code>listIterator</code> methods are <i>fail-fast</i>:
 				if the list is structurally modified at any time after the iterator is created,
 				in any way except through the iterator's own <code>remove</code> or <code>add</code> methods, the iterator will throw a <code>ConcurrentModificationException</code>.
-			<br><i>Note</i>: the fail-fast behavior of iterators should be used only to detect bugs.<br>
-			<em id="weakly"><b>Weakly consistent</b></em> traversal of Iterators and Spliterators (in opposition to <i>Fail-Fast</i>):<br>
+			<br><i>Note</i>: the fail-fast behavior of iterators should be used only to detect bugs.
+			<div class="indent"></div>
+			<em id="weakly"><b>Weakly consistent</b></em> traversal of Iterators and <a href="#spliterator">Spliterators</a> (in opposition to <a href="#failFast"><i>Fail-Fast</i></a>):<br>
 			<ul style="margin-top: 0">
 				<li>they may proceed concurrently with other operations</li>
 				<li>they will <span style="color:green">never</span> throw <code class="code">ConcurrentModificationException</code></li>
