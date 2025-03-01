@@ -8,6 +8,12 @@
 				border: 1px solid;
 				border-color: black;
 			}
+			.zebra tr:nth-child(even) {
+				background-color: Beige;
+			}
+			.zebra tr:first-child {
+				background-color: LightBlue;
+			}
 			.padding th , .padding td {
 				padding-left : 5px;
 				padding-right: 5px;
@@ -60,10 +66,31 @@
 			.java10 {color: Orange}
 			.java16 {color: Red}
 			.java21 {color: Red}
+
+			.red      {color: Red}
+			.dark-red {color: DarkRed}
+			.hot-pink {color: HotPink}
+			.green    {color: Green}
+			.light-green {color: LightGreen}
+			.dark-green  {color: DarkGreen}
+			.blue     {color: Blue}
+			.dodger-blue {color: DodgerBlue}
+			.brown    {color: Brown}
+			.orange   {color: Orange}
+			.grey     {color: Grey}
 		</style>
 	</head>
 	<body>
 		<table id="toc">
+			<tr>
+				<td><h1>A</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#atomic">Atomic</a></h3>
+					</details>
+				</td>
+			</tr>
 			<tr>
 				<td><h1>C</h1></td>
 				<td>
@@ -82,9 +109,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3 style="padding-left:1em">
-							<a href="#diamond">Diamond operator</a>
-						</h3>
+						<h3><a href="#diamond">Diamond operator</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -105,6 +130,15 @@
 					<details>
 						<summary></summary>
 						<h2><a href="#generics">Generics</a></h2>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>H</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#happens-before">Happens-before relationship</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -151,6 +185,7 @@
 				<td>
 					<details>
 						<summary></summary>
+						<h3><a href="#referenceType">Reference Type</a></h3>
 						<h3><a href="#rtti">Runtime Type Identification (RTTI)</a></h3>
 					</details>
 				</td>
@@ -190,6 +225,42 @@
 		</table>
 
 		<hr style="height:2px;">
+
+		<div id="atomic">
+			<h3 style="margin-bottom: 3px;">Atomic operations</h3>
+			An <em>atomic</em> action is one that effectively happens all at once.<br>
+			An atomic action cannot stop in the middle: it either happens completely, or it doesn't happen at all.<br>
+			No side effects of an atomic action are visible until the action is complete.<br>
+			Atomic actions:
+			<ul style="margin-top: 3px;">
+				<li>
+					Reads and writes for <a href="#referenceType" style="color:brown">reference</a> and <span style="color:navy">primitive</span> variables, <span class="red">except</span> <code class="code">long</code> and <code class="code">double</code>.<br>
+				</li>
+				<li>
+					Reads and writes for <b>all</b> variables declared <a href="#volatile"><code>volatile</code></a>
+				</li>
+			</ul>
+			Atomic actions cannot be interleaved, so they can be used without fear of thread interference.
+			However, this does not eliminate all need to synchronize atomic actions, because memory consistency errors are still possible.
+			Using <a href="#volatile"><code>volatile</code></a> variables reduces the risk of memory consistency errors.
+			<div class="indent"></div>
+			The <code class="code">java.util.concurrent.atomic</code> package defines classes that support atomic operations on single variables.
+			These classes hold an inner <a href="#volatile"><code>volatile</code></a> <code>value</code> variable to operate.
+			The atomic <code class="code">compareAndSet()</code> method has <i>memory consistency</i> features,
+			calling the <code class="code">native</code> OS method, that exploit low-level atomic machine instructions such as compare-and-swap (CAS), to ensure data integrity.
+			<br>CAS: This algorithm implies checking that the <span class="green">old value</span> of a <code class="code">variable</code> <small>(known to the <span class="light-green">current thread</span>)</small> is still <span class="green">the same</span> to be able to set a <span class="hot-pink">new value</span>.
+			If the <span class="green">old value</span> is <span class="red">not equal</span> to the <span class="blue">current value</span> of a <code class="code">variable</code>, then it means that some <span class="dodger-blue">other thread</span> has already <span class="blue">changed</span> the value of a <code class="code">variable</code>
+			and setting the <span class="hot-pink">new value</span> in the <span class="light-green">current thread</span> <span class="red">does not make sense</span> since it is already <span class="brown">outdated</span>.
+
+			<div class="indent"></div>
+			For simple classes <a href="#synchronized"><code>synchronized</code></a> blocks/methods are an acceptable solution.
+			But for more complicated classes there may be a need to avoid the liveness impact of unnecessary synchronization.
+			Replacing the fields with an <code class="code">Atomic</code> variant allows to prevent thread interference without resorting to synchronization.
+
+			<div class="indent"></div>
+			<span class="orange">Open question: are long and double are atomic by default on a 64 bit JVM?</span>
+		</div>
+		<hr>
 
 		<div id="collections">
 			<h2>Collections <small class="java2">(Since 1.2)</small></h2>
@@ -855,6 +926,49 @@
 		</div>
 		<hr>
 
+		<div id="referenceType">
+			<h3 style="margin-bottom: 3px;">Reference Type</h3>
+			Java <span style="color:brown">Reference Type</span> stores an <em>8-byte identifier</em>.
+			This identifier refers to the location of an <b>object</b> stored in the <em style="color:DarkRed">heap</em> memory.
+			<small>(Or in <em style="color:DarkRed">stack</em> memory, if it is a local variable)</small><br>
+			The <b>object</b> itself stored in the <em style="color:DarkRed">heap</em>.
+			<div class="indent"></div>
+			<table class="zebra border padding" data-source="https://medium.com/@3eid">
+				<caption>Reference Types vs Pointers</caption>
+				<tr>
+					<th>Feature</th>
+					<th>Reference Types (Java)</th>
+					<th>Pointers (C/C++)</th>
+				</tr>
+				<tr>
+					<th>Storage</th>
+					<td>8-byte identifier, <b>not</b> a memory address</td>
+					<td>Memory address (pointer)</td>
+				</tr>
+				<tr>
+					<th>Direct memory access</th>
+					<td>No direct memory access</td>
+					<td>Direct access via memory address</td>
+				</tr>
+				<tr>
+					<th>Security</th>
+					<td><span class="green">High</span>, since direct memory manipulation is limited</td>
+					<td><span class="dark-red">Lower</span>, allows manipulation of arbitrary memory</td>
+				</tr>
+				<tr>
+					<th>Platform Dependence</th>
+					<td>Platform independent <small>(managed by JVM)</small></td>
+					<td>Platform-dependent</td>
+				</tr>
+				<tr>
+					<th>Null Check</th>
+					<td>Automatically handled by JVM <code class="dark-red">(NullPointerException)</code></td>
+					<td>Programmer's responsibility</td>
+				</tr>
+			</table>
+		</div>
+		<hr>
+
 		<div id="rtti">
 			<h3 style="margin-bottom:3px">RTTI</h3>
 			Java does <span style="color:red">NOT have</span> Runtime Type Identification, it is from C++, Object Pascal, Delphi and etc<br>
@@ -1082,7 +1196,7 @@
 			<ul class="ulWithMargin">
 				<li>
 					Synchronized methods:<br>
-					<code>public <span style="color:gray">[static]</span> <span class="code">synchronized</span> void method() { print("String"); }</code><br>
+					<code>public <span class="grey">[static]</span> <span class="code">synchronized</span> void method() { print("String"); }</code><br>
 					When a thread invokes a synchronized method, it automatically acquires the <i>intrinsic lock</i> for <b>that method's object</b>
 					and releases it when the method returns (including if the return was caused by an uncaught exception).<br>
 					For the static methods the thread acquires the <i>intrinsic lock</i> for the <span class="code-a"><code>Class</code></span> object associated with the class
@@ -1090,20 +1204,20 @@
 				<li>
 					Synchronized statements(blocks):
 					<pre style="margin-top:0">public void method(String name) {
-	<span class="code">synchronized</span>(<span style="color:DarkGreen">object</span>) {
-		<span style="color:DarkGreen">object</span>.setName(name);
+	<span class="code">synchronized</span>(<span class="dark-green">object</span>) {
+		<span class="dark-green">object</span>.setName(name);
 	}
-	print(<span style="color:DarkGreen">object</span>.getName());
+	print(<span class="dark-green">object</span>.getName());
 }</pre>
-					where <span style="color:DarkGreen">object</span> is the object that provides the <i>intrinsic lock</i>,
+					where <span class="dark-green">object</span> is the object that provides the <i>intrinsic lock</i>,
 					it can be an instance or class field, or <span class="code">this</span> object
 				</li>
 			</ul>
-			<h4 style="margin-bottom: 0;"><em>Happens-before relationship</em></h4>
-			<i>Happens-before relationship</i> means that if it is established (between threads) on a <span style="color:darkred">variable</span>,
-			then the <span style="color:red">changes</span> on a <span style="color:darkred">variable</span> will be visible to the other threads
-			only if the <code class="code">write</code> operation in <span style="color:blue">one thread</span>
-			<i>happens before</i> the <code class="code">read</code> operation in <span style="color:green">another thread</span>.<br>
+			<h4 id="happens-before" style="margin-bottom: 0;"><em>Happens-before relationship</em></h4>
+			<i>Happens-before relationship</i> means that if it is established (between threads) on a <span class="dark-red">variable</span>,
+			then the <span class="red">changes</span> on a <span class="dark-red">variable</span> will be visible to the other threads
+			only if the <code class="code">write</code> operation in <span class="blue">one thread</span>
+			<i>happens before</i> the <code class="code">read</code> operation in <span class="green">another thread</span>.<br>
 			The <code class="code">synchronized</code> and <code class="code"><a href="#volatile">volatile</a></code> constructs, as well as the <code class="code">Thread.start()</code> and <code class="code">Thread.join()</code> methods, can form <em>happens-before</em> relationships.
 			<h5 style="margin-bottom: 0;">Reentrant Synchronization</h5>
 			Recall that a thread cannot acquire a lock owned by another thread. But a thread can acquire a lock that it already owns.
@@ -1114,7 +1228,14 @@
 		<hr>
 
 		<div id="volatile">
-			<h3 class="code-a"><code>volatile</code></h3>
+			<h3 class="code-a" style="margin-bottom: 3px;"><code>volatile</code></h3>
+			<code>public <span class="grey">[static]</span> <b>volatile</b> long longVar = 1L;</code><br>
+			<code>private <span class="grey">[static]</span> <b>volatile</b> String string;</code>
+			<div class="indent"></div>
+			Changes to a <code class="code">volatile</code> variable are always visible to other threads.<br>
+			Any write to a <code class="code">volatile</code> variable establishes a <a href="#happens-before">happens-before</a> relationship with subsequent reads of that same variable.<br>
+			It also means, that when a thread reads a <code class="code">volatile</code> variable, it sees not just the latest change to the <code class="code">volatile</code>, but also the side effects of the code that led up the change.<br>
+			Using <code class="code">volatile</code> variables reduces the risk of memory consistency errors.
 		</div>
 		<hr>
 
