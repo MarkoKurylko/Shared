@@ -97,6 +97,7 @@
 					<details>
 						<summary></summary>
 						<h2><a id="classes" href="#classes">Classes</a></h2>
+							<h3 style="padding-left:1em"><a href="#class"><code class="code">.class</code> literal</a></h3>
 							<h3 style="padding-left:1em"><a href="#nesting">Nesting of <em>classes</em></a></h3>
 						<h2><a href="#collections">Collections</a></h2>
 							<h4 style="padding-left:1em"><a href="#synchronizedCollections">Synchronized Collections</a></h4>
@@ -259,6 +260,17 @@
 
 			<div class="indent"></div>
 			<span class="orange">Open question: are long and double are atomic by default on a 64 bit JVM?</span>
+		</div>
+		<hr>
+
+		<div id="class">
+			<h3 style="margin-bottom: 3px;"><code class="code">.class</code> literal</h3>
+			The <code class="code">.class</code> literal returns an <code class="code">java.lang.Class</code> instance of requested <span class="brown">type</span>.<br>
+			It's part of <i>Java Reflections</i>.
+			Works for class-like definitions (classes, interfaces, arrays, enums, records etc.) and also for <span class="dark-green">primitive types</span> and <code class="code">void</code>.<br>
+			<code>Class c1 = Object.class;</code><br>
+			<code>Class&lt;?&gt; c2 = <span class="dark-green">boolean</span>.class;</code><br>
+			<code>Class&lt;Void&gt; c3 = <span class="code">void</span>.class;</code>
 		</div>
 		<hr>
 
