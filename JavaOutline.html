@@ -1211,7 +1211,7 @@
 					<code>public <span class="grey">[static]</span> <span class="code">synchronized</span> void method() { print("String"); }</code><br>
 					When a thread invokes a synchronized method, it automatically acquires the <i>intrinsic lock</i> for <b>that method's object</b>
 					and releases it when the method returns (including if the return was caused by an uncaught exception).<br>
-					For the static methods the thread acquires the <i>intrinsic lock</i> for the <span class="code-a"><code>Class</code></span> object associated with the class
+					For the static methods the thread acquires the <i>intrinsic lock</i> for the <span class="code-a"><code>Class</code></span> object associated with the class.
 				</li>
 				<li>
 					Synchronized statements(blocks):
@@ -1222,9 +1222,24 @@
 	print(<span class="dark-green">object</span>.getName());
 }</pre>
 					where <span class="dark-green">object</span> is the object that provides the <i>intrinsic lock</i>,
-					it can be an instance or class field, or <span class="code">this</span> object
+					it can be an instance or class field, or <span class="code">this</span> object.
 				</li>
 			</ul>
+
+			<pre>
+class ClassOne {
+	private String <span class="red">monitor</span> = "Monitor";
+
+	void methodOne() {
+		synchronized(<span class="red">monitor</span>) {
+			doSomethingSynchronized();
+		}
+	}
+}
+			</pre>
+			In this example the <code class="red">monitor</code> string it is just the object that plays role of the <em>monitor lock</em>.
+			It can be any type and according to the best practice it should be <code class="code">final</code> to avoid consequences in case monitor object is rewritten.
+
 			<h4 id="happens-before" style="margin-bottom: 0;"><em>Happens-before relationship</em></h4>
 			<i>Happens-before relationship</i> means that if it is established (between threads) on a <span class="dark-red">variable</span>,
 			then the <span class="red">changes</span> on a <span class="dark-red">variable</span> will be visible to the other threads
