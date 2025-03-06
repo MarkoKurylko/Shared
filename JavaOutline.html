@@ -542,9 +542,31 @@
 			A concurrent application's ability to execute in a timely manner is known as its <em>liveness</em>.<br>
 			Most common liveness problems:
 			<ul style="margin-top: 3px;">
-				<li>Deadlock</li>
-				<li>Livelock</li>
-				<li>Starvation</li>
+				<li>
+					<b>Deadlock</b><br>
+					is a situation where two or more threads are blocked forever, waiting for each other.
+					<details>
+						<summary>Deadlock Example</summary>
+						<iframe id="deadlock" src="parts/DeadLockExample.html" style="width:-webkit-fill-available; height:405px;" >
+						</iframe>
+					</details>
+				</li>
+				<li>
+					<b>Livelock</b><br>
+					Example: threads are too busy with communication to each other, so they cannot do their main jobs.<br>
+					But in the same time they are <span class="green">not blocked</span> like in a <i>deadlock</i>.
+					<details>
+						<summary>Livelock Example</summary>
+						<iframe src="parts/LiveLockExample.html" style="width:-webkit-fill-available; height:645px;" >
+						</iframe>
+					</details>
+				</li>
+				<li>
+					<b>Starvation</b><br>
+					Starvation is a situation where a thread is unable to gain regular access to shared resources and is unable to make progress.<br>
+					Example: some thread cannot get a lock on object to do their job, because other threads uses synchronized methods of this object constantly,
+					so the thread cannot get a chance to acquire the lock.
+				</li>
 			</ul>
 			Related links:
 			<ul style="margin-top: 3px;">
@@ -664,8 +686,6 @@
 					<td style="text-align:center">Other</td>
 					<td colspan="5">Combinations of base 4 groups for Int*, Long*, Double*, Obj*, To*</td>
 				</tr>
-
-
 			</table>
 		</div>
 		<hr>
