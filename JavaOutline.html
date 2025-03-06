@@ -123,6 +123,7 @@
 						<h3><a id="e-final" href="#e-final">Effectively <b>Final</b></a></h3>
 						<h3><a href="#failFast">Fail-Fast mechanism (iterator)</a></h3>
 						<h2><a href="#functionalInterfaces">Functional Interfaces</a></h2>
+						<h3><a href="#forkJoin">Fork/Join</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -548,6 +549,7 @@
 			Related links:
 			<ul style="margin-top: 3px;">
 				<li><a href="#atomic">Atomic</a></li>
+				<li><a href="#forkJoin">Fork/Join</a></li>
 				<li><a href="#synchronized" class="code-a"><code>synchronized</code></a></li>
 				<li><a href="#synchronizedCollections">Synchronized Collections</a></li>
 				<li><a href="#concurrentCollections"  >Concurrent Collections</a></li>
@@ -665,6 +667,29 @@
 
 
 			</table>
+		</div>
+		<hr>
+
+		<div id="forkJoin">
+			<h3 style="margin-bottom: 3px;">Fork/Join <span class="java7">(Since 1.7)</span></h3>
+			The fork/join framework is an implementation of the <code class="code">ExecutorService</code> interface that helps you take advantage of multiple processors.<br>
+			It is designed for work that can be broken into smaller pieces recursively.<br>
+			The goal is to use all the available processing power to enhance the performance of your application.
+			<div class="indent"></div>
+			As with any <code class="code">ExecutorService</code> implementation, the fork/join framework distributes tasks to worker threads in a <em>thread pool</em>.<br>
+			The fork/join framework uses a <em>work-stealing</em> algorithm.<br>
+			Worker threads that run out of <span class="green">things to do</span>, <span class="red">can steal tasks</span> from other threads that are <span class="dark-red">still busy</span>.
+			<div class="indent"></div>
+			The center of the fork/join framework is the <code class="code">ForkJoinPool</code> class,
+			it implements the core work-stealing algorithm and can execute <code class="code">ForkJoinTask</code> entities.<br>
+			The <code class="code">ForkJoinTask</code> has 2 <i class="brown">ootb</i> extension classes:
+			<code class="code">RecursiveTask</code><small> ,which can return a <span class="green">result</span></small>
+			and <code class="code">RecursiveAction</code>.
+			<div class="indent"></div>
+			<details>
+				<summary>Fork/Join Example</summary>
+				<embed type="text/html" src="parts/ForkJoinExample.html" style="width:-webkit-fill-available; height:725px;">
+			</details>
 		</div>
 		<hr>
 
@@ -1287,6 +1312,7 @@ class ClassOne {
 		</div>
 		<hr>
 
+		Tools used: <a href="https://highlightjs.org/">highlight.js</a><br>
 		UserAgent: <span id="userAgent"></span> <samp style="margin-left:2em">&copy; 2025</samp>
 	</body>
 	<script>
