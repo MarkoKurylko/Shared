@@ -1,0 +1,38 @@
+.java2  {color: ChartReuse}
+.java5  {color: LightGreen}
+.java6  {color: Green}
+.java7  {color: LightSeaGreen}
+.java8  {color: Blue}
+.java9  {color: Magenta}
+.java10 {color: Orange}
+.java16 {color: Red}
+.java21 {color: Red}
+
+.red      {color: Red}
+.dark-red {color: DarkRed}
+.hot-pink {color: HotPink}
+.green    {color: Green}
+.light-green {color: LightGreen}
+.dark-green  {color: DarkGreen}
+.blue     {color: Blue}
+.dodger-blue {color: DodgerBlue}
+.brown    {color: Brown}
+.orange   {color: Orange}
+.grey     {color: Grey}
+
+.border, .border th , .border td, .collapse-border, .collapse-border th, .collapse-border td {
+	border: 1px solid;
+	border-color: LightGray;
+}
+.collapse-border {border-collapse: collapse}
+.padding th , .padding td {
+	padding-left : 5px;
+	padding-right: 5px;
+}
+
+.margin-left {margin-left: 1em}
+.margin {margin: 1em}
+
+.code {color: DarkBlue}
+
+.indent {height: 8px}

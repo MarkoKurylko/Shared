@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Design Patterns</title>
+	<link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+	<p>
+		<em>Design pattern</em> is a general, <i>reusable</i> solution to a commonly occurring problem in many contexts in <i>software design</i>.
+	</p>
+
+	<details open="open">
+		<summary><b>Creational</b> patterns are for object creation</summary>
+		<table class="collapse-border padding margin" >
+			<tr>
+				<td><a href="#abstractFactory">Abstract factory</a></td>
+				<td>Provide an interface for creating <i>families</i> of related or dependent objects without specifying their concrete classes</td>
+			</tr>
+			<tr>
+				<td><a href="#builder">Builder</a></td>
+				<td>
+					Separates the construction of a complex object from its representation.<br>
+					Gives more readability in Java code
+				</td>
+			</tr>
+
+		</table>
+	</details>
+	<details>
+		<summary><b>Structural</b> patterns ease the design by identifying a simple way to realize relationships among entities</summary>
+		<ul>
+			<li>Adapter <small>(Wrapper, or Translator)</small></li>
+		</ul>
+	</details>
+	<details>
+		<summary><b>Behavioral</b> patterns identify common communication patterns among objects</summary>
+		<ul>
+			<li>-</li>
+		</ul>
+	</details>
+	<details>
+		<summary><b>Concurrency</b> patterns deal with the multi-threaded programming paradigm</summary>
+		<ul>
+			<li>-</li>
+		</ul>
+	</details>
+	<details>
+		<summary><b>Architectural</b> patterns</summary>
+		<ul>
+			<li>MVC</li>
+		</ul>
+	</details>
+
+
+	<h2>Creational</h2>
+
+	<div id="abstractFactory">
+		<h3>Abstract factory</h3>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Abstract_factory_UML.svg/1024px-Abstract_factory_UML.svg.png" alt="Abstract Factory">
+	</div>
+	<hr>
+
+	<div id="builder">
+		<h3>Builder</h3>
+		Example 1: (Pay attention to that <code class="code">ClassWithBuilder</code> does not have setters)
+		<iframe src="parts/ClassWithBuilderExample.html" style="width:-webkit-fill-available; height:615px;"></iframe>
+
+		Example 2: Java class <code class="code">StringBuilder</code> and Java <i>Streams</i>
+		<div class="indent"></div>
+		Example 3: Since Java 1.8 there is possible to construct <i>GenericBuilder</i> using lambda expressions
+		(like at <i>Baeldung</i>), but in this case base class will need to have public setters.
+	</div>
+	<hr>
+</body>
+</html>
