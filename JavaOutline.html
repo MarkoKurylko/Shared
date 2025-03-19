@@ -125,6 +125,17 @@
 				</td>
 			</tr>
 			<tr>
+				<td><h1>J</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h2><a id="java" href="#java">Java</a></h2>
+						<h3><a href="#jsp">Jakarta(Java) Server Pages</a></h3>
+						<h3><a href="#servlets">Jakarta(Java) Servlets</a></h3>
+					</details>
+				</td>
+			</tr>
+			<tr>
 				<td><h1>L</h1></td>
 				<td>
 					<details>
@@ -783,6 +794,65 @@
 		</div>
 		<hr>
 
+		<div id="jsp">
+			<h3 style="margin-bottom:5px;">Java Server Pages / <em>Jakarta</em> Server Pages</h3>
+			Is a collection of technologies to create dynamically generated web pages based on HTML, XML, SOAP or other document types.<br>
+			Architecturally, JSP may be viewed as a high-level abstraction of <a href="#servlets">Jakarta(Java) Servlets</a>.<br>
+			Each JSP servlet is cached and re-used until the original JSP is modified.<br>
+			<div class="indent"></div>
+			Jakarta Server Pages can be used independently or as the <b>View</b> component of a server-side <a href="#mvc">MVC</a> <span class="template" title="DP"></span>.<br>
+			This is a type of <a href="#model2">Jsp Model 2</a> architectural <span class="template" title="DP"></span>.
+			<div class="indent"></div>
+
+			The JSP <code class="code">useBean</code> tag allows to access and create a Javabean.<br>
+			Scopes:
+			<ul>
+				<li>
+					The <code class="code">page</code> scope implies that the bean is located in the implicitly defined <code class="code">PageContext</code> object, and is only available for the current page. By <b>default</b>, all beans have a scope of <code class="code">page</code>.
+				</li>
+				<li>
+					The <code class="code">request</code> scope implies that the bean can be found in the <code class="code">HttpServletRequest</code> object. This bean can be accessed by all other JSPs and servlets that have access to the current <code class="code">request</code> object.</li>
+				<li>
+					The <code class="code">session</code> scope implies that the bean can be found in the <code class="code">HttpSession</code> object. This bean can be accessed by all other JSPs and servlets that have access to the specified <code class="code">HttpSession</code> object.
+				</li>
+				<li>
+					The <code class="code">application</code> scope implies that the bean can be found in the <code class="code">ServletContext</code> object. This bean can be accessed by all other JSPs and servlets that have access to the specified <code class="code">ServletContext</code> object.
+				</li>
+			</ul>
+			Expression Language (EL) syntax: <code class="code">${javabean.variable}</code>.
+			<div class="indent"></div>
+			Jsp Tag libraries:<br>
+			<code class="code"><%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %></code> Core <code>&lt;c:set var="name"/&gt;</code> etc<br>
+			<code class="code"><%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %></code> i18n<br>
+			<code class="code"><%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %></code> Strings
+			<div class="indent"></div>
+			To deploy and run Jakarta Server Pages, a compatible <em>web server</em> with a <em>servlet container</em>, such as <em>Apache Tomcat</em> is required.
+			<div class="indent"></div>
+			JSP Life cycle:
+			<ul style="margin-top: 3px;">
+				<li>
+					Compilation
+					<ul>
+						<li>Parsing the JSP</li>
+						<li>Turning the JSP into a servlet</li>
+						<li>Compiling the servlet</li>
+					</ul>
+				</li>
+				<li>Initialization - <code class="code">jspInit()</code></li>
+				<li>Execution - <code class="code">_jspService()</code></li>
+				<li>Cleanup (Shutdown) - <code class="code">jspDestroy()</code></li>
+			</ul>
+		</div>
+		<hr>
+
+		<div id="servlets">
+			<h3 style="margin-bottom:5px;">Jakarta(Java) Servlets</h3>
+			A Jakarta Servlet, <small>formerly Java Servlet</small> is a <em>Java software component</em> that extends the capabilities of a <em>server</em>.<br>
+			In principle, any servlets can extend the abstract <code class="code">GenericServlet implements Servlet</code> class; however, realistically speaking, all servlets extend the <code class="code">HttpServlet</code> class.<br>
+			For applications using the servlet 3.0 specification or later, the <code class="code">@WebServlet</code> annotation can be used to map any servlet to one or more URL patterns.
+		</div>
+		<hr>
+
 		<div id="lambdas">
 			<h2>λ Lambda Expressions <small class="java8">(Since 1.8)</small></h2>
 			<div style="padding-left:1em;">
@@ -1302,9 +1372,13 @@ class ClassOne {
 		</div>
 		<hr>
 
+		<div id="templates" style="display: none;">
+			<div id="DP"><span class="tooltip">DP<span class="tooltip-text">Design Pattern</span></span></div>
+		</div>
+
 		Tools used: <a href="https://highlightjs.org/">highlight.js</a><br>
 		UserAgent: <span id="userAgent"></span> <samp style="margin-left:2em">&copy; 2025</samp>
-	</body>
+
 	<script>
 		function onLetterClick(event) {
 			let detailsTd;
@@ -1335,13 +1409,23 @@ class ClassOne {
 				}
 			}
 		);
+
+		const templates = document.getElementById('templates');
+		const targets = document.getElementsByClassName('template');
+		Array.from(targets).forEach( (target) => {
+			target.innerHTML = templates.children.namedItem(target.title).innerHTML;
+		});
+
+		// UserAgent
 		const userAgent = navigator.userAgent;
-		const userAgentSpan = document.getElementById("userAgent");
+		const userAgentSpan = document.getElementById('userAgent');
 		userAgentSpan.textContent = userAgent;
-		if (userAgent.includes("Chrome")) {
-			if (userAgent.includes("Android") || userAgent.includes("Mobile")) {
-				alert("Markup can be broken for this userAgent, sorry.");
+		if (userAgent.includes('Chrome')) {
+			if (userAgent.includes('Android') || userAgent.includes('Mobile')) {
+				alert('Markup can be broken for this userAgent, sorry.');
 			}
 		}
 	</script>
+
+	</body>
 </html>
