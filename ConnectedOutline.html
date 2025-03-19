@@ -2,15 +2,7 @@
 <html lang="en">
 <head>
     <title>Java Connected Outline</title>
-    <style>
-        ul.ulWithMargin > li {margin: 10px 0;}
-        .border, .border th , .border td {
-            border: 1px solid;
-            border-color: black;
-        }
-        #toc h1 {margin: 0;}
-        #toc td:first-child {vertical-align:top}
-    </style>
+    <link rel="stylesheet" href="css/common.css">
 </head>
 <body>
 <table id="toc">
@@ -20,6 +12,7 @@
             <details>
                 <summary></summary>
                 <h2><a href="#redBlackTree">Red Black Tree</a></h2>
+                <h2><a href="#REST">REST (Representational State Transfer)</a></h2>
             </details>
         </td>
     </tr>
@@ -27,8 +20,8 @@
 
 <hr style="height:2px;">
 
-<div>
-    <h2 id="redBlackTree">Red Black Tree</h2>
+<div id="redBlackTree">
+    <h2>Red Black Tree</h2>
     <code><b>TreeMap</b></code> is based on RBT.<br>
     RBT is a self-balancing binary search tree(BST) data structure.<br><br>
     Requirements:<br>
@@ -60,8 +53,141 @@
 
     <object width="1000" data="svg/RedBlackTree.svg"></object>
 </div>
-</body>
+<hr>
 
+<div id="REST">
+	<h2 style="margin-bottom: 5px;">REST (Representational State Transfer)</h2>
+	Is a <em>software architectural style</em> that was created to describe the design and guide the development of the architecture for the <span class="midnight-blue" title="World Wide Web">WWW</span>.<br>
+	REST defines a set of constraints for how the architecture of a distributed, Internet-scale <em>hypermedia</em> system, such as the Web, should behave.
+	<div class="indent"></div>
+	The REST architectural style defines <b>6</b> guiding constraints.<br>
+	When these <em>constraints</em> are applied to the system architecture, it gains desirable <span class="midnight-blue" title="Non-Functional Requirement">NFR</span> properties:<br>
+	<code>performance scalability simplicity modifiability visibility portability reliability</code>.
+	<ol style="margin-top: 2px;">
+		<li><b>Client/Server</b> – clients are separated from servers by a well-defined interface</li>
+		<li><b>Stateless</b> – a specific client does not consume server storage when the client is "at rest"</li>
+		<li><b>Cache</b> – responses indicate their own cacheability</li>
+		<li>
+			<details>
+				<summary><b>Uniform interface</b></summary>
+				is fundamental to the design of any RESTful system.
+				It simplifies and decouples the architecture, which enables each part to evolve independently.
+				<ol style="margin-top: 1px;">
+					<li><em>Resource identification in requests</em> -
+						<small>
+							resources are identified by <span class="midnight-blue" title="Uniform Resource Identifier">URI</span>.<br>
+							The resources themselves are conceptually separate from the representations(<i>HTML, XML, JSON</i>) that are returned to the client
+						</small></li>
+					<li>
+						<em>Resource manipulation <small>through</small> representations</em> -
+						<small>
+							When a client holds a representation of a resource, including any <i>metadata</i> attached, it has enough information to modify or delete the resource's state
+						</small>
+					</li>
+					<li><em>Self-descriptive messages</em> - <small>Each message includes enough information to describe how to process the message. (<i>media type</i>)</small></li>
+					<li>
+						<em>HATEOAS <small>(Hypermedia as the engine of application state)</small></em> -
+						<small>
+							a REST client should be able to use server-provided links dynamically to discover all the available resources it needs.<br>
+							The server responds with text that includes <i>hyperlinks</i> to other resources that are currently available
+						</small>
+					</li>
+				</ol>
+			</details>
+		</li>
+		<li><b>Layered system</b> – a client cannot ordinarily tell whether it is connected directly to the end server, or to an intermediary along the way</li>
+		<li><em>Code on demand</em> <small>(optional)</small> – <small>servers are able to temporarily extend or customize the functionality of a client by transferring logic to the client that can be executed within a standard virtual machine</small></li>
+	</ol>
+	<em><b>Richardson Maturity Model</b></em>
+	<ol style="margin-top: 3px;">
+		<li>
+			<b>Level 0: The Swamp of <span class="midnight-blue" title="Plain Old XML">POX</span></b>
+			<div class="indent4"></div>
+			<span class="red">Is not RESTful</span>.
+			It is a Web <span class="midnight-blue" title="Application Programming Interface">API</span> with a single <span class="midnight-blue" title="Uniform Resource Identifier">URI</span> accepting <span class="fire-brick">all</span> the range of operations supported by the service.<br>
+			<span class="fire-brick">Resources are not well-defined.</span><br>
+			Example: <code class="code">/bookingService POST</code> retrieve destinations/hotels/rooms; add/cancel a reservation; etc.
+			<div class="indent"></div>
+		</li>
+		<li>
+			<b>Level 1: Resources</b>
+			<div class="indent4"></div>
+			<span class="fire-brick">Still not yet RESTful</span>.
+			Introduces <em>resources</em> and allows requests for individual <span class="midnight-blue" title="Uniform Resource Identifier">URI</span>s
+			<small>(still all typically POST)</small> for separate actions instead of exposing one universal endpoint (<span class="midnight-blue" title="Application Programming Interface">API</span>).<br>
+			The <span class="midnight-blue" title="Application Programming Interface">API</span> resources are still generalized but it is possible to identify the scope of each one.
+			Example: <br>
+			<small>
+				<code class="code">/bookingDestinations POST</code> retrieve destinations<br>
+				<code class="code">/bookingReservations POST</code> add/cancel reservations<br>
+				<code class="code">/bookingRooms POST</code> add/cancel special requests to a reservation<br>
+				<code class="code">/bookingFeedback POST</code> leave feedback
+			</small>
+			<div class="indent"></div>
+		</li>
+		<li>
+			<b>Level 2: HTTP verbs <small>(HTTP request methods)</small></b>
+			<div class="indent4"></div>
+			<span class="green">It is RESTful</span>.
+			The system starts making use of <em>HTTP Verbs</em>.
+			This allows for further specialization of the resource and thus narrows down the functionality of each individual operation within the service.
+			The principal separation at this level consists in splitting a given resource into two – one request for obtaining data only (GET), the other for modifying the data (POST).
+			Further granularization is also possible.<br>
+			Example: <br>
+			<small>
+				<code class="code">/destinations GET</code> retrieve destinations<br>
+				<code class="code">/reservations GET</code> get reservations according to certain criteria<br>
+				<code class="code">/reservations POST</code> add/cancel reservations<br>
+				<code class="code">/rooms POST</code> request room extras<br>
+				<code class="code">/rooms DELETE</code> remove room extras
+			</small>
+			<div class="indent"></div>
+		</li>
+		<li>
+			<b>Level 3: Hypermedia controls</b>
+			<div class="indent4"></div>
+			<span class="dark-green">It is RESTful</span>.
+			The last level introduces the <em>hypermedia representation</em>.
+			Also called <span class="midnight-blue" title="Hypermedia As The Engine of Application State">HATEOAS</span>.
+			A client interacts with a network application whose application servers provide information dynamically through <em>hypermedia</em>.
+			A REST client needs little to no prior knowledge about how to interact with an application or server beyond a generic understanding of hypermedia.<br>
+			The restrictions imposed by HATEOAS decouple client and server. This enables server functionality to evolve independently.<br>
+			Example: <br>
+			<small>
+			<code class="code">GET /accounts/12345 HTTP/1.1</code></small><br>
+			<pre style="margin-top: 0px;">{
+    "account": {
+        "account_number": 12345,
+        "balance": {
+            "currency": "usd",
+            "value": 100.00
+        },
+        "links": {
+            "deposits": "/accounts/12345/deposits",
+            "withdrawals": "/accounts/12345/withdrawals",
+            "transfers": "/accounts/12345/transfers",
+            "close-requests": "/accounts/12345/close-requests"
+        }
+    }
+}</pre>
+			<small>As an example, later, after the account has been overdrawn, there is a different set of available links:</small>
+			<pre style="margin-top: 0px;">{
+    "account": {
+        "account_number": 12345,
+        "balance": {
+            "currency": "usd",
+            "value": -25.00
+        },
+        "links": {
+            "deposits": "/accounts/12345/deposits"
+        }
+    }
+}</pre>
+		</li>
+	</ol>
+</div>
+
+Sources: Wikipedia.
 <script>
     function onLetterClick(event) {
         let detailsTd;
@@ -80,4 +206,5 @@
     }
 </script>
 
+</body>
 </html>
