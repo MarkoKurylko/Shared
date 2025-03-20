@@ -556,7 +556,7 @@
 					<td colspan="2"><code>Function&lt;T,R&gt;</code></td>
 					<td>
 						<code class="nowrap">R apply(T t)</code><hr>
-						<code class="nowrap tooltip">Function.identity()<span class="tooltip-text">static</span></code>
+						<code class="nowrap tooltip" title="static">Function.identity()</code>
 					</td>
 					<td>
 						<code>string -&gt; string.length()</code><hr>
@@ -779,8 +779,8 @@
 			Architecturally, JSP may be viewed as a high-level abstraction of <a href="#servlets">Jakarta(Java) Servlets</a>.<br>
 			Each JSP servlet is cached and re-used until the original JSP is modified.<br>
 			<div class="indent"></div>
-			Jakarta Server Pages can be used independently or as the <b>View</b> component of a server-side <a href="#mvc">MVC</a> <span class="template" title="DP"></span>.<br>
-			This is a type of <a href="#model2">Jsp Model 2</a> architectural <span class="template" title="DP"></span>.
+			Jakarta Server Pages can be used independently or as the <b>View</b> component of a server-side <a href="#mvc">MVC</a> <span class="tooltip" title="Design Pattern">DP</span>.<br>
+			This is a type of <a href="#model2">Jsp Model 2</a> architectural <span class="tooltip" title="Design Pattern">DP</span>.
 			<div class="indent"></div>
 
 			The JSP <code class="code">useBean</code> tag allows to access and create a Javabean.<br>
@@ -827,8 +827,8 @@
 		<div id="servlets">
 			<h3 style="margin-bottom:5px;">Jakarta(Java) Servlets</h3>
 			A Jakarta Servlet, <small>formerly Java Servlet</small> is a <em>Java software component</em> that extends the capabilities of a <em>server</em>.<br>
-			In principle, any servlets can extend the abstract <code class="code">GenericServlet implements Servlet</code> class; however, realistically speaking, all servlets extend the <code class="code">HttpServlet</code> class.<br>
-			For applications using the servlet 3.0 specification or later, the <code class="code">@WebServlet</code> annotation can be used to map any servlet to one or more URL patterns.
+			In principle, any servlets can extend the abstract <code class="code">GenericServlet implements <span class="midnight-blue" title="service(ServletRequest,ServletResponse)">Servlet</span></code> class; however, realistically speaking, all servlets extend the <code class="code">abstract HttpServlet</code> class.<br>
+			For applications using the servlet 3.0 specification or later, the <code class="code">@WebServlet</code> annotation can be used to map any servlet to one or more <span class="tooltip" title="Uniform Resource Locator">URL</span> patterns.
 		</div>
 		<hr>
 
@@ -1191,7 +1191,7 @@
 			The <code>takeWhile</code> works in the same way but opposite. For e.g.<br>
 			<code>List.of(1, 2, 3, 4, 5, 6, 7, 8, 9).stream().takeWhile(i -> i > 5).toList()</code> will return empty list.
 			<div class="indent"></div>
-			<code class="tooltip">Stream.concat()<span class="tooltip-text">static</span></code> vs <code>flatMap()</code>: <code>concat</code> takes only 2 parameters, but produces a <code>SIZED</code> stream.
+			<code class="tooltip" title="static">Stream.concat()</code> vs <code>flatMap()</code>: <code>concat</code> takes only 2 parameters, but produces a <code>SIZED</code> stream.
 			While a <code>flatMap</code> may create an unknown number of elements to be processed in the resulting stream.
 			The Stream API loses track of the number of elements that will be processed in the resulting stream.
 
@@ -1221,7 +1221,7 @@
 					<td><em>Flattering</em>. It just concats the streams returned by <i>mapper</i> function</td>
 				</tr>
 				<tr>
-					<td><code class="tooltip">Stream.generate<span class="tooltip-text">static</span></code></td>
+					<td><code class="tooltip" title="static">Stream.generate</code></td>
 					<td><code class="nowrap"><span class="code">Stream</span>&lt;T&gt; generate(<span class="code">Supplier</span>&lt;T&gt; supplier)</code></td>
 					<td><code>generate(<span class="code">Math</span>::random)</code></td>
 					<td>
@@ -1351,10 +1351,6 @@ class ClassOne {
 		</div>
 		<hr>
 
-		<div id="templates" style="display: none;">
-			<div id="DP"><span class="tooltip">DP<span class="tooltip-text">Design Pattern</span></span></div>
-		</div>
-
 		<hr style="height:2px;">
 		Tools used: <a href="https://highlightjs.org/">highlight.js</a><br>
 		Sources: Wikipedia, Oracle, dev.java<br>
@@ -1396,12 +1392,6 @@ class ClassOne {
 				}
 			}
 		);
-
-		const templates = document.getElementById('templates');
-		const targets = document.getElementsByClassName('template');
-		Array.from(targets).forEach( (target) => {
-			target.innerHTML = templates.children.namedItem(target.title).innerHTML;
-		});
 
 		// UserAgent
 		const userAgent = navigator.userAgent;

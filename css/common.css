@@ -44,27 +44,7 @@
 #toc td:first-child {vertical-align: top}
 
 .tooltip {
-	position: relative;
-	display: inline-block;
 	color: MidnightBlue;
-}
-.tooltip .tooltip-text {
-	visibility: hidden;
-	background-color: grey;
-	color: #fff;
-	text-align: center;
-	border-radius: 6px;
-	padding: 5px 5px;
-	height: 15px;
-	white-space: nowrap;
-	/* Position the tooltip */
-	position: absolute;
-	z-index: 1;
-	top: -10px;
-	left: 105%;
-}
-.tooltip:hover .tooltip-text {
-	visibility: visible;
 }
 
 ul.ulWithMargin > li {margin: 10px 0;}
