@@ -15,7 +15,7 @@
 
 <details open>
 	<summary><b>A</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="ATG">ATG</th>
 			<td>Art Technology Group</td>
@@ -32,7 +32,7 @@
 
 <details open>
 	<summary><b>C</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="CORBA">CORBA</th>
 			<td>Common Object Request Broker Architecture</td>
@@ -44,7 +44,7 @@
 
 <details open>
 	<summary><b>D</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="deterministic">Deterministic</th>
 			<td>The same results for the same input data</td>
@@ -66,7 +66,7 @@
 
 <details open>
 	<summary><b>F</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="FIFO">FIFO</th>
 			<td>First In First Out</td>
@@ -83,7 +83,7 @@
 
 <details open>
 	<summary><b>H</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="HATEOAS">HATEOAS</th>
 			<td>Hypermedia as the Engine of Application State</td>
@@ -105,7 +105,7 @@
 
 <details open>
 	<summary><b>I</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="ICMP">ICMP</th>
 			<td>Internet Control Message Protocol</td>
@@ -127,7 +127,7 @@
 
 <details open>
 	<summary><b>J</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="JSON">JSON</th>
 			<td>JavaScript Object Notation</td>
@@ -139,7 +139,7 @@
 
 <details open>
 	<summary><b>L</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="LIFO">LIFO</th>
 			<td>Last In First Out</td>
@@ -151,7 +151,7 @@
 
 <details open>
 	<summary><b>M</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="MDN">MDN</th>
 			<td>Mozilla Developer Network</td>
@@ -168,7 +168,7 @@
 
 <details open>
 	<summary><b>N</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="non-deterministic">Non-Deterministic</th>
 			<td>Different results for the same input data</td>
@@ -185,7 +185,7 @@
 
 <details open>
 	<summary><b>O</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="OS">OS</th>
 			<td>Operating System</td>
@@ -202,7 +202,7 @@
 
 <details open>
 	<summary><b>P</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="PMDL">PMDL</th>
 			<td>Promotion Model Definition Language</td>
@@ -224,7 +224,7 @@
 
 <details open>
 	<summary><b>R</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="RPC">RPC</th>
 			<td>Remote Procedure Call</td>
@@ -241,7 +241,7 @@
 
 <details open>
 	<summary><b>S</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="Saas">SaaS</th>
 			<td>Software as a Services</td>
@@ -268,7 +268,7 @@
 
 <details open>
 	<summary><b>T</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="TCP-IP">TCP/IP</th>
 			<td>Transmission Control Protocol / Internet Protocol</td>
@@ -280,7 +280,7 @@
 
 <details open>
 	<summary><b>U</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="UDP">UDP</th>
 			<td>User Datagram Protocol</td>
@@ -302,7 +302,7 @@
 
 <details open>
 	<summary><b>W</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="WWW">WWW</th>
 			<td>World Wide Web</td>
@@ -314,7 +314,7 @@
 
 <details open>
 	<summary><b>X</b></summary>
-	<table class="collapse-border padding">
+	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="XML">XML</th>
 			<td>E<b>x</b>tensible Markup Language</td>
@@ -326,5 +326,35 @@
 
 <a href="all.html">SiteMap</a><br>
 <iframe style="border:0; height: 35px;" src="./footer.html"></iframe>
+
+<script>
+	function sortTable(table) {
+		let rows, switching = true, i, shouldSwitch;
+
+		while (switching) {
+			switching = false;
+			rows = table.rows;
+
+			for (i = 0; i < (rows.length - 1); i++) {
+				shouldSwitch = false;
+				const x = rows[i].getElementsByTagName("TH")[0];
+				const y = rows[i + 1].getElementsByTagName("TH")[0];
+
+				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+					shouldSwitch = true;
+					break;
+				}
+			}
+
+			if (shouldSwitch) {
+				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+				switching = true;
+			}
+		}
+	}
+
+	const tables = document.querySelectorAll("table.sorted");
+	tables.forEach(sortTable);
+</script>
 </body>
 </html>
