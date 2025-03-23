@@ -5,8 +5,10 @@
 	<title>Glossary for IT</title>
 	<link rel="stylesheet" href="css/common.css">
 	<style>
-		th {color: DarkSlateGrey;}
+		th {color: DarkSlateGrey; letter-spacing: 0.0625em;}
 		summary {color: DarkSlateGrey;}
+
+		:target {background-color: LightGreen;}
 	</style>
 </head>
 <body>
@@ -17,13 +19,60 @@
 	<summary><b>A</b></summary>
 	<table class="collapse-border padding sorted">
 		<tr>
-			<th id="ATG">ATG</th>
-			<td>Art Technology Group</td>
+			<th id="ASCII"></th>
+			<td>American Standard Code <small>for</small> Information Interchange</td>
 			<td></td>
 		</tr>
 		<tr>
-			<th id="API">API</th>
+			<th id="ANSI"></th>
+			<td>American National Standards Institute</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="ARP"></th>
+			<td>Address Resolution Protocol</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="ATG"></th>
+			<td>Art Technology Group</td>
+			<td>Oracle Commerce</td>
+		</tr>
+		<tr>
+			<th id="API"></th>
 			<td>Application Programming Interface</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="ACL"></th>
+			<td>Access Control List</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="AES"></th>
+			<td>Advanced Encryption Standard</td>
+			<td><a href="#DES">DES</a></td>
+		</tr>
+	</table>
+</details>
+<div class="indent"></div>
+
+<details open>
+	<summary><b>B</b></summary>
+	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="BCP">BCP</th>
+			<td>Business Continuity Plan</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="BMP">BMP</th>
+			<td>BitMap Picture <small>(Microsoft)</small></td>
+			<td class="template" data-id="graphics"></td>
+		</tr>
+		<tr>
+			<th id="BYOD">BYOD</th>
+			<td>Bring Your Own Device</td>
 			<td></td>
 		</tr>
 	</table>
@@ -38,6 +87,29 @@
 			<td>Common Object Request Broker Architecture</td>
 			<td></td>
 		</tr>
+		<tr>
+			<th id="CRT">CRT</th>
+			<td>Cathode Ray Tube</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="CMS">CMS</th>
+			<td>Content Management System</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="CSS">CSS</th>
+			<td>Cascading Style Sheet</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="CGI">CGI</th>
+			<td>
+				Computer-Generated Imagery<hr>
+				Common Gateway Interface
+			</td>
+			<td></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -45,6 +117,16 @@
 <details open>
 	<summary><b>D</b></summary>
 	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="DaaS">DaaS</th>
+			<td>Desktop as a Service</td>
+			<td class="template" data-id="aaS"></td>
+		</tr>
+		<tr>
+			<th id="DRaaS">DRaaS</th>
+			<td>Disaster Recovery as a Service</td>
+			<td class="template" data-id="aaS"></td>
+		</tr>
 		<tr>
 			<th id="deterministic">Deterministic</th>
 			<td>The same results for the same input data</td>
@@ -58,6 +140,23 @@
 		<tr>
 			<th id="DNS">DNS</th>
 			<td>Domain Name System</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="DES">DES</th>
+			<td>Data Encryption Standard</td>
+			<td>Obsolete, see <a href="#AES">AES</a></td>
+		</tr>
+	</table>
+</details>
+<div class="indent"></div>
+
+<details open>
+	<summary><b>E</b></summary>
+	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="ECMA">ECMA</th>
+			<td>European Computer Manufacturers Association</td>
 			<td></td>
 		</tr>
 	</table>
@@ -82,12 +181,38 @@
 <div class="indent"></div>
 
 <details open>
+	<summary><b>G</b></summary>
+	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="GUI">GUI</th>
+			<td>Graphic User Interface</td>
+			<td><a href="#UI">UI</a></td>
+		</tr>
+		<tr>
+			<th id="GIF">GIF</th>
+			<td>Graphics Interchange Format</td>
+			<td class="template" data-id="graphics"></td>
+		</tr>
+		<tr>
+			<th id="GPS">GPS</th>
+			<td>Global Positioning System</td>
+		</tr>
+	</table>
+</details>
+<div class="indent"></div>
+
+<details open>
 	<summary><b>H</b></summary>
 	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="HATEOAS">HATEOAS</th>
 			<td>Hypermedia as the Engine of Application State</td>
-			<td></td>
+			<td class="template" data-id="restful"></td>
+		</tr>
+		<tr>
+			<th id="HTML">HTML</th>
+			<td>Hypertext Markup Language</td>
+			<td><a href="#XHTML">XHTML</a></td>
 		</tr>
 		<tr>
 			<th id="HTTP">HTTP</th>
@@ -107,14 +232,54 @@
 	<summary><b>I</b></summary>
 	<table class="collapse-border padding sorted">
 		<tr>
+			<th id="IaaS">IaaS</th>
+			<td>Infrastructure as a Service</td>
+			<td class="template" data-id="aaS"></td>
+		</tr>
+		<tr>
+			<th id="IEEE">IEEE</th>
+			<td>Institute <small>of</small> Electrical <small>and</small> Electronics Engineers</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="IP">IP</th>
+			<td>Internet Protocol</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="ICS">ICS</th>
+			<td>Internet Connection Sharing</td>
+			<td>Ms Windows</td>
+		</tr>
+		<tr>
+			<th id="IRC">IRC</th>
+			<td>Internet Relay Chat</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="ISP">ISP</th>
+			<td>Internet Service Provider</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="IRQ">IRQ</th>
+			<td>Interrupt ReQuest</td>
+			<td></td>
+		</tr>
+		<tr>
 			<th id="ICMP">ICMP</th>
 			<td>Internet Control Message Protocol</td>
-			<td></td>
+			<td><a href="#PING">PING</a></td>
 		</tr>
 		<tr>
 			<th id="IIFE">IIFE</th>
 			<td>Immediately Invoked Function Expression</td>
 			<td>JavaScript</td>
+		</tr>
+		<tr>
+			<th id="IETF">IETF</th>
+			<td> Internet Engineering Task Force</td>
+			<td><a href="#RFC">RFC</a></td>
 		</tr>
 		<tr>
 			<th id="idempotent">Idempotent</th>
@@ -129,10 +294,52 @@
 	<summary><b>J</b></summary>
 	<table class="collapse-border padding sorted">
 		<tr>
+			<th id="JDK">JDK</th>
+			<td>Java Development Kit</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JRE">JRE</th>
+			<td>Java Runtime Environment</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JEP">JEP</th>
+			<td><a href="#JDK">JDK</a> Enhancement Proposal</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JVM">JVM</th>
+			<td>Java Virtual Machine</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JCP">JCP</th>
+			<td>Java Community Process</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JSR">JSR</th>
+			<td>Java Specification Request</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
 			<th id="JSON">JSON</th>
 			<td>JavaScript Object Notation</td>
 			<td></td>
 		</tr>
+		<tr>
+			<th id="JPEG">JPEG</th>
+			<td>Joint Photographic Experts Group</td>
+			<td class="template" data-id="graphics"></td>
+		</tr>
+	</table>
+</details>
+<div class="indent"></div>
+
+<details open>
+	<summary><b>K</b></summary>
+	<table class="collapse-border padding sorted">
 	</table>
 </details>
 <div class="indent"></div>
@@ -153,9 +360,29 @@
 	<summary><b>M</b></summary>
 	<table class="collapse-border padding sorted">
 		<tr>
+			<th id="MaaS">MaaS</th>
+			<td>Metal as a Service</td>
+			<td class="template" data-id="aaS"></td>
+		</tr>
+		<tr>
+			<th id="MAC">MAC</th>
+			<td>Media Access Control <small>address</small></td>
+			<td></td>
+		</tr>
+		<tr>
 			<th id="MDN">MDN</th>
 			<td>Mozilla Developer Network</td>
-			<td></td>
+			<td><a href="#MSDN">MSDN</a></td>
+		</tr>
+		<tr>
+			<th id="MSDN">MSDN</th>
+			<td>MicroSoft Developer Network</td>
+			<td><a href="#MDN">MDN</a></td>
+		</tr>
+		<tr>
+			<th id="MPEG">MPEG</th>
+			<td>Motion Picture Experts Group</td>
+			<td class="template" data-id="graphics"></td>
 		</tr>
 		<tr>
 			<th id="mutex">Mutex</th>
@@ -175,8 +402,28 @@
 			<td><a href="#deterministic">Deterministic</a></td>
 		</tr>
 		<tr>
+			<th id="NaaS">NaaS</th>
+			<td>Network as a Service</td>
+			<td class="template" data-id="aaS"></td>
+		</tr>
+		<tr>
 			<th id="NFR">NFR</th>
 			<td>Non-functional requirement</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="NAT">NAT</th>
+			<td>Network Address Translation</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="NTP">NTP</th>
+			<td>Network Time Protocol</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="NNTP">NNTP</th>
+			<td>Network News Transport Protocol</td>
 			<td></td>
 		</tr>
 	</table>
@@ -186,6 +433,11 @@
 <details open>
 	<summary><b>O</b></summary>
 	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="OCR">OCR</th>
+			<td>Optical character recognition</td>
+			<td></td>
+		</tr>
 		<tr>
 			<th id="OS">OS</th>
 			<td>Operating System</td>
@@ -203,6 +455,22 @@
 <details open>
 	<summary><b>P</b></summary>
 	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="PaaS">PaaS</th>
+			<td>Platform as a Service</td>
+			<td class="template" data-id="aaS"></td>
+		</tr>
+		<tr>
+			<th id="PGP">PGP</th>
+			<td>Pretty Good Privacy</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="PING">PING</th>
+			<td>Packet InterNet Groper</td>
+			<td><a href="#ICMP">ICMP</a></td>
+		</tr>
+
 		<tr>
 			<th id="PMDL">PMDL</th>
 			<td>Promotion Model Definition Language</td>
@@ -223,8 +491,30 @@
 <div class="indent"></div>
 
 <details open>
+	<summary><b>Q</b></summary>
+	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="QoS">QoS</th>
+			<td>Quality of Service</td>
+			<td></td>
+		</tr>
+	</table>
+</details>
+<div class="indent"></div>
+
+<details open>
 	<summary><b>R</b></summary>
 	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="RGB">RGB</th>
+			<td><span class="red">Red</span> <span class="green">Green</span> <span class="blue">Blue</span></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="RFC">RFC</th>
+			<td>Request for Comments</td>
+			<td><a href="#IETF">IETF</a></td>
+		</tr>
 		<tr>
 			<th id="RPC">RPC</th>
 			<td>Remote Procedure Call</td>
@@ -233,7 +523,17 @@
 		<tr>
 			<th id="REST">REST</th>
 			<td>Representational State Transfer</td>
-			<td></td>
+			<td class="template" data-id="restful"></td>
+		</tr>
+		<tr>
+			<th id="RDBMS">RDBMS</th>
+			<td>Relational DataBase Management System</td>
+			<td class="template" data-id="ql"></td>
+		</tr>
+		<tr>
+			<th id="RQL">RQL</th>
+			<td>Repository Query Language (<a href="#ATG">ATG</a>)</td>
+			<td class="template" data-id="ql"></td>
 		</tr>
 	</table>
 </details>
@@ -243,9 +543,9 @@
 	<summary><b>S</b></summary>
 	<table class="collapse-border padding sorted">
 		<tr>
-			<th id="Saas">SaaS</th>
+			<th id="SaaS">SaaS</th>
 			<td>Software as a Services</td>
-			<td></td>
+			<td class="template" data-id="aaS"></td>
 		</tr>
 		<tr>
 			<th id="scalability">Scalability</th>
@@ -262,6 +562,16 @@
 			<td><small>originally an acronym for</small> Simple Object Access Protocol</td>
 			<td></td>
 		</tr>
+		<tr>
+			<th id="SVG">SVG</th>
+			<td>Scalable Vector Graphics</td>
+			<td class="template" data-id="graphics"></td>
+		</tr>
+		<tr>
+			<th id="SQL">SQL</th>
+			<td>Structured Query Language</td>
+			<td class="template" data-id="ql"></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -272,7 +582,12 @@
 		<tr>
 			<th id="TCP-IP">TCP/IP</th>
 			<td>Transmission Control Protocol / Internet Protocol</td>
-			<td>Includes: <a href="#HTTP">HTTP</a>, <a href="#HTTPS">HTTPS</a>, <a href="#FTP">FTP</a>, <a href="#DNS">DNS</a>, <a href="#SMTP">SMTP</a>, <a href="#UDP">UDP</a></td>
+			<td>Includes: <a href="#IP">IP</a>, <a href="#HTTP">HTTP</a>, <a href="#HTTPS">HTTPS</a>, <a href="#FTP">FTP</a>, <a href="#DNS">DNS</a>, <a href="#SMTP">SMTP</a>, <a href="#UDP">UDP</a></td>
+		</tr>
+		<tr>
+			<th id="TIFF">TIFF</th>
+			<td>Tagged Image File Format</td>
+			<td class="template" data-id="graphics"></td>
 		</tr>
 	</table>
 </details>
@@ -281,6 +596,11 @@
 <details open>
 	<summary><b>U</b></summary>
 	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="UI">UI</th>
+			<td>User Interface</td>
+			<td><a href="#GUI">GUI</a></td>
+		</tr>
 		<tr>
 			<th id="UDP">UDP</th>
 			<td>User Datagram Protocol</td>
@@ -301,11 +621,28 @@
 <div class="indent"></div>
 
 <details open>
+	<summary><b>V</b></summary>
+	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="VM">VM</th>
+			<td>Virtual Machine</td>
+			<td></td>
+		</tr>
+	</table>
+</details>
+<div class="indent"></div>
+
+<details open>
 	<summary><b>W</b></summary>
 	<table class="collapse-border padding sorted">
 		<tr>
 			<th id="WWW">WWW</th>
 			<td>World Wide Web</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="WYSIWYG">WYSIWYG</th>
+			<td>What You See Is What You Get</td>
 			<td></td>
 		</tr>
 	</table>
@@ -320,6 +657,30 @@
 			<td>E<b>x</b>tensible Markup Language</td>
 			<td></td>
 		</tr>
+		<tr>
+			<th id="XHTML">XHTML</th>
+			<td>E<b>x</b>tensible Hypertext Markup Language</td>
+			<td><a href="#HTML">HTML</a></td>
+		</tr>
+	</table>
+</details>
+<div class="indent"></div>
+
+<details open>
+	<summary><b>Y</b></summary>
+	<table class="collapse-border padding sorted">
+	</table>
+</details>
+<div class="indent"></div>
+
+<details open>
+	<summary><b>Z</b></summary>
+	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="ZTNA">ZTNA</th>
+			<td>Zero Trust Network Access</td>
+			<td></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -327,34 +688,55 @@
 <a href="all.html">SiteMap</a><br>
 <iframe style="border:0; height: 35px;" src="./footer.html"></iframe>
 
+<div id="templates" style="display: none;">
+	<div id="graphics"><a href="#BMP">BMP</a>, <a href="#GIF">GIF</a>, <a href="#TIFF">TIFF</a>, <a href="#SVG">SVG</a>, <a href="#JPEG">JPEG</a>, <a href="#MPEG">MPEG</a></div>
+	<div id="aaS"><a href="#DaaS">DaaS</a>, <a href="#DRaaS">DRaaS</a>, <a href="#IaaS">IaaS</a>, <a href="#MaaS">MaaS</a>, <a href="#NaaS">NaaS</a>, <a href="#PaaS">PaaS</a>, <a href="#SaaS">SaaS</a></div>
+	<div id="java"><a href="#JDK">JDK</a>, <a href="#JEP">JEP</a>, <a href="#JRE">JRE</a>, <a href="#JVM">JVM</a>, <a href="#JCP">JCP</a>, <a href="#JSR">JSR</a></div>
+	<div id="restful"><a href="#REST">REST</a>, <a href="#HATEOAS">HATEOAS</a></div>
+	<div id="ql"><a href="#RDBMS">RDBMS</a>, <a href="#SQL">SQL</a>, <a href="#RQL">RQL</a></div>
+</div>
+
 <script>
+	// fill the tables headers
+	const ths = document.getElementsByTagName('th');
+	Array.from(ths).forEach( th => {
+		th.innerHTML = th.id;
+	});
+
 	function sortTable(table) {
-		let rows, switching = true, i, shouldSwitch;
+	let switching = true, rows, i, shouldSwitch;
 
-		while (switching) {
-			switching = false;
-			rows = table.rows;
+	while (switching) {
+		switching = false;
+		rows = table.rows;
 
-			for (i = 0; i < (rows.length - 1); i++) {
-				shouldSwitch = false;
-				const x = rows[i].getElementsByTagName("TH")[0];
-				const y = rows[i + 1].getElementsByTagName("TH")[0];
+		for (i = 0; i < (rows.length - 1); i++) {
+			shouldSwitch = false;
+			const x = rows[i].getElementsByTagName("TH")[0];
+			const y = rows[i + 1].getElementsByTagName("TH")[0];
 
-				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-					shouldSwitch = true;
-					break;
-				}
-			}
-
-			if (shouldSwitch) {
-				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-				switching = true;
+			if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+				shouldSwitch = true;
+				break;
 			}
 		}
+
+		if (shouldSwitch) {
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			switching = true;
+		}
+	}
 	}
 
 	const tables = document.querySelectorAll("table.sorted");
 	tables.forEach(sortTable);
+
+	// templates
+	const templates = document.getElementById('templates');
+	const targets = document.getElementsByClassName('template');
+	Array.from(targets).forEach( target => {
+		target.innerHTML = templates.children.namedItem(target.dataset.id).innerHTML;
+	});
 </script>
 </body>
 </html>
