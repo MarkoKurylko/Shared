@@ -12,7 +12,7 @@
 	</style>
 </head>
 <body>
-<a href="all.html">SiteMap</a>
+<a href="all.html" id="sitemap">SiteMap</a>
 <div class="indent"></div>
 
 <details open>
@@ -294,42 +294,57 @@
 	<summary><b>J</b></summary>
 	<table class="collapse-border padding sorted">
 		<tr>
-			<th id="JDK">JDK</th>
+			<th id="JDK"></th>
 			<td>Java Development Kit</td>
 			<td class="template" data-id="java"></td>
 		</tr>
 		<tr>
-			<th id="JRE">JRE</th>
+			<th id="JRE"></th>
 			<td>Java Runtime Environment</td>
 			<td class="template" data-id="java"></td>
 		</tr>
 		<tr>
-			<th id="JEP">JEP</th>
+			<th id="JEP"></th>
 			<td><a href="#JDK">JDK</a> Enhancement Proposal</td>
 			<td class="template" data-id="java"></td>
 		</tr>
 		<tr>
-			<th id="JVM">JVM</th>
+			<th id="JVM"></th>
 			<td>Java Virtual Machine</td>
 			<td class="template" data-id="java"></td>
 		</tr>
 		<tr>
-			<th id="JCP">JCP</th>
+			<th id="JCP"></th>
 			<td>Java Community Process</td>
 			<td class="template" data-id="java"></td>
 		</tr>
 		<tr>
-			<th id="JSR">JSR</th>
+			<th id="JSR"></th>
 			<td>Java Specification Request</td>
 			<td class="template" data-id="java"></td>
 		</tr>
 		<tr>
-			<th id="JSON">JSON</th>
+			<th id="JMM"></th>
+			<td>Java Memory Model</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JNI"></th>
+			<td>Java Native Interface</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JNA"></th>
+			<td>Java Native Access</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JSON"></th>
 			<td>JavaScript Object Notation</td>
 			<td></td>
 		</tr>
 		<tr>
-			<th id="JPEG">JPEG</th>
+			<th id="JPEG"></th>
 			<td>Joint Photographic Experts Group</td>
 			<td class="template" data-id="graphics"></td>
 		</tr>
@@ -479,7 +494,7 @@
 		<tr>
 			<th id="POJO">POJO</th>
 			<td>Plain Old Java Object</td>
-			<td></td>
+			<td class="template" data-id="java"></td>
 		</tr>
 		<tr>
 			<th id="POX">POX</th>
@@ -535,6 +550,11 @@
 			<td>Repository Query Language (<a href="#ATG">ATG</a>)</td>
 			<td class="template" data-id="ql"></td>
 		</tr>
+		<tr>
+			<th id="RMI"></th>
+			<td>Remote Method Invocation</td>
+			<td class="template" data-id="java"></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -543,8 +563,8 @@
 	<summary><b>S</b></summary>
 	<table class="collapse-border padding sorted">
 		<tr>
-			<th id="SaaS">SaaS</th>
-			<td>Software as a Services</td>
+			<th id="SaaS"></th>
+			<td>Software as a Service</td>
 			<td class="template" data-id="aaS"></td>
 		</tr>
 		<tr>
@@ -685,55 +705,57 @@
 </details>
 <div class="indent"></div>
 
-<a href="all.html">SiteMap</a><br>
+<a href="all.html" id="sitemap-footer">SiteMap</a><br>
 <iframe style="border:0; height: 35px;" src="./footer.html"></iframe>
 
 <div id="templates" style="display: none;">
 	<div id="graphics"><a href="#BMP">BMP</a>, <a href="#GIF">GIF</a>, <a href="#TIFF">TIFF</a>, <a href="#SVG">SVG</a>, <a href="#JPEG">JPEG</a>, <a href="#MPEG">MPEG</a></div>
 	<div id="aaS"><a href="#DaaS">DaaS</a>, <a href="#DRaaS">DRaaS</a>, <a href="#IaaS">IaaS</a>, <a href="#MaaS">MaaS</a>, <a href="#NaaS">NaaS</a>, <a href="#PaaS">PaaS</a>, <a href="#SaaS">SaaS</a></div>
-	<div id="java"><a href="#JDK">JDK</a>, <a href="#JEP">JEP</a>, <a href="#JRE">JRE</a>, <a href="#JVM">JVM</a>, <a href="#JCP">JCP</a>, <a href="#JSR">JSR</a></div>
-	<div id="restful"><a href="#REST">REST</a>, <a href="#HATEOAS">HATEOAS</a></div>
-	<div id="ql"><a href="#RDBMS">RDBMS</a>, <a href="#SQL">SQL</a>, <a href="#RQL">RQL</a></div>
+	<div id="java"><a href="#JDK"></a>, <a href="#JEP"></a>, <a href="#JRE"></a>, <a href="#JVM"></a>, <a href="#JCP"></a>, <a href="#JSR"></a>, <a href="#JMM"></a>, <a href="#JNI"></a>, <a href="#JNA"></a>, <a href="#POJO"></a>, <a href="#RMI"></a></div>
+	<div id="restful"><a href="#REST"></a>, <a href="#HATEOAS"></a></div>
+	<div id="ql"><a href="#RDBMS"></a>, <a href="#SQL"></a>, <a href="#RQL"></a></div>
 </div>
 
 <script>
 	// fill the tables headers
-	const ths = document.getElementsByTagName('th');
+	const ths = document.getElementsByTagName("th");
 	Array.from(ths).forEach( th => {
 		th.innerHTML = th.id;
 	});
 
+	// fill the <a> tags
+	const hrefs = document.getElementsByTagName("a");
+	Array.from(hrefs).forEach( link => {
+		if (link.id) return;
+		link.innerHTML = link.href.split("#")[1];
+	});
+
 	function sortTable(table) {
-	let switching = true, rows, i, shouldSwitch;
+		let switching = true;
+		const rows = table.rows;
 
-	while (switching) {
-		switching = false;
-		rows = table.rows;
+		while (switching) {
+			switching = false;
 
-		for (i = 0; i < (rows.length - 1); i++) {
-			shouldSwitch = false;
-			const x = rows[i].getElementsByTagName("TH")[0];
-			const y = rows[i + 1].getElementsByTagName("TH")[0];
+			for (let i = 0; i < (rows.length - 1); i++) {
+				const x = rows[i].getElementsByTagName("TH")[0];
+				const y = rows[i + 1].getElementsByTagName("TH")[0];
 
-			if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-				shouldSwitch = true;
-				break;
+				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+					break;
+				}
 			}
 		}
-
-		if (shouldSwitch) {
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			switching = true;
-		}
-	}
 	}
 
 	const tables = document.querySelectorAll("table.sorted");
 	tables.forEach(sortTable);
 
 	// templates
-	const templates = document.getElementById('templates');
-	const targets = document.getElementsByClassName('template');
+	const templates = document.getElementById("templates");
+	const targets = document.getElementsByClassName("template");
 	Array.from(targets).forEach( target => {
 		target.innerHTML = templates.children.namedItem(target.dataset.id).innerHTML;
 	});
