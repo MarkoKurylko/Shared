@@ -133,6 +133,10 @@
 			<td>Central Processing Unit</td>
 			<td class="template" data-id="computer"></td>
 		</tr>
+		<tr>
+			<th id="CRC"></th>
+			<td>Cyclic Redundancy Check</td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -154,6 +158,14 @@
 			<th id="deterministic">Deterministic</th>
 			<td>The same results for the same input data</td>
 			<td><a href="#non-deterministic">Non-Deterministic</a></td>
+		</tr>
+		<tr>
+			<th id="declarative"></th>
+			<td>
+				What to do. Expressions. <code class="code">input -> {result}</code> |
+				<span class="nowrap">Logic (facts and clauses). Functional. Database processing.</span>
+			</td>
+			<td class="template" data-id="paradigm"></td>
 		</tr>
 		<tr>
 			<th id="DHCP">DHCP</th>
@@ -191,6 +203,11 @@
 			<th id="ECMA">ECMA</th>
 			<td>European Computer Manufacturers Association</td>
 			<td></td>
+		</tr>
+		<tr>
+			<th id="event-driven"></th>
+			<td>Nor <a href="#declarative"></a>, nor <a href="#imperative"></a></td>
+			<td class="template" data-id="paradigm"></td>
 		</tr>
 	</table>
 </details>
@@ -326,6 +343,11 @@
 			<td><a href="#PING">PING</a></td>
 		</tr>
 		<tr>
+			<th id="IGMP"></th>
+			<td>Internet Group Management Protocol</td>
+			<td class="template" data-id="protocol"></td>
+		</tr>
+		<tr>
 			<th id="IIFE">IIFE</th>
 			<td>Immediately Invoked Function Expression</td>
 			<td>JavaScript</td>
@@ -347,6 +369,14 @@
 			<th id="idempotent">Idempotent</th>
 			<td>Repeated operation on an object does not change the result achieved at first execution</td>
 			<td></td>
+		</tr>
+		<tr>
+			<th id="imperative"></th>
+			<td>
+				How to do things. Statements. Var++. |
+				<span class="tooltip" title="Object Oriented Programming">OOP</span>. Procedural. Parallel processing.
+			</td>
+			<td class="template" data-id="paradigm"></td>
 		</tr>
 	</table>
 </details>
@@ -428,6 +458,11 @@
 			<th id="LIFO">LIFO</th>
 			<td>Last In First Out</td>
 			<td>LIFO is a Stack. See also <a href="#FIFO">FIFO</a></td>
+		</tr>
+		<tr>
+			<th id="LDAP"></th>
+			<td>Lightweight Directory Access Protocol</td>
+			<td class="template" data-id="protocol"></td>
 		</tr>
 		<tr>
 			<th id="LAN"></th>
@@ -599,7 +634,7 @@
 		</tr>
 		<tr>
 			<th id="P2P"></th>
-			<td>Peer-to-peer</td>
+			<td>Peer-to-Peer</td>
 			<td class="template" data-id="network"></td>
 		</tr>
 		<tr>
@@ -744,6 +779,11 @@
 			<td>Serial Advanced Technology Attachment</td>
 			<td class="template" data-id="computer"></td>
 		</tr>
+		<tr>
+			<th id="SCTP"></th>
+			<td>Stream Control Transmission Protocol</td>
+			<td class="template" data-id="protocol"></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -870,6 +910,12 @@
 			<td>E<b>x</b>tensible Hypertext Markup Language</td>
 			<td class="template" data-id="ml"></td>
 		</tr>
+		<tr>
+			<th id="XMPP"></th>
+			<td>E<b>x</b>tensible Messaging and Presence Protocol</td>
+			<td class="template" data-id="protocol"></td>
+			<td>Jabber</td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -902,6 +948,7 @@
 	<div id="protocol"><a href="#IP"></a> <a href="#TCP-IP" id="tcpip">TCP/IP</a></div>
 	<div id="network"></div>
 	<div id="graphics"></div>
+	<div id="paradigm"></div>
 	<div id="aaS"></div>
 	<div id="java"></div>
 	<div id="computer"><a href="#IDE"></a>=<a href="#PATA"></a></div>
@@ -958,6 +1005,10 @@
 	Array.from(targets).forEach( target => {
 		const row = target.parentElement;
 		const th = row.getElementsByTagName("TH")[0];
+		if (!templates.children.namedItem(target.dataset.id)){
+			console.error(`No template for: '${target.dataset.id}'`);
+			return;
+		}
 		const templateContent = templates.children.namedItem(target.dataset.id).innerHTML;
 		if (templateContent.indexOf(th.id) < 0) {
 			const space = document.createTextNode(" ");
@@ -970,7 +1021,8 @@
 	});
 
 	Array.from(targets).forEach( target => {
-		target.innerHTML = templates.children.namedItem(target.dataset.id).innerHTML;
+		if (templates.children.namedItem(target.dataset.id))
+			target.innerHTML = templates.children.namedItem(target.dataset.id).innerHTML;
 	});
 
 	// rowSpan the same
