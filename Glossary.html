@@ -15,6 +15,14 @@
 <a href="all.html" id="sitemap">SiteMap</a>
 <div class="indent"></div>
 
+<label for="search-input"></label>
+<input id="search-input" type="text" title="Enter abbreviation or term">
+<button name="Search" onclick="search()">Search</button>
+<div class="indent"></div>
+<div id="search-results" style="display: none;"></div>
+<div class="indent"></div>
+<hr>
+
 <details open>
 	<summary><b>A</b></summary>
 	<table class="collapse-border padding sorted">
@@ -111,7 +119,7 @@
 		<tr>
 			<th id="CGI">CGI</th>
 			<td>
-				Computer-Generated Imagery<hr>
+				Computer-Generated Imagery<hr class="margin3px">
 				Common Gateway Interface
 			</td>
 			<td></td>
@@ -119,7 +127,7 @@
 		<tr>
 			<th id="CLI"></th>
 			<td>
-				Command-Line Interface<hr>
+				Command-Line Interface<hr class="margin3px">
 				Command-Line Interpreter
 			</td>
 		</tr>
@@ -335,6 +343,7 @@
 		<tr>
 			<th id="ISO"></th>
 			<td>International Organization for Standardization</td>
+			<td></td>
 		</tr>
 		<tr>
 			<th id="ICMP">ICMP</th>
@@ -360,7 +369,7 @@
 		<tr>
 			<th id="IDE"></th>
 			<td>
-				Integrated Drive Electronics<hr>
+				Integrated Drive Electronics<hr class="margin3px">
 				Integrated Development Environment
 			</td>
 			<td class="template" data-id="computer"></td>
@@ -961,6 +970,13 @@
 </div>
 
 <script>
+	function createHrefLink(link, label) {
+		const element = document.createElement("a");
+		element.innerHTML = label;
+		element.href = "#" + link;
+		return element;
+	}
+
 	// fill the tables headers
 	const ths = document.getElementsByTagName("th");
 	Array.from(ths).forEach( th => {
@@ -1011,12 +1027,8 @@
 		}
 		const templateContent = templates.children.namedItem(target.dataset.id).innerHTML;
 		if (templateContent.indexOf(th.id) < 0) {
-			const space = document.createTextNode(" ");
-			const link = document.createElement("a");
-			link.innerHTML = th.id;
-			link.href = "#" + th.id;
-			templates.children.namedItem(target.dataset.id).appendChild(space);
-			templates.children.namedItem(target.dataset.id).appendChild(link);
+			templates.children.namedItem(target.dataset.id).appendChild(document.createTextNode(" "));
+			templates.children.namedItem(target.dataset.id).appendChild(createHrefLink(th.id, th.innerHTML));
 		}
 	});
 
@@ -1045,6 +1057,35 @@
 		}
 	});
 
+	const searchInput = document.getElementById("search-input");
+	const searchResults = document.getElementById("search-results");
+
+	function search() {
+		if (searchInput.value && searchInput.value.trim().length > 0) {
+			const searchStr = searchInput.value.trim().toLowerCase();
+			searchResults.innerHTML = "";
+
+			Array.from(ths).forEach( item => {
+				if (item.innerHTML.toLowerCase().indexOf(searchStr) >= 0 ) {
+					searchResults.appendChild(createHrefLink(item.id, item.innerHTML));
+					searchResults.appendChild(document.createTextNode(" "));
+				}
+			});
+			if (searchResults.innerHTML.length == 0) {
+				searchResults.appendChild(document.createTextNode("Nothing found"));
+			}
+			searchResults.style.display = "block";
+		} else {
+			searchResults.style.display = "none";
+		}
+	}
+
+	searchInput.addEventListener("keypress", function(event) {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			search();
+		}
+	});
 </script>
 </body>
 </html>
