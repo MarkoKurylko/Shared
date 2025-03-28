@@ -145,6 +145,11 @@
 			<th id="CRC"></th>
 			<td>Cyclic Redundancy Check</td>
 		</tr>
+		<tr>
+			<th id="CVC"></th>
+			<td>Centralized Version Control</td>
+			<td class="template" data-id="version-control"></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -199,6 +204,26 @@
 			<th id="DTD"></th>
 			<td>Document Type Definition</td>
 			<td class="template" data-id="ml"></td>
+		</tr>
+		<tr>
+			<th id="DCL"></th>
+			<td>Data Control Language</td>
+			<td class="template" data-id="sql-subgroup"></td>
+		</tr>
+		<tr>
+			<th id="DDL"></th>
+			<td>Data Definition Language</td>
+			<td class="template" data-id="sql-subgroup"></td>
+		</tr>
+		<tr>
+			<th id="DML"></th>
+			<td>Data Manipulation Language</td>
+			<td class="template" data-id="sql-subgroup"></td>
+		</tr>
+		<tr>
+			<th id="DVC"></th>
+			<td>Distributed Version Control</td>
+			<td class="template" data-id="version-control"></td>
 		</tr>
 	</table>
 </details>
@@ -257,8 +282,14 @@
 			<td class="template" data-id="graphics"></td>
 		</tr>
 		<tr>
-			<th id="GPS">GPS</th>
+			<th id="Git"></th>
+			<td>"Git" Linux Torvalds' <a href="#DVC"></a></td>
+			<td class="template" data-id="version-control"></td>
+		</tr>
+		<tr>
+			<th id="GPS"></th>
 			<td>Global Positioning System</td>
+			<td></td>
 		</tr>
 		<tr>
 			<th id="GML"></th>
@@ -764,6 +795,11 @@
 			<td class="template" data-id="graphics"></td>
 		</tr>
 		<tr>
+			<th id="SVN"></th>
+			<td>Apache Subversion. It is <a href="#CVC"></a></td>
+			<td class="template" data-id="version-control"></td>
+		</tr>
+		<tr>
 			<th id="SSH"></th>
 			<td>Secure Shell Protocol</td>
 			<td class="template" data-id="protocol"></td>
@@ -772,6 +808,7 @@
 			<th id="SQL">SQL</th>
 			<td>Structured Query Language</td>
 			<td class="template" data-id="ql"></td>
+			<td class="template" data-id="sql-subgroup"></td>
 		</tr>
 		<tr>
 			<th id="SSID"></th>
@@ -810,6 +847,11 @@
 			<th id="TIFF">TIFF</th>
 			<td>Tagged Image File Format</td>
 			<td class="template" data-id="graphics"></td>
+		</tr>
+		<tr>
+			<th id="TCL"></th>
+			<td>Transaction Control Language</td>
+			<td class="template" data-id="sql-subgroup"></td>
 		</tr>
 	</table>
 </details>
@@ -952,20 +994,10 @@
 <iframe style="border:0; height: 35px;" src="./footer.html"></iframe>
 
 <div id="templates" style="display: none;">
-	<div id="atg+"><a href="#ATG"></a> <a href="#RQL"></a> <a href="#PMDL"></a></div>
 	<div id="ml"><a href="#GML"></a> -> <a href="#SGML"></a> -> [<a href="#XML"></a>, <a href="#HTML"></a> -> <a href="#XHTML"></a>]; <a href="#DTD"></a></div>
 	<div id="protocol"><a href="#IP"></a> <a href="#TCP-IP" id="tcpip">TCP/IP</a></div>
-	<div id="network"></div>
-	<div id="graphics"></div>
-	<div id="paradigm"></div>
-	<div id="aaS"></div>
-	<div id="java"></div>
 	<div id="computer"><a href="#IDE"></a>=<a href="#PATA"></a></div>
-	<div id="internet"></div>
 	<div id="identifier"><a href="#GUID"></a>=<a href="#UUID"></a></div>
-	<div id="restful"><a href="#REST"></a> <a href="#HATEOAS"></a></div>
-	<div id="format"><a href="#PDF"></a> <a href="#RTF"></a></div>
-	<div id="ql"><a href="#RDBMS"></a> <a href="#SQL"></a> <a href="#RQL"></a> <a href="#CTE"></a> <a href="#BLOB"></a></div>
 	<div id="uniform-resource"><a href="#URL"></a> Is a subset of <a href="#URI"></a></div>
 </div>
 
@@ -1022,8 +1054,10 @@
 		const row = target.parentElement;
 		const th = row.getElementsByTagName("TH")[0];
 		if (!templates.children.namedItem(target.dataset.id)){
-			console.error(`No template for: '${target.dataset.id}'`);
-			return;
+			console.debug(`No template for: '${target.dataset.id}', creating`);
+			const template = document.createElement("DIV");
+			template.id = target.dataset.id;
+			templates.appendChild(template);
 		}
 		const templateContent = templates.children.namedItem(target.dataset.id).innerHTML;
 		if (templateContent.indexOf(th.id) < 0) {
