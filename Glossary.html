@@ -179,7 +179,7 @@
 		</tr>
 		<tr>
 			<th id="declarative"></th>
-			<td>
+			<td style="max-width: 500px;">
 				What to do. Expressions. <code class="code">input -> {result}</code> |
 				<span class="nowrap">Logic (facts and clauses). Functional. Database processing.</span>
 			</td>
@@ -514,6 +514,16 @@
 			<td>Local Area Network</td>
 			<td class="template" data-id="network"></td>
 		</tr>
+		<tr>
+			<th id="LWC"></th>
+			<td>Language of Wider Communication</td>
+			<td><a href="#lingua-franca"></a></td>
+		</tr>
+		<tr>
+			<th id="lingua-franca" class="skip">Lingua franca</th>
+			<td>Bridge, common, trade, auxiliary or link language, or <a href="#LWC"></a> </td>
+			<td></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -597,6 +607,12 @@
 			<th id="NNTP">NNTP</th>
 			<td>Network News Transport Protocol</td>
 			<td class="template" data-id="protocol"></td>
+		</tr>
+		<tr>
+			<th id="NoSQL"></th>
+			<td>Not only <a href="#SQL"></a></td>
+			<td class="template" data-id="ql"></td>
+			<td>Non-relational <span class="tooltip" title="Database">DB</span></td>
 		</tr>
 	</table>
 </details>
@@ -1070,7 +1086,7 @@
 			templates.appendChild(template);
 		}
 		const templateContent = templates.children.namedItem(target.dataset.id).innerHTML;
-		if (templateContent.indexOf(th.id) < 0) {
+		if ((templateContent.indexOf(">" + th.id + "<") < 0) && (templateContent.indexOf("#" + th.id) < 0)) {
 			templates.children.namedItem(target.dataset.id).appendChild(document.createTextNode(" "));
 			templates.children.namedItem(target.dataset.id).appendChild(createHrefLink(th.id, th.innerHTML));
 		}
