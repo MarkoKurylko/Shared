@@ -9,6 +9,24 @@
 <div class="indent"></div>
 
 <table id="toc">
+	<tr>
+		<td><h1>D</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#db-normal-forms">Database normal forms</a></h2>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>F</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#fd">Functional Dependency</a></h3>
+			</details>
+		</td>
+	</tr>
     <tr>
         <td><h1>R</h1></td>
         <td>
@@ -22,6 +40,320 @@
 </table>
 
 <hr style="height:2px;">
+
+<div id="db-normal-forms">
+	<h2>Database normal forms</h2>
+	<em>Terminology</em>:<br>
+	<div class="indent"></div>
+	Table is a <i>Relation</i>.
+	<div class="indent"></div>
+
+	<em class="light-pink" id="elementary-key">Elementary key</em> - Can be composite. <em><b>[Def. 1]</b></em> Is a key that uniquely determines at most one <i class="green">non-key</i> attribute.
+	<em><b>[Def. Hugo Cornelis]</b></em> All other columns depend on the <em>key</em>, and none of these is a <i class="brown">cheater</i> <a href="#fd">FD</a>.
+	Example: <code class="code">{ABC} → XYZ</code>, where <code class="code">{ABC}</code> is an <i>elementary key</i>, than there <span class="red">should not be</span> <a href="#fd">FDs</a> like <code class="code">B → Y</code>, <code class="code">A → X</code> etc.<br>
+	<em class="light-pink margin" id="elementary-key-attr">Elementary key attribute</em> - an attribute of an <i>elementary key</i>, always single and atomic.<br>
+	<div class="indent4"></div>
+
+	<em class="hot-pink" id="super-key">Super Key</em> – a set<small>(superset)</small> of attributes that uniquely identifies a record, but it may include extra attributes that are not necessary for uniqueness.<br>
+	<div class="indent"></div>
+
+	<em class="dark-red" id="c-key">Candidate Key</em> <small>(or just the <i><b>key</b></i>)</small> - <em><b>[Def. 1]</b></em> Any set of columns that have a unique combination of values in each row.
+		<em><b>[Def. 2]</b></em> A minimal set of attributes that uniquely identifies a record in a <i>Relation</i>. It contains no unnecessary attributes.
+	<em><b>[Def. Hugo Cornelis]</b></em> All other columns depend on the <i>key</i>.<br>
+	<div class="indent"></div>
+
+	<em class="fire-brick">Primary Key</em> – a selected <i class="dark-red">candidate key</i> used as the main identifier for records in a <i>Relation</i>.<br>
+
+	<div class="indent"></div>
+	<em class="medium-aqua-marine" id="non-prime-attribute">Non-prime attribute</em> - an attribute that is not a part of any <i class="dark-red">candidate key</i>.<br>
+	<em class="green" id="non-key-attribute">Non-key attribute</em> - an attribute that is not part of the <i class="fire-brick">primary key</i>, but may still be part of an alternate (non-primary) <i class="dark-red">candidate key</i>.<br>
+
+	<div class="indent"></div>
+	<em class="purple">Foreign Key</em> – a field in one table that refers to the <i class="fire-brick">primary key</i> in another table, establishing a relationship between tables.<br>
+	<br>
+	Each next <i>normal form</i> complies with previous normal form <small>(except 6NF)</small>.
+	<ul>
+		<li>
+			<h4 style="margin-bottom:2px;">1NF <small>⚓ Color set</small></h4>
+			Each field contains a single value.
+			Field should not contain a set of values or a nested record. (Scalar columns)<br>
+			All rows are unique<br>
+			<span style="color: blue; font-size: 18px;">&#9888;</span> <span class="fire-brick">Primary key</span> <span class="green">may not</span> be present yet.
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th>Name</th><th>Type</th><th>Colors</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td><td>Red;Green;Blue</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th>Name</th><th>Type</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObjectColor</small></caption>
+							<tr><th>Name</th><th>Color</th></tr>
+							<tr><td>Object-1</td><td>Red</td></tr>
+							<tr><td>Object-1</td><td>Green</td></tr>
+							<tr><td>Object-1</td><td>Blue</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 style="margin-bottom:2px;">2NF <small>⚓ Shape & Price</small></h4>
+			It does <b>not</b> have any <i class="medium-aqua-marine">non-prime attribute</i>
+			that is <a href="#fd">functionally dependent</a> on any <i>proper subset</i> of any <i class="dark-red">candidate key</i>.
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th class="dark-blue">Name</th><th>Type</th><th class="dark-blue">Shape</th><th>Price</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td><td>Circle</td><td>50</td></tr>
+							<tr><td>Object-1</td><td>Trivial</td><td>Square</td><td>45</td></tr>
+							<tr><td>Object-2</td><td>Non-Trivial</td><td>Triangle</td><td>55</td></tr>
+						</table>
+						"Type" depends only on Object's <b class="dark-blue">Name</b>, therefore it does not comply with 2NF
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th>Name</th><th>Type</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td></tr>
+							<tr><td>Object-2</td><td>Non-Trivial</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObjectPrice</small></caption>
+							<tr><th class="dark-blue">Name</th><th class="dark-blue">Shape</th><th>Price</th></tr>
+							<tr><td>Object-1</td><td>Circle</td><td>50</td></tr>
+							<tr><td>Object-1</td><td>Square</td><td>45</td></tr>
+							<tr><td>Object-2</td><td>Triangle</td><td>55</td></tr>
+						</table>
+						The <i>Price</i> depends on whole <i>{Name & Shape}</i> combination, but not on <i>Name</i> or <i>Shape</i> separately.
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 style="margin-bottom:2px;">3NF <small>⚓ Manufacturer & Country; Non-transitive FD</small></h4>
+			Every <i class="medium-aqua-marine">non-prime attribute</i> of a <i>Relation</i> is <a href="#transitive-fd">non-transitively</a> dependent on each <i class="dark-red">candidate key</i>.<br>
+			But, <i>key/prime</i> attributes <span class="green">can</span> be <a href="#transitive-fd">transitively</a> dependent on any <i class="dark-red">candidate key</i>.<br>
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						<small>The transitive dependency is</small>:
+						Object → <span class="dark-blue">Manufacturer</span> → <span class="blue">Manufacturer Country</span>
+						<div class="indent"></div>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th>Name</th><th>Type</th><th class="dark-blue">Manufacturer</th><th class="blue">Manufacturer Country</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td><td>Honda</td><td>Japan</td></tr>
+							<tr><td>Object-2</td><td>Non-Trivial</td><td>Philips</td><td>NL</td></tr>
+							<tr><td>Object-3</td><td>Complex</td><td>Honda</td><td>Japan</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>SomeObject</small></caption>
+							<tr><th>Name</th><th>Type</th><th class="dark-blue">Manufacturer</th></tr>
+							<tr><td>Object-1</td><td>Trivial</td><td>Honda</td></tr>
+							<tr><td>Object-2</td><td>Non-Trivial</td><td>Philips</td></tr>
+							<tr><td>Object-3</td><td>Complex</td><td>Honda</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Manufacturer</small></caption>
+							<tr><th>Name</th><th>Country</th></tr>
+							<tr><td>Honda</td><td>Japan</td></tr>
+							<tr><td>Philips</td><td>NL</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 style="margin-bottom:2px;">EKNF <small>⚓ TELEPHONE (PLACE, AREA, NUMBER)</small></h4>
+			<em class="dodger-blue">Elementary Key Normal Form</em>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Carlo Zaniolo <small>(the author)</small>]</b></em><br>
+			1) For every elementary <a href="#fd">FD</a> <code class="code">X → A</code>, <code class="code">X</code> is a <i>key</i> <em><b>or</b></em> <code class="code">A</code> is an <a href="#elementary-key-attr">elementary key attribute</a><br>
+			2) For every non-trivial <a href="#fd">FD</a> <code class="code">X → A</code>, <code class="code">X</code> is a <a href="#super-key">super-key</a> <em><b>or</b></em> <code class="code">A</code> is an <a href="#elementary-key-attr">elementary key attribute</a><br>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Hugo Kornelis]</b></em><br>
+			All <span class="dark-green">non-elementary-key</span> columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2">
+						<table class="collapse-border padding">
+							<caption><small>Telephone <i>by Carlo Zaniolo</i></small></caption>
+							<tr><th>Place</th><th>Area</th><th>Number</th></tr>
+							<tr><td>Los-Alamos</td><td>51</td><td>555-35-55</td></tr>
+						</table>
+						<div class="indent4"></div>
+						<i>FD-1</i>: (AREA, NUMBER) → PLACE<br>
+						<i>FD-2</i>: PLACE → AREA<br>
+						<div class="indent4"></div>
+						(AREA, NUMBER) is a <i>key</i>, so in <a href="#fd">FD</a> <code>PLACE → AREA</code>, the <code>Place</code> in not the <i>key</i>, but <code>Area</code> is an <a href="#elementary-key-attr">elementary key attribute</a>
+ 					</td>
+				</tr>
+				<tr>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small><i>by Hugo Cornelis</i></small></caption>
+							<tr><th>Day</th><th>Speaker</th><th>City</th><th>Topic</th></tr>
+							<tr><td>Monday</td><td>Hugo Kornelis</td><td>London</td><td>Execution plans</td></tr>
+							<tr><td>Monday</td><td>Kendra Large</td><td>London</td><td>Women in tech</td></tr>
+							<tr><td>Tuesday</td><td>Grant Friskey</td><td>Manchester</td><td>Extended Events</td></tr>
+							<tr><td>Tuesday</td><td>Hugo Kornelis</td><td>Manchester</td><td>Query Store</td></tr>
+							<tr><td>Wednesday</td><td>Kendra Large</td><td>Leicester</td><td>Query Store</td></tr>
+							<tr><td>Wednesday</td><td>Rie Scottish</td><td>Leicester</td><td>Community</td></tr>
+						</table>
+						<div class="indent4"></div>
+						<a href="#fd">FDs</a>: <code>Day → City</code> and <code>City → Day</code><br>
+						<i>Candidate key 1</i>: <code>{Day,Speaker} → City(<i class="brown">cheater</i>),Topic</code><br>
+						<i>Candidate key 2</i>: <code>{City,Speaker} → Day(<i class="brown">cheater</i>),Topic</code><br>
+						So, none of these <a href="#c-key">candidate keys</a> is <a href="#elementary-key">elementary</a> and therefore the <i>Relation</i> is not in <i class="dodger-blue">EKNF</i>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<tr><th class="text-align-center" colspan="2">Key</th><th></th></tr>
+							<tr><th>Speaker</th><th>City</th><th>Topic</th></tr>
+							<tr><td>Hugo Kornelis</td><td>London</td><td>Execution plans</td></tr>
+							<tr><td>Kendra Large</td><td>London</td><td>Women in tech</td></tr>
+							<tr><td>Grant Friskey</td><td>Manchester</td><td>Extended Events</td></tr>
+							<tr><td>Hugo Kornelis</td><td>Manchester</td><td>Query Store</td></tr>
+							<tr><td>Kendra Large</td><td>Leicester</td><td>Query Store</td></tr>
+							<tr><td>Rie Scottish</td><td>Leicester</td><td>Community</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<tr><th>Day</th><th>City</th></tr>
+							<tr><td>Monday</td><td>London</td></tr>
+							<tr><td>Tuesday</td><td>Manchester</td></tr>
+							<tr><td>Wednesday</td><td>Leicester</td></tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2">
+						<table class="collapse-border padding">
+							<caption><small><i>by Hugo Cornelis</i></small></caption>
+							<tr><th>Track</th><th>Session#</th><th>Room</th><th>StartTime</th><th>SessionName</th></tr>
+							<tr><td>AD</td><td>205</td><td>Blue</td><td>10:00</td><td>Connections 101</td></tr>
+							<tr><td>AD</td><td>207</td><td>Blue</td><td>12:45</td><td>Execution plans</td></tr>
+							<tr><td>BI</td><td>205</td><td>605</td><td>16:00</td><td>Dashboards</td></tr>
+							<tr><td>DBA</td><td>305</td><td>Grand</td><td>16:00</td><td>Execution plans</td></tr>
+							<tr><td>PD</td><td>203</td><td>Grand</td><td>14:30</td><td>Personal growth</td></tr>
+						</table>
+						<i>FD</i>: Track → Room<br>
+						<i>Candidate key 1</i>: <code>{Track,Session#} → Room(<i class="brown">cheater</i>),StartTime,SessionName</code><br>
+						<i>Candidate key 2</i>: <code>{Track,StartTime} → Session#,Room(<i class="brown">cheater</i>),SessionName</code><br>
+						<i>Candidate key 3</i>: <code>{Room,StartTime} → Track,Session#,SessionName</code><br>
+						So, <i>Candidate keys 1 & 2</i> are not <a href="#elementary-key">elementary</a> and <i>Candidate key 3</i> is an <a href="#elementary-key">elementary</a>,
+						and therefore the <i>Relation</i> <span class="green">is</span> in <i class="dodger-blue">EKNF</i>
+					</td>
+				</tr>
+			</table>
+		</li>
+	</ul>
+</div>
+<hr>
+
+<div id="fd">
+	<h3>Functional Dependency</h3>
+	<span class="fire-brick">Determinant</span> → <span class="light-green">Dependent</span><br>
+	"<code class="code">X → Y</code>" means that <code class="code">X</code> <span class="dark-red">determines</span> the <i>value</i> of <code class="code">Y</code>,
+	where <code class="code">X</code> & <code class="code">Y</code> are the attributes of a <span class="tooltip" title="Relation">R</span>.
+
+	<ul class="ulWithMargin">
+		<li>
+			<b>Trivial FD</b><br>
+			A <i>dependent</i> is always a subset of the <i>determinant</i>.<br>
+			If <code class="code">X → Y</code> and <code class="code">Y</code> is the subset of <code class="code">X</code>,
+			then it is called trivial functional dependency.<br>
+			Examples: <code class="code">A → A</code>, <code class="code">{A,B,C} → {A,B}</code>, <code class="code">{A,B,C} → A</code>, <code class="code">{A,B,C} → {A,B,C}</code>.
+		</li>
+		<li>
+			<b>Non-Trivial FD</b><br>
+			The <i>dependent</i> is strictly not a subset of the <i>determinant</i>.<br>
+			If <code class="code">X → Y</code> and <code class="code">Y</code> is not a subset of <code class="code">X</code>,
+			then it is called <i>Non-trivial functional dependency</i>.
+		</li>
+		<li>
+			<b>Multivalued FD</b><br>
+			Entities of the <i>dependent</i> set do not depend on each other.<br>
+			<code class="code">A ↠ B</code> and <code class="code">A ↠ C</code>,
+			where is no <span class="tooltip" title="Functional Dependency">FD</span> between <code class="code">B</code> & <code class="code">C</code>.
+			<small>Alternate writing <code class="code">A → {B,C}</code></small>.
+		</li>
+		<li>
+			<b id="transitive-fd">Transitive FD </b><br>
+			<i>Dependent</i> is indirectly dependent on <span class="fire-brick">another</span> <i>determinant</i>.<br>
+			If <code class="code">A → B</code> & <code class="code">B → C</code>, then <code class="code">A → C</code>.
+		</li>
+		<li>
+			<b>Elementary FD</b><br>
+			<code class="code">X → A</code>, where<br>
+			<code class="code">X</code> is a set of one or more attributes.<br>
+			<code class="code">A</code> is a single attribute.<br>
+			<code class="code">A</code> does <b>not</b> appear in any <small><b>smaller dependency</b></small> with a proper subset of <code class="code">X</code>.
+			Means it is non-decomposable.<br>
+			Examples: <code class="code">AB → C</code>, <code class="code">A →<span class="overlap">/</span>C</code>, <code class="code">B →<span class="overlap">/</span>C</code>, then
+			<code class="code">AB → C</code> is both <i>fully</i> functional and <i>elementary</i>.
+		</li>
+		<li>
+			<b>Fully FD</b><br>
+			A <a href="#non-prime-attribute">non-prime attribute</a> depends on the whole <a href="#c-key">candidate key</a>, not only on some portion of it.<br>
+			<code class="code">{OrderID,ProductID} → Quantity</code>, where <code>Quantity</code> depends on the whole key.<br>
+			<code class="code">StudentID → StudentName</code>.<br>
+			<code class="code">AB → CD</code> can be <i>fully</i> FD, but <b>cannot</b> be <i>elementary</i> FD.
+		</li>
+		<li>
+			<b>Partial FD</b><br>
+			A <i>non key attribute</i> depends on a part of the <i>composite key</i>, rather than the whole key.<br>
+			<code class="code">X</code>, <code class="code">Y</code>, <code class="code">Z</code>
+			where <code class="code">X</code> and <code class="code">Y</code> are the <i>composite key</i> and <code class="code">Z</code> is a <i>non key attribute</i>.
+			Then <code class="code">X → Z</code> and <code class="code">Y → Z</code> are the partial <span class="tooltip" title="Functional Dependency">FD</span>.
+		</li>
+	</ul>
+</div>
+<hr>
 
 <div id="redBlackTree">
     <h2>Red Black Tree</h2>
@@ -190,7 +522,7 @@
 	</ol>
 </div>
 
-Sources: Wikipedia.
+Sources: Wikipedia. Carlo Zaniolo. Hugo Kornelis.
 
 <div class="indent"></div>
 <a href="all.html">SiteMap</a><br>

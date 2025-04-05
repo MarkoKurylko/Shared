@@ -8,18 +8,22 @@
 .java16 {color: Red}
 .java21 {color: Red}
 
-.red      {color: Red}
-.dark-red {color: DarkRed}
-.hot-pink {color: HotPink}
-.fire-brick    {color: FireBrick} /*red*/
-.green    {color: Green}
-.light-green   {color: LightGreen}
-.dark-green    {color: DarkGreen}
-.blue     {color: Blue}
+.red                {color: Red}
+.dark-red           {color: DarkRed}
+.hot-pink           {color: HotPink}
+.light-pink         {color: LightPink}
+.fire-brick         {color: FireBrick} /*red*/
+.green              {color: Green}
+.light-green        {color: LightGreen}
+.dark-green         {color: DarkGreen}
+.medium-aqua-marine {color: MediumAquaMarine} /*green*/
+.blue          {color: Blue}
 .dodger-blue   {color: DodgerBlue}
+.dark-blue     {color: DarkBlue}
 .midnight-blue {color: MidnightBlue}
 .brown    {color: Brown}
 .orange   {color: Orange}
+.purple   {color: Purple}
 .grey     {color: Grey}
 
 .border, .border th , .border td, .collapse-border, .collapse-border th, .collapse-border td {
@@ -35,6 +39,9 @@
 .margin-left {margin-left: 1em}
 .margin {margin: 1em}
 .margin3px {margin: 3px}
+
+.text-align-center  {text-align:center }
+.text-align-initial {text-align:initial}
 
 .code {color: DarkBlue}
 
@@ -52,4 +59,9 @@ ul.ulWithMargin > li {margin: 10px 0;}
 
 .nowrap {
 	white-space: nowrap;
+}
+
+.overlap {
+	position: relative;
+	left: -8px;
 }
