@@ -1001,7 +1001,7 @@
 			A container object which may or may not contain a non-<code>null</code> value.
 			If a value is present, <code>isPresent()</code> returns <code>true</code>.
 			If no value is present, the object is considered <i>empty</i> and <code>isPresent()</code> returns <code>false</code>.<br>
-			<span style="color: blue; font-size: 20px;">&#9888;</span>
+			<span class="warning-sign fs20 blue"></span>
 			The initial method to retrieve value was <code class="code">get()</code>,
 			but in <span class="java10">java 10</span> the <code class="code">orElseThrow()</code>
 			method was added with the same code as in <code class="code">get()</code>.
@@ -1130,7 +1130,7 @@
 			The Stream API has been designed in such a way that as long as you <span style="color: navy">do not create any non-stream object</span>
 			<small style="color: LightGreen">(means creating stream objects)</small> in a stream pattern,
 			<span style="color: navy">no computation</span> of your data is conducted.<br>
-			<span style="color: orange; font-size: 20px;">&#9888;</span>
+			<span class="warning-sign fs20 orange"></span>
 			There are several exceptions to previous rule.<br>
 			<code>distinct()</code> and <code>sorted()</code> method needs to store the elements of your stream.
 			It does so in an internal <code>Set</code>.

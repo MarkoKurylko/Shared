@@ -65,3 +65,13 @@ ul.ulWithMargin > li {margin: 10px 0;}
 	position: relative;
 	left: -8px;
 }
+
+.warning-sign:before {
+	content: '\26A0';
+}
+.fs18 {
+	font-size: 18px;
+}
+.fs20 {
+	font-size: 20px;
+}
