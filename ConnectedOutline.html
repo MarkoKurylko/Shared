@@ -210,7 +210,7 @@
 
 			<em><b>[Def. Hugo Kornelis]</b></em><br>
 			All <span class="dark-green">non-elementary-key</span> columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
-			Highest normal form that is <span class="green">guaranteed</span> possible
+			Highest normal form that is <span class="green">guaranteed</span> possible.
 			<div class="indent"></div>
 			<table class="collapse-border padding">
 				<tr>
@@ -293,10 +293,70 @@
 				</tr>
 			</table>
 		</li>
+		<li>
+			<h4 style="margin-bottom:2px;">BCNF (3.5NF)<small>⚓ TELEPHONE decomposition: (place,area) & (place,number)</small></h4>
+			<em class="dodger-blue">Boyce Codd Normal Form</em>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Wiki]</b></em><br>
+			For everyone <a href="#fd">FDs</a> <code class="code">X → Y</code>, it's a <i>trivial</i> FD <b>or</b> <code class="code">X</code> is a <a href="#super-key">super-key</a>.
+			<div class="indent4"></div>
+
+			<em><b>[Def. Hugo Kornelis]</b></em><br>
+			All columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
+			This form <span class="red">cannot</span> always be achieved.
+			<div class="indent"></div>
+
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td rowspan="2">
+						<table class="collapse-border padding">
+							<caption><small>Telephone <i>by Carlo Zaniolo</i> (EKNF)</small></caption>
+							<tr><th>Place</th><th>Area</th><th>Number</th></tr>
+							<tr><td>Los-Alamos</td><td>51</td><td>555-35-55</td></tr>
+						</table>
+						<div class="indent4"></div>
+						<i>FD-1</i>: (AREA, NUMBER) → PLACE<br>
+						<i>FD-2</i>: PLACE → AREA<br>
+						<div class="indent4"></div>
+						For FD-1 the conditions is met, because this FD is not trivial, but <code>(AREA, NUMBER)</code> is a <i>super-key</i>.<br>
+						For RD-2 the conditions are not met, because it's not trivial and <code>PLACE</code> is not a <i>super-key</i>, <br>
+						so the <i>Relation</i> is not <i>BCNF</i>.
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<tr><th>Place</th><th>Area</th></tr>
+							<tr><td>Los-Alamos</td><td>51</td></tr>
+						</table>
+						<div class="indent4"></div>
+						The <i>key</i> is <code>Place</code>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<tr><th>Place</th><th>Number</th></tr>
+							<tr><td>Los-Alamos</td><td>555-35-55</td></tr>
+						</table>
+						<div class="indent4"></div>
+						The <i>key</i> is <code>(Place,Number)</code>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">But this schema is <span class="red">not</span> satisfactory according to the representation principle.</td>
+				</tr>
+
+			</table>
+		</li>
 	</ul>
 
 	<span class="warning-sign fs18 blue"></span>
-	<i><b>Notes:</b></i>
+	<i><b>Notes:</b></i><br>
+	 3NF: All <span class="green">non-key</span> columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
+	EKNF: All <span class="dark-green">non-elementary-key</span> columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
+	BCNF: All columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
 </div>
 <hr>
 
