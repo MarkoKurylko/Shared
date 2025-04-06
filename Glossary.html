@@ -9,6 +9,10 @@
 		summary {color: DarkSlateGrey;}
 
 		:target {background-color: LightGreen;}
+
+		.td2max-width-500 td:nth-of-type(1) {
+			max-width: 500px;
+		}
 	</style>
 </head>
 <body>
@@ -67,6 +71,11 @@
 			<td>Advanced Encryption Standard</td>
 			<td><a href="#DES">DES</a></td>
 		</tr>
+		<tr>
+			<th id="AWS"></th>
+			<td>Amazon Web Services</td>
+			<td class="template" data-id="cloud"></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -110,6 +119,12 @@
 			<th id="CRT">CRT</th>
 			<td>Cathode Ray Tube</td>
 			<td></td>
+		</tr>
+		<tr>
+			<th id="CSP"></th>
+			<td>Cloud Service Provider</td>
+			<td class="template" data-id="cloud"></td>
+			<td><a href="#IaaS"></a>, <a href="#PaaS"></a>, <a href="#SaaS"></a></td>
 		</tr>
 		<tr>
 			<th id="CMS">CMS</th>
@@ -161,7 +176,7 @@
 
 <details open>
 	<summary><b>D</b></summary>
-	<table class="collapse-border padding sorted">
+	<table class="collapse-border padding sorted td2max-width-500">
 		<tr>
 			<th id="DaaS">DaaS</th>
 			<td>Desktop as a Service</td>
@@ -179,7 +194,7 @@
 		</tr>
 		<tr>
 			<th id="declarative"></th>
-			<td style="max-width: 500px;">
+			<td>
 				What to do. Expressions. <code class="code">input -> {result}</code> |
 				<span class="nowrap">Logic (facts and clauses). Functional. Database processing.</span>
 			</td>
@@ -229,6 +244,16 @@
 			<th id="DVC"></th>
 			<td>Distributed Version Control</td>
 			<td class="template" data-id="version-control"></td>
+		</tr>
+		<tr>
+			<th id="DMS"></th>
+			<td>Document Management System</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="DVD"></th>
+			<td>Digital Video Disk</td>
+			<td></td>
 		</tr>
 	</table>
 </details>
@@ -340,7 +365,7 @@
 
 <details open>
 	<summary><b>I</b></summary>
-	<table class="collapse-border padding sorted">
+	<table class="collapse-border padding sorted td2max-width-500">
 		<tr>
 			<th id="IaaS">IaaS</th>
 			<td>Infrastructure as a Service</td>
@@ -404,8 +429,13 @@
 		</tr>
 		<tr>
 			<th id="IETF">IETF</th>
-			<td> Internet Engineering Task Force</td>
+			<td>Internet Engineering Task Force</td>
 			<td class="template" data-id="internet"></td>
+		</tr>
+		<tr>
+			<th id="IMAP"></th>
+			<td>Internet Message Access Protocol</td>
+			<td class="template" data-id="protocol"></td>
 		</tr>
 		<tr>
 			<th id="IDE"></th>
@@ -530,6 +560,18 @@
 			<td><a href="#lingua-franca"></a></td>
 		</tr>
 		<tr>
+			<th id="LTE"></th>
+			<td>Long-Term Evolution</td>
+			<td class="template" data-id="telecom" title="telecom"></td>
+			<td>3.95G</td>
+		</tr>
+		<tr>
+			<th id="LTE+"></th>
+			<td><a href="#LTE"></a> Advanced</td>
+			<td class="template" data-id="telecom"></td>
+			<td>LTE-A, 4G+</td>
+		</tr>
+		<tr>
 			<th id="lingua-franca" class="skip">Lingua franca</th>
 			<td>Bridge, common, trade, auxiliary or link language, or <a href="#LWC"></a> </td>
 			<td></td>
@@ -570,6 +612,16 @@
 			<th id="MSRP"></th>
 			<td>Manufacturer's Suggested Retail Price</td>
 			<td>List price</td>
+		</tr>
+		<tr>
+			<th id="MAPI"></th>
+			<td>Messaging Application Programming Interface</td>
+			<td>Microsoft</td>
+		</tr>
+		<tr>
+			<th id="MIME"></th>
+			<td>Multipurpose Internet Mail Extensions</td>
+			<td></td>
 		</tr>
 		<tr>
 			<th id="mutex">Mutex</th>
@@ -679,6 +731,11 @@
 			<td class="template" data-id="graphics"></td>
 		</tr>
 		<tr>
+			<th id="PDA"></th>
+			<td>Personal Digital Assistant</td>
+			<td></td>
+		</tr>
+		<tr>
 			<th id="PDF"></th>
 			<td>Portable Document Format</td>
 			<td class="template" data-id="format"></td>
@@ -702,6 +759,12 @@
 			<th id="PPP"></th>
 			<td>Point-to-Point Protocol</td>
 			<td class="template" data-id="protocol"></td>
+		</tr>
+		<tr>
+			<th id="POP"></th>
+			<td>Post Office Protocol</td>
+			<td class="template" data-id="protocol"></td>
+			<td>POP3</td>
 		</tr>
 		<tr>
 			<th id="P2P"></th>
@@ -954,6 +1017,11 @@
 			<td><a href="#IP"></a></td>
 		</tr>
 		<tr>
+			<th id="VoLTE"></th>
+			<td>Voice over <a href="#LTE"></a></td>
+			<td class="template" data-id="telecom"></td>
+		</tr>
+		<tr>
 			<th id="VM">VM</th>
 			<td>Virtual Machine</td>
 			<td></td>
@@ -962,6 +1030,12 @@
 			<th id="VPN"></th>
 			<td>Virtual Private Network</td>
 			<td class="template" data-id="network"></td>
+		</tr>
+		<tr>
+			<th id="VGA"></th>
+			<td>Video Graphics Array</td>
+			<td class="template" data-id="computer"></td>
+			<td>640 × 480</td>
 		</tr>
 	</table>
 </details>
@@ -990,6 +1064,22 @@
 			<td>World Wide Web Consortium</td>
 			<td class="template" data-id="internet"></td>
 		</tr>
+		<tr>
+			<th id="WAP"></th>
+			<td>Wireless Application Protocol</td>
+			<td>Obsolete</td>
+		</tr>
+		<tr>
+			<th id="WEP"></th>
+			<td>Wired Equivalent Privacy</td>
+			<td>Obsolete, severely flawed security algorithm</td>
+		</tr>
+		<tr>
+			<th id="WPA"></th>
+			<td>Wi-Fi Protected Access</td>
+			<td>WPA2, WPA3</td>
+		</tr>
+
 		<tr>
 			<th id="WYSIWYG">WYSIWYG</th>
 			<td>What You See Is What You Get</td>
