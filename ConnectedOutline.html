@@ -27,6 +27,15 @@
 			</details>
 		</td>
 	</tr>
+	<tr>
+		<td><h1>J</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#jd">Join Dependency</a></h3>
+			</details>
+		</td>
+	</tr>
     <tr>
         <td><h1>R</h1></td>
         <td>
@@ -49,7 +58,7 @@
 	<div class="indent"></div>
 
 	<em class="light-pink" id="elementary-key">Elementary key</em> - Can be composite. <em><b>[Def. 1]</b></em> Is a key that uniquely determines at most one <i class="green">non-key</i> attribute.
-	<em><b>[Def. Hugo Cornelis]</b></em> All other columns depend on the <em>key</em>, and none of these is a <i class="brown">cheater</i> <a href="#fd">FD</a>.
+	<em><b>[Def. Hugo Kornelis]</b></em> All other columns depend on the <em>key</em>, and none of these is a <i class="brown">cheater</i> <a href="#fd">FD</a>.
 	Example: <code class="code">{ABC} → XYZ</code>, where <code class="code">{ABC}</code> is an <i>elementary key</i>, than there <span class="red">should not be</span> <a href="#fd">FDs</a> like <code class="code">B → Y</code>, <code class="code">A → X</code> etc.<br>
 	<em class="light-pink margin" id="elementary-key-attr">Elementary key attribute</em> - an attribute of an <i>elementary key</i>, always single and atomic.<br>
 	<div class="indent4"></div>
@@ -59,7 +68,7 @@
 
 	<em class="dark-red" id="c-key">Candidate Key</em> <small>(or just the <i><b>key</b></i>)</small> - <em><b>[Def. 1]</b></em> Any set of columns that have a unique combination of values in each row.
 		<em><b>[Def. 2]</b></em> A minimal set of attributes that uniquely identifies a record in a <i>Relation</i>. It contains no unnecessary attributes.
-	<em><b>[Def. Hugo Cornelis]</b></em> All other columns depend on the <i>key</i>.<br>
+	<em><b>[Def. Hugo Kornelis]</b></em> All other columns depend on the <i>key</i>.<br>
 	<div class="indent"></div>
 
 	<em class="fire-brick">Primary Key</em> – a selected <i class="dark-red">candidate key</i> used as the main identifier for records in a <i>Relation</i>.<br>
@@ -224,6 +233,8 @@
 							<caption><small>Telephone <i>by Carlo Zaniolo</i></small></caption>
 							<tr><th>Place</th><th>Area</th><th>Number</th></tr>
 							<tr><td>Los-Alamos</td><td>51</td><td>555-35-55</td></tr>
+							<tr><td>Denver</td><td>52</td><td>555-35-55</td></tr>
+							<tr><td>Los-Cheetos</td><td>51</td><td>555-35-11</td></tr>
 						</table>
 						<div class="indent4"></div>
 						<i>FD-1</i>: (AREA, NUMBER) → PLACE<br>
@@ -235,7 +246,7 @@
 				<tr>
 					<td>
 						<table class="collapse-border padding">
-							<caption><small><i>by Hugo Cornelis</i></small></caption>
+							<caption><small><i>by Hugo Kornelis</i></small></caption>
 							<tr><th>Day</th><th>Speaker</th><th>City</th><th>Topic</th></tr>
 							<tr><td>Monday</td><td>Hugo Kornelis</td><td>London</td><td>Execution plans</td></tr>
 							<tr><td>Monday</td><td>Kendra Large</td><td>London</td><td>Women in tech</td></tr>
@@ -275,7 +286,7 @@
 					<td></td>
 					<td colspan="2">
 						<table class="collapse-border padding">
-							<caption><small><i>by Hugo Cornelis</i></small></caption>
+							<caption><small><i>by Hugo Kornelis</i></small></caption>
 							<tr><th>Track</th><th>Session#</th><th>Room</th><th>StartTime</th><th>SessionName</th></tr>
 							<tr><td>AD</td><td>205</td><td>Blue</td><td>10:00</td><td>Connections 101</td></tr>
 							<tr><td>AD</td><td>207</td><td>Blue</td><td>12:45</td><td>Execution plans</td></tr>
@@ -318,6 +329,8 @@
 							<caption><small>Telephone <i>by Carlo Zaniolo</i> (EKNF)</small></caption>
 							<tr><th>Place</th><th>Area</th><th>Number</th></tr>
 							<tr><td>Los-Alamos</td><td>51</td><td>555-35-55</td></tr>
+							<tr><td>Denver</td><td>52</td><td>555-35-55</td></tr>
+							<tr><td>Los-Cheetos</td><td>51</td><td>555-35-11</td></tr>
 						</table>
 						<div class="indent4"></div>
 						<i>FD-1</i>: (AREA, NUMBER) → PLACE<br>
@@ -348,6 +361,131 @@
 					<td colspan="2">But this schema is <span class="red">not</span> satisfactory according to the representation principle.</td>
 				</tr>
 
+			</table>
+		</li>
+		<li>
+			<h4 style="margin-bottom:2px;">4NF<small>⚓ Pizza Variety</small></h4>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Wiki]</b></em><br>
+			For every one of its non-trivial multivalued <a href="#fd">FDs</a> <code class="code">X ↠ Y</code>, <code class="code">X</code> is a <a href="#super-key">super-key</a>.
+
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Pizza <i>by Wiki</i></small></caption>
+							<tr><th>Restaurant</th><th>PizzaVariety</th><th>DeliveryArea</th></tr>
+							<tr><td>A1 Pizza</td><td>Thick Crust</td><td>Springfield</td></tr>
+							<tr><td>A1 Pizza</td><td>Thick Crust</td><td>Shelbyville</td></tr>
+							<tr><td>A1 Pizza</td><td>Thick Crust</td><td>Capital City</td></tr>
+							<tr><td>A1 Pizza</td><td>Stuffed Crust</td><td>Springfield</td></tr>
+							<tr><td>A1 Pizza</td><td>Stuffed Crust</td><td>Shelbyville</td></tr>
+							<tr><td>A1 Pizza</td><td>Stuffed Crust</td><td>Capital City</td></tr>
+							<tr><td>Elite Pizza</td><td>Thin Crust</td><td>Capital City</td></tr>
+							<tr><td>Elite Pizza</td><td>Stuffed Crust</td><td>Capital City</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thick Crust</td><td>Springfield</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thick Crust</td><td>Shelbyville</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thin Crust</td><td>Springfield</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thin Crust</td><td>Shelbyville</td></tr>
+						</table>
+						<div class="indent4"></div>
+						FDs:<br>
+						<code class="code">{Restaurant} ↠ {PizzaVariety}</code><br>
+						<code class="code">{Restaurant} ↠ {DeliveryArea}</code><br>
+						<div class="indent4"></div>
+						The only <i>candidate key</i> is <code class="code">{Restaurant, PizzaVariety, DeliveryArea}</code><br>
+						<div class="indent4"></div>
+						So the <i>Relation</i> meets up to <i>BCNF</i>.
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Varieties by restaurant</small></caption>
+							<tr><th>Restaurant</th><th>PizzaVariety</th></tr>
+							<tr><td>A1 Pizza</td><td>Thick Crust</td></tr>
+							<tr><td>A1 Pizza</td><td>Stuffed Crust</td></tr>
+							<tr><td>Elite Pizza</td><td>Thin Crust</td></tr>
+							<tr><td>Elite Pizza</td><td>Stuffed Crust</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thick Crust</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Thin Crust</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Delivery areas by restaurant</small></caption>
+							<tr><th>Restaurant</th><th>Delivery area</th></tr>
+							<tr><td>A1 Pizza</td><td>Springfield</td></tr>
+							<tr><td>A1 Pizza</td><td>Shelbyville</td></tr>
+							<tr><td>A1 Pizza</td><td>Capital City</td></tr>
+							<tr><td>Elite Pizza</td><td>Capital City</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Springfield</td></tr>
+							<tr><td>Vincenzo's Pizza</td><td>Shelbyville</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 style="margin-bottom:2px;">ETNF<small>⚓ S supplier, P part, J project</small></h4>
+			<em class="dodger-blue">Essential Tuple Normal Form</em>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Original]</b></em><br>
+			A <i>Relation</i> is in <i>ETNF</i> if every tuple in every instance of a <i>Relation</i> is <i><b class="purple">essential</b></i>.<br>
+			A tuple is <i><b class="purple">essential</b></i> if it is neither <i><b class="red">partly</b></i> nor <i><b class="red">fully redundant</b></i>.
+			<div class="indent4"></div>
+
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="3">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						S supplier, P part, J project<br>
+						The <i>Relation</i> has <a href="#jd">JD</a> &#8904;{SP, PJ, JS}<br>
+						None of these is a <a href="#super-key">super-key</a><br>
+						Tuples are not <i><b class="purple">essential</b></i>
+						<div class="indent4"></div>
+						<table class="collapse-border padding">
+							<tr><th>Supplier</th><th>Part</th><th>Project</th></tr>
+							<tr><th>S</th><th>P</th><th>J</th></tr>
+							<tr><td>Honda</td><td>Wheel</td><td>Delta</td></tr>
+							<tr><td>Mazda</td><td>Trunk</td><td>Alpha</td></tr>
+							<tr><td>Holden</td><td>Motor</td><td>Beta</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<tr><th>Supplier</th><th>Part</th></tr>
+							<tr><td>Honda</td><td>Wheel</td></tr>
+							<tr><td>Mazda</td><td>Trunk</td></tr>
+							<tr><td>Holden</td><td>Motor</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<tr><th>Part</th><th>Project</th></tr>
+							<tr><td>Wheel</td><td>Delta</td></tr>
+							<tr><td>Trunk</td><td>Alpha</td></tr>
+							<tr><td>Motor</td><td>Beta</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<tr><th>Supplier</th><th>Project</th></tr>
+							<tr><td>Honda</td><td>Delta</td></tr>
+							<tr><td>Mazda</td><td>Alpha</td></tr>
+							<tr><td>Holden</td><td>Beta</td></tr>
+						</table>
+					</td>
+				</tr>
 			</table>
 		</li>
 	</ul>
@@ -417,6 +555,15 @@
 			Then <code class="code">X → Z</code> and <code class="code">Y → Z</code> are the partial <span class="tooltip" title="Functional Dependency">FD</span>.
 		</li>
 	</ul>
+</div>
+<hr>
+
+<div id="jd">
+	<h3>Join Dependency</h3>
+	<i>Join dependency</i> is a constraint.<br>
+	A table <b><i>T</i></b> has a <i>join dependency</i> if <b><i>T</i></b>
+	can always be recreated by <i class="dark-blue">joining</i> multiple tables each having a subset of the attributes of <b><i>T</i></b>.
+
 </div>
 <hr>
 
