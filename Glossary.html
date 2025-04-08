@@ -150,6 +150,7 @@
 				Command-Line Interface<hr class="margin3px">
 				Command-Line Interpreter
 			</td>
+			<td></td>
 		</tr>
 		<tr>
 			<th id="CTE"></th>
@@ -159,16 +160,24 @@
 		<tr>
 			<th id="CPU"></th>
 			<td>Central Processing Unit</td>
-			<td class="template" data-id="computer"></td>
+			<td class="template" data-id="processor"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="CRC"></th>
 			<td>Cyclic Redundancy Check</td>
+			<td></td>
 		</tr>
 		<tr>
 			<th id="CVC"></th>
 			<td>Centralized Version Control</td>
 			<td class="template" data-id="version-control"></td>
+		</tr>
+		<tr>
+			<th id="CE"></th>
+			<td>conformité européenne</td>
+			<td>European Conformity</td>
+			<td>Fraudulent misuse: "China Export"</td>
 		</tr>
 	</table>
 </details>
@@ -255,6 +264,12 @@
 			<td>Digital Video Disk</td>
 			<td></td>
 		</tr>
+		<tr>
+			<th id="DIMM"></th>
+			<td>Dual In-line Memory Module</td>
+			<td class="template" data-id="memory"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -268,9 +283,20 @@
 			<td></td>
 		</tr>
 		<tr>
+			<th id="EAP"></th>
+			<td>Extensible Authentication Protocol</td>
+			<td class="template" data-id="protocol"></td>
+		</tr>
+		<tr>
+			<th id="EPS"></th>
+			<td>Encapsulated PostScript</td>
+			<td class="template" data-id="graphics"></td>
+		</tr>
+		<tr>
 			<th id="EEPROM"></th>
 			<td>Electrically Erasable Programmable Read-Only Memory</td>
-			<td class="template" data-id="computer"></td>
+			<td class="template" data-id="memory"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="event-driven"></th>
@@ -301,6 +327,12 @@
 <details open>
 	<summary><b>G</b></summary>
 	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="GPU"></th>
+			<td>Graphics Processing Unit</td>
+			<td class="template" data-id="processor"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
+		</tr>
 		<tr>
 			<th id="GUI">GUI</th>
 			<td>Graphic User Interface</td>
@@ -443,7 +475,8 @@
 				Integrated Drive Electronics<hr class="margin3px">
 				Integrated Development Environment
 			</td>
-			<td class="template" data-id="computer"></td>
+			<td class="template" data-id="pc-interface"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="idempotent">Idempotent</th>
@@ -709,82 +742,87 @@
 			<th id="PC"></th>
 			<td>Personal Computer</td>
 			<td class="template" data-id="computer"></td>
+			<td class="template" data-id="processor" data-dont-add="1"></td>
+			<td class="template" data-id="pc-interface" data-dont-add="1"></td>
+			<td class="template" data-id="memory" data-dont-add="1"></td>
+			<td class="template" data-id="video" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="PaaS">PaaS</th>
 			<td>Platform as a Service</td>
-			<td class="template" data-id="aaS"></td>
+			<td class="template" data-id="aaS" colspan="5"></td>
 		</tr>
 		<tr>
 			<th id="PGP">PGP</th>
 			<td>Pretty Good Privacy</td>
-			<td></td>
+			<td colspan="4"></td>
 		</tr>
 		<tr>
 			<th id="PING">PING</th>
 			<td>Packet InterNet Groper</td>
-			<td><a href="#ICMP">ICMP</a></td>
+			<td colspan="5"><a href="#ICMP">ICMP</a></td>
 		</tr>
 		<tr>
 			<th id="PNG"></th>
 			<td>Portable Network Graphics</td>
-			<td class="template" data-id="graphics"></td>
+			<td class="template" data-id="graphics" colspan="5"></td>
 		</tr>
 		<tr>
 			<th id="PDA"></th>
 			<td>Personal Digital Assistant</td>
-			<td></td>
+			<td colspan="5"></td>
 		</tr>
 		<tr>
 			<th id="PDF"></th>
 			<td>Portable Document Format</td>
-			<td class="template" data-id="format"></td>
+			<td class="template" data-id="format" colspan="5"></td>
 		</tr>
 		<tr>
 			<th id="PMDL">PMDL</th>
 			<td>Promotion Model Definition Language</td>
-			<td class="template" data-id="atg+"></td>
+			<td class="template" data-id="atg+" colspan="4"></td>
 		</tr>
 		<tr>
 			<th id="POJO">POJO</th>
 			<td>Plain Old Java Object</td>
-			<td class="template" data-id="java"></td>
+			<td class="template" data-id="java" colspan="4"></td>
 		</tr>
 		<tr>
 			<th id="POX">POX</th>
 			<td>Plain Old XML</td>
-			<td><a href="#XML">XML</a></td>
+			<td colspan="5"><a href="#XML">XML</a></td>
 		</tr>
 		<tr>
 			<th id="PPP"></th>
 			<td>Point-to-Point Protocol</td>
-			<td class="template" data-id="protocol"></td>
+			<td class="template" data-id="protocol" colspan="5"></td>
 		</tr>
 		<tr>
 			<th id="POP"></th>
 			<td>Post Office Protocol</td>
-			<td class="template" data-id="protocol"></td>
+			<td class="template" data-id="protocol" colspan="4"></td>
 			<td>POP3</td>
 		</tr>
 		<tr>
 			<th id="P2P"></th>
 			<td>Peer-to-Peer</td>
-			<td class="template" data-id="network"></td>
+			<td class="template" data-id="network" colspan="5"></td>
 		</tr>
 		<tr>
 			<th id="PAN"></th>
 			<td>Personal Area Network</td>
-			<td class="template" data-id="network"></td>
+			<td class="template" data-id="network" colspan="5"></td>
 		</tr>
 		<tr>
 			<th id="PEMDAS"></th>
 			<td>Parentheses, Exponents, Multiplication/Division, Addition/Subtraction</td>
-			<td></td>
+			<td colspan="4"></td>
 		</tr>
 		<tr>
 			<th id="PATA"></th>
 			<td>Parallel Advanced Technology Attachment</td>
-			<td class="template" data-id="computer"></td>
+			<td class="template" data-id="pc-interface" colspan="2"></td>
+			<td class="template" data-id="computer" data-dont-add="1" colspan="3"></td>
 		</tr>
 	</table>
 </details>
@@ -854,12 +892,14 @@
 		<tr>
 			<th id="RAM"></th>
 			<td>Random Access Memory</td>
-			<td class="template" data-id="computer"></td>
+			<td class="template" data-id="memory"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="ROM"></th>
 			<td>Read Only Memory</td>
-			<td class="template" data-id="computer"></td>
+			<td class="template" data-id="memory"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="RoHS"></th>
@@ -886,12 +926,12 @@
 		<tr>
 			<th id="SMTP">SMTP</th>
 			<td>Simple mail transfer protocol</td>
-			<td class="template" data-id="protocol"></td>
+			<td class="template" data-id="protocol" colspan="2"></td>
 		</tr>
 		<tr>
 			<th id="SOAP">SOAP</th>
 			<td><small>originally an acronym for</small> Simple Object Access Protocol</td>
-			<td class="template" data-id="protocol"></td>
+			<td class="template" data-id="protocol" colspan="2"></td>
 		</tr>
 		<tr>
 			<th id="SAX"></th>
@@ -911,7 +951,7 @@
 		<tr>
 			<th id="SSH"></th>
 			<td>Secure Shell Protocol</td>
-			<td class="template" data-id="protocol"></td>
+			<td class="template" data-id="protocol" colspan="2"></td>
 		</tr>
 		<tr>
 			<th id="SQL">SQL</th>
@@ -932,7 +972,8 @@
 		<tr>
 			<th id="SATA"></th>
 			<td>Serial Advanced Technology Attachment</td>
-			<td class="template" data-id="computer"></td>
+			<td class="template" data-id="pc-interface"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="SDE"></th>
@@ -943,6 +984,12 @@
 			<th id="SWE"></th>
 			<td>SoftWare Engineer</td>
 			<td>The same as <a href="#SDE"></a></td>
+		</tr>
+		<tr>
+			<th id="SIMM"></th>
+			<td>Single In-line Memory Module</td>
+			<td class="template" data-id="memory"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
 		</tr>
 	</table>
 </details>
@@ -1002,7 +1049,8 @@
 		<tr>
 			<th id="USB"></th>
 			<td>Universal Serial Bus</td>
-			<td class="template" data-id="computer"></td>
+			<td class="template" data-id="pc-interface"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
 		</tr>
 	</table>
 </details>
@@ -1034,7 +1082,8 @@
 		<tr>
 			<th id="VGA"></th>
 			<td>Video Graphics Array</td>
-			<td class="template" data-id="computer"></td>
+			<td class="template" data-id="video"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
 			<td>640 × 480</td>
 		</tr>
 	</table>
@@ -1137,7 +1186,7 @@
 <div id="templates" style="display: none;">
 	<div id="ml"><a href="#GML"></a> -> <a href="#SGML"></a> -> [<a href="#XML"></a>, <a href="#HTML"></a> -> <a href="#XHTML"></a>]; <a href="#DTD"></a></div>
 	<div id="protocol"><a href="#IP"></a> <a href="#TCP-IP" id="tcpip">TCP/IP</a></div>
-	<div id="computer"><a href="#IDE"></a>=<a href="#PATA"></a></div>
+	<div id="pc-interface"><a href="#IDE"></a>=<a href="#PATA"></a></div>
 	<div id="identifier"><a href="#GUID"></a>=<a href="#UUID"></a></div>
 	<div id="uniform-resource"><a href="#URL"></a> Is a subset of <a href="#URI"></a></div>
 </div>
@@ -1201,7 +1250,7 @@
 			templates.appendChild(template);
 		}
 		const templateContent = templates.children.namedItem(target.dataset.id).innerHTML;
-		if ((templateContent.indexOf(">" + th.id + "<") < 0) && (templateContent.indexOf("#" + th.id) < 0)) {
+		if (!target.dataset.dontAdd && (templateContent.indexOf(">" + th.id + "<") < 0) && (templateContent.indexOf("#" + th.id) < 0)) {
 			templates.children.namedItem(target.dataset.id).appendChild(document.createTextNode(" "));
 			templates.children.namedItem(target.dataset.id).appendChild(createHrefLink(th.id, th.innerHTML));
 		}
