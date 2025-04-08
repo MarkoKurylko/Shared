@@ -448,43 +448,61 @@
 				</tr>
 				<tr>
 					<td>
-						S supplier, P part, J project<br>
 						The <i>Relation</i> has <a href="#jd">JD</a> &#8904;{SP, PJ, JS}<br>
 						None of these is a <a href="#super-key">super-key</a><br>
 						Tuples are not <i><b class="purple">essential</b></i>
 						<div class="indent4"></div>
-						<table class="collapse-border padding">
-							<tr><th>Supplier</th><th>Part</th><th>Project</th></tr>
-							<tr><th>S</th><th>P</th><th>J</th></tr>
-							<tr><td>Honda</td><td>Wheel</td><td>Delta</td></tr>
-							<tr><td>Mazda</td><td>Trunk</td><td>Alpha</td></tr>
-							<tr><td>Holden</td><td>Motor</td><td>Beta</td></tr>
+						<table class="collapse-border padding" id="not-ETNF">
+							<tr><th>Supplier S</th><th>Part P</th><th>Project J</th></tr>
+							<tr><td class="dark-blue">S1</td><td class="green">P1</td><td class="purple">J1</td></tr>
+							<tr><td class="dark-blue">S1</td><td class="green">P1</td><td>J2</td></tr>
+							<tr><td class="dark-blue">S1</td><td class="light-green">P2</td><td class="purple">J1</td></tr>
+							<tr><td class="dark-blue">S1</td><td class="light-green">P2</td><td>J2</td></tr>
+							<tr><td class="blue">S2</td><td class="green">P1</td><td class="purple">J1</td></tr>
+							<tr><td class="blue">S2</td><td class="green">P1</td><td>J2</td></tr>
+							<tr><td class="blue">S2</td><td class="light-green">P2</td><td class="purple">J1</td></tr>
+							<tr><td class="blue">S2</td><td class="light-green">P2</td><td>J2</td></tr>
+							<tr><td class="dodger-blue">S3</td><td class="green">P1</td><td class="purple">J1</td></tr>
+							<tr><td class="dodger-blue">S3</td><td class="green">P1</td><td>J2</td></tr>
+							<tr><td class="dodger-blue">S3</td><td class="light-green">P2</td><td class="purple">J1</td></tr>
+							<tr><td class="dodger-blue">S3</td><td class="light-green">P2</td><td>J2</td></tr>
 						</table>
 					</td>
 					<td>
-						<table class="collapse-border padding">
+						<table class="collapse-border padding" id="ETNF1">
 							<tr><th>Supplier</th><th>Part</th></tr>
-							<tr><td>Honda</td><td>Wheel</td></tr>
-							<tr><td>Mazda</td><td>Trunk</td></tr>
-							<tr><td>Holden</td><td>Motor</td></tr>
+							<tr><td>S1</td><td>P1</td></tr>
+							<tr><td>S1</td><td>P2</td></tr>
+							<tr><td>S2</td><td>P1</td></tr>
+							<tr><td>S2</td><td>P2</td></tr>
+							<tr><td>S3</td><td>P1</td></tr>
+							<tr><td>S3</td><td>P2</td></tr>
 						</table>
 					</td>
 					<td>
-						<table class="collapse-border padding">
+						<table class="collapse-border padding" id="ETNF2">
 							<tr><th>Part</th><th>Project</th></tr>
-							<tr><td>Wheel</td><td>Delta</td></tr>
-							<tr><td>Trunk</td><td>Alpha</td></tr>
-							<tr><td>Motor</td><td>Beta</td></tr>
+							<tr><td>P1</td><td>J1</td></tr>
+							<tr><td>P1</td><td>J2</td></tr>
+							<tr><td>P2</td><td>J1</td></tr>
+							<tr><td>P2</td><td>J2</td></tr>
 						</table>
 					</td>
 					<td>
-						<table class="collapse-border padding">
+						<table class="collapse-border padding" id="ETNF3">
 							<tr><th>Supplier</th><th>Project</th></tr>
-							<tr><td>Honda</td><td>Delta</td></tr>
-							<tr><td>Mazda</td><td>Alpha</td></tr>
-							<tr><td>Holden</td><td>Beta</td></tr>
+							<tr><td>S1</td><td>J1</td></tr>
+							<tr><td>S1</td><td>J2</td></tr>
+							<tr><td>S2</td><td>J1</td></tr>
+							<tr><td>S2</td><td>J2</td></tr>
+							<tr><td>S3</td><td>J1</td></tr>
+							<tr><td>S3</td><td>J2</td></tr>
 						</table>
 					</td>
+				</tr>
+				<tr>
+					<td>Cells count: <span class="cellCount" data-ids="not-ETNF"></span></td>
+					<td colspan="3">Cells count: <span class="cellCount" data-ids="ETNF1,ETNF2,ETNF3"></span></td>
 				</tr>
 			</table>
 		</li>
@@ -757,6 +775,17 @@ Sources: Wikipedia. Carlo Zaniolo. Hugo Kornelis.
     for (let i = 0, len = tocRows.length; i < len; i++) {
         tocRows[i].children[0].onclick = onLetterClick;
     }
+
+	const cellCount = document.getElementsByClassName('cellCount');
+	Array.from(cellCount).forEach( (cellCountSpan) => {
+		const cellCountArray = cellCountSpan.dataset.ids.split(",");
+		let count = 0;
+		Array.from(cellCountArray).forEach( (tableId) => {
+			const table = document.getElementById(tableId);
+			count += table.getElementsByTagName('td').length;
+		});
+		cellCountSpan.innerHTML = count;
+	});
 </script>
 
 </body>
