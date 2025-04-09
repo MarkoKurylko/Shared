@@ -364,7 +364,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">4NF<small>⚓ Pizza Variety</small></h4>
+			<h4 style="margin-bottom:2px;">4NF ??? todo<small>⚓ Pizza Variety</small></h4>
 			<div class="indent4"></div>
 
 			<em><b>[Def. Wiki]</b></em><br>
@@ -431,7 +431,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">ETNF<small>⚓ S supplier, P part, J project</small></h4>
+			<h4 style="margin-bottom:2px;">ETNF <5NF?? how<small>⚓ S supplier, P part, J project</small></h4>
 			<em class="dodger-blue">Essential Tuple Normal Form</em>
 			<div class="indent4"></div>
 
@@ -503,6 +503,114 @@
 				<tr>
 					<td>Cells count: <span class="cellCount" data-ids="not-ETNF"></span></td>
 					<td colspan="3">Cells count: <span class="cellCount" data-ids="ETNF1,ETNF2,ETNF3"></span></td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 style="margin-bottom:2px;">5NF<small>⚓ Day Expert Topic</small></h4>
+			<em class="dodger-blue">Projection-Join Normal Form</em>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Wiki]</b></em><br>
+			A <i>Relation</i> is in <i>5NF</i> if it cannot have a <i>lossless decomposition</i> into any number of smaller tables.
+			<div class="indent4"></div>
+
+			<em><b>[Def. Hugo Kornelis]</b></em><br>
+			No <a href="#jd">join dependencies</a> unless it implied by a <i>key</i>.
+
+			<div class="indent"></div>
+
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="3">Comply</th>
+				</tr>
+				<tr>
+					<td rowspan="2">
+						The business rule of this <i>Relation</i> is that<br>
+						if some <b>Topic</b> is available on some <b>Day</b><br>
+						and the <b>Expert</b> is capable of that <b>Topic</b>,<br>
+						then the <b>Expert</b> is available for that <b>Day</b>s.
+						<div class="indent4"></div>
+						<table class="collapse-border padding">
+							<caption><small>by Hugo Kornelis</small></caption>
+							<tr><th>Day</th><th>Expert</th><th>Topic</th></tr>
+							<tr><td class="dark-blue">Monday</td><td class="green">Hugo</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="green">Hugo</td><td>Execution Plans</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="green">Hugo</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="green">Hugo</td><td>Execution Plans</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="">Erin</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="">Erin</td><td>Query Store</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="">Erin</td><td class="purple">Normalization</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="">Erin</td><td>Query Store</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="brown">Rie</td><td>Community</td></tr>
+						</table>
+						<div class="indent4"></div>
+						This table can be decomposed without <i>loss</i>, so it is not in 5NF.
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>by Hugo Kornelis</small></caption>
+							<tr><th>Day</th><th>Expert</th></tr>
+							<tr><td class="dark-blue">Monday</td><td class="green">Hugo</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="green">Hugo</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="">Erin</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="">Erin</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="brown">Rie</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>by Hugo Kornelis</small></caption>
+							<tr><th>Day</th><th>Expert</th></tr>
+							<tr><td class="green">Hugo</td><td class="purple">Normalization</td></tr>
+							<tr><td class="green">Hugo</td><td>Execution Plans</td></tr>
+							<tr><td class="">Erin</td><td class="purple">Normalization</td></tr>
+							<tr><td class="">Erin</td><td>Query Store</td></tr>
+							<tr><td class="brown">Rie</td><td>Community</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>by Hugo Kornelis</small></caption>
+							<tr><th>Day</th><th>Topic</th></tr>
+							<tr><td class="dark-blue">Monday</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dark-blue">Monday</td><td>Execution Plans</td></tr>
+							<tr><td class="dark-blue">Monday</td><td>Query Store</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td>Execution Plans</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="purple">Normalization</td></tr>
+							<tr><td class="blue">Wednesday</td><td>Query Store</td></tr>
+							<tr><td class="blue">Wednesday</td><td>Community</td></tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">These tables can be composed back to the original <i>Relation</i> without creating new (non-existing before) rows.</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="3">
+						Here we have a <i>Relation</i> from the example above, but with the different business rule: <br>
+						The <b>Expert</b>s can choose the <b>Day</b>s for the <b>Topic</b> they are capable.
+						<table class="collapse-border padding">
+							<caption><small>by Hugo Kornelis</small></caption>
+							<tr><th>Day</th><th>Expert</th><th>Topic</th></tr>
+							<tr><td class="dark-blue">Monday</td><td class="green">Hugo</td><td>Execution Plans</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="green">Hugo</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dodger-blue">Tuesday</td><td class="green">Hugo</td><td>Execution Plans</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="">Erin</td><td class="purple">Normalization</td></tr>
+							<tr><td class="dark-blue">Monday</td><td class="">Erin</td><td>Query Store</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="">Erin</td><td class="purple">Normalization</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="">Erin</td><td>Query Store</td></tr>
+							<tr><td class="blue">Wednesday</td><td class="brown">Rie</td><td>Community</td></tr>
+						</table>
+						<div class="indent4"></div>
+						For e.g. <span class="green">Hugo</span> doesn't want to talk about <span class="purple">DB Normalization</span> on <span class="dark-blue">Mondays</span>.<br>
+						In this case the backward composition of tables will create a <em class="red">phantom</em> row:
+						<span class="dark-blue">Monday</span>-<span class="green">Hugo</span>-<span class="purple">Normalization</span>.<br>
+						So further decomposition is impossible and the table is already in 5NF according to the business rules.
+					</td>
 				</tr>
 			</table>
 		</li>
@@ -581,7 +689,12 @@
 	<i>Join dependency</i> is a constraint.<br>
 	A table <b><i>T</i></b> has a <i>join dependency</i> if <b><i>T</i></b>
 	can always be recreated by <i class="dark-blue">joining</i> multiple tables each having a subset of the attributes of <b><i>T</i></b>.
+	<div class="indent4"></div>
 
+	<em><b>[Def. Hugo Kornelis]</b></em><br>
+	Deconstruct table in a smaller parts<br>
+	Join the smaller parts<br>
+	Guaranteed to get the original table
 </div>
 <hr>
 
