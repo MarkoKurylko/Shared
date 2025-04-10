@@ -364,7 +364,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">4NF ??? todo<small>⚓ Pizza Variety</small></h4>
+			<h4 style="margin-bottom:2px;">4NF<small>⚓ Pizza Variety</small></h4>
 			<div class="indent4"></div>
 
 			<em><b>[Def. Wiki]</b></em><br>
@@ -377,7 +377,7 @@
 					<th class="green text-align-center" colspan="2">Comply</th>
 				</tr>
 				<tr>
-					<td>
+					<td rowspan="2">
 						<table class="collapse-border padding">
 							<caption><small>Pizza <i>by Wiki</i></small></caption>
 							<tr><th>Restaurant</th><th>PizzaVariety</th><th>DeliveryArea</th></tr>
@@ -426,6 +426,16 @@
 							<tr><td>Vincenzo's Pizza</td><td>Springfield</td></tr>
 							<tr><td>Vincenzo's Pizza</td><td>Shelbyville</td></tr>
 						</table>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						Now, due to the <i>Relation</i> was decomposed, the multivalued FDs become just standard non-trivial FDs:<br>
+						<code class="code">{Restaurant} → {PizzaVariety}</code><br>
+						<code class="code">{Restaurant} → {DeliveryArea}</code><br>
+						<div class="indent4"></div>
+						The keys are {Restaurant,PizzaVariety} & {Restaurant,DeliveryArea},
+						and due to the schema does not have the multivalued <a href="#fd">FDs</a>, it's comply with 4NF.
 					</td>
 				</tr>
 			</table>
