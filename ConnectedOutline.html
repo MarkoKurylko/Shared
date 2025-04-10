@@ -441,7 +441,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">ETNF <5NF?? how<small>⚓ S supplier, P part, J project</small></h4>
+			<h4 style="margin-bottom:2px;">ETNF<small>⚓ S supplier, P part, J project</small></h4>
 			<em class="dodger-blue">Essential Tuple Normal Form</em>
 			<div class="indent4"></div>
 
@@ -464,11 +464,11 @@
 						<div class="indent4"></div>
 						<table class="collapse-border padding" id="not-ETNF">
 							<tr><th>Supplier S</th><th>Part P</th><th>Project J</th></tr>
-							<tr><td class="dark-blue">S1</td><td class="green">P1</td><td class="purple">J1</td></tr>
-							<tr><td class="dark-blue">S1</td><td class="green">P1</td><td>J2</td></tr>
-							<tr><td class="dark-blue">S1</td><td class="light-green">P2</td><td class="purple">J1</td></tr>
+							<tr class="back-tomato"><td class="dark-blue">S1</td><td class="green">P1</td><td class="purple">J1</td></tr>
+							<tr class="back-sky-blue"><td class="dark-blue">S1</td><td class="green">P1</td><td class="back-white">J2</td></tr>
+							<tr class="back-sky-blue"><td class="dark-blue">S1</td><td class="light-green back-white">P2</td><td class="purple">J1</td></tr>
 							<tr><td class="dark-blue">S1</td><td class="light-green">P2</td><td>J2</td></tr>
-							<tr><td class="blue">S2</td><td class="green">P1</td><td class="purple">J1</td></tr>
+							<tr class="back-sky-blue"><td class="blue back-white">S2</td><td class="green">P1</td><td class="purple">J1</td></tr>
 							<tr><td class="blue">S2</td><td class="green">P1</td><td>J2</td></tr>
 							<tr><td class="blue">S2</td><td class="light-green">P2</td><td class="purple">J1</td></tr>
 							<tr><td class="blue">S2</td><td class="light-green">P2</td><td>J2</td></tr>
@@ -477,6 +477,8 @@
 							<tr><td class="dodger-blue">S3</td><td class="light-green">P2</td><td class="purple">J1</td></tr>
 							<tr><td class="dodger-blue">S3</td><td class="light-green">P2</td><td>J2</td></tr>
 						</table>
+						The <i>tuple</i> marked <span class="tomato">tomato-red</span> can be constructed from the <i>JD</i> marked <span class="sky-blue">sky-blue</span>,<br>
+						so it's <i>fully redundant</i>.
 					</td>
 					<td>
 						<table class="collapse-border padding" id="ETNF1">
@@ -513,6 +515,17 @@
 				<tr>
 					<td>Cells count: <span class="cellCount" data-ids="not-ETNF"></span></td>
 					<td colspan="3">Cells count: <span class="cellCount" data-ids="ETNF1,ETNF2,ETNF3"></span></td>
+				</tr>
+				<tr>
+					<td colspan="4"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="3">
+						The same example from above <small class="fire-brick">('not comply' column)</small>, but with the additional condition of
+						<a href="#fd">FD</a> <code class="code">SP → J</code>.<br>
+						Then, the <i>Relation</i> become <i>ETNF</i>, but not 5NF.
+					</td>
 				</tr>
 			</table>
 		</li>

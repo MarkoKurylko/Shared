@@ -9,6 +9,7 @@
 .java21 {color: Red}
 
 .red                {color: Red}
+.tomato             {color: tomato}
 .dark-red           {color: DarkRed}
 .hot-pink           {color: HotPink}
 .light-pink         {color: LightPink}
@@ -18,6 +19,7 @@
 .dark-green         {color: DarkGreen}
 .medium-aqua-marine {color: MediumAquaMarine} /*green*/
 .blue          {color: Blue}
+.sky-blue      {color: SkyBlue}
 .dodger-blue   {color: DodgerBlue}
 .dark-blue     {color: DarkBlue}
 .midnight-blue {color: MidnightBlue}
@@ -25,6 +27,10 @@
 .orange   {color: Orange}
 .purple   {color: Purple}
 .grey     {color: Grey}
+
+.back-white {background-color: white}
+.back-tomato {background-color: tomato}
+.back-sky-blue {background-color: SkyBlue}
 
 .border, .border th , .border td, .collapse-border, .collapse-border th, .collapse-border td {
 	border: 1px solid;
