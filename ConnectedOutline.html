@@ -636,6 +636,69 @@
 					</td>
 				</tr>
 			</table>
+		<li>
+			<h4 style="margin-bottom:2px;">DKNF<small>⚓ Book Thickness</small></h4>
+			<em class="dodger-blue">Domain-Key Normal Form</em>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Wiki]</b></em><br>
+			Requires that the database contains no constraints other than <i>domain constraints</i> and <i>key constraints</i>.
+			<div class="indent4"></div>
+
+			<em><b>[Def. Hugo Kornelis]</b></em><br>
+			<ul>
+				<li> Is <span class="red">not</span> based on dependencies.</li>
+				<li>
+					Based on:
+					<ul>
+						<li>Domains: which values are allowed in a column</li>
+						<li>Keys: all candidate keys</li>
+						<li>Constraints: Rules for valid ("business rules")</li>
+					</ul>
+				</li>
+				<li>Every constraint must be implied by the keys and domains</li>
+				<li>Often impractical, therefore it's mostly of academic interest only</li>
+			</ul>
+
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="3">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						<b>Thickness</b> is determined by number of pages.
+						But <b>Pages</b> is not a <i>key</i>.
+						<table class="collapse-border padding">
+							<caption><small>Book</small></caption>
+							<tr><th>Title</th><th>Pages</th><th>Thickness</th><th>Genre</th></tr>
+							<tr><td>SQL</td><td>520</td><td>Thick</td><td>1</td></tr>
+							<tr><td>DBMS</td><td>538</td><td>Thick</td><td>2</td></tr>
+							<tr><td>Learn</td><td>338</td><td>Slim</td><td>1</td></tr>
+							<tr><td>Cookbook</td><td>636</td><td>Thick</td><td>1</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Thickness</small></caption>
+							<tr><th>Thickness</th><th>Min</th><th>Max</th></tr>
+							<tr><td>Slim</td><td>1</td><td>350</td></tr>
+							<tr><td>Thick</td><td>351</td><td>999999</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Book DKNF</small></caption>
+							<tr><th>Title</th><th>Pages</th><th>Genre</th></tr>
+							<tr><td>SQL</td><td>520</td><td>1</td></tr>
+							<tr><td>DBMS</td><td>538</td><td>2</td></tr>
+							<tr><td>Learn</td><td>338</td><td>1</td></tr>
+							<tr><td>Cookbook</td><td>636</td><td>1</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
 		</li>
 	</ul>
 
