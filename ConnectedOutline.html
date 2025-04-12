@@ -71,7 +71,7 @@
 	<em><b>[Def. Hugo Kornelis]</b></em> All other columns depend on the <i>key</i>.<br>
 	<div class="indent"></div>
 
-	<em class="fire-brick">Primary Key</em> – a selected <i class="dark-red">candidate key</i> used as the main identifier for records in a <i>Relation</i>.<br>
+	<em class="fire-brick" id="p-key">Primary Key</em> – a selected <i class="dark-red">candidate key</i> used as the main identifier for records in a <i>Relation</i>.<br>
 
 	<div class="indent"></div>
 	<em class="medium-aqua-marine" id="non-prime-attribute">Non-prime attribute</em> - an attribute that is not a part of any <i class="dark-red">candidate key</i>.<br>
@@ -695,6 +695,44 @@
 							<tr><td>DBMS</td><td>538</td><td>2</td></tr>
 							<tr><td>Learn</td><td>338</td><td>1</td></tr>
 							<tr><td>Cookbook</td><td>636</td><td>1</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h4 style="margin-bottom:2px;">6NF<small>⚓ PrimaryKey + 1 column</small></h4>
+			<div class="indent4"></div>
+
+			<em><b>[Def. Wiki]</b></em><br>
+			Simplified: a table is in 6NF when the row contains the <a href="#p-key">Primary Key</a> and at most one other attribute.
+
+			<div class="indent"></div>
+			<table class="collapse-border padding">
+				<tr>
+					<th class="fire-brick text-align-center">Does not comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
+				</tr>
+				<tr>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>PublisherWithCountry</small></caption>
+							<tr><th>PublisherId</th><th>Name</th><th>Country</th></tr>
+							<tr><td>1</td><td>Pers</td><td>NL</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>Publisher</small></caption>
+							<tr><th>PublisherId</th><th>Name</th></tr>
+							<tr><td>1</td><td>Pers</td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>PublisherCountry</small></caption>
+							<tr><th>PublisherId</th><th>Country</th></tr>
+							<tr><td>1</td><td>NL</td></tr>
 						</table>
 					</td>
 				</tr>
