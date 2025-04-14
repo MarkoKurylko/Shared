@@ -29,13 +29,23 @@
 .grey     {color: Grey}
 
 .back-white {background-color: white}
+.back-pink {background-color: pink}
 .back-tomato {background-color: tomato}
 .back-sky-blue {background-color: SkyBlue}
+.back-medium-spring-green {background-color: MediumSpringGreen}
+.back-medium-aqua-marine {background-color: MediumAquaMarine}
+.back-bfd {background-color: #BFD}
+.back-gainsboro {background-color: Gainsboro}
+
 
 .border, .border th , .border td, .collapse-border, .collapse-border th, .collapse-border td {
 	border: 1px solid;
 	border-color: LightGray;
 }
+.border-dark-gray, .border-dark-gray th, .border-dark-gray td{
+	border-color: DarkGray;
+}
+
 .collapse-border {border-collapse: collapse}
 .padding th , .padding td {
 	padding-left : 5px;
@@ -80,4 +90,12 @@ ul.ulWithMargin > li {margin: 10px 0;}
 }
 .fs20 {
 	font-size: 20px;
+}
+
+.bold {font-weight: bold;}
+
+.pointer {cursor: pointer}
+.get-title {
+	cursor: pointer;
+	color: MidnightBlue;
 }

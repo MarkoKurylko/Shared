@@ -46,6 +46,15 @@
             </details>
         </td>
     </tr>
+	<tr>
+		<td><h1>T</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#transaction-isolation">Transaction Isolation</a></h2>
+			</details>
+		</td>
+	</tr>
 </table>
 
 <hr style="height:2px;">
@@ -859,11 +868,11 @@
 
 <div id="REST">
 	<h2 style="margin-bottom: 5px;">REST (Representational State Transfer)</h2>
-	Is a <em>software architectural style</em> that was created to describe the design and guide the development of the architecture for the <span class="midnight-blue" title="World Wide Web">WWW</span>.<br>
+	Is a <em>software architectural style</em> that was created to describe the design and guide the development of the architecture for the <span class="get-title">WWW</span>.<br>
 	REST defines a set of constraints for how the architecture of a distributed, Internet-scale <em>hypermedia</em> system, such as the Web, should behave.
 	<div class="indent"></div>
 	The REST architectural style defines <b>6</b> guiding constraints.<br>
-	When these <em>constraints</em> are applied to the system architecture, it gains desirable <span class="midnight-blue" title="Non-Functional Requirement">NFR</span> properties:<br>
+	When these <em>constraints</em> are applied to the system architecture, it gains desirable <span class="get-title">NFR</span> properties:<br>
 	<code>performance scalability simplicity modifiability visibility portability reliability</code>.
 	<ol style="margin-top: 2px;">
 		<li><b>Client/Server</b> – clients are separated from servers by a well-defined interface</li>
@@ -877,7 +886,7 @@
 				<ol style="margin-top: 1px;">
 					<li><em>Resource identification in requests</em> -
 						<small>
-							resources are identified by <span class="midnight-blue" title="Uniform Resource Identifier">URI</span>.<br>
+							resources are identified by <span class="get-title">URI</span>.<br>
 							The resources themselves are conceptually separate from the representations(<i>HTML, XML, JSON</i>) that are returned to the client
 						</small></li>
 					<li>
@@ -903,10 +912,10 @@
 	<em><b>Richardson Maturity Model</b></em>
 	<ol style="margin-top: 3px;">
 		<li>
-			<b>Level 0: The Swamp of <span class="midnight-blue" title="Plain Old XML">POX</span></b>
+			<b>Level 0: The Swamp of <span class="get-title">POX</span></b>
 			<div class="indent4"></div>
 			<span class="red">Is not RESTful</span>.
-			It is a Web <span class="midnight-blue" title="Application Programming Interface">API</span> with a single <span class="midnight-blue" title="Uniform Resource Identifier">URI</span> accepting <span class="fire-brick">all</span> the range of operations supported by the service.<br>
+			It is a Web <span class="get-title">API</span> with a single <span class="get-title">URI</span> accepting <span class="fire-brick">all</span> the range of operations supported by the service.<br>
 			<span class="fire-brick">Resources are not well-defined.</span><br>
 			Example: <code class="code">/bookingService POST</code> retrieve destinations/hotels/rooms; add/cancel a reservation; etc.
 			<div class="indent"></div>
@@ -915,9 +924,9 @@
 			<b>Level 1: Resources</b>
 			<div class="indent4"></div>
 			<span class="fire-brick">Still not yet RESTful</span>.
-			Introduces <em>resources</em> and allows requests for individual <span class="midnight-blue" title="Uniform Resource Identifier">URI</span>s
-			<small>(still all typically POST)</small> for separate actions instead of exposing one universal endpoint (<span class="midnight-blue" title="Application Programming Interface">API</span>).<br>
-			The <span class="midnight-blue" title="Application Programming Interface">API</span> resources are still generalized, but it is possible to identify the scope of each one.
+			Introduces <em>resources</em> and allows requests for individual <span class="get-title">URI</span>s
+			<small>(still all typically POST)</small> for separate actions instead of exposing one universal endpoint (<span class="get-title">API</span>).<br>
+			The <span class="get-title">API</span> resources are still generalized, but it is possible to identify the scope of each one.
 			Example: <br>
 			<small>
 				<code class="code">/bookingDestinations POST</code> retrieve destinations<br>
@@ -950,7 +959,7 @@
 			<div class="indent4"></div>
 			<span class="dark-green">It is RESTful</span>.
 			The last level introduces the <em>hypermedia representation</em>.
-			Also called <span class="midnight-blue" title="Hypermedia As The Engine of Application State">HATEOAS</span>.
+			Also called <span class="get-title">HATEOAS</span>.
 			A client interacts with a network application whose application servers provide information dynamically through <em>hypermedia</em>.
 			A REST client needs little to no prior knowledge about how to interact with an application or server beyond a generic understanding of hypermedia.<br>
 			The restrictions imposed by HATEOAS decouple client and server. This enables server functionality to evolve independently.<br>
@@ -990,7 +999,132 @@
 </div>
 <hr>
 
-Sources: Wikipedia. Carlo Zaniolo. Hugo Kornelis.
+<div id="transaction-isolation">
+	<h2>Transaction Isolation</h2>
+	<h3>Read Phenomena/Issues</h3>
+	<ol>
+		<li>
+			<h4 class="margin3px" id="dirty-reads">Dirty reads</h4>
+			A <em>dirty read</em> <small>(aka <em>uncommitted dependency</em>)</small> occurs when
+			a <span class="green">transaction</span> retrieves a <span class="dark-blue">row</span> that has been
+			<span class="red">updated</span> by <span class="fire-brick">another transaction</span> that is <span class="red">not yet committed</span>.
+		</li>
+		<li>
+			<h4 class="margin3px" id="non-repeatable-reads">Non-repeatable reads</h4>
+			A <em>non-repeatable read</em> occurs when a <span class="green">transaction</span> retrieves a <span class="dark-blue">row</span> <span class="hot-pink">twice</span>
+			and that <span class="dark-blue">row</span> is <span class="red">updated</span> by <span class="fire-brick">another transaction</span> that is <span class="red">committed in between</span>.
+		</li>
+		<li>
+			<h4 class="margin3px" id="phantom-reads">Phantom reads</h4>
+			A <em>phantom read</em> occurs when a <span class="green">transaction</span> retrieves a <span class="dark-blue">set of rows</span> <span class="hot-pink">twice</span>
+			and <span class="purple">new rows are inserted into or removed</span> from that <span class="dark-blue">set</span> by <span class="fire-brick">another transaction</span> that is <span class="red">committed in between</span>.
+		</li>
+	</ol>
+
+	<h3>Isolation levels <small>(SQL92 standard)</small></h3>
+	<ol>
+		<li>
+			<h4 class="margin3px">Read uncommitted</h4>
+			This is the <i>lowest</i> isolation level.
+			In this level, <a href="#dirty-reads">dirty reads</a> are allowed, so one transaction may see <i>not-yet-committed</i> changes made by other transactions.
+		</li>
+		<li>
+			<h4 class="margin3px">Read committed</h4>
+			In this isolation level, a lock-based <i>concurrency control</i> <span class="get-title">DBMS</span> implementation
+			keeps write locks <small>(acquired on selected data)</small> until the end of the transaction,
+			but read locks are released as soon as the <code class="code">SELECT</code> operation is performed
+			<small>(so the <a href="#non-repeatable-reads">non-repeatable reads phenomenon</a> can occur in this isolation level)</small>.
+			<div class="indent4"></div>
+			Simpler: <i>read committed</i> is an isolation level that guarantees that any data read is committed at the moment it is read.
+			It simply restricts the reader from seeing any intermediate, uncommitted, 'dirty' read.
+		</li>
+		<li>
+			<h4 class="margin3px">Repeatable reads</h4>
+			A lock-based <i>concurrency control</i> <span class="get-title">DBMS</span> implementation
+			keeps <span class="dark-green">read</span> and <span class="dark-red">write</span> locks <small>(acquired on selected data)</small> until the end of the <span class="green">transaction</span>.
+			Range-locks are not managed, so <a href="#phantom-reads">phantom reads</a> can occur.
+			<div class="indent4"></div>
+			<span class="red">Write skew</span> is possible in some systems.
+			<em>Write skew</em> is a phenomenon where two writes are allowed to the same column(s) in a table by two different writers <small>(who have previously read the columns they are updating)</small>,
+			resulting in the column having data that is a mix of the two transactions.
+		</li>
+		<li>
+			<h4 class="margin3px">Serializable</h4>
+			This is the <i>highest</i> isolation level.<br>
+			With a lock-based <i>concurrency control</i> <span class="get-title">DBMS</span> implementation,
+			<em>serializability</em> requires <span class="dark-green">read</span> and <span class="dark-red">write</span> locks <small>(acquired on selected data)</small>
+			to be released at the end of the <span class="green">transaction</span>.
+			Also, <em>range-locks</em> must be acquired when a <code class="code">SELECT</code> query uses a ranged <code class="code">WHERE</code> clause,
+			especially to avoid the <a href="#phantom-reads">phantom reads</a> phenomenon.
+		</li>
+	</ol>
+	<div class="indent"></div>
+	<table class="collapse-border padding border-dark-gray">
+		<tr>
+			<th style="background:linear-gradient(to top right,#eaecf0 49%, #a2a9b1 49.5%, #a2a9b1 50.5%, #eaecf0 51%);">
+				<div style="margin-left:2em;text-align:right">Read phenomenon<br><br><br><br></div>
+				<div style="margin-right:2em;text-align:left">Isolation level</div>
+			</th>
+			<th class="back-gainsboro">Dirty read</th>
+			<th class="back-gainsboro">Non-repeatable read</th>
+			<th class="back-gainsboro">Phantom read</th>
+		</tr>
+		<tr>
+			<td>Serializable</td>
+			<td class="text-align-center back-bfd">no</td>
+			<td class="text-align-center back-bfd">no</td>
+			<td class="text-align-center back-bfd">no</td>
+		</tr>
+		<tr>
+			<td>Repeatable read</td>
+			<td class="text-align-center back-bfd">no</td>
+			<td class="text-align-center back-bfd">no</td>
+			<td class="text-align-center back-pink">yes</td>
+		</tr>
+		<tr>
+			<td>Read committed</td>
+			<td class="text-align-center back-bfd">no</td>
+			<td class="text-align-center back-pink">yes</td>
+			<td class="text-align-center back-pink">yes</td>
+		</tr>
+		<tr>
+			<td>Read uncommitted</td>
+			<td class="text-align-center back-pink">yes</td>
+			<td class="text-align-center back-pink">yes</td>
+			<td class="text-align-center back-pink">yes</td>
+		</tr>
+	</table>
+	<div class="indent"></div>
+
+	<h3>Oracle Isolation levels</h3>
+	<ol>
+		<li>
+			<h4 class="margin3px">Read committed</h4>
+			Default. It uses <i>Snapshot semantics</i>.<br>
+			When running under <i>Snapshot isolation</i>, the current transaction cannot see the results of any other transaction that was started before the current one.
+		</li>
+		<li>
+			<h4 class="margin3px">Serializable</h4>
+		</li>
+		<li>
+			<h4 class="margin3px">Read only</h4>
+			The <i>read-only</i> isolation level is similar to the <i>serializable</i> isolation level,
+			but read-only transactions do not permit data to be modified in the transaction unless the user is <code>SYS</code>.<br>
+			Read-only transactions are useful for generating reports in which the contents must be consistent with respect to the time when the transaction began
+		</li>
+	</ol>
+	<pre><span class="bold">SET TRANSACTION</span>
+   { { <span class="bold">READ</span> { <span class="bold">ONLY</span> | <span class="bold">WRITE</span> }
+     | <span class="bold">ISOLATION LEVEL</span>
+       { <span class="bold">SERIALIZABLE</span> | <span class="bold">READ COMMITTED</span> }
+     | <span class="bold">USE ROLLBACK SEGMENT</span> rollback_segment
+     } [ <span class="bold">NAME</span> string ]
+   | <span class="bold">NAME</span> string
+   } ;</pre>
+</div>
+<hr>
+
+Sources: Wikipedia. Carlo Zaniolo. Hugo Kornelis. Oracle®
 
 <div class="indent"></div>
 <a href="all.html">SiteMap</a><br>
@@ -1022,6 +1156,33 @@ Sources: Wikipedia. Carlo Zaniolo. Hugo Kornelis.
 			count += table.getElementsByTagName('td').length;
 		});
 		cellCountSpan.innerHTML = count;
+	});
+
+	const glossaryMap = new Map();
+	function getGlossary() {
+		const xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				const ths = this.responseXML.getElementsByTagName("th");
+				Array.from(ths).forEach( th => {
+					glossaryMap.set(th.id, th.nextSibling.nextSibling.innerHTML)
+				});
+			}
+		};
+		xhttp.open("GET", "Glossary.html", true);
+		xhttp.responseType = "document";
+		xhttp.send();
+	}
+	getGlossary();
+
+	const glossaryElements = document.getElementsByClassName('get-title');
+	Array.from(glossaryElements).forEach( (glossaryElement) => {
+		glossaryElement.addEventListener("mouseover", (event) => {
+				if (!event.target.title) {
+					event.target.title = glossaryMap.get(event.target.innerHTML);
+				}
+			}
+		);
 	});
 </script>
 
