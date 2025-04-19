@@ -113,6 +113,12 @@
 			<td>Binary Large Object</td>
 			<td class="template" data-id="ql"></td>
 		</tr>
+		<tr>
+			<th id="BIOS"></th>
+			<td>Basic Input/Output System</td>
+			<td class="template" data-id="OS"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -759,7 +765,8 @@
 		<tr>
 			<th id="OS">OS</th>
 			<td>Operating System</td>
-			<td></td>
+			<td class="template" data-id="OS"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="OSI">OSI</th>
@@ -772,7 +779,7 @@
 
 <details open>
 	<summary><b>P</b></summary>
-	<table class="collapse-border padding sorted">
+	<table class="collapse-border padding sorted" data-colspan="6">
 		<tr>
 			<th id="PC"></th>
 			<td>Personal Computer</td>
@@ -781,83 +788,84 @@
 			<td class="template" data-id="pc-interface" data-dont-add="1"></td>
 			<td class="template" data-id="memory" data-dont-add="1"></td>
 			<td class="template" data-id="video" data-dont-add="1"></td>
+			<td class="template" data-id="OS" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="PaaS">PaaS</th>
 			<td>Platform as a Service</td>
-			<td class="template" data-id="aaS" colspan="5"></td>
+			<td class="template colspan" data-id="aaS"></td>
 		</tr>
 		<tr>
 			<th id="PGP">PGP</th>
 			<td>Pretty Good Privacy</td>
-			<td colspan="4"></td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="PING">PING</th>
 			<td>Packet InterNet Groper</td>
-			<td colspan="5"><a href="#ICMP">ICMP</a></td>
+			<td class="colspan"><a href="#ICMP">ICMP</a></td>
 		</tr>
 		<tr>
 			<th id="PNG"></th>
 			<td>Portable Network Graphics</td>
-			<td class="template" data-id="graphics" colspan="5"></td>
+			<td class="template colspan" data-id="graphics"></td>
 		</tr>
 		<tr>
 			<th id="PDA"></th>
 			<td>Personal Digital Assistant</td>
-			<td colspan="5"></td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="PDF"></th>
 			<td>Portable Document Format</td>
-			<td class="template" data-id="format" colspan="5"></td>
+			<td class="template colspan" data-id="format"></td>
 		</tr>
 		<tr>
 			<th id="PMDL">PMDL</th>
 			<td>Promotion Model Definition Language</td>
-			<td class="template" data-id="atg+" colspan="4"></td>
+			<td class="template colspan" data-id="atg+"></td>
 		</tr>
 		<tr>
 			<th id="POJO">POJO</th>
 			<td>Plain Old Java Object</td>
-			<td class="template" data-id="java" colspan="4"></td>
+			<td class="template colspan" data-id="java"></td>
 		</tr>
 		<tr>
 			<th id="POX">POX</th>
 			<td>Plain Old XML</td>
-			<td colspan="5"><a href="#XML">XML</a></td>
+			<td class="colspan"><a href="#XML">XML</a></td>
 		</tr>
 		<tr>
 			<th id="PPP"></th>
 			<td>Point-to-Point Protocol</td>
-			<td class="template" data-id="protocol" colspan="5"></td>
+			<td class="template colspan" data-id="protocol"></td>
 		</tr>
 		<tr>
 			<th id="POP"></th>
 			<td>Post Office Protocol</td>
-			<td class="template" data-id="protocol" colspan="4"></td>
+			<td class="template colspan" data-id="protocol"></td>
 			<td>POP3</td>
 		</tr>
 		<tr>
 			<th id="P2P"></th>
 			<td>Peer-to-Peer</td>
-			<td class="template" data-id="network" colspan="5"></td>
+			<td class="template colspan" data-id="network"></td>
 		</tr>
 		<tr>
 			<th id="PAN"></th>
 			<td>Personal Area Network</td>
-			<td class="template" data-id="network" colspan="5"></td>
+			<td class="template colspan" data-id="network"></td>
 		</tr>
 		<tr>
 			<th id="PEMDAS"></th>
 			<td>Parentheses, Exponents, Multiplication/Division, Addition/Subtraction</td>
-			<td colspan="4"></td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="PATA"></th>
 			<td>Parallel Advanced Technology Attachment</td>
 			<td class="template" data-id="pc-interface" colspan="2"></td>
-			<td class="template" data-id="computer" data-dont-add="1" colspan="3"></td>
+			<td class="template colspan" data-id="computer" data-dont-add="1"></td>
 		</tr>
 	</table>
 </details>
@@ -1087,6 +1095,12 @@
 			<td class="template" data-id="pc-interface"></td>
 			<td class="template" data-id="computer" data-dont-add="1"></td>
 		</tr>
+		<tr>
+			<th id="UEFI"></th>
+			<td>Unified Extensible Firmware Interface</td>
+			<td class="template" data-id="OS"></td>
+			<td class="template" data-id="computer" data-dont-add="1"></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -1303,7 +1317,7 @@
 
 		let upRowTd = rows[0].getElementsByTagName("TD")[1];
 		let index = 1;
-		while ( index < rows.length) {
+		while (index < rows.length) {
 			let downRowTd = rows[index].getElementsByTagName("TD")[1];
 
 			if (upRowTd && downRowTd && upRowTd.innerHTML === downRowTd.innerHTML) {
@@ -1313,6 +1327,20 @@
 				upRowTd = downRowTd;
 			}
 			index++;
+		}
+	});
+
+	// calc colspan
+	tables.forEach(table => {
+		if (table.dataset.colspan) {
+			const rows = table.rows;
+			for(let i = 0; i < rows.length ; i++) {
+				const tds = rows[i].getElementsByTagName("TD");
+				const colspanTdList = rows[i].querySelectorAll("td.colspan");
+				if (colspanTdList.length > 0) {
+					colspanTdList[0].colSpan = table.dataset.colspan - tds.length + 2;
+				}
+			}
 		}
 	});
 
