@@ -72,6 +72,7 @@
 }
 
 ul.ulWithMargin > li {margin: 10px 0;}
+ol.olWithMargin > li {margin: 10px 0;}
 
 .nowrap {
 	white-space: nowrap;
