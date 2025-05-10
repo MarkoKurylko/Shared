@@ -20,7 +20,7 @@
 <div class="indent"></div>
 
 <label for="search-input"></label>
-<input id="search-input" type="text" title="Enter abbreviation or term">
+<input id="search-input" type="text" title="Enter abbreviation or term" autofocus>
 <button name="Search" onclick="search()">Search</button>
 <div class="indent"></div>
 <div id="search-results" style="display: none;"></div>
@@ -200,6 +200,12 @@
 			<td class="template" data-id="version-control"></td>
 		</tr>
 		<tr>
+			<th id="CAP"></th>
+			<td>Consistency | Availability | Partition tolerance</td>
+			<td class="template" data-id="ql"></td>
+		</tr>
+
+		<tr>
 			<th id="CE"></th>
 			<td>conformité européenne</td>
 			<td>European Conformity</td>
@@ -254,6 +260,11 @@
 			<th id="DOM"></th>
 			<td>Document Object Model</td>
 			<td><a href="#XML"></a>, <a href="#W3C"></a></td>
+		</tr>
+		<tr>
+			<th id="DLP"></th>
+			<td>Data Loss Prevention</td>
+			<td class="template" data-id="security"></td>
 		</tr>
 		<tr>
 			<th id="DTD"></th>
@@ -337,6 +348,16 @@
 			<th id="EPS"></th>
 			<td>Encapsulated PostScript</td>
 			<td class="template" data-id="graphics"></td>
+		</tr>
+		<tr>
+			<th id="ESG"></th>
+			<td>Environmental | Social | Governance</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="EDR"></th>
+			<td>Endpoint Detection and Response</td>
+			<td class="template" data-id="security"></td>
 		</tr>
 		<tr>
 			<th id="EEPROM"></th>
@@ -498,6 +519,11 @@
 			<th id="ISO"></th>
 			<td>International Organization for Standardization</td>
 			<td></td>
+		</tr>
+		<tr>
+			<th id="IAM"></th>
+			<td>Identity and Access Management</td>
+			<td class="template" data-id="security"></td>
 		</tr>
 		<tr>
 			<th id="ICMP">ICMP</th>
@@ -755,6 +781,11 @@
 			<td class="template" data-id="protocol"></td>
 		</tr>
 		<tr>
+			<th id="NFT"></th>
+			<td>Non-Fungible Token</td>
+			<td class="template" data-id="blockchain"></td>
+		</tr>
+		<tr>
 			<th id="NAT">NAT</th>
 			<td>Network Address Translation</td>
 			<td class="template" data-id="network"></td>
@@ -771,9 +802,8 @@
 		</tr>
 		<tr>
 			<th id="NoSQL"></th>
-			<td>Not only <a href="#SQL"></a></td>
+			<td>Non-relational <span class="tooltip" title="Database">DB</span> | Non <a href="#SQL"></a> | Not only <a href="#SQL"></a></td>
 			<td class="template" data-id="ql"></td>
-			<td>Non-relational <span class="tooltip" title="Database">DB</span></td>
 		</tr>
 	</table>
 </details>
@@ -1064,6 +1094,11 @@
 			<td>The same as <a href="#SDE"></a></td>
 		</tr>
 		<tr>
+			<th id="SSN"></th>
+			<td>Social Security Number</td>
+			<td></td>
+		</tr>
+		<tr>
 			<th id="SDLC"></th>
 			<td>Software Development Life Cycle</td>
 			<td></td>
@@ -1245,6 +1280,11 @@
 			<td>E<b>x</b>tensible Messaging and Presence Protocol</td>
 			<td class="template" data-id="protocol"></td>
 			<td>Jabber</td>
+		</tr>
+		<tr>
+			<th id="XDR"></th>
+			<td>E<b>x</b>tended Detection and Response</td>
+			<td class="template" data-id="security"></td>
 		</tr>
 	</table>
 </details>
