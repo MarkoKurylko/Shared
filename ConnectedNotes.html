@@ -10,6 +10,16 @@
 
 <table id="toc">
 	<tr>
+		<td><h1>A</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#aop">Aspect Oriented Programming</a></h2>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
 		<td><h1>D</h1></td>
 		<td>
 			<details>
@@ -76,6 +86,42 @@
 </table>
 
 <hr style="height:2px;">
+
+<div id="aop">
+	<h2>Aspect Oriented Programming</h2>
+	<h4>Core</h4>
+	<ul class="ulWithMargin">
+		<li>
+			<b class="green">Join point</b><br>
+			A (point)/(the java method) in program execution where <span class="blue">advice</span> can be applied
+		</li>
+		<li>
+			<b class="brown">Pointcut</b><br>
+			An expression that selects <span class="green">join points</span> where <span class="blue">advice</span> should run.<br>
+			<span class="brown">Pointcuts</span> use expressions based on method names in Java.
+		</li>
+		<li>
+			<b class="blue">Advice</b>
+			The (code)/(method) to execute at a <span class="green">join point</span>.<br>
+			There are different types of advice:
+			<ul>
+				<li>Before: Run before the <span class="green">join point</span></li>
+				<li>After: Run after the <span class="green">join point</span></li>
+				<li>Around: Run before and after the <span class="green">join point</span></li>
+			</ul>
+		</li>
+		<li>
+			<b class="tomato">Aspect</b>
+			A class containing <span class="blue">advices</span> and <span class="brown">pointcuts</span> related to a <span class="red">cross-cutting concern</span>, like <em>logging</em>, <em>security</em> etc.
+		</li>
+		<li>
+			<b class="black">Weaving</b>
+			The process of applying <span class="blue">advice</span> at <span class="green">join points</span> selected by <span class="brown">pointcuts</span>.<br>
+			It is done by the <span class="get-title">AOP</span> framework.
+		</li>
+	</ul>
+</div>
+<hr>
 
 <div id="db-normal-forms">
 	<h2>Database normal forms</h2>
