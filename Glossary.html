@@ -27,6 +27,15 @@
 <div class="indent"></div>
 <hr>
 
+<div id="topics" style="display: none">
+	<input id ="select-all" type="radio" name="topics" checked>
+	<label for="select-all">Select All</label>
+	<input id="select-none" type="radio" name="topics">
+	<label for="select-none">Select None</label>
+	<div class="indent4"></div>
+</div>
+<hr>
+
 <details open>
 	<summary><b>A</b></summary>
 	<table class="collapse-border padding sorted">
@@ -641,6 +650,31 @@
 			<td class="template" data-id="java"></td>
 		</tr>
 		<tr>
+			<th id="JPA"></th>
+			<td>Jakarta Persistence <small class="grey">(Java Persistence <a href="#API"></a>)</small></td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JTA"></th>
+			<td>Jakarta Transactions <small class="grey">(Java Transaction <a href="#API"></a>)</small></td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JDBC"></th>
+			<td>Java DataBase Connectivity</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JNDI"></th>
+			<td>Java Naming <small>and</small> Directory Interface</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JIT"></th>
+			<td>Just-In-Time</td>
+			<td class="template" data-id="computing"></td>
+		</tr>
+		<tr>
 			<th id="JSON"></th>
 			<td>JavaScript Object Notation</td>
 			<td class="template" data-id="javascript"></td>
@@ -1029,6 +1063,11 @@
 			<td>Restriction of Hazardous Substances</td>
 			<td></td>
 		</tr>
+		<tr>
+			<th id="RTFM"></th>
+			<td>Read The Fucking Manual</td>
+			<td class="template" data-id="meme"></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -1112,6 +1151,11 @@
 			<th id="SSN"></th>
 			<td>Social Security Number</td>
 			<td></td>
+		</tr>
+		<tr>
+			<th id="SPI"></th>
+			<td>Service Provider Interface</td>
+			<td class="template" data-id="java"></td>
 		</tr>
 		<tr>
 			<th id="SDLC"></th>
@@ -1267,11 +1311,22 @@
 			<td>Wi-Fi Protected Access</td>
 			<td>WPA2, WPA3</td>
 		</tr>
-
 		<tr>
 			<th id="WYSIWYG">WYSIWYG</th>
 			<td>What You See Is What You Get</td>
 			<td></td>
+		</tr>
+		<tr>
+			<th id="WORA"></th>
+			<td>Write Once, Run Anywhere</td>
+			<td class="template" data-id="java"></td>
+			<td>The same as <a href="#WORE"></a></td>
+		</tr>
+		<tr>
+			<th id="WORE"></th>
+			<td>Write Once, Run Everywhere</td>
+			<td class="template" data-id="java"></td>
+			<td>The same as <a href="#WORA"></a></td>
 		</tr>
 	</table>
 </details>
@@ -1308,6 +1363,11 @@
 <details open>
 	<summary><b>Y</b></summary>
 	<table class="collapse-border padding sorted">
+		<tr>
+			<th id="YAML"></th>
+			<td>YAML Ain't Markup Language™ <small class="grey">(Yet Another Markup Language)</small></td>
+			<td class="template" data-id="ml"></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -1380,7 +1440,7 @@
 	const tables = document.querySelectorAll("table.sorted");
 	tables.forEach(sortTable);
 
-	// templates
+	// templates ------------------------------------------
 	const templates = document.getElementById("templates");
 
 	const targets = document.getElementsByClassName("template");
@@ -1403,7 +1463,35 @@
 	Array.from(targets).forEach( target => {
 		if (templates.children.namedItem(target.dataset.id))
 			target.innerHTML = templates.children.namedItem(target.dataset.id).innerHTML;
+			target.title = target.dataset.id;
 	});
+
+	// TODO
+	const topics = document.getElementById("topics");
+	for (let template of templates.children) {
+		const checkbox = document.createElement("input");
+		checkbox.type = "checkbox";
+		checkbox.id = "topic-" + template.id;
+		checkbox.checked = true;
+		checkbox.addEventListener("change", function(event) {
+			const isChecked = this.checked;
+
+			const trs = document.querySelectorAll("tr td.template[title='" + this.id.substring(6) + "']");
+			trs.forEach(function (currentValue, currentIndex, listObj) {
+				console.log(`${currentValue.parentElement}, ${currentIndex}, ${this.innerHTML}`);
+				currentValue.parentElement.style.display = isChecked ? "" : "none";
+			});
+		});
+
+		const label = document.createElement("label");
+		label.for = checkbox.id;
+		label.innerHTML = template.id;
+		label.style.marginRight = "10px";
+
+		topics.appendChild(checkbox);
+		topics.appendChild(label);
+	}
+	// end of templates -----------------------------------------------------------------
 
 	// rowSpan the same
 	tables.forEach(table => {
