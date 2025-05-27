@@ -471,11 +471,13 @@
 			<th id="HTTP">HTTP</th>
 			<td>Hypertext Transfer Protocol</td>
 			<td class="template" data-id="protocol"></td>
+			<td>Stateless</td>
 		</tr>
 		<tr>
 			<th id="HTTPS">HTTPS</th>
 			<td>Hypertext Transfer Protocol Secure</td>
 			<td class="template" data-id="protocol"></td>
+			<td>Stateless</td>
 		</tr>
 		<tr>
 			<th id="HCMS"></th>
@@ -1543,6 +1545,8 @@
 			});
 			if (searchResults.innerHTML.length == 0) {
 				searchResults.appendChild(document.createTextNode("Nothing found"));
+				const c = function() {return Math.floor((Math.random() * 255))};
+				searchResults.style.color = "rgb(" + c() + "," + c() + "," + c() +")";
 			}
 			searchResults.style.display = "block";
 		} else {
