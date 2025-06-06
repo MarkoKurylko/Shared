@@ -334,6 +334,11 @@
 			<td></td>
 		</tr>
 		<tr>
+			<th id="DSL2" class="skip">DSL</th>
+			<td>Domain-Specific Language</td>
+			<td class="template" data-id="computer-language"></td>
+		</tr>
+		<tr>
 			<th id="DLC"></th>
 			<td>DownLoadable content</td>
 			<td></td>
@@ -472,6 +477,11 @@
 			<td>Generalized Markup Language</td>
 			<td class="template" data-id="ml"></td>
 			<td>Extended to <a href="#SGML">SGML</a></td>
+		</tr>
+		<tr>
+			<th id="GPL"></th>
+			<td>Domain-Purpose Language</td>
+			<td class="template" data-id="computer-language"></td>
 		</tr>
 	</table>
 </details>
@@ -943,6 +953,11 @@
 			<th id="OSI">OSI</th>
 			<td>Open Systems Interconnection</td>
 			<td></td>
+		</tr>
+		<tr>
+			<th id="OIDC"></th>
+			<td>OpenID Connect</td>
+			<td class="template" data-id="authentication-protocol"></td>
 		</tr>
 	</table>
 </details>
@@ -1527,7 +1542,7 @@
 				const x = rows[i].getElementsByTagName("TH")[0];
 				const y = rows[i + 1].getElementsByTagName("TH")[0];
 
-				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+				if (x && y && (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase())) {
 					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
 					switching = true;
 					break;
@@ -1616,7 +1631,7 @@
 	tables.forEach(table => {
 		if (table.dataset.colspan) {
 			const rows = table.rows;
-			for(let i = 0; i < rows.length ; i++) {
+			for (let i = 0; i < rows.length ; i++) {
 				const tds = rows[i].getElementsByTagName("TD");
 				const colspanTdList = rows[i].querySelectorAll("td.colspan");
 				if (colspanTdList.length > 0) {
