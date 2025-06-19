@@ -75,6 +75,15 @@
         </td>
     </tr>
 	<tr>
+		<td><h1>S</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#solid">SOLID</a></h2>
+			</details>
+		</td>
+	</tr>
+	<tr>
 		<td><h1>T</h1></td>
 		<td>
 			<details>
@@ -1106,6 +1115,69 @@
 }</pre>
 		</li>
 	</ol>
+</div>
+<hr>
+
+<div id="solid">
+	<h2>SOLID</h2>
+	<ul class="ulWithMargin">
+		<li>
+			<b>Single responsibility principle</b>
+			<div class="indent4"></div>
+			There should never be more than one reason for a class to change.<br>
+			In other words, every class should have only one responsibility
+		</li>
+		<li>
+			<b>Open–closed principle</b>
+			<div class="indent4"></div>
+			Software entities should be open for extension, but closed for modification.<br>
+			That is, such an entity can allow its behaviour to be extended without modifying its source code.<br>
+			In other words, from the very beginning, the code should be written in a <em class="green">way</em> it should not be changed in the future,
+			in case the functionality is needed to be extended.<br>
+			<details>
+				<summary>Java example</summary>
+				<iframe id="ocp" src="parts/OCPExample.html" style="width:-webkit-fill-available; height:655px;" >
+				</iframe>
+			</details>
+		</li>
+		<li>
+			<b>Liskov substitution principle</b>
+			<div class="indent4"></div>
+			Functions/methods that use pointers or references to base classes must be able to use objects of derived classes without knowing it.
+			<details>
+				<summary>Java example</summary>
+				<iframe id="liskov" src="parts/LiskovSubstitutionExample.html" style="width:-webkit-fill-available; height:555px;" >
+				</iframe>
+			</details>
+		</li>
+		<li>
+			<b>Interface segregation principle</b>
+			<div class="indent4"></div>
+			No object/code should be forced to depend on methods it does not use.<br>
+			<details>
+				<summary>Java example</summary>
+				<iframe id="isp" src="parts/ISPExample.html" style="width:-webkit-fill-available; height:655px;" >
+				</iframe>
+			</details>
+		</li>
+		<li>
+			<b>Dependency inversion principle</b>
+			<div class="indent4"></div>
+			1. High-level modules should not depend/import on low-level modules, but both should depend on abstractions.<br>
+			2. Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.<br>
+			Modules should be loosely coupled.<br>
+			The 2nd part means that interfaces and abstract classes should <span class="red">not</span> reference any implementations,
+			but should only reference interfaces and abstract classes.<br>
+			Final Notes: <br>
+			- Implementations classes should not extend other implementations, only interfaces and abstract classes<br>
+			- Method parameter's should not reference implementations, only interfaces and abstract classes
+			<details>
+				<summary>Java example</summary>
+				<iframe id="dip" src="parts/DIPExample.html" style="width:-webkit-fill-available; height:570px;" >
+				</iframe>
+			</details>
+		</li>
+	</ul>
 </div>
 <hr>
 
