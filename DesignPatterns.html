@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Design Patterns</title>
+	<script src="js/glossary.js"></script>
 	<link rel="stylesheet" href="css/common.css">
 </head>
 <body>
@@ -17,8 +18,7 @@
 		<summary><b>Creational</b> patterns are for object creation</summary>
 		<table class="collapse-border padding margin" >
 			<tr>
-				<td><a href="#abstractFactory">Abstract factory</a></td>
-				<td>Provide an interface for creating <i>families</i> of related or dependent objects without specifying their concrete classes</td>
+				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
 			</tr>
 			<tr>
 				<td><a href="#builder">Builder</a></td>
@@ -26,8 +26,88 @@
 					Separates the construction of a complex object from its representation.<br>
 					Gives more readability in Java code
 				</td>
+				<td>When need to create different representations of a complex object <small>(with the same construction process) </small></td>
+			</tr>
+			<tr>
+				<td><a href="#DI">Dependency injection</a></td>
+				<td>
+					DI is a programming technique in which an object or function <span class="green">receives</span> other objects or functions that it requires, as opposed to <span class="tomato">creating</span> them internally.<br>
+					DI aims to <em>separate the concerns</em> of constructing objects and using them, leading to <em>loosely coupled</em> programs
+				</td>
+			</tr>
+			<tr>
+				<td><a id="lazyInitialization" href="#lazyInitialization">Lazy initialization</a></td>
+				<td>Tactic of delaying the creation of an object, the calculation of a value, or some other expensive process until the first time it is needed</td>
+			</tr>
+			<tr>
+				<td><a href="#objectPool">Object Pool</a></td>
+				<td>
+					Uses a set of initialized objects kept ready to use – a "pool" – rather than allocating and destroying them on demand.<br>
+					<small>
+						A client of the pool will request an object from the pool and perform operations on the returned object.
+						When the client has finished, it returns the object to the pool rather than destroying it.
+					</small>
+				</td>
+				<td>
+					Object pools are primarily used for performance: in some circumstances, object pools significantly improve performance.<br>
+					<small>
+						Object pooling can offer a significant performance boost in situations where the cost of initializing a class instance is high and the rate of instantiation and destruction of a class is high – in this case objects can frequently be reused, and each reuse saves a significant amount of time.
+					</small>
+				</td>
+			</tr>
+			<tr>
+				<td><a id="RAII" href="#RAII">Resource acquisition is initialization</a></td>
+				<td>
+					RAII<br>
+					In Java it is <code class="code">try‑with‑resources</code>, in opposite to old <code class="code">try-finally</code>
+				</td>
+				<td></td>
 			</tr>
 
+			<tr><td colspan="3"><hr></td></tr>
+			<tr>
+				<td><a id="factoryMethod" href="#factoryMethod">Factory method</a></td>
+				<td>
+					Define an interface for creating a <i><b>single</b></i> object, but let subclasses decide which class to instantiate.
+					Factory Method lets a class defer instantiation to subclasses
+				</td>
+			</tr>
+			<tr>
+				<td><a href="#abstractFactory">Abstract factory</a></td>
+				<td>Provide an interface for creating <i><b>families</b></i> of related or dependent objects without specifying their concrete classes</td>
+			</tr>
+			<tr><td colspan="3"><hr></td></tr>
+			<tr>
+				<td><a href="#singleton">Singleton</a></td>
+				<td>Ensure a class has only one instance, and provide a global point of access to it</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="#lazySingleton">Lazy-loaded Singleton</a></td>
+				<td><b>Initialization-on-demand holder</b></td>
+				<td>
+					While the implementation is an efficient thread-safe "singleton" cache without synchronization overhead,
+					and better performing than uncontended synchronization,
+					the idiom can <span class="red">only be used</span> when the construction of <code class="code">Something</code> is <span class="green">guaranteed to not fail</span>.
+					In most JVM implementations, if construction of <code class="code">Something</code> fails,
+					subsequent attempts to initialize it from the same class-loader will result in a <code class="code">NoClassDefFoundError</code> failure.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="#multiton">Multiton</a></td>
+				<td>Ensure a class has only named instances, and provide a global point of access to them</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="#prototype">Prototype</a></td>
+				<td>---</td>
+				<td>
+					When the types of <em>objects</em> to create is determined by a <em>prototypical instance</em>, which is cloned to produce new objects.<br>
+					When we have an instance of the class (prototype) and we’d like to create new objects by just copying the prototype
+				</td>
+			</tr>
+
+			<tr><td colspan="3"><hr></td></tr>
 		</table>
 	</details>
 	<details>
@@ -60,7 +140,11 @@
 
 	<div id="abstractFactory">
 		<h3>Abstract factory</h3>
-		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Abstract_factory_UML.svg/1024px-Abstract_factory_UML.svg.png" alt="Abstract Factory">
+		<a href="https://refactoring.guru/design-patterns/abstract-factory/java/example">Java example</a>
+		<details>
+			<summary>UML</summary>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Abstract_factory_UML.svg/1024px-Abstract_factory_UML.svg.png" alt="Abstract Factory">
+		</details>
 	</div>
 	<hr>
 
@@ -75,6 +159,63 @@
 		(like at <i>Baeldung</i>), but in this case base class will need to have public setters.
 	</div>
 	<hr>
+
+	<div id="DI">
+		<h3>Dependency injection</h3>
+	</div>
+	<hr>
+
+	<div id="objectPool">
+		<h3>Object Pool</h3>
+		Java supports <a href="#threadPool">thread pooling</a> via <code class="code">java.util.concurrent.ExecutorService</code> and other related classes.
+	</div>
+	<hr>
+
+	<div id="threadPool">
+		<h3>Thread Pool</h3>
+	</div>
+	<hr>
+
+	<div id="singleton">
+		<h3>Singleton</h3>
+		<h5>Downside/Drawbacks</h5>
+		In case <code class="code">Singleton</code> is creating instance of itself - it violates <b>SRP</b>.<br>
+		Makes unit testing far more difficult, as it introduces <em>global state</em> into an application.
+	</div>
+	<hr>
+
+	<div id="lazySingleton">
+		<h3>Lazy-loaded Singleton</h3>
+		The static class definition <code class="code">LazyHolder</code> within it <span class="green">is not initialized</span>
+		until the <span class="get-title">JVM</span> determines that <code class="code">LazyHolder</code> must be executed.
+		The static class <code class="code">LazyHolder</code> is only executed when the static method <code class="code">getInstance</code> is invoked on the class <code class="code">Something</code>,
+		and the first time this happens the <span class="get-title">JVM</span> will load and initialize the <code class="code">LazyHolder</code> class.
+		<div class="indent8"></div>
+		<iframe src="parts/LazyLoadedSingletonExample.html" style="width:-webkit-fill-available; height:220px;"></iframe>
+	</div>
+	<hr>
+
+	<div id="multiton">
+		<h3>Multiton</h3>
+		Generalizes the <em>Singleton</em> pattern.
+		Whereas the <em>singleton</em> allows only one instance of a class to be created,
+		the multiton pattern allows for the controlled creation of multiple instances,
+		which it manages through the use of a <b>map</b>.<br>
+		<code class="code">public getInstance(type)</code>
+
+		<h5>Downside/Drawbacks</h5>
+		Makes unit testing far more difficult, as it introduces <em>global state</em> into an application.
+		<small>(Just like Singleton)</small><br>
+		<small>With garbage collected languages it may become a source of memory leaks as it introduces global strong references to the objects.</small>
+	</div>
+	<hr>
+
+	<div id="prototype">
+		<h3>Prototype</h3>
+		Implement method <code class="code">clone()</code>/<code class="code">copy()</code>
+	</div>
+	<hr>
+
 
 	<div class="indent"></div>
 	<a href="all.html">SiteMap</a><br>
