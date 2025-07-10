@@ -53,6 +53,11 @@
 			<td class="template" data-id="ql"></td>
 		</tr>
 		<tr>
+			<th id="ASIC"></th>
+			<td>Application-Specific Integrated Circuit</td>
+			<td class="template" data-id="electronics"></td>
+		</tr>
+		<tr>
 			<th id="ASCII"></th>
 			<td>American Standard Code <small>for</small> Information Interchange</td>
 			<td></td>
@@ -159,6 +164,11 @@
 			<td></td>
 		</tr>
 		<tr>
+			<th id="CRUD"></th>
+			<td>Create Read Update Delete</td>
+			<td class="template" data-id="ql"></td>
+		</tr>
+		<tr>
 			<th id="CORS"></th>
 			<td>Cross Origin Resource Sharing</td>
 			<td></td>
@@ -235,6 +245,27 @@
 			<th id="CAP"></th>
 			<td>Consistency | Availability | Partition tolerance</td>
 			<td class="template" data-id="ql"></td>
+		</tr>
+		<tr>
+			<th id="CDN"></th>
+			<td>Content Delivery Network</td>
+			<td></td>
+		</tr>
+
+		<tr>
+			<th id="CEO"></th>
+			<td>Chief Executive Officer</td>
+			<td class="template" data-id="role"></td>
+		</tr>
+		<tr>
+			<th id="CTO"></th>
+			<td>Chief Technical Officer</td>
+			<td class="template" data-id="role"></td>
+		</tr>
+		<tr>
+			<th id="COO"></th>
+			<td>Chief Operating Officer</td>
+			<td class="template" data-id="role"></td>
 		</tr>
 
 		<tr>
@@ -407,6 +438,11 @@
 			<td></td>
 		</tr>
 		<tr>
+			<th id="ETA"></th>
+			<td>Estimated Time of Arrival</td>
+			<td></td>
+		</tr>
+		<tr>
 			<th id="EEPROM"></th>
 			<td>Electrically Erasable Programmable Read-Only Memory</td>
 			<td class="template" data-id="memory"></td>
@@ -430,9 +466,9 @@
 			<td class="template" data-id="aaS"></td>
 		</tr>
 		<tr>
-			<th id="FIFO">FIFO</th>
+			<th id="FIFO"></th>
 			<td>First In First Out</td>
-			<td><a href="#LIFO">LIFO</a></td>
+			<td class="template" data-id="cache"></td>
 		</tr>
 		<tr>
 			<th id="FTP">FTP</th>
@@ -504,6 +540,22 @@
 			<td>Domain-Purpose Language</td>
 			<td class="template" data-id="computer-language"></td>
 		</tr>
+		<tr>
+			<th id="GQL"></th>
+			<td>Graph Query Language</td>
+			<td class="template" data-id="ql"></td>
+		</tr>
+		<tr>
+			<th id="GSM"></th>
+			<td><b>G</b>lobal <b>S</b>ystem for <b>M</b>obile Communications</td>
+			<td class="template" data-id="telecom"></td>
+		</tr>
+		<tr>
+			<th id="GRASP"></th>
+			<td>General Responsibility Assignment Software Patterns</td>
+			<td class="template" data-id="software"></td>
+			<td>Controller, creator, indirection, information expert, low coupling, high cohesion, polymorphism, protected variations, pure fabrication</td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -556,7 +608,7 @@
 
 <details open>
 	<summary><b>I</b></summary>
-	<table class="collapse-border padding sorted td2max-width-500">
+	<table class="collapse-border padding sorted td2max-width-500" data-colspan="2">
 		<tr>
 			<th id="IaaS">IaaS</th>
 			<td>Infrastructure as a Service</td>
@@ -580,7 +632,12 @@
 		<tr>
 			<th id="IP">IP</th>
 			<td>Internet Protocol</td>
-			<td class="template" data-id="protocol"></td>
+			<td class="template colspan" data-id="protocol"></td>
+		</tr>
+		<tr>
+			<th id="I/O"></th>
+			<td>Input/Output</td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="ICS">ICS</th>
@@ -621,12 +678,17 @@
 		<tr>
 			<th id="IGMP"></th>
 			<td>Internet Group Management Protocol</td>
-			<td class="template" data-id="protocol"></td>
+			<td class="template colspan" data-id="protocol"></td>
 		</tr>
 		<tr>
 			<th id="IIFE">IIFE</th>
 			<td>Immediately Invoked Function Expression</td>
 			<td class="template" data-id="javascript"></td>
+		</tr>
+		<tr>
+			<th id="IoT"></th>
+			<td>Internet of Things</td>
+			<td class="template" data-id="internet"></td>
 		</tr>
 		<tr>
 			<th id="IETF">IETF</th>
@@ -636,16 +698,28 @@
 		<tr>
 			<th id="IMAP"></th>
 			<td>Internet Message Access Protocol</td>
-			<td class="template" data-id="protocol"></td>
+			<td class="template colspan" data-id="protocol"></td>
+		</tr>
+		<tr>
+			<th id="IMCI"></th>
+			<td>International Mobile Subscriber Identity</td>
+			<td class="template" data-id="telecom"></td>
+		</tr>
+		<tr>
+			<th id="IMEI"></th>
+			<td>International Mobile Equipment Identity</td>
+			<td class="template" data-id="telecom"></td>
 		</tr>
 		<tr>
 			<th id="IDE"></th>
-			<td>
-				Integrated Drive Electronics<hr class="margin3px">
-				Integrated Development Environment
-			</td>
+			<td>Integrated Drive Electronics</td>
 			<td class="template" data-id="pc-interface"></td>
 			<td class="template" data-id="computer" data-dont-add="1"></td>
+		</tr>
+		<tr>
+			<th id="IDE2" class="skip">IDE</th>
+			<td>Integrated Development Environment</td>
+			<td class="template" data-id="software"></td>
 		</tr>
 		<tr>
 			<th id="idempotent">Idempotent</th>
@@ -810,38 +884,53 @@
 			<td>Know Your Customer</td>
 			<td class="template" data-id="banking"></td>
 		</tr>
+		<tr>
+			<th id="KTLO"></th>
+			<td>Keeping The Lights On</td>
+			<td></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
 
 <details open>
 	<summary><b>L</b></summary>
-	<table class="collapse-border padding sorted">
+	<table class="collapse-border padding sorted" data-colspan="2">
 		<tr>
 			<th id="LXC"></th>
 			<td>LinuX Containers</td>
-			<td class="template" data-id="OS"></td>
+			<td class="template colspan" data-id="OS"></td>
 		</tr>
-
 		<tr>
-			<th id="LIFO">LIFO</th>
+			<th id="LFU"></th>
+			<td>Least Frequently Used</td>
+			<td class="template" data-id="cache"></td>
+		</tr>
+		<tr>
+			<th id="LRU"></th>
+			<td>Least Recently Used</td>
+			<td class="template colspan" data-id="cache"></td>
+		</tr>
+		<tr>
+			<th id="LIFO"></th>
 			<td>Last In First Out</td>
-			<td>LIFO is a Stack. See also <a href="#FIFO">FIFO</a></td>
+			<td class="template" data-id="cache"></td>
+			<td>LIFO is a Stack</td>
 		</tr>
 		<tr>
 			<th id="LDAP"></th>
 			<td>Lightweight Directory Access Protocol</td>
-			<td class="template" data-id="protocol"></td>
+			<td class="template colspan" data-id="protocol"></td>
 		</tr>
 		<tr>
 			<th id="LAN"></th>
 			<td>Local Area Network</td>
-			<td class="template" data-id="network"></td>
+			<td class="template colspan" data-id="network"></td>
 		</tr>
 		<tr>
 			<th id="LWC"></th>
 			<td>Language of Wider Communication</td>
-			<td><a href="#lingua-franca"></a></td>
+			<td class="colspan"><a href="#lingua-franca"></a></td>
 		</tr>
 		<tr>
 			<th id="LTE"></th>
@@ -852,7 +941,7 @@
 		<tr>
 			<th id="LTS"></th>
 			<td>Long-Term Support</td>
-			<td class="template" data-id="software"></td>
+			<td class="template colspan" data-id="software"></td>
 		</tr>
 		<tr>
 			<th id="LTE+"></th>
@@ -863,7 +952,7 @@
 		<tr>
 			<th id="lingua-franca" class="skip">Lingua franca</th>
 			<td>Bridge, common, trade, auxiliary or link language, or <a href="#LWC"></a> </td>
-			<td></td>
+			<td class="colspan"></td>
 		</tr>
 	</table>
 </details>
@@ -921,6 +1010,11 @@
 			<th id="MVP"></th>
 			<td>Minimum Viable Product</td>
 			<td></td>
+		</tr>
+		<tr>
+			<th id="MOSFET"></th>
+			<td>Metal–Oxide–Semiconductor Field-Effect Transistor</td>
+			<td class="template" data-id="electronics"></td>
 		</tr>
 		<tr>
 			<th id="mutex">Mutex</th>
@@ -985,22 +1079,30 @@
 
 <details open>
 	<summary><b>O</b></summary>
-	<table class="collapse-border padding sorted">
+	<table class="collapse-border padding sorted" data-colspan="4">
+		<tr>
+			<th id="OAuth"></th>
+			<td>Open Authorization</td>
+			<td>Web Authorization Protocol</td>
+			<td class="template" data-id="security"></td>
+			<td class="template" data-id="authorization-protocol"></td>
+			<td><img src="svg/Oauth.svg" alt="svg" class="svg-logo"></td>
+		</tr>
 		<tr>
 			<th id="OCR">OCR</th>
 			<td>Optical character recognition</td>
-			<td></td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="OOP"></th>
 			<td>Object Oriented Programming</td>
-			<td class="template" data-id="software"></td>
+			<td class="template colspan" data-id="software"></td>
 		</tr>
 		<tr>
 			<th id="OS">OS</th>
 			<td>Operating System</td>
 			<td class="template" data-id="OS"></td>
-			<td class="template" data-id="computer" data-dont-add="1"></td>
+			<td class="template colspan" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="OSI">OSI</th>
@@ -1010,7 +1112,13 @@
 		<tr>
 			<th id="OIDC"></th>
 			<td>OpenID Connect</td>
-			<td class="template" data-id="authentication-protocol"></td>
+			<td colspan="2">An authentication layer on top of the <a href="#OAuth"></a> 2.0</td>
+			<td class="template colspan" data-id="authentication-protocol"></td>
+		</tr>
+		<tr>
+			<th id="OOTB"></th>
+			<td>Out of the Box</td>
+			<td></td>
 		</tr>
 	</table>
 </details>
@@ -1123,6 +1231,11 @@
 			<td class="colspan"></td>
 		</tr>
 		<tr>
+			<th id="pub/sub"></th>
+			<td>Publish-Subscribe</td>
+			<td class="template colspan" data-id="design-pattern"></td>
+		</tr>
+		<tr>
 			<th id="PATA"></th>
 			<td>Parallel Advanced Technology Attachment</td>
 			<td class="template" data-id="pc-interface" colspan="3"></td>
@@ -1192,6 +1305,11 @@
 			<th id="RTF"></th>
 			<td>Rich Text Format</td>
 			<td class="template" data-id="format"></td>
+		</tr>
+		<tr>
+			<th id="RGR"></th>
+			<td><span class="red">Red</span> <span class="green">Green</span> Refactor</td>
+			<td class="template" data-id="tdd"></td>
 		</tr>
 		<tr>
 			<th id="RAM"></th>
@@ -1324,6 +1442,11 @@
 			<td></td>
 		</tr>
 		<tr>
+			<th id="SSO"></th>
+			<td>Single Sign-On</td>
+			<td class="template" data-id="security"></td>
+		</tr>
+		<tr>
 			<th id="SPI"></th>
 			<td>Service Provider Interface</td>
 			<td class="template colspan" data-id="java"></td>
@@ -1332,6 +1455,11 @@
 			<th id="SDLC"></th>
 			<td>Software Development Life Cycle</td>
 			<td></td>
+		</tr>
+		<tr>
+			<th id="SDLC2" class="skip">SDLC</th>
+			<td>System Design Life Cycle</td>
+			<td class="template" data-id="system-design"></td>
 		</tr>
 		<tr>
 			<th id="SIMM"></th>
@@ -1366,6 +1494,12 @@
 			<th id="TCL"></th>
 			<td>Transaction Control Language</td>
 			<td class="template" data-id="sql-subgroup"></td>
+		</tr>
+		<tr>
+			<th id="TDD"></th>
+			<td>Test-Driven Development</td>
+			<td class="template" data-id="software"></td>
+			<td class="template" data-id="tdd"></td>
 		</tr>
 	</table>
 </details>
