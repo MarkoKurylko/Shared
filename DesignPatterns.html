@@ -7,14 +7,14 @@
 	<link rel="stylesheet" href="css/common.css">
 </head>
 <body>
-<a href="all.html">SiteMap</a>
-<div class="indent"></div>
+	<a href="all.html">SiteMap</a>
+	<div class="indent"></div>
 
 	<p>
 		<em>Design pattern</em> is a general, <i>reusable</i> solution to a commonly occurring problem in many contexts in <i>software design</i>.
 	</p>
 
-	<details open="open">
+	<details>
 		<summary><b>Creational</b> patterns are for object creation</summary>
 		<table class="collapse-border padding margin" >
 			<tr>
@@ -110,17 +110,139 @@
 			<tr><td colspan="3"><hr></td></tr>
 		</table>
 	</details>
-	<details>
+
+	<details open>
 		<summary><b>Structural</b> patterns ease the design by identifying a simple way to realize relationships among entities</summary>
-		<ul>
-			<li>Adapter <small>(Wrapper, or Translator)</small></li>
-		</ul>
+		<table class="collapse-border padding margin" >
+			<tr>
+				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
+			</tr>
+			<tr>
+				<td><a href="#adapter">Adapter <small>(Wrapper, or Translator)</small></a></td>
+				<td>
+					Allows the interface of an existing class to be used as another interface.<br>
+					An adapter allows two incompatible interfaces to work together.
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="#bridge">Bridge</a></td>
+				<td>Decouple an <span class="medium-aqua-marine">abstraction</span> from its <span class="dark-green">implementation</span> allowing <b><i>them</i></b> to vary independently</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="#composite">Composite</a></td>
+				<td>
+					Is a <em>partitioning</em> DP.
+					The composite pattern describes a group of objects that are treated the same way as a single instance of the same type of object.
+					The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies.
+				</td>
+				<td>Tree-like structures</td>
+			</tr>
+			<tr>
+				<td><a href="#decorator">Decorator</a></td>
+				<td>Allows behavior to be added to an individual object, dynamically, without affecting the behavior of other instances of the same class.</td>
+				<td>The decorator pattern can be used to extend <em>(decorate)</em> the functionality of a certain object</td>
+			</tr>
+			<tr>
+				<td><a href="#delegation">Delegation</a></td>
+				<td>Extend a class by composition instead of subclassing</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="#extensionObject">Extension object</a></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="#facade" id="facade">Facade</a></td>
+				<td>
+					Facade encapsulates a complex subsystem behind a simple interface.<br>
+					It hides much of the complexity and makes the subsystem easy to use.<br>
+					Serves as a front-facing interface masking more complex underlying or structural code
+				</td>
+				<td>
+					<ul>
+						<li>improve the readability and usability of a <em>software library</em> by masking interaction with more complex components behind a single (and often simplified) <span class="get-title">API</span></li>
+						<li>provide a context-specific interface to more generic functionality (complete with context-specific input validation)</li>
+						<li>serve as a launching point for a broader <em>refactor</em> of <em>monolithic</em> or tightly-coupled systems in favor of more <em>loosely-coupled</em> code</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td><a href="#flyweight">Flyweight</a></td>
+				<td>Use sharing to support large numbers of similar objects efficiently</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td><a href="#frontController">Front Controller</a></td>
+				<td>Use a controller as the initial point of contact for handling a request.
+					The controller manages the handling of the request, including invoking security services such as authentication and authorization, delegating business processing, managing the choice of an appropriate view, handling errors, and managing the selection of content creation strategies
+				</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td><a href="#marker" id=marker>Marker</a></td>
+				<td>
+					A <b>class</b> implements a <em>marker interface</em> <small>(tagging interface)</small>, which is an empty interface, and methods that interact with instances of that class test for the existence of the interface.<br>
+					<code class="code">public interface Serializable {}</code>
+				</td>
+				<td>
+					Used with languages that provide run-time type information about objects.
+					It provides a means to associate metadata with a class where the language does not have explicit support for such metadata
+				</td>
+			</tr>
+
+			<tr>
+				<td><a href="#module">Module</a></td>
+				<td>
+					Group several related elements, such as classes, singletons, methods, globally used, into a single conceptual entity.
+				</td>
+				<td>
+					Used to implement the concept of <em>software modules</em>, defined by <em>modular programming</em>, in a <i class="brown">programming language</i> with incomplete direct support for the concept.<br>
+					This pattern can be implemented in several ways depending on the host programming language, such as the <a href="#singleton">Singleton</a> DP
+				</td>
+			</tr>
+
+			<tr>
+				<td><a href="#proxy">Proxy</a></td>
+				<td>
+					A <em>proxy</em>, in its most general form, is a class functioning as an interface to something else.<br>
+					In short, a proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes.<br>
+				</td>
+				<td>
+					Use of the proxy can simply be <em>forwarding</em> to the real object, or can provide additional logic.
+					In the proxy, extra functionality can be provided, for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
+					For the client, usage of a proxy object is similar to using the real object, because both implement the same interface.
+				</td>
+			</tr>
+
+			<tr>
+				<td><a href="#twin">Twin</a></td>
+				<td>
+					Allows to model <em>multiple inheritance</em> in programming languages that do not support multiple inheritance.<br>
+					This pattern avoids many of the problems with multiple inheritance.
+				</td>
+				<td>
+					To model multiple inheritance in languages that don't support it.<br>
+					To avoid some problems of multiple inheritance.
+				</td>
+			</tr>
+
+		</table>
 	</details>
+
 	<details>
 		<summary><b>Behavioral</b> patterns identify common communication patterns among objects</summary>
-		<ul>
-			<li>-</li>
-		</ul>
+		<table>
+			<tr>
+				<td><a href="#Bod" id="Bod">Bodya</a></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
 	</details>
 	<details>
 		<summary><b>Concurrency</b> patterns deal with the multi-threaded programming paradigm</summary>
@@ -143,7 +265,7 @@
 		<a href="https://refactoring.guru/design-patterns/abstract-factory/java/example">Java example</a>
 		<details>
 			<summary>UML</summary>
-			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Abstract_factory_UML.svg/1024px-Abstract_factory_UML.svg.png" alt="Abstract Factory">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Abstract_factory_UML.svg" alt="Abstract Factory">
 		</details>
 	</div>
 	<hr>
@@ -213,6 +335,156 @@
 	<div id="prototype">
 		<h3>Prototype</h3>
 		Implement method <code class="code">clone()</code>/<code class="code">copy()</code>
+	</div>
+	<hr>
+
+
+	<h2>Structural</h2>
+
+	<div id="adapter">
+		<h3>Adapter</h3>
+		Example: the <span class="get-title">DOM</span>.
+
+		<ul class="ulWithMargin">
+			<li>
+				<b>Object adapter pattern</b><br>
+				In this adapter pattern, the adapter contains an instance of the class it wraps
+			</li>
+			<li><b>Class adapter pattern</b></li>
+		</ul>
+
+		The <em>Wrapper</em> pattern can be used to <em>wrap</em> third-party library,
+		and in case the interface of that library is changed in the future,
+		there will be only one (or fixed) place to change the behavior in the source code
+	</div>
+	<hr>
+
+	<div id="bridge">
+		<h3>Bridge</h3>
+		<iframe src="parts/BridgePatternExample.html" style="width:-webkit-fill-available; height:420px;"></iframe>
+		<details>
+			<summary>Bridge visualization</summary>
+			<img src="webp/BridgePattern.webp" alt="Bridge">
+		</details>
+	</div>
+	<hr>
+
+	<div id="composite">
+		<h3>Composite</h3>
+		<ul class="ulWithMargin">
+			<li><b>Component</b> - the base interface for all the objects in the composition</li>
+			<li><b>Leaf</b> - implements the <i>Component</i>, <span class="red">cannot have</span> child components</li>
+			<li><b>Composite</b> - implements the <i>Component</i>, <span class="green">can have</span> child components (leafs or other composites)</li>
+		</ul>
+		<details>
+			<summary>Wiki UML</summary>
+			<img src="svg/CompositeUML.svg" alt="Bridge">
+		</details>
+	</div>
+	<hr>
+
+	<div id="decorator">
+		<h3>Decorator</h3>
+		<details>
+			<summary>Decorator visualization</summary>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Decorator_UML_class_diagram.svg" alt="Decorator">
+		</details>
+		<details>
+			<summary>Decorator example</summary>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/UML2_Decorator_Pattern.png" alt="Decorator Example">
+		</details>
+	</div>
+	<hr>
+
+	<div id="delegation">
+		<h3>Delegation</h3>
+		<details>
+			<summary>Delegation example</summary>
+			<iframe src="parts/DelegationPatternExample.html" style="width:-webkit-fill-available; height:650px;"></iframe>
+		</details>
+	</div>
+	<hr>
+
+	<div id="extensionObject">
+		<h3>Extension Object</h3>
+		<details>
+			<summary>Extension Object example</summary>
+			<iframe src="parts/ExtensionObjectPatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
+		</details>
+	</div>
+	<hr>
+
+	<div id="flyweight">
+		<h3>Flyweight</h3>
+		<details>
+			<summary>Flyweight example</summary>
+			<iframe src="parts/FlyweightPatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
+		</details>
+	</div>
+	<hr>
+
+	<div id="frontController">
+		<h3>Front Controller</h3>
+		The controller provides a centralized entry point that controls and manages Web request handling.
+		By centralizing decision points and controls, the controller also helps reduce the amount of Java code, called <em>scriptlets</em>, embedded in the <span class="get-title">JSP</span>.<br>
+		The <em>controller</em> is the initial contact point for handling all requests in the system. The controller may delegate to a helper to complete authentication and authorization of a user or to initiate contact retrieval.<br>
+		<img src="jpg/OracleFrontController.jpg" alt="Front Controller">
+	</div>
+	<hr>
+
+	<div id="module">
+		<h3>Module</h3>
+		<em>Java</em> supports <em>packaging</em>, that is a reduced version of <em>module</em>.<br>
+		Java 9 introduces <em>modules</em> as is.<br>
+		<code class="code">import module jep476mod2;</code>
+	</div>
+	<hr>
+
+	<div id="proxy">
+		<h3>Proxy</h3>
+		<ul>
+			<li>The access to an object should be controlled.</li>
+			<li>Additional functionality should be provided when accessing an object.</li>
+		</ul>
+		Possible usage scenarios:<br>
+		<h5 style="margin-bottom:2px;margin-top:2px;">Protection proxy</h5>
+		A protection proxy might be used to control access to a resource based on access rights.
+	</div>
+	<hr>
+
+	<div id="twin">
+		<h3>Twin</h3>
+		Instead of having a single class which is derived from two super-classes,
+		have two separate sub-classes each derived from one of the two super-classes.
+		These two sub-classes are closely coupled, so, both can be viewed as a Twin object having two ends.
+		<pre class="code">
+	public class BallItem {
+		BallThread <b>twin</b>;
+
+		public void start() {
+			twin.start();
+		}
+
+		public void pause() {
+			twin.suspend();
+		}
+
+		public void resume() {
+			twin.resume();
+		}
+
+		public void draw() {|
+	}
+
+	public class BallThread extends Thread {
+		BallItem <b>twin</b>;
+
+		public void run() {
+			while (true) {
+				twin.draw();
+			}
+		}
+	}</pre>
 	</div>
 	<hr>
 
