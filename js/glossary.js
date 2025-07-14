@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	Array.from(glossaryElements).forEach( (glossaryElement) => {
 		glossaryElement.addEventListener("mouseover", (event) => {
 				if (!event.target.title) {
-					event.target.title = glossaryMap.get(event.target.innerHTML);
+					const withId = event.target.dataset.id ? event.target.dataset.id : '';
+					event.target.title = glossaryMap.get(event.target.innerHTML + withId);
 				}
 			}
 		);
