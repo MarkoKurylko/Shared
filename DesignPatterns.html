@@ -111,9 +111,9 @@
 		</table>
 	</details>
 
-	<details open>
+	<details>
 		<summary><b>Structural</b> patterns ease the design by identifying a simple way to realize relationships among entities</summary>
-		<table class="collapse-border padding margin" >
+		<table class="collapse-border padding margin">
 			<tr>
 				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
 			</tr>
@@ -234,14 +234,31 @@
 		</table>
 	</details>
 
-	<details>
+	<details open>
 		<summary><b>Behavioral</b> patterns identify common communication patterns among objects</summary>
-		<table>
+		<table class="collapse-border padding margin">
+			<tr>
+				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
+			</tr>
+			<tr>
+				<td><a href="#CoR" id="CoR">Chain-of-responsibility</a></td>
+				<td></td>
+				<td>Example: ATG Pipeline and ATG Servlet Pipeline</td>
+			</tr>
+
+			<tr>
+				<td><a href="#command">Command</a></td>
+				<td>An object is used to <em>encapsulate</em> all information needed to perform an action or trigger an event at a later time.
+					This information includes the method name, the object that owns the method and values for the method parameters.</td>
+				<td></td>
+			</tr>
+
 			<tr>
 				<td><a href="#Bod" id="Bod">Bodya</a></td>
 				<td></td>
 				<td></td>
 			</tr>
+
 		</table>
 	</details>
 	<details>
@@ -253,7 +270,7 @@
 	<details>
 		<summary><b>Architectural</b> patterns</summary>
 		<ul>
-			<li>MVC</li>
+			<li id="mvc">MVC</li>
 		</ul>
 	</details>
 
@@ -485,6 +502,36 @@
 			}
 		}
 	}</pre>
+	</div>
+	<hr>
+
+	<div id="command">
+		<h3>Command</h3>
+		<ul class="ulWithMargin">
+			<li>
+				<b class="red">command</b> - knows about <span class="green">receiver</span> and invokes a method of the <span class="green">receiver</span>.
+				Values for parameters of the <span class="green">receiver</span> method are stored in the <span class="red">command</span>.
+				The <span class="green">receiver</span> object is also stored in the <span class="red">command</span> object by <em>aggregation</em>
+			</li>
+			<li>
+				<b class="green">receiver</b> - does the work when the <code class="code">execute()</code> method in <span class="red">command</span> is called.
+				The <span class="green">receiver</span> is typically also the <span class="dark-green">target</span> object
+			</li>
+			<li>
+				<b class="blue">invoker</b> - knows how to execute a <span class="red">command</span>, and optionally does bookkeeping about the <span class="red">command</span> execution.
+				The <span class="blue">invoker</span> does not know anything about a concrete <span class="red">command</span>, it knows only about the <span class="red">command</span> <em>interface</em>
+			</li>
+			<li>
+				<b class="grey">client</b> - holds <span class="blue">invoker</span>, <span class="red">command</span> and <span class="green">receiver</span> objects.
+				The <span class="grey">client</span> decides which <span class="green">receiver</span> objects it assigns to the <span class="red">command</span> objects, and which <span class="red">commands</span> it assigns to the <span class="blue">invoker</span>.
+				The <span class="grey">client</span> decides which <span class="red">commands</span> to execute at which points.
+				To execute a <span class="red">command</span>, <span class="grey">it</span> passes the <span class="red">command</span> object to the <span class="blue">invoker</span> object
+			</li>
+		</ul>
+		<details>
+			<summary>Command example</summary>
+			<iframe src="parts/CommandPatternExample.html" style="width:-webkit-fill-available; height:650px;"></iframe>
+		</details>
 	</div>
 	<hr>
 

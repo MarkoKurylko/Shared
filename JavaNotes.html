@@ -20,6 +20,7 @@
 				font-size: 17px;
 			}
 		</style>
+		<script src="js/glossary.js"></script>
 	</head>
 	<body>
 		<div class="indent"></div>
@@ -258,9 +259,9 @@
 			<code>list.subList(start, end)</code> & <code>set.subSet(from, to)</code><br>
 			Note that the returned list/set is a <em>view</em> on the main list/set. Thus, any modification operation on the sub-collection is reflected on the main collection and vice versa.
 			<br><br>
-			<em><b>Notes:</b></em> For Maps & Sets: Using <span style="color:red">mutable key</span> is an <span style="color:red">antipattern</span>, and you should definitely avoid doing that.
+			<em><b>Notes:</b></em> For Maps & Sets: Using <span class="red">mutable key</span> is an <span class="red">antipattern</span>, and you should definitely avoid doing that.
 			<br><br>
-			<code><b>TreeMap</b></code> is based on a <a href="ConnectedOutline.html#redBlackTree">Red Black Tree (RBT)</a>
+			<code><b>TreeMap</b></code> is based on a <a href="ConnectedNotes.html#redBlackTree">Red Black Tree (RBT)</a>
 			<br><br>
 			<code><b>ArrayList</b></code>: The <code>size</code>, <code>isEmpty</code>, <code>get</code>, <code>set</code>,
 				<code>iterator</code>, and <code>listIterator</code> operations run in constant time.
@@ -536,7 +537,7 @@
 		<hr>
 
 		<div id="functionalInterfaces">
-			<h2 style="margin-bottom: 3px;">Functional Interfaces <small style="color:blue">(Since 1.8)</small></h2>
+			<h2 style="margin-bottom: 3px;">Functional Interfaces <small class="blue">(Since 1.8)</small></h2>
 			The <i>ootb</i> functional interfaces are annotated with <code><b>@FunctionalInterface</b></code>.
 			This annotation is not a requirement for the compiler to recognize an interface as a functional interface.<br>
 			<i>Ootb</i> functional interfaces are located not only in <code class="code">java.util.function</code> package,
@@ -544,10 +545,10 @@
 			<table class="border padding">
 				<caption><code class="code">java.util.function</code></caption>
 				<tr>
-					<th>Group</th><th colspan="2">Interface</th><th>Methods</th><th>Example</th><th>Description</th>
+					<th>Group</th><th colspan="2">Interface</th><th>Methods</th><th>Example</th><th>Description</th><th>Since</th>
 				</tr>
 				<tr>
-					<td rowspan="4" style="text-align:center"><span style="color:blue">Function</span></td>
+					<td rowspan="4" class="text-align-center"><span class="blue">Function</span></td>
 					<td colspan="2"><code>Function&lt;T,R&gt;</code></td>
 					<td>
 						<code class="nowrap">R apply(T t)</code><hr>
@@ -562,6 +563,7 @@
 						Represents a function that accepts one argument and produces a result<hr>
 						Returns a function that always returns its input argument. <i>F(x) = x</i>
 					</td>
+					<td rowspan="11" class="java8">1.8</td>
 				</tr>
 				<tr>
 					<td></td>
@@ -592,7 +594,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td rowspan="2" style="text-align:center"><span style="color:brown">Consumer</span></td>
+					<td rowspan="2" class="text-align-center"><span class="brown">Consumer</span></td>
 					<td colspan="2"><code>Consumer&lt;T&gt;</code></td>
 					<td><code class="nowrap">void accept(T t)</code></td>
 					<td><code>Consumer&lt;String&gt; consumer = System.out::println;<br>consumer.accept("String");</code></td>
@@ -612,7 +614,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td rowspan="2" style="text-align:center"><span style="color:green">Supplier</span></td>
+					<td rowspan="2" class="text-align-center"><span class="green">Supplier</span></td>
 					<td colspan="2"><code>Supplier&lt;T&gt;</code></td>
 					<td><code class="nowrap">T get()</code></td>
 					<td><code>Supplier&lt;LocalDateTime&gt; supplier = () -> LocalDateTime.now();<br>LocalDateTime time = supplier.get();</code></td>
@@ -625,7 +627,7 @@
 					<td>Represents a supplier of <b>boolean</b>-valued results. This is the <b>boolean</b>-producing primitive specialization of <code><b>Supplier</b></code></td>
 				</tr>
 				<tr>
-					<td rowspan="2" style="text-align:center"><span style="color:magenta">Predicate</span></td>
+					<td rowspan="2" class="text-align-center"><span class="magenta">Predicate</span></td>
 					<td colspan="2"><code>Predicate&lt;T&gt;</code></td>
 					<td><code class="nowrap">boolean test(T t)</code></td>
 					<td><code>Predicate&lt;String&gt; p = String::isEmpty;</code></td>
@@ -638,8 +640,23 @@
 					<td>Represents a predicate (boolean-valued function) of 2 arguments. This is the <b>two-arity</b> specialization of <code><b>Predicate</b></code></td>
 				</tr>
 				<tr>
-					<td style="text-align:center">Other</td>
+					<td class="text-align-center">Other</td>
 					<td colspan="5">Combinations of base 4 groups for Int*, Long*, Double*, Obj*, To*</td>
+				</tr>
+				<tr>
+					<td rowspan="2" class="text-align-center tomato">Thread</td>
+					<td colspan="2"><code>Runnable</code></td>
+					<td><code class="nowrap">void run()</code></td>
+					<td><code>() -&gt; java.awt.Toolkit.getDefaultToolkit().beep()</code></td>
+					<td>Similar to <code class="code">Supplier</code>, but with <code class="code">void</code> return type</td>
+					<td>1.0</td>
+				</tr>
+				<tr>
+					<td colspan="2"><code>Callable&lt;V></code></td>
+					<td><code class="nowrap code">V call() throws Exception</code></td>
+					<td><code class="code"></code></td>
+					<td>Similar to <code class="code">Supplier</code>, but can throw a checked exception</td>
+					<td class="java5">1.5</td>
 				</tr>
 			</table>
 		</div>
@@ -770,12 +787,12 @@
 
 		<div id="jsp">
 			<h3 style="margin-bottom:5px;">Java Server Pages / <em>Jakarta</em> Server Pages</h3>
-			Is a collection of technologies to create dynamically generated web pages based on HTML, XML, SOAP or other document types.<br>
-			Architecturally, JSP may be viewed as a high-level abstraction of <a href="#servlets">Jakarta(Java) Servlets</a>.<br>
-			Each JSP servlet is cached and re-used until the original JSP is modified.<br>
+			Is a collection of technologies to create dynamically generated web pages based on <span class="get-title">HTML</span>, <span class="get-title">XML</span>, <span class="get-title">SOAP</span> or other document types.<br>
+			Architecturally, <span class="get-title">JSP</span> may be viewed as a high-level abstraction of <a href="#servlets">Jakarta(Java) Servlets</a>.<br>
+			Each <span class="get-title">JSP</span> servlet is cached and re-used until the original <span class="get-title">JSP</span> is modified.<br>
 			<div class="indent"></div>
-			Jakarta Server Pages can be used independently or as the <b>View</b> component of a server-side <a href="#mvc">MVC</a> <span class="tooltip" title="Design Pattern">DP</span>.<br>
-			This is a type of <a href="#model2">Jsp Model 2</a> architectural <span class="tooltip" title="Design Pattern">DP</span>.
+			Jakarta Server Pages can be used independently or as the <b>View</b> component of a server-side <a href="DesignPatterns.html#mvc">MVC</a> <span class="get-title">DP</span>.<br>
+			This is a type of <a href="https://en.wikipedia.org/wiki/JSP_model_2_architecture">Jsp Model 2</a> architectural <span class="get-title">DP</span>.
 			<div class="indent"></div>
 
 			The JSP <code class="code">useBean</code> tag allows to access and create a Javabean.<br>
@@ -831,8 +848,8 @@
 			<h2>λ Lambda Expressions <small class="java8">(Since 1.8)</small></h2>
 			<div style="padding-left:1em;">
 			<h3 id="lambdas-basis" style="margin-bottom:0;">Basis</h3>
-			<p style="margin-top: 4px;">Syntax: <code style="color:darkblue">() <b>-&gt;</b> {}</code>
-				or <code style="color:darkblue">ClassNameOrInstance<b>::</b>methodName</code><br>
+			<p style="margin-top: 4px;">Syntax: <code class="dark-blue">() <b>-&gt;</b> {}</code>
+				or <code class="dark-blue">ClassNameOrInstance<b>::</b>methodName</code><br>
 
 				Technically <em>lambda</em> expression becomes an anonymous method of an enclosing class.
 			</p>
@@ -866,34 +883,34 @@
 					</tr>
 
 					<tr>
-						<td style="text-align: center;">#</td>
+						<td class="text-align-center">#</td>
 						<td>Reference to a static method</td>
 						<td><code><em>ClassName</em>::<em>staticMethodName</em></code></td>
 						<td></td>
 					</tr>
 
 					<tr>
-						<td style="text-align: center;">#</td>
+						<td class="text-align-center">#</td>
 							<td>Reference to an instance method of a particular object</td>
 							<td><code><em>classInstance</em>::<em>instanceMethodName</em></code></td>
 							<td></td>
 					</tr>
 
 					<tr>
-						<td style="text-align: center;">#</td>
-						<td style="background: orange;">Reference to an instance method of an arbitrary object of a particular type</td>
+						<td class="text-align-center">#</td>
+						<td class="back-orange">Reference to an instance method of an arbitrary object of a particular type</td>
 								<td><code><em>ClassName</em>::<em>instanceMethodName</em></code></td>
 								<td><code>Arrays.sort(stringArray, String::compareToIgnoreCase)</code><br>
 										where <code>static &lt;T&gt; void sort(T[] array, Comparator&lt;? <a href="#genericsWildcards">super</a> T&gt; c)</code><br>
-										<em>Comparator</em> is a Functional interface with method <code>int compare(<span style="background:Green;">T o1, T o2</span>)</code>,<br>
-										while <em>String</em> <code>int compareToIgnoreCase(<span style="background:Red;">String str</span>)</code><br>
-									The equivalent lambda expression for the method reference <code>String::compareToIgnoreCase</code> would have the <span style="background:LightBlue;">formal parameter list</span> <code><nobr style="background:LightGreen;">(String a, String b)</nobr></code>.
+										<em>Comparator</em> is a Functional interface with method <code>int compare(<span class="back-green">T o1, T o2</span>)</code>,<br>
+										while <em>String</em> <code>int compareToIgnoreCase(<span class="back-red">String str</span>)</code><br>
+									The equivalent lambda expression for the method reference <code>String::compareToIgnoreCase</code> would have the <span class="back-sky-blue">formal parameter list</span> <code><nobr class="back-light-green">(String a, String b)</nobr></code>.
 									The method reference would invoke the method <code>a.compareToIgnoreCase(b)</code>.
 								</td>
 					</tr>
 
 					<tr>
-								<td style="text-align: center;">#</td>
+								<td class="text-align-center">#</td>
 									<td>Reference to a constructor</td>
 									<td><code><em>ClassName</em>::new</code></td>
 									<td><code>HashSet::new</code></td>
@@ -919,40 +936,40 @@
 					</tr>
 
 					<tr>
-						<td style="text-align: center;">#</td>
+						<td class="text-align-center">#</td>
 						<td colspan="2"><span style="color:saddlebrown;">Local class</span></td>
-						<td><code>public <span style="color:grey;">[static]</span> void methodName {<br>
+						<td><code>public <span class="grey">[static]</span> void methodName {<br>
 										&nbsp;&nbsp;<b>class LocalClassName {}</b> <br>
 									}
 							</code>
 						</td>
 						<td>Local classes are classes that are defined in a <em>block</em>. I.e. inside <b>{}</b><br>
-							Local classes are similar to <span style="color:darkred;">inner classes</span> because they cannot define or declare any static members
+							Local classes are similar to <span class="dark-red">inner classes</span> because they cannot define or declare any static members
 						</td>
 						<td colspan="2">Use it if you need to create more than one instance of a class, access its constructor, 
 							or introduce a new, named type (because, for example, you need to invoke additional methods later).<br>
-							<span style="color:grey;">And as it stems from its form: use local classes when you don't need of reuse it outside the <em>block</em></span>
+							<span class="grey">And as it stems from its form: use local classes when you don't need of reuse it outside the <em>block</em></span>
 						</td>
-						<td style="color:black;">1.1</td>
+						<td class="java1">1.1</td>
 					</tr>
 
 					<tr>
-						<td style="text-align: center;">#</td>
-						<td colspan="2"><span style="color:green;">Anonymous class</span></td>
+						<td class="text-align-center">#</td>
+						<td colspan="2"><span class="green">Anonymous class</span></td>
 							<td><code><nobr>new ExistingClassName() {//implementation}</nobr><br>
 									  <nobr>new ExistingInterfaceName() {//implementation}</nobr><br>
 								</code>
 							</td>
-							<td>Anonymous classes are a convenient short form of <span style="color: darkred;">inner classes</span> that have no name, only an implementation</td>
+							<td>Anonymous classes are a convenient short form of <span class="dark-red">inner classes</span> that have no name, only an implementation</td>
 							<td colspan="2">Use it if you need to declare fields or additional methods.</td>
-							<td>1.1</td>
+							<td class="java1">1.1</td>
 					</tr>
 
 					<tr>
-						<td style="text-align: center;">#</td>
-						<td colspan="2"><a style="color: blue;" href="#lambdas">Lambda</a></td>
+						<td class="text-align-center">#</td>
+						<td colspan="2"><a class="blue" href="#lambdas">Lambda</a></td>
 						<td><code>() <b>-&gt;</b> {}<br>ClassNameOrInstance<b>::</b>methodName</code></td>
-						<td>Extension of idea of <span style="color: green;">anonymous classes</span> in a more convenient way</td>
+						<td>Extension of idea of <span class="green">anonymous classes</span> in a more convenient way</td>
 						<td colspan="2">
 							<ul>
 								<li>Use it if you are encapsulating a single unit of behavior that you want to pass to other code. For example, you would use a lambda expression if you want a certain action performed on each element of a collection, when a process is completed, or when a process encounters an error</li>

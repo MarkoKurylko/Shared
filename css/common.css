@@ -1,3 +1,4 @@
+.java1  {color: Black}
 .java2  {color: ChartReuse}
 .java5  {color: LightGreen}
 .java6  {color: Green}
@@ -11,12 +12,14 @@
 .red                {color: Red}
 .tomato             {color: tomato}
 .maroon             {color: maroon}
+.magenta            {color: magenta}
 .dark-red           {color: DarkRed}
 .hot-pink           {color: HotPink}
 .light-pink         {color: LightPink}
 .fire-brick         {color: FireBrick} /*red*/
 .green              {color: Green}
 .light-green        {color: LightGreen}
+.chart-reuse        {color: ChartReuse}
 .dark-green         {color: DarkGreen}
 .medium-aqua-marine {color: MediumAquaMarine} /*green*/
 .blue          {color: Blue}
@@ -30,7 +33,11 @@
 .grey     {color: Grey}
 
 .back-white {background-color: white}
+.back-red {background-color: red}
 .back-pink {background-color: pink}
+.back-green {background-color: green}
+.back-light-green {background-color: LightGreen}
+.back-orange {background-color: orange}
 .back-tomato {background-color: tomato}
 .back-sky-blue {background-color: SkyBlue}
 .back-medium-spring-green {background-color: MediumSpringGreen}
