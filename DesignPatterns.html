@@ -5,6 +5,22 @@
 	<title>Design Patterns</title>
 	<script src="js/glossary.js"></script>
 	<link rel="stylesheet" href="css/common.css">
+
+	<link rel="stylesheet" href="3dparty/highligthjs/styles/default.min.css">
+	<script src="3dparty/highligthjs/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<style>
+		:target {
+			animation-name: bg-color;
+			animation-duration: 500ms;
+			animation-iteration-count: 2;
+			animation-direction: alternate;
+		}
+
+		@keyframes bg-color {
+			to {background-color: LightGreen;}
+		}
+	</style>
 </head>
 <body>
 	<a href="all.html">SiteMap</a>
@@ -254,8 +270,57 @@
 			</tr>
 
 			<tr>
-				<td><a href="#fluentInterface" id="fluentInterface">Fluent Interface</a></td>
-				<td><span class="get-title" data-id="2">DSL</span></td>
+				<td><a href="#fluentInterface">Fluent Interface</a></td>
+				<td>
+					Relies extensively on <em>method chaining</em>.
+					Its goal is to increase code legibility by creating a <span class="get-title" data-id="2">DSL</span>.<br>
+					Note that a "fluent interface" means more than just method cascading via chaining;
+					it entails designing an interface that reads like a <span class="get-title" data-id="2">DSL</span>
+				</td>
+				<td>
+					To reduce the amount of code and make it more readable through creating the <span class="get-title" data-id="2">DSL</span>
+				</td>
+			</tr>
+
+			<tr>
+				<td><a href="#interpreter" >Interpreter</a></td>
+				<td>
+					Defines a way to interpret and evaluate language grammar or expressions.
+					It provides a mechanism to evaluate sentences in a language by representing their grammar as a set of classes.
+					Each class represents a rule or expression in the grammar, and the pattern allows these classes to be composed hierarchically to interpret complex expressions
+				</td>
+				<td>
+					<ul>
+						<li><b>When dealing with <span class="get-title" data-id="2">DSL</span></b> - If you need to interpret and execute expressions or commands in a DSL</li>
+						<li><b>When you have a grammar to interpret</b> - f you have a well-defined grammar for expressions or commands that need to be interpreted, the Interpreter pattern can help parse and evaluate these structures efficiently</li>
+						<li><b>When you want to avoid complex grammar parsers</b> - the Interpreter pattern offers a simpler alternative for interpreting expressions directly</li>
+					</ul>
+					When <b><i>not</i></b> to use
+					<ul>
+						<li>For simple computations</li>
+						<li>When performance is critical</li>
+						<li>When the grammar is too complex</li>
+						<li>When there's no need for extensibility</li>
+					</ul>
+				</td>
+			</tr>
+
+			<tr>
+				<td><a href="#iterator" id="iterator">Iterator</a></td>
+				<td>
+					Is used to traverse a <em>container</em> and access the container's elements.
+					The iterator pattern decouples <em>algorithms</em> from containers; in some cases, algorithms are necessarily container-specific and thus cannot be decoupled
+				</td>
+				<td><code class="code">hasNext(), next()</code></td>
+			</tr>
+
+			<tr>
+				<td><a href="#mediator">Mediator</a></td>
+				<td>
+					With the mediator pattern, communication between objects is encapsulated within a mediator object.<br>
+					Objects no longer communicate directly with each other, but instead communicate through the mediator.<br>
+					This reduces the dependencies between communicating objects, thereby reducing coupling.
+				</td>
 				<td></td>
 			</tr>
 
@@ -537,6 +602,76 @@
 		<details>
 			<summary>Command example</summary>
 			<iframe src="parts/CommandPatternExample.html" style="width:-webkit-fill-available; height:650px;"></iframe>
+		</details>
+	</div>
+	<hr>
+
+	<div id="fluentInterface">
+		<h3>Fluent Interface</h3>
+		<details>
+			<summary>Example</summary>
+			<pre class="language-java"><code>Collection mockCollection = EasyMock.createMock(Collection.class);
+EasyMock
+    .expect(mockCollection.remove(null))
+    .andThrow(new NullPointerException())
+    .atLeastOnce();
+
+/* === Swing example === */
+GridBagLayout gl = new GridBagLayout();
+JPanel p = new JPanel();
+p.setLayout( gl );
+
+JLabel l = new JLabel("Name:");
+JTextField nm = new JTextField(10);
+
+/* Old style boilerplate */
+GridBagConstraints gc = new GridBagConstraints();
+gc.gridx = 0;
+gc.gridy = 0;
+gc.fill = GridBagConstraints.NONE;
+p.add( l, gc );
+
+gc.gridx = 1;
+gc.fill = GridBagConstraints.HORIZONTAL;
+gc.weightx = 1;
+p.add( nm, gc );
+
+/* Fluent Interface DP */
+Packer pk = new Packer( p );
+pk.pack( l ).gridx(0).gridy(0);
+pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
+		</pre>
+		</details>
+	</div>
+	<hr>
+
+	<div id="interpreter">
+		<h3>Interpreter</h3>
+		<details>
+			<summary>Example</summary>
+			<pre class="language-java"><code>class Client {
+    public static void main(String[] args) {
+        // Input expression
+        String expression = "2 + 3 * 4";
+
+        // Create interpreter
+        Context context = new Context();
+        Interpreter interpreter = new Interpreter(context);
+
+        // Interpret expression
+        int result = interpreter.interpret(expression);
+        System.out.println("Result: " + result);
+    }
+}</code></pre>
+		</details>
+	</div>
+	<hr>
+
+	<div id="mediator">
+		<h3>Mediator</h3>
+		<details>
+			<summary>Mediator example</summary>
+			<iframe src="parts/MediatorPatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
 		</details>
 	</div>
 	<hr>

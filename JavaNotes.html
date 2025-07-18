@@ -42,11 +42,12 @@
 					<details>
 						<summary></summary>
 						<h2><a id="classes" href="#classes">Classes</a></h2>
-							<h3 style="padding-left:1em"><a href="#class"><code class="code">.class</code> literal</a></h3>
-							<h3 style="padding-left:1em"><a href="#nesting">Nesting of <em>classes</em></a></h3>
+							<h3 class="padding-left-1em"><a href="#class"><code class="code">.class</code> literal</a></h3>
+							<h3 class="padding-left-1em"><a href="#nesting">Nesting of <em>classes</em></a></h3>
 						<h2><a href="#collections">Collections</a></h2>
-							<h4 style="padding-left:1em"><a href="#synchronizedCollections">Synchronized Collections</a></h4>
-							<h4 style="padding-left:1em"><a href="#concurrentCollections"  >Concurrent Collections</a></h4>
+							<h4 class="padding-left-1em"><a href="#synchronizedCollections">Synchronized Collections</a></h4>
+							<h4 class="padding-left-1em"><a href="#concurrentCollections"  >Concurrent Collections</a></h4>
+						<h3><a href="#completableFuture"><code>CompletableFuture</code></a></h3>
 						<h2><a href="#concurrency">Concurrency</a></h2>
 					</details>
 				</td>
@@ -229,6 +230,17 @@
 			<code>Class c1 = Object.class;</code><br>
 			<code>Class&lt;?&gt; c2 = <span class="dark-green">boolean</span>.class;</code><br>
 			<code>Class&lt;Void&gt; c3 = <span class="code">void</span>.class;</code>
+			<div class="indent4"></div>
+			Useful methods:<br>
+			<code class="code">boolean isInstance(Object obj)</code> - the dynamic equivalent of the Java language <code>instanceof</code> operator,
+			cause <code>instanceof</code> works only with reference types.<br>
+			<span class="warning-sign fs20 blue"></span>
+			Don't use it this way: <code class="bad-code">someInstance.getClass().isInstance(String.class)</code>
+			- it will always return <code class="code">false</code>, because the type of <code class="code">String.class</code> is not <code class="code">java.lang.String</code>, it is <code class="code">java.lang.Class</code>.<br>
+			Correct way:<br>
+			<code>String s1= "s1";</code><br>
+			<code>String s2= "s2";</code><br>
+			<code class="code">s1.getClass().isInstance(s2);</code>
 		</div>
 		<hr>
 
@@ -490,6 +502,19 @@
 					<td class="java6">1.6</td>
 				</tr>
 			</table>
+		</div>
+		<hr>
+
+		<div id="completableFuture">
+			<h2 class="margin-bottom-3"><code class="code">CompletableFuture</code> <small class="java8">(Since 1.8)</small></h2>
+			<code class="code">public class CompletableFuture&lt;T> implements Future&lt;T>, CompletionStage&lt;T></code>
+			The old <code class="code">get()</code> method is from the <code class="code">Future</code> interface for compatibility,<br>
+			the new <code class="code">join()</code> method is supposed to be used in new code.
+			<div class="indent4"></div>
+			<details>
+				<summary>Example</summary>
+				<iframe src="parts/CompletableFutureExample.html" style="width:-webkit-fill-available; height:550px;"></iframe>
+			</details>
 		</div>
 		<hr>
 
@@ -1228,7 +1253,7 @@
 				</tr>
 				<tr>
 					<td><code>flatMap</code></td>
-					<td><code class="nowrap"><span class="code">Stream</span>&lt;R&gt; map(<span class="code">Function</span>&lt;T, <span class="code">Stream</span>&lt;R&gt;&gt; mapper)</code></td>
+					<td><code class="nowrap"><span class="code">Stream</span>&lt;R&gt; flatMap(<span class="code">Function</span>&lt;T, <span class="code">Stream</span>&lt;R&gt;&gt; mapper)</code></td>
 					<td><code>flatMap(<span class="code">String</span>::lines)</code></td>
 					<td><em>Flattering</em>. It just concats the streams returned by <i>mapper</i> function</td>
 				</tr>
