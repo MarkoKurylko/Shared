@@ -37,7 +37,7 @@
 				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
 			</tr>
 			<tr>
-				<td><a href="#builder">Builder</a></td>
+				<td><a href="#builder-downlink" id="builder-uplink">Builder</a></td>
 				<td>
 					Separates the construction of a complex object from its representation.<br>
 					Gives more readability in Java code
@@ -325,7 +325,51 @@
 			</tr>
 
 			<tr>
-				<td><a href="#Bod" id="Bod">Bodya</a></td>
+				<td><a href="#nullObject">Null Object</a></td>
+				<td>An <em>object</em> with no referenced value or with defined neutral <em>(null)</em> behavior</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td><a href="#servant" id="servant">Servant</a></td>
+				<td>
+					Defines common functionality for a group of classes.<br>
+					The servant pattern is also frequently called <em>helper</em> class or <em>utility</em> class implementation for a given set of classes.
+					The <em>helper</em> classes generally have no objects hence they have all <em><b>static methods</b></em> that act upon different kinds of class objects
+				</td>
+				<td>
+					Similar to <a href="#command">Command</a>, but <em>Servant</em> offers some functionality to the <em>objects</em>,
+					and <em>Command</em> modifies <em>objects</em> with some functionality
+				</td>
+			</tr>
+
+			<tr>
+				<td><a href="#specification">Specification</a></td>
+				<td><em>Business rules</em> can be recombined by chaining the business rules together using <em>boolean logic</em></td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td><a href="#state-downlink" id="state-uplink">State</a></td>
+				<td>
+					Allows an object to alter its behavior when its internal state changes.<br>
+					This pattern is close to the concept of <em>finite-state machines</em>.<br>
+					The <i>State</i> pattern can be interpreted as a <a href="#strategy-uplink">Strategy</a> pattern
+				</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td><a href="#strategy-uplink" id="strategy-uplink">Strategy</a></td>
+				<td>
+					Enables selecting an <em>algorithm</em> at runtime.
+					Instead of implementing a single algorithm directly, code receives runtime instructions as to which in a family of algorithms to use
+				</td>
+				<td><span class="get-title" data-case>aka</span> the <em>policy pattern</em></td>
+			</tr>
+
+			<tr>
+				<td><a href="#Bod" id="Bod">Stub</a></td>
 				<td></td>
 				<td></td>
 			</tr>
@@ -358,8 +402,8 @@
 	</div>
 	<hr>
 
-	<div id="builder">
-		<h3>Builder</h3>
+	<div id="builder-downlink">
+		<h3><a href="#builder-uplink">Builder</a></h3>
 		Example 1: (Pay attention to that <code class="code">ClassWithBuilder</code> does not have setters)
 		<iframe src="parts/ClassWithBuilderExample.html" style="width:-webkit-fill-available; height:615px;"></iframe>
 
@@ -676,6 +720,63 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 	</div>
 	<hr>
 
+	<div id="nullObject">
+		<h3>Null Object</h3>
+		<details>
+			<summary>Example</summary>
+			<pre class="language-java"><code>class NullObjectPattern {
+    public interface Feature {
+        void doWork();
+    }
+
+    public class WorkFeature implements Feature {
+        @Override
+        public void doWork() {
+            System.out.println("Worked");
+        }
+    }
+
+    public class NullFeature implements Feature {
+        @Override
+        public void doWork() {
+            // do Nothing
+        }
+    }
+}</code></pre>
+		</details>
+	</div>
+	<hr>
+
+	<div id="specification">
+		<h3>Specification</h3>
+		<details>
+			<summary>Example</summary>
+			<pre class="language-java"><code>
+	Criteria criteria = new SearchCriteriaBuilder()
+	.withPrice()
+	.being(lessThan).value(3000)
+	.and()
+	.withSize()
+	.being(largetThan).value(12.1)
+	.build();
+
+	List&lt;Product> searchResult = productService.satisfies(criteria);</code></pre>
+		</details>
+	</div>
+	<hr>
+
+	<div id="state-downlink">
+		<h3><a href="#state-uplink">State</a></h3>
+		<ul>
+			<li>An object should change its behavior when its internal state changes</li>
+			<li>State-specific behavior should be defined <b>independently</b>. That is, adding new states should not affect the behavior of existing states</li>
+		</ul>
+		<details>
+			<summary>Example</summary>
+			<iframe src="parts/StatePatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
+		</details>
+	</div>
+	<hr>
 
 	<div class="indent"></div>
 	<a href="all.html">SiteMap</a><br>

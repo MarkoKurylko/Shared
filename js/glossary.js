@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		glossaryElement.addEventListener("mouseover", (event) => {
 				if (!event.target.title) {
 					const withId = event.target.dataset.id ? event.target.dataset.id : '';
-					event.target.title = glossaryMap.get(event.target.innerHTML + withId);
+					const key = event.target.dataset.case == undefined ? event.target.innerHTML : event.target.innerHTML.toUpperCase();
+					event.target.title = glossaryMap.get(key + withId);
 				}
 			}
 		);
