@@ -250,7 +250,7 @@
 		</table>
 	</details>
 
-	<details open>
+	<details>
 		<summary><b>Behavioral</b> patterns identify common communication patterns among objects</summary>
 		<table class="collapse-border padding margin">
 			<tr>
@@ -369,18 +369,33 @@
 			</tr>
 
 			<tr>
-				<td><a href="#Bod" id="Bod">Stub</a></td>
-				<td></td>
+				<td><a href="#visitor" id="visitor">Visitor</a></td>
+				<td>
+					Separates the algorithm from the object structure.<br>
+					New operations can be added to existing object structures without modifying the structures.<br>
+					It is one way to follow the <span class="get-title">OCP</span>
+				</td>
 				<td></td>
 			</tr>
 
 		</table>
 	</details>
-	<details>
+	<details open>
 		<summary><b>Concurrency</b> patterns deal with the multi-threaded programming paradigm</summary>
-		<ul>
-			<li>-</li>
-		</ul>
+		<table class="collapse-border padding margin">
+			<tr>
+				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
+			</tr>
+			<tr>
+				<td><a href="#activeObject-downlink" id="activeObject-uplink">ActiveObject</a></td>
+				<td>
+					Decouples method execution from method invocation for objects that each reside in their own thread of control.<br>
+					The goal is to introduce <em>concurrency</em>,
+					by using <em>asynchronous method invocation</em> and a <em>scheduler</em><small>(<code class="code">BockingQueue</code>)</small> for handling requests
+				</td>
+				<td></td>
+			</tr>
+		</table>
 	</details>
 	<details>
 		<summary><b>Architectural</b> patterns</summary>
@@ -774,6 +789,18 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 		<details>
 			<summary>Example</summary>
 			<iframe src="parts/StatePatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
+		</details>
+	</div>
+	<hr>
+
+	<div id="activeObject-downlink">
+		<h3><a href="#activeObject-uplink">Active Object</a></h3>
+		<details>
+			<summary>Example</summary>
+			<pre class="language-java"><code>	private double val;
+	private final ForkJoinPool fjp = new ForkJoinPool(/*thread-count*/ 1, defaultForkJoinWorkerThreadFactory, null, /*async*/ true);
+	public void doValOne() { fjp.execute(() -> { val = 1.0; });}
+	public void doValTwo() { fjp.execute(() -> { val = 2.0; });}</code></pre>
 		</details>
 	</div>
 	<hr>
