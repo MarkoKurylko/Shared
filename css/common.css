@@ -111,3 +111,6 @@ ol.olWithMargin > li {margin: 10px 0;}
 	cursor: pointer;
 	color: MidnightBlue;
 }
+
+.bold {font-style: bold;}
+.italic {font-style: italic;}

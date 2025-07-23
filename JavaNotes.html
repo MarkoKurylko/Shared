@@ -435,7 +435,40 @@
 						<code>DelayQueue</code><br>
 					</td>
 					<td class="text-align-initial">
-						Cover the most common usage contexts for producer-consumer, messaging, parallel tasking, and related concurrent designs
+						Cover the most common usage contexts for producer-consumer, messaging, parallel tasking, and related concurrent designs<br>
+						<table class="border collapse-border">
+							<caption><small>Summary of BlockingQueue methods</small></caption>
+							<tbody>
+							<tr class="text-align-center italic">
+								<th></th>
+								<td>Throws exception if fail</td>
+								<td>Returns true/false</td>
+								<td class="text-align-center italic">Blocks</td>
+								<td>Times out</td>
+							</tr>
+							<tr>
+								<td class="bold italic">Insert</td>
+								<td><code>add(e)</code></td>
+								<td><code>offer(e)</code></td>
+								<td><code>put(e)</code></td>
+								<td><code>offer(e, time, unit)</code></td>
+							</tr>
+							<tr>
+								<td><b><i>Remove <small>(and retrieve)</small></i></b></td>
+								<td><code>remove()</code></td>
+								<td><code>poll()</code></td>
+								<td><code class="code pointer" title=".. the head of this queue, waiting if necessary until an element becomes available">take()</code></td>
+								<td><code>poll(time, unit)</code></td>
+							</tr>
+							<tr>
+								<td><b><i>Examine</i></b></td>
+								<td><code>element()</code></td>
+								<td><code>peek()</code></td>
+								<td><small class="grey italic">not applicable</small></td>
+								<td><small class="grey italic">not applicable</small></td>
+							</tr>
+							</tbody>
+						</table>
 					</td>
 					<td class="java5">1.5</td>
 				</tr>
