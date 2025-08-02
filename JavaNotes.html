@@ -187,14 +187,14 @@
 		<hr style="height:2px;">
 
 		<div id="atomic">
-			<h3 style="margin-bottom: 3px;">Atomic operations</h3>
+			<h3 class="margin-bottom-3">Atomic operations</h3>
 			An <em>atomic</em> action is one that effectively happens all at once.<br>
 			An atomic action cannot stop in the middle: it either happens completely, or it doesn't happen at all.<br>
 			No side effects of an atomic action are visible until the action is complete.<br>
 			Atomic actions:
-			<ul style="margin-top: 3px;">
+			<ul class="margin-top-3">
 				<li>
-					Reads and writes for <a href="#referenceType" style="color:brown">reference</a> and <span style="color:navy">primitive</span> variables, <span class="red">except</span> <code class="code">long</code> and <code class="code">double</code>.<br>
+					Reads and writes for <a href="#referenceType" class="brown">reference</a> and <span class="navy">primitive</span> variables, <span class="red">except</span> <code class="code">long</code> and <code class="code">double</code>.<br>
 				</li>
 				<li>
 					Reads and writes for <b>all</b> variables declared <a href="#volatile"><code>volatile</code></a>
@@ -218,12 +218,23 @@
 			Replacing the fields with an <code class="code">Atomic</code> variant allows to prevent thread interference without resorting to synchronization.
 
 			<div class="indent"></div>
-			<span class="orange">Open question: are long and double are atomic by default on a 64 bit JVM?</span>
+			<span class="orange">
+				<span class="warning-sign fs20"></span>
+				Question: are long and double are atomic by default on a 64 bit JVM?
+			</span>
+			<br>
+			Gpt answer:
+			<ul class="margin-top-3">
+				<li>On <strong><span class="java8">8+</span> <small>(or 11+ for GraalVM)</small> 64-bit JVMs</strong>, this is generally not an issue — they often perform 64-bit atomic access</li>
+				<li>
+					But <strong class="grey">the <span class="get-title">JMM</span> does not guarantee</strong> atomicity for <code class="code">long</code> and <code class="code">double</code>, so portable code <strong>should not rely on it</strong>
+				</li>
+			</ul>
 		</div>
 		<hr>
 
 		<div id="class">
-			<h3 style="margin-bottom: 3px;"><code class="code">.class</code> literal</h3>
+			<h3 class="margin-bottom-3"><code class="code">.class</code> literal</h3>
 			The <code class="code">.class</code> literal returns an <code class="code">java.lang.Class</code> instance of requested <span class="brown">type</span>.<br>
 			It's part of <i>Java Reflections</i>.
 			Works for class-like definitions (classes, interfaces, arrays, enums, records etc.) and also for <span class="dark-green">primitive types</span> and <code class="code">void</code>.<br>
