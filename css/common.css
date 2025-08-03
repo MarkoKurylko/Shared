@@ -32,6 +32,8 @@
 .orange   {color: Orange}
 .purple   {color: Purple}
 .grey     {color: Grey}
+.dim-grey {color: DimGrey}
+.dark-grey{color: DarkGrey}
 
 .back-white {background-color: white}
 .back-red {background-color: red}
@@ -54,7 +56,6 @@
 .border-dark-gray, .border-dark-gray th, .border-dark-gray td{
 	border-color: DarkGray;
 }
-
 .collapse-border {border-collapse: collapse}
 .padding th , .padding td {
 	padding-left : 5px;
@@ -63,9 +64,13 @@
 
 .margin-left {margin-left: 1em}
 .margin {margin: 1em}
-.margin3px {margin: 3px}
+.margin-0 {margin: 0}
+.margin-3 .margin3px {margin: 3px}
 .margin-bottom-3 {margin-bottom: 3px}
+.margin-bottom-0 {margin-bottom: 0}
 .margin-top-3    {   margin-top: 3px}
+.margin-top-0    {   margin-top: 0}
+.margin-top-bottom-3 {margin-top: 3px; margin-bottom: 3px;}
 
 .text-align-center  {text-align:center }
 .text-align-initial {text-align:initial}
@@ -99,6 +104,11 @@ ol.olWithMargin > li {margin: 10px 0;}
 .warning-sign:before {
 	content: '\26A0';
 }
+
+.link-sign:before {
+	content: '\1F517';
+}
+
 .fs18 {
 	font-size: 18px;
 }
@@ -116,3 +126,6 @@ ol.olWithMargin > li {margin: 10px 0;}
 
 .bold {font-style: bold;}
 .italic {font-style: italic;}
+
+.width100pct {width: 100%;}
+.height2     {height: 2px;}

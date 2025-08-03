@@ -21,6 +21,10 @@
 			}
 		</style>
 		<script src="js/glossary.js"></script>
+
+		<link rel="stylesheet" href="3dparty/highligthjs/styles/default.min.css">
+		<script src="3dparty/highligthjs/highlight.min.js"></script>
+		<script>hljs.highlightAll();</script>
 	</head>
 	<body>
 		<div class="indent"></div>
@@ -57,6 +61,7 @@
 				<td>
 					<details>
 						<summary></summary>
+						<h3><a href="#dataRaceCondition">Data Race & Race Condition</a></h3>
 						<h3><a href="#diamond">Diamond operator</a></h3>
 					</details>
 				</td>
@@ -117,8 +122,8 @@
 					<details>
 						<summary></summary>
 						<h2><a href="#lambdas">Lambda Expressions</a></h2>
-						<h3 style="padding-left:1em"><a href="#lambdas-basis">Basis</a></h3>
-						<h3 style="padding-left:1em"><a href="#lambdas-mr">Method references</a></h3>
+						<h3 class="padding-left-1em"><a href="#lambdas-basis">Basis</a></h3>
+						<h3 class="padding-left-1em"><a href="#lambdas-mr">Method references</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -145,6 +150,7 @@
 				<td>
 					<details>
 						<summary></summary>
+						<h3><a href="#dataRaceCondition">Race Condition <small>& Data Race</small></a></h3>
 						<h3><a href="#referenceType">Reference Type</a></h3>
 						<h3><a href="#rtti">Runtime Type Identification (RTTI)</a></h3>
 					</details>
@@ -161,6 +167,15 @@
 						<h3><a id="strictfp" href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
 						<h3><a href="#synchronized" class="code-a"><code>synchronized</code></a></h3>
 						<h4><a href="#synchronizedCollections">Synchronized Collections</a></h4>
+					</details>
+				</td>
+			</tr>
+			<tr>
+				<td><h1>T</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#threadLocal" class="code-a"><code>ThreadLocal</code></a></h3>
 					</details>
 				</td>
 			</tr>
@@ -184,10 +199,10 @@
 			</tr>
 		</table>
 
-		<hr style="height:2px;">
+		<hr class="height2">
 
 		<div id="atomic">
-			<h3 class="margin-bottom-3">Atomic operations</h3>
+			<h3 class="margin-bottom-3">Atomic operations <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			An <em>atomic</em> action is one that effectively happens all at once.<br>
 			An atomic action cannot stop in the middle: it either happens completely, or it doesn't happen at all.<br>
 			No side effects of an atomic action are visible until the action is complete.<br>
@@ -308,7 +323,7 @@
 			<em id="weakly"><b>Weakly consistent</b></em> traversal of Iterators and <a href="#spliterator">Spliterators</a> (in opposition to <a href="#failFast"><i>Fail-Fast</i></a>):<br>
 			<ul style="margin-top: 0">
 				<li>they may proceed concurrently with other operations</li>
-				<li>they will <span style="color:green">never</span> throw <code class="code">ConcurrentModificationException</code></li>
+				<li>they will <span class="green">never</span> throw <code class="code">ConcurrentModificationException</code></li>
 				<li>they are guaranteed to traverse elements as they existed upon construction exactly once, and may (but are not guaranteed to) reflect any modifications subsequent to construction</li>
 			</ul>
 
@@ -337,7 +352,7 @@
 				</tr>
 			</table>
 
-			<h4 id="synchronizedCollections" style="margin-bottom:0">Synchronized Collections</h4>
+			<h4 id="synchronizedCollections" class="margin-bottom-0">Synchronized Collections <a class="link-sign" href="#concurrency">Concurrency</a></h4>
 			The <span class="code-a"><code>Collections</code></span> class provides several static methods
 			to create synchronized <i>(thread-safe)</i> collections using wrapper pattern.
 			It simply makes a source collection to be an internal <i>mutex</i> and adds a <code class="code">synchronized (mutex)</code> block
@@ -349,18 +364,18 @@
 			<code class="code">synchronizedSortedSet</code>, <code class="code">synchronizedSortedMap</code>,<br>
 			<span class="java8">(Since 1.8)</span>
 			<code class="code">synchronizedNavigableSet</code>, <code class="code">synchronizedNavigableMap</code><br>
-			Pay attention to that the <i>synchronized</i> collection does <span style="color:red"><b>not</b></span> mean they are <span style="color:red"><b>concurrent</b></span>.<br>
-			They are <i>thread-safe</i> and in case of concurrency their <span style="color:brown">performance</span> is expected to be very <span style="color:brown">low</span>.<br>
+			Pay attention to that the <i>synchronized</i> collection does <span class="red"><b>not</b></span> mean they are <span class="red"><b>concurrent</b></span>.<br>
+			They are <i>thread-safe</i> and in case of concurrency their <span class="brown">performance</span> is expected to be very <span class="brown">low</span>.<br>
 			Moreover, despite they are called <i>tread-safe</i> they may fall into a <i>race condition</i>(TODO) or non-deterministic behavior in case of using it "as is".<br>
 			<i>Javadoc:</i> It is imperative that the user manually synchronize on the returned list when traversing it via <code class="code">Iterator</code>, <code class="code">Spliterator</code> or <code class="code">Stream</code>:
-			<pre style="margin-top:0">
+			<pre class="margin-top-0">
 	List list = Collections.synchronizedList(new ArrayList());
 	<span class="code">synchronized</span> (list) {
 		Iterator i = list.iterator(); // Must be in synchronized block
 		while (i.hasNext()) foo(i.next());
 	}</pre>
 
-			<h4 id="concurrentCollections" style="margin-bottom:0">Concurrent Collections</h4>
+			<h4 id="concurrentCollections" class="margin-bottom-0">Concurrent Collections <a class="link-sign" href="#concurrency">Concurrency</a></h4>
 			Concurrent collections are also <i>thread-safe</i> as the <i>synchronized</i> collections, but not governed by a single exclusion lock.
 			<table class="border padding text-align-center">
 				<tr>
@@ -550,7 +565,7 @@
 		<hr>
 
 		<div id="completableFuture">
-			<h2 class="margin-bottom-3"><code class="code">CompletableFuture</code> <small class="java8">(Since 1.8)</small></h2>
+			<h2 class="margin-bottom-3"><code class="code">CompletableFuture</code> <small class="java8">(Since 1.8)</small> <a class="link-sign" href="#concurrency">Concurrency</a></h2>
 			<code class="code">public class CompletableFuture&lt;T> implements Future&lt;T>, CompletionStage&lt;T></code><br>
 			The old <code class="code">get()</code> method is from the <code class="code">Future</code> interface for compatibility,<br>
 			the new <code class="code">join()</code> method is supposed to be used in new code.
@@ -563,10 +578,10 @@
 		<hr>
 
 		<div id="concurrency">
-			<h2 style="margin-bottom:3px;">Concurrency</h2>
+			<h2 class="margin-bottom-3">Concurrency</h2>
 			A concurrent application's ability to execute in a timely manner is known as its <em>liveness</em>.<br>
 			Most common liveness problems:
-			<ul style="margin-top: 3px;">
+			<ul class="margin-top-3">
 				<li>
 					<b>Deadlock</b><br>
 					is a situation where two or more threads are blocked forever, waiting for each other.
@@ -582,7 +597,7 @@
 					But in the same time they are <span class="green">not blocked</span> like in a <i>deadlock</i>.
 					<details>
 						<summary>Livelock Example</summary>
-						<iframe src="parts/LiveLockExample.html" style="width:-webkit-fill-available; height:645px;" >
+						<iframe src="parts/LiveLockExample.html" class="width100pct" style="height:645px;" >
 						</iframe>
 					</details>
 				</li>
@@ -594,19 +609,71 @@
 				</li>
 			</ul>
 			Related links:
-			<ul style="margin-top: 3px;">
+			<ul class="margin-top-3">
 				<li><a href="#atomic">Atomic</a></li>
+				<li><a href="#completableFuture" class="code-a"><code>CompletableFuture</code></a></li>
 				<li><a href="#forkJoin">Fork/Join</a></li>
 				<li><a href="#synchronized" class="code-a"><code>synchronized</code></a></li>
 				<li><a href="#synchronizedCollections">Synchronized Collections</a></li>
 				<li><a href="#concurrentCollections"  >Concurrent Collections</a></li>
+				<li><a href="#dataRaceCondition">Data Race & Race Condition</a></li>
+				<li><a href="#threadLocal" class="code-a"><code>ThreadLocal</code></a></li>
 				<li><a href="#volatile" class="code-a"><code>volatile</code></a></li>
 			</ul>
 		</div>
 		<hr>
 
+		<div id="dataRaceCondition">
+			<h3 class="margin-bottom-3">Data Race & Race Condition <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			<table class="collapse-border padding">
+				<tr>
+					<th>Data Race</th>
+					<td>
+						Two or more threads access shared data <span class="tomato">concurrently</span>,
+						and at least one them tries to modify that data in the same time
+					</td>
+				</tr>
+				<tr>
+					<th>Race Condition</th>
+					<td>
+						Behavior depends on relative timing or interleaving of multiple threads or processes
+					</td>
+				</tr>
+			</table>
+			<div class="indent4"></div>
+			Pure Theory: <em>Data Race (DR)</em> and <em>Race Condition (RC)</em> are not subset of each other, there are all possible variants of intersection:
+			DR & RC, DR but not CR, CR but not DR.<br>
+			ChatGPT: In Java every Data Race is a Race Condition due to <span class="get-title">JMM</span> architecture,
+			but still <span class="tomato">not</span> every RC is a DR.
+
+			<div class="indent4"></div>
+			<h4 class="margin-top-bottom-3">Date Race</h4>
+			Unlike race conditions, a data race on a particular platform has a strict definition that is not dependent on program semantics.
+			This provides the ability to detect data races automatically using tools.
+
+			<div class="indent4"></div>
+			<h4 class="margin-top-bottom-3">Race Condition</h4>
+			<h5 class="margin-0">Race condition types:</h5>
+			<ul class="margin-top-bottom-3">
+				<li><b class="dim-grey">Check-Then-Act</b> produces <em>time-of-check to time-of-use</em> bugs</li>
+				<li><b class="grey">Read-Modify-Write</b></li>
+			</ul>
+			<h5 class="margin-0">Approaches to prevent race conditions:</h5>
+			<ul class="margin-top-bottom-3">
+				<li><em>Avoiding shared state:</em> Immutable objects, <a href="#threadLocal">Thread-local variables</a>, etc</li>
+				<li><em>Using synchronizations and atomic operations:</em> Lock, mutex, <a href="#atomic">Atomic</a> </li>
+			</ul>
+			<div class="indent4"></div>
+			<details class="margin-top-3">
+				<summary>Data Race & Race Condition <small>(Read-Modify-Write)</small> Example</summary>
+				<iframe src="parts/DataRaceExample.html" class="width100pct" style="height: 295px;"></iframe>
+			</details>
+		</div>
+		<hr>
+
+
 		<div id="functionalInterfaces">
-			<h2 style="margin-bottom: 3px;">Functional Interfaces <small class="blue">(Since 1.8)</small></h2>
+			<h2 class="margin-bottom-3">Functional Interfaces <small class="blue">(Since 1.8)</small></h2>
 			The <i>ootb</i> functional interfaces are annotated with <code><b>@FunctionalInterface</b></code>.
 			This annotation is not a requirement for the compiler to recognize an interface as a functional interface.<br>
 			<i>Ootb</i> functional interfaces are located not only in <code class="code">java.util.function</code> package,
@@ -732,7 +799,7 @@
 		<hr>
 
 		<div id="forkJoin">
-			<h3 style="margin-bottom: 3px;">Fork/Join <span class="java7">(Since 1.7)</span></h3>
+			<h3 style="margin-bottom-3">Fork/Join <span class="java7">(Since 1.7)</span> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			The fork/join framework is an implementation of the <code class="code">ExecutorService</code> interface that helps you take advantage of multiple processors.<br>
 			It is designed for work that can be broken into smaller pieces recursively.<br>
 			The goal is to use all the available processing power to enhance the performance of your application.
@@ -761,7 +828,7 @@
 			<li>
 				<code>
 					class Foo&lt;T&gt; {} // T is the <b>type parameter</b><br>
-					new Foo&lt;String&gt;() // String is the <b style="color:darkblue;">type argument</b>
+					new Foo&lt;String&gt;() // String is the <b class="dark-blue">type argument</b>
 				</code>
 			</li>
 			<li>
@@ -774,9 +841,9 @@
 			</li>
 			<li>
 				<code id="genericsWildcards">
-					Foo&lt;?&gt; // <b style="color:peru;">unbounded</b> wildcard<br>
-					Foo&lt;? extends Class&gt; // <b style="color:green;">upper</b> bounded wildcard<br>
-					Foo&lt;? super Class&gt; // <b style="color:brown;">lower</b> bounded wildcard
+					Foo&lt;?&gt; // <b class="peru">unbounded</b> wildcard<br>
+					Foo&lt;? extends Class&gt; // <b class="green">upper</b> bounded wildcard<br>
+					Foo&lt;? super Class&gt; // <b class="brown">lower</b> bounded wildcard
 				</code>
 			</li>
 			<li>
@@ -889,7 +956,7 @@
 			To deploy and run Jakarta Server Pages, a compatible <em>web server</em> with a <em>servlet container</em>, such as <em>Apache Tomcat</em> is required.
 			<div class="indent"></div>
 			JSP Life cycle:
-			<ul style="margin-top: 3px;">
+			<ul class="margin-top-3">
 				<li>
 					Compilation
 					<ul>
@@ -1105,11 +1172,11 @@
 		<hr>
 
 		<div id="referenceType">
-			<h3 style="margin-bottom: 3px;">Reference Type</h3>
-			Java <span style="color:brown">Reference Type</span> stores an <em>8-byte identifier</em>.
-			This identifier refers to the location of an <b>object</b> stored in the <em style="color:DarkRed">heap</em> memory.
-			<small>(Or in <em style="color:DarkRed">stack</em> memory, if it is a local variable)</small><br>
-			The <b>object</b> itself stored in the <em style="color:DarkRed">heap</em>.
+			<h3 class="margin-bottom-3">Reference Type</h3>
+			Java <span class="brown">Reference Type</span> stores an <em>8-byte identifier</em>.
+			This identifier refers to the location of an <b>object</b> stored in the <em class="dark-red">heap</em> memory.
+			<small>(Or in <em class="dark-red">stack</em> memory, if it is a local variable)</small><br>
+			The <b>object</b> itself stored in the <em class="dark-red">heap</em>.
 			<div class="indent"></div>
 			<table class="zebra border padding" data-source="https://medium.com/@3eid">
 				<caption>Reference Types vs Pointers</caption>
@@ -1213,9 +1280,9 @@
 			<div class="indent"></div>
 			The <em>Stream</em> interface avoids creating intermediate structures to store mapped or filtered objects.<br>
 			A stream is an object that does not store any data.<br>
-			The Stream API has been designed in such a way that as long as you <span style="color: navy">do not create any non-stream object</span>
-			<small style="color: LightGreen">(means creating stream objects)</small> in a stream pattern,
-			<span style="color: navy">no computation</span> of your data is conducted.<br>
+			The Stream API has been designed in such a way that as long as you <span class="navy">do not create any non-stream object</span>
+			<small class="light-green">(means creating stream objects)</small> in a stream pattern,
+			<span class="navy">no computation</span> of your data is conducted.<br>
 			<span class="warning-sign fs20 orange"></span>
 			There are several exceptions to previous rule.<br>
 			<code>distinct()</code> and <code>sorted()</code> method needs to store the elements of your stream.
@@ -1226,9 +1293,9 @@
 					An operation that returns another stream is called an <span style="color: goldenrod">intermediate operation</span>.<br>
 					Every time you call an intermediate operation on an existing stream, you create a new stream
 				</li>
-				<li>An operation that returns something else, including void, is called a <span style="color: green">terminal operation</span></li>
+				<li>An operation that returns something else, including void, is called a <span class="green">terminal operation</span></li>
 			</ul>
-			Stream execution begins when the <span style="color: green"><b>terminal operation</b></span> is <span style="color: darkgreen">invoked</span>,
+			Stream execution begins when the <span class="green"><b>terminal operation</b></span> is <span style="color: darkgreen">invoked</span>,
 			and <span style="color: red">ends</span> when the <span style="color: green"><b>terminal operation</b></span> <span style="color: darkred">completes</span>.
 			(Except for the escape-hatch operations <code>iterator()</code> and <code>spliterator()</code>).<br>
 			<b>Non-interference</b> <small>(for most data sources)</small> means ensuring that the data source is <i style="color: green">not modified at all</i> during the execution of the stream pipeline.<br>
@@ -1236,7 +1303,7 @@
 			<span class="code-a">
 				<code>(a</code> &#x058E; <code>b)</code> &#x058E; <code>c == a</code> &#x058E; <code>(b</code> &#x058E; <code>c)</code>
 			</span><br>
-			<b>Stateless</b> function is a function whose result <span style="color:red">does not depend</span> on any state which might change during the execution of the stream pipeline.<br>
+			<b>Stateless</b> function is a function whose result <span class="red">does not depend</span> on any state which might change during the execution of the stream pipeline.<br>
 			<b>Mutable reduction</b>. A <i>mutable reduction operation</i> accumulates input elements into a mutable result container.
 			<div class="indent"></div>
 			The Stream API gives <b>4</b> interfaces: <code>Stream</code>, <code>IntStream</code>, <code>LongStream</code> and <code>DoubleStream</code>.<br>
@@ -1353,7 +1420,7 @@
 				</tr>
 			</table>
 			<div class="indent"></div>
-			<em style="color: DarkBlue">Downstream collector</em> is a Collector that is passed to the methods of <code>Collectors</code> class:<br>
+			<em class="dark-blue">Downstream collector</em> is a Collector that is passed to the methods of <code>Collectors</code> class:<br>
 			<code>List&lt;String&gt; list = stream.collect(Collectors.collectingAndThen(<b>Collectors.toList()</b>, Collections::unmodifiableList));</code><br>
 			The <code><b>Collectors.toList()</b></code> is a <em>Downstream collector</em>.<br><code>Collections::unmodifiableList</code> is a <i>finisher</i>.<br>
 			<div class="indent"></div>
@@ -1368,7 +1435,7 @@
 		<hr>
 
 		<div id="synchronized">
-			<h3 class="code-a"><code>synchronized</code></h3>
+			<h3 class="code-a"><code>synchronized</code> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			Synchronization is built around an internal entity known as the <i>intrinsic lock</i> or <i>monitor lock</i>.<br>
 			There are 2 types of usage:
 			<ul class="ulWithMargin">
@@ -1381,7 +1448,7 @@
 				</li>
 				<li>
 					Synchronized statements(blocks):
-					<pre style="margin-top:0">public void method(String name) {
+					<pre class="margin-top-0">public void method(String name) {
 	<span class="code">synchronized</span>(<span class="dark-green">object</span>) {
 		<span class="dark-green">object</span>.setName(name);
 	}
@@ -1403,16 +1470,16 @@ class ClassOne {
 	}
 }
 			</pre>
-			In this example the <code class="red">monitor</code> string it is just the object that plays role of the <em>monitor lock</em>.
+			In this example the <code class="red">monitor</code> string it is just the object that plays role of the <em>monitor lock</em> or <em class="get-title">mutex</em>.
 			It can be any type and according to the best practice it should be <code class="code">final</code> to avoid consequences in case monitor object is rewritten.
 
-			<h4 id="happens-before" style="margin-bottom: 0;"><em>Happens-before relationship</em></h4>
+			<h4 id="happens-before" class="margin-bottom-0"><em>Happens-before relationship</em></h4>
 			<i>Happens-before relationship</i> means that if it is established (between threads) on a <span class="dark-red">variable</span>,
 			then the <span class="red">changes</span> on a <span class="dark-red">variable</span> will be visible to the other threads
 			only if the <code class="code">write</code> operation in <span class="blue">one thread</span>
 			<i>happens before</i> the <code class="code">read</code> operation in <span class="green">another thread</span>.<br>
 			The <code class="code">synchronized</code> and <code class="code"><a href="#volatile">volatile</a></code> constructs, as well as the <code class="code">Thread.start()</code> and <code class="code">Thread.join()</code> methods, can form <em>happens-before</em> relationships.
-			<h5 style="margin-bottom: 0;">Reentrant Synchronization</h5>
+			<h5 class="margin-bottom-0">Reentrant Synchronization</h5>
 			Recall that a thread cannot acquire a lock owned by another thread. But a thread can acquire a lock that it already owns.
 			Allowing a thread to acquire the same lock more than once enables <i>reentrant synchronization</i>.
 			This describes a situation where synchronized code, directly or indirectly, invokes a method that also contains synchronized code, and both sets of code use the same lock.
@@ -1420,8 +1487,33 @@ class ClassOne {
 		</div>
 		<hr>
 
+		<div id="threadLocal">
+			<h3 class="code-a margin-bottom-3"><code>ThreadLocal</code> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			<code class="code">java.lang.ThreadLocal&lt;T></code><br>
+			Variable that has independently initialized <em><b class="dim-grey">copy</b></em> of its generic type <code>&lt;T></code> for each <code class="code">Thread</code>.<br>
+			If the variable has no value for the current thread, and <code class="code">get()</code> method called, then <code class="code">initialValue()</code> is invoked for initialization first.
+			<pre><code class="language-java">        ThreadLocal&lt;String> threadLocalVar = new ThreadLocal<>();
+
+        Thread thread1 = new Thread( () -> {
+            System.out.println("Setting T1");
+            threadLocalVar.set("T1");
+            sleep(100);
+            System.out.println("Getting value for T1: " + threadLocalVar.get()); // always return T1
+        });
+
+        Thread thread2 = new Thread( () -> {
+            System.out.println("Setting T2");
+            threadLocalVar.set("T2");
+            System.out.println("Getting value for T2: " + threadLocalVar.get()); // always return T2
+        });
+
+        thread1.start();
+        thread2.start();</code></pre>
+		</div>
+		<hr>
+
 		<div id="volatile">
-			<h3 class="code-a" style="margin-bottom: 3px;"><code>volatile</code></h3>
+			<h3 class="code-a margin-bottom-3"><code>volatile</code> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			<code>public <span class="grey">[static]</span> <b>volatile</b> long longVar = 1L;</code><br>
 			<code>private <span class="grey">[static]</span> <b>volatile</b> String string;</code>
 			<div class="indent"></div>
@@ -1430,9 +1522,8 @@ class ClassOne {
 			It also means, that when a thread reads a <code class="code">volatile</code> variable, it sees not just the latest change to the <code class="code">volatile</code>, but also the side effects of the code that led up the change.<br>
 			Using <code class="code">volatile</code> variables reduces the risk of memory consistency errors.
 		</div>
-		<hr>
 
-		<hr style="height:2px;">
+		<hr class="height2">
 		Tools used: <a href="https://highlightjs.org/">highlight.js</a><br>
 		Sources: Wikipedia, Oracle, dev.java<br>
 
