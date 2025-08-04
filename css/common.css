@@ -9,31 +9,32 @@
 .java16 {color: Red}
 .java21 {color: Red}
 
-.red                {color: Red}
+.red                {color: Red}       /* Red */
 .tomato             {color: tomato}
 .maroon             {color: maroon}
 .magenta            {color: magenta}
 .dark-red           {color: DarkRed}
 .hot-pink           {color: HotPink}
 .light-pink         {color: LightPink}
-.fire-brick         {color: FireBrick} /*red*/
-.green              {color: Green}
+.fire-brick         {color: FireBrick} /* -Red- */
+.green              {color: Green}     /* Green */
 .light-green        {color: LightGreen}
 .chart-reuse        {color: ChartReuse}
 .dark-green         {color: DarkGreen}
-.medium-aqua-marine {color: MediumAquaMarine} /*green*/
-.blue          {color: Blue}
+.medium-aqua-marine {color: MediumAquaMarine} /* -Green- */
+.blue          {color: Blue}                  /* Blue */
 .navy          {color: Navy}
 .sky-blue      {color: SkyBlue}
 .dodger-blue   {color: DodgerBlue}
 .dark-blue     {color: DarkBlue}
-.midnight-blue {color: MidnightBlue}
+.midnight-blue {color: MidnightBlue}          /* -Blue- */
 .brown    {color: Brown}
 .orange   {color: Orange}
 .purple   {color: Purple}
 .grey     {color: Grey}
 .dim-grey {color: DimGrey}
 .dark-grey{color: DarkGrey}
+.black    {color: Black}
 
 .back-white {background-color: white}
 .back-red {background-color: red}
@@ -129,3 +130,5 @@ ol.olWithMargin > li {margin: 10px 0;}
 
 .width100pct {width: 100%;}
 .height2     {height: 2px;}
+
+.footer {border:0; height: 35px;}

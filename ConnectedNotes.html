@@ -4,6 +4,7 @@
     <title>Java Connected Notes</title>
     <script src="js/glossary.js"></script>
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/animatedTarget.css">
 </head>
 <body>
 <a href="all.html">SiteMap</a>
@@ -16,6 +17,16 @@
 			<details>
 				<summary></summary>
 				<h2><a href="#aop">Aspect Oriented Programming</a></h2>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>B</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#binarySearchTree">Binary Search Tree</a></h2>
+				<h2><a href="#binaryTree">Binary Tree</a></h2>
 			</details>
 		</td>
 	</tr>
@@ -61,7 +72,7 @@
 		<td>
 			<details>
 				<summary></summary>
-				<h2><a href="#PrivacyByDesign">Privacy by Design</a></h2>
+				<h2><a href="#privacyByDesign">Privacy by Design</a></h2>
 			</details>
 		</td>
 	</tr>
@@ -90,12 +101,13 @@
 			<details>
 				<summary></summary>
 				<h2><a href="#transaction-isolation">Transaction Isolation</a></h2>
+				<h2><a href="#tree-data-structures">Tree Data Structures</a></h2>
 			</details>
 		</td>
 	</tr>
 </table>
 
-<hr style="height:2px;">
+<hr class="height2">
 
 <div id="aop">
 	<h2>Aspect Oriented Programming</h2>
@@ -129,6 +141,56 @@
 			The process of applying <span class="blue">advice</span> at <span class="green">join points</span> selected by <span class="brown">pointcuts</span>.<br>
 			It is done by the <span class="get-title">AOP</span> framework.
 		</li>
+	</ul>
+</div>
+<hr>
+
+<div id="binaryHeap">
+	<h2 class="margin-bottom-3">
+		Binary Heap <a class="link-sign" href="#tree-data-structures"><small>Tree Data Structures</small></a>
+	</h2>
+	<code class="code">PriorityQueue</code> is based on <em>Binary Heap</em>.
+	<div class="indent4"></div>
+	<em>Binary Heap</em> is a <a href="#binaryTree">Binary Tree</a> with 2 constraints:
+	<ul class="margin-top-0">
+		<li><b>Shape:</b> Binary Heap is a <em>Complete Binary Tree</em></li>
+		<li>
+			<b>Heap:</b> choose<br>
+			<em>max-heap</em>: the key stored in each node >= the keys in the node's children<br>
+			<em>min-heap</em>: the key stored in each node <= the keys in the node's children
+		</li>
+	</ul>
+</div>
+<hr>
+
+<div id="binarySearchTree">
+	<h2 class="margin-bottom-3">
+		Binary Search Tree <a class="link-sign" href="#tree-data-structures"><small>Tree Data Structures</small></a>
+	</h2>
+	<em>Binary Search Tree</em> is a <a href="#binaryTree">Binary Tree</a> with constraints:<br>
+	Each key is greater than any key to the node's left subtree AND less than in its right subtree
+</div>
+<hr>
+
+<div id="binaryTree">
+	<h2 class="margin-bottom-3">
+		Binary Tree <a class="link-sign" href="#tree-data-structures"><small>Tree Data Structures</small></a>
+	</h2>
+	<em>Rooted</em> tree DS in which each <em>node</em> can have maximum 2 child nodes: <em>left</em> and <em>right</em><br>
+
+	Binary Tree can be:
+	<ul class="margin-top-0">
+		<li>
+			<b>Full</b> - every node has either 0 or 2 children
+			<img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Full_binary.svg" alt="Full BT" width="100px">
+		</li>
+		<li>
+			<b>Complete</b> - every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible
+			<img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Complete_binary2.svg" alt="Complete BT" width="100px">
+		</li>
+		<li><b>Perfect</b> - always <em><b>Full</b></em> and <em><b>Complete</b></em></li>
+		<li><b>Balanced</b></li>
+		<li><b>Degenerate</b></li>
 	</ul>
 </div>
 <hr>
@@ -911,7 +973,7 @@
 </div>
 <hr>
 
-<div id="PrivacyByDesign">
+<div id="privacyByDesign">
 	<h2>Privacy by Design</h2>
 	<ol class="olWithMargin">
 		<li>
@@ -952,16 +1014,19 @@
 <hr>
 
 <div id="redBlackTree">
-    <h2>Red Black Tree</h2>
+	<h2 class="margin-bottom-3">
+		<span class="red">Red</span> Black <span class="dark-green">Tree</span>
+		<a class="link-sign" href="#tree-data-structures"><small>Tree Data Structures</small></a>
+	</h2>
     <code><b>TreeMap</b></code> is based on RBT.<br>
-    RBT is a self-balancing binary search tree(BST) data structure.<br><br>
+    RBT is a self-balancing <a href="#binarySearchTree">Binary Search Tree</a>(BST) data structure.<br><br>
     Requirements:<br>
     From BST:
-    <ol style="margin-top: 0">
+    <ol class="margin-top-0">
         <li>Each key is greater than any key to the node's left subtree AND less than in its right subtree</li>
     </ol>
     From RBT:
-    <ol style="margin-top: 0">
+    <ol class="margin-top-0">
         <li>Every node is either red or black</li>
         <li>All NIL nodes are considered black</li>
         <li>A red node does not have a red child</li>
@@ -978,7 +1043,7 @@
 
     <br><br>
     Space Complexity: <b><em>O(n)</em></b> <small> The memory space that algorithm uses in the process of work, depending on amount of input data.</small>
-    <div style="height:5px;"></div>
+    <div class="indent4"></div>
     Time complexity (Worst cases (and amortized)):<br>
     Search, Insert and Delete: <b><em>O(log<sub>2</sub> n)</em></b><br>
 
@@ -1307,11 +1372,30 @@
 </div>
 <hr>
 
+<div id="tree-data-structures">
+	<h2 class="margin-bottom-3">Tree Data Structures</h2>
+	<table class="collapse-border padding">
+		<tr>
+			<td class="text-align-center" colspan="2"><a href="#binaryTree">Binary Tree</a></td>
+		</tr>
+		<tr>
+			<td colspan="1"><a href="#binaryHeap">Binary Heap</a></td>
+			<td colspan="1"><a href="#binarySearchTree">Binary Search Tree</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="#redBlackTree"><span class="red">Red</span> <span class="black">Black</span> <span class="dark-green">Tree</span></a></td>
+		</tr>
+
+	</table>
+</div>
+<hr>
+
 Sources: Wikipedia. Carlo Zaniolo. Hugo Kornelis. Oracle®
 
 <div class="indent"></div>
 <a href="all.html">SiteMap</a><br>
-<iframe style="border:0; height: 35px;" src="./footer.html"></iframe>
+<iframe class="footer" src="./footer.html"></iframe>
 
 <script>
     function onLetterClick(event) {
