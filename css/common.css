@@ -41,6 +41,8 @@
 .back-pink {background-color: pink}
 .back-green {background-color: green}
 .back-light-green {background-color: LightGreen}
+.back-lime-green {background-color: LimeGreen}
+.back-yellow {background-color: yellow}
 .back-orange {background-color: orange}
 .back-tomato {background-color: tomato}
 .back-sky-blue {background-color: SkyBlue}
@@ -58,9 +60,13 @@
 	border-color: DarkGray;
 }
 .collapse-border {border-collapse: collapse}
-.padding th , .padding td {
+.padding, .padding th , .padding td {
 	padding-left : 5px;
 	padding-right: 5px;
+}
+.padding3 {
+	padding-left : 3px;
+	padding-right: 3px;
 }
 
 .margin-left {margin-left: 1em}
@@ -72,6 +78,7 @@
 .margin-top-3    {   margin-top: 3px}
 .margin-top-0    {   margin-top: 0}
 .margin-top-bottom-3 {margin-top: 3px; margin-bottom: 3px;}
+.margin-top-bottom-0 {margin-top: 0px; margin-bottom: 0px;}
 
 .text-align-center  {text-align:center }
 .text-align-initial {text-align:initial}
@@ -120,7 +127,7 @@ ol.olWithMargin > li {margin: 10px 0;}
 .bold {font-weight: bold;}
 
 .pointer {cursor: pointer}
-.get-title {
+.get-title { // functional
 	cursor: pointer;
 	color: MidnightBlue;
 }

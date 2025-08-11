@@ -30,13 +30,32 @@
 			</details>
 		</td>
 	</tr>
-
+	<tr>
+		<td><h1>C</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2><a href="#case-types" id="case-types-up">Case Types</a></h2>
+			</details>
+		</td>
+	</tr>
 	<tr>
 		<td><h1>D</h1></td>
 		<td>
 			<details>
 				<summary></summary>
 				<h2><a href="#db-normal-forms">Database normal forms</a></h2>
+				<h2>Data Structures</h2>
+					<h3 class="padding-left-1em"><a href="#tree-data-structures">Tree Data Structures</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
+		<td><h1>E</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#EHE" id="EHE-up">Encoding·Hashing·Encrypting</a></h3>
 			</details>
 		</td>
 	</tr>
@@ -160,6 +179,7 @@
 			<em>min-heap</em>: the key stored in each node <= the keys in the node's children
 		</li>
 	</ul>
+	Used in <a href="Algorithms.html#heap">Heap sort</a>
 </div>
 <hr>
 
@@ -192,6 +212,34 @@
 		<li><b>Balanced</b></li>
 		<li><b>Degenerate</b></li>
 	</ul>
+</div>
+<hr>
+
+<div id="case-types">
+	<div class="indent"></div>
+	<table class="collapse-border padding">
+		<caption><small><a href="#case-types-up">Case Types</a></small></caption>
+		<tr class="margin">
+			<th>Snake</th>
+			<td>&#x1F40D;</td>
+			<td>one_two_three</td>
+		</tr>
+		<tr>
+			<th>Kebab</th>
+			<td>&#x1F361;</td>
+			<td>one-two-three</td>
+		</tr>
+		<tr>
+			<th>Camel</th>
+			<td>&#x1F42B;</td>
+			<td>oneTwoThree</td>
+		</tr>
+		<tr>
+			<th>Pascal</th>
+			<td>&#x1F56E;</td>
+			<td>OneTwoThree</td>
+		</tr>
+	</table>
 </div>
 <hr>
 
@@ -228,7 +276,7 @@
 	Each next <i>normal form</i> complies with previous normal form <small>(except 6NF)</small>.
 	<ul>
 		<li>
-			<h4 style="margin-bottom:2px;">1NF <small>⚓ Color set</small></h4>
+			<h4 class="margin-bottom-3">1NF <small>⚓ Color set</small></h4>
 			Each field contains a single value.
 			Field should not contain a set of values or a nested record. (Scalar columns)<br>
 			All rows are unique<br>
@@ -268,7 +316,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">2NF <small>⚓ Shape & Price</small></h4>
+			<h4 class="margin-bottom-3">2NF <small>⚓ Shape & Price</small></h4>
 			It does <b>not</b> have any <i class="medium-aqua-marine">non-prime attribute</i>
 			that is <a href="#fd">functionally dependent</a> on any <i>proper subset</i> of any <i class="dark-red">candidate key</i>.
 			<div class="indent"></div>
@@ -310,7 +358,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">3NF <small>⚓ Manufacturer & Country; Non-transitive FD</small></h4>
+			<h4 class="margin-bottom-3">3NF <small>⚓ Manufacturer & Country; Non-transitive FD</small></h4>
 			Every <i class="medium-aqua-marine">non-prime attribute</i> of a <i>Relation</i> is <a href="#transitive-fd">non-transitively</a> dependent on each <i class="dark-red">candidate key</i>.<br>
 			But, <i>key/prime</i> attributes <span class="green">can</span> be <a href="#transitive-fd">transitively</a> dependent on any <i class="dark-red">candidate key</i>.<br>
 			<div class="indent"></div>
@@ -353,7 +401,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">EKNF <small>⚓ TELEPHONE (PLACE, AREA, NUMBER)</small></h4>
+			<h4 class="margin-bottom-3">EKNF <small>⚓ TELEPHONE (PLACE, AREA, NUMBER)</small></h4>
 			<em class="dodger-blue">Elementary Key Normal Form</em>
 			<div class="indent4"></div>
 
@@ -450,7 +498,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">BCNF (3.5NF)<small>⚓ TELEPHONE decomposition: (place,area) & (place,number)</small></h4>
+			<h4 class="margin-bottom-3">BCNF (3.5NF)<small>⚓ TELEPHONE decomposition: (place,area) & (place,number)</small></h4>
 			<em class="dodger-blue">Boyce Codd Normal Form</em>
 			<div class="indent4"></div>
 
@@ -509,7 +557,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">4NF<small>⚓ Pizza Variety</small></h4>
+			<h4 class="margin-bottom-3">4NF<small>⚓ Pizza Variety</small></h4>
 			<div class="indent4"></div>
 
 			<em><b>[Def. Wiki]</b></em><br>
@@ -586,7 +634,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">ETNF<small>⚓ S supplier, P part, J project</small></h4>
+			<h4 class="margin-bottom-3">ETNF<small>⚓ S supplier, P part, J project</small></h4>
 			<em class="dodger-blue">Essential Tuple Normal Form</em>
 			<div class="indent4"></div>
 
@@ -675,7 +723,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">5NF<small>⚓ Day Expert Topic</small></h4>
+			<h4 class="margin-bottom-3">5NF<small>⚓ Day Expert Topic</small></h4>
 			<em class="dodger-blue">Projection-Join Normal Form</em>
 			<div class="indent4"></div>
 
@@ -782,7 +830,7 @@
 				</tr>
 			</table>
 		<li>
-			<h4 style="margin-bottom:2px;">DKNF<small>⚓ Book Thickness</small></h4>
+			<h4 class="margin-bottom-3">DKNF<small>⚓ Book Thickness</small></h4>
 			<em class="dodger-blue">Domain-Key Normal Form</em>
 			<div class="indent4"></div>
 
@@ -846,7 +894,7 @@
 			</table>
 		</li>
 		<li>
-			<h4 style="margin-bottom:2px;">6NF<small>⚓ PrimaryKey + 1 column</small></h4>
+			<h4 class="margin-bottom-3">6NF<small>⚓ PrimaryKey + 1 column</small></h4>
 			<div class="indent4"></div>
 
 			<em><b>[Def. Wiki]</b></em><br>
@@ -890,6 +938,32 @@
 	 3NF: All <span class="green">non-key</span> columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
 	EKNF: All <span class="dark-green">non-elementary-key</span> columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
 	BCNF: All columns must depend on the <i>key</i>, the whole <i>key</i>, and nothing but the <i>key</i>.<br>
+</div>
+<hr>
+
+<div id="EHE">
+	<div class="indent"></div>
+	<table class="collapse-border padding">
+		<caption><small><a href="#EHE-up">Encoding·Hashing·Encrypting</a></small></caption>
+		<tr>
+			<th></th>
+			<th>Encoding</th>
+			<th>Hashing</th>
+			<th title="Encryption" class="pointer midnight-blue">Encrypting</th>
+		</tr>
+		<tr>
+			<th>Reversible</th>
+			<td>&#x2705;</td>
+			<td>&#x274C;</td>
+			<td>&#x2705;</td>
+		</tr>
+		<tr>
+			<th>Secure</th>
+			<td>&#x274C;</td>
+			<td>&#x2705;</td>
+			<td>&#x2705;</td>
+		</tr>
+	</table>
 </div>
 <hr>
 
