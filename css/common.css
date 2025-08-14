@@ -127,8 +127,8 @@ ol.olWithMargin > li {margin: 10px 0;}
 .bold {font-weight: bold;}
 
 .pointer {cursor: pointer}
-.get-title { // functional
-	cursor: pointer;
+.get-title { /* functional */
+	cursor: help;
 	color: MidnightBlue;
 }
 
