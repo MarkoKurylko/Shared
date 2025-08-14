@@ -1126,37 +1126,41 @@
 <hr>
 
 <div id="REST">
-	<h2 style="margin-bottom: 5px;">REST (Representational State Transfer)</h2>
+	<h2 class="margin-bottom-3">REST (Representational State Transfer)</h2>
 	Is a <em>software architectural style</em> that was created to describe the design and guide the development of the architecture for the <span class="get-title">WWW</span>.<br>
 	REST defines a set of constraints for how the architecture of a distributed, Internet-scale <em>hypermedia</em> system, such as the Web, should behave.
 	<div class="indent"></div>
-	The REST architectural style defines <b>6</b> guiding constraints.<br>
+	The REST architectural style defines <b>6</b> guiding constraints. ⚓SUL<span class="grey">3</span>C<br>
 	When these <em>constraints</em> are applied to the system architecture, it gains desirable <span class="get-title">NFR</span> properties:<br>
 	<code>performance scalability simplicity modifiability visibility portability reliability</code>.
-	<ol style="margin-top: 2px;">
+	<ol class="margin-top3">
 		<li><b>Client/Server</b> – clients are separated from servers by a well-defined interface</li>
-		<li><b>Stateless</b> – a specific client does not consume server storage when the client is "at rest"</li>
-		<li><b>Cache</b> – responses indicate their own cacheability</li>
+		<li><b>Stateless</b> – a specific client does not consume server storage when the client is "at rest", <small>that also means <em>sessionless</em></small></li>
+		<li>
+			<b>Cache</b> – responses indicate their own cacheability.
+			Servers specify cacheability of responses through <span class="get-title">HTTP</span> headers like <code>Cache-Control</code>, <code>Expires</code> and <code>Etag</code>.
+		</li>
 		<li>
 			<details>
 				<summary><b>Uniform interface</b></summary>
 				is fundamental to the design of any RESTful system.
 				It simplifies and decouples the architecture, which enables each part to evolve independently.
-				<ol style="margin-top: 1px;">
+				<ol class="margin-top-0">
 					<li><em>Resource identification in requests</em> -
 						<small>
 							resources are identified by <span class="get-title">URI</span>.<br>
-							The resources themselves are conceptually separate from the representations(<i>HTML, XML, JSON</i>) that are returned to the client
-						</small></li>
+							The resources themselves are conceptually separate from the representations(<i class="get-title">HTML</i>, <i class="get-title">XML</i>, <i class="get-title">JSON</i>) that are returned to the client. <code class="code">GET /users/123</code>
+						</small>
+					</li>
 					<li>
 						<em>Resource manipulation <small>through</small> representations</em> -
 						<small>
-							When a client holds a representation of a resource, including any <i>metadata</i> attached, it has enough information to modify or delete the resource's state
+							When a client holds a representation of a resource, including any <i>metadata</i> attached, it has enough information to modify or delete the resource's state. <code class="code">PUT /users/123</code>
 						</small>
 					</li>
 					<li><em>Self-descriptive messages</em> - <small>Each message includes enough information to describe how to process the message. (<i>media type</i>)</small></li>
 					<li>
-						<em>HATEOAS <small>(Hypermedia as the engine of application state)</small></em> -
+						<em class="get-title">HATEOAS</em> -
 						<small>
 							a REST client should be able to use server-provided links dynamically to discover all the available resources it needs.<br>
 							The server responds with text that includes <i>hyperlinks</i> to other resources that are currently available
@@ -1165,13 +1169,29 @@
 				</ol>
 			</details>
 		</li>
-		<li><b>Layered system</b> – a client cannot ordinarily tell whether it is connected directly to the end server, or to an intermediary along the way</li>
-		<li><em>Code on demand</em> <small>(optional)</small> – <small>servers are able to temporarily extend or customize the functionality of a client by transferring logic to the client that can be executed within a standard virtual machine</small></li>
+		<li>
+			<b>Layered system</b> – a client cannot ordinarily tell whether it is connected directly to the end server, or to an intermediary along the way
+			<details>
+				<summary><small>Web app layers example</small></summary>
+				<table class="collapse-border">
+					<tr><th>Client</th><td>Web browser/Mobile App</td></tr>
+					<tr><th>Intermediary</th><td><span class="get-title">CDN</span>, <em>reverse proxy</em> for load balancing & caching</td></tr>
+					<tr><th>Server</th><td>Application server & Business logic</td></tr>
+					<tr><th>Database</th><td></td></tr>
+				</table>
+			</details>
+		</li>
+		<li>
+			<em>Code on demand</em> <small>(optional)</small> –
+			<small>servers are able to temporarily extend or customize the functionality of a client by transferring logic to the client that can be executed within a standard virtual machine.<br>
+				Example: Javascript
+			</small>
+		</li>
 	</ol>
 	<em><b>Richardson Maturity Model</b></em>
-	<ol style="margin-top: 3px;">
+	<ol class="margin-top-3">
 		<li>
-			<b>Level 0: The Swamp of <span class="get-title">POX</span></b>
+			<b>Level 0: The Swamp of <span class="get-title">POX</span></b> <small>⚓ 1 URI & 1 method</small>
 			<div class="indent4"></div>
 			<span class="red">Is not RESTful</span>.
 			It is a Web <span class="get-title">API</span> with a single <span class="get-title">URI</span> accepting <span class="fire-brick">all</span> the range of operations supported by the service.<br>
@@ -1180,7 +1200,7 @@
 			<div class="indent"></div>
 		</li>
 		<li>
-			<b>Level 1: Resources</b>
+			<b>Level 1: Resources</b> <small>⚓ n URI, but still 1 method</small>
 			<div class="indent4"></div>
 			<span class="fire-brick">Still not yet RESTful</span>.
 			Introduces <em>resources</em> and allows requests for individual <span class="get-title">URI</span>s
@@ -1196,7 +1216,7 @@
 			<div class="indent"></div>
 		</li>
 		<li>
-			<b>Level 2: HTTP verbs <small>(HTTP request methods)</small></b>
+			<b>Level 2: HTTP verbs <small>(HTTP request methods)</small></b> <small>⚓ n URI & n methods</small>
 			<div class="indent4"></div>
 			<span class="green">It is RESTful</span>.
 			The system starts making use of <em>HTTP Verbs</em>.
@@ -1225,7 +1245,7 @@
 			Example: <br>
 			<small>
 			<code class="code">GET /accounts/12345 HTTP/1.1</code></small><br>
-			<pre style="margin-top: 0px;">{
+			<pre class="margin-top-0">{
     "account": {
         "account_number": 12345,
         "balance": {
@@ -1241,7 +1261,7 @@
     }
 }</pre>
 			<small>As an example, later, after the account has been overdrawn, there is a different set of available links:</small>
-			<pre style="margin-top: 0px;">{
+			<pre class="margin-top-0">{
     "account": {
         "account_number": 12345,
         "balance": {

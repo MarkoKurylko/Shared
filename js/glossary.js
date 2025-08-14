@@ -6,7 +6,7 @@ const glossaryMap = new Map();
 			if (this.readyState == 4 && this.status == 200) {
 				const ths = this.responseXML.getElementsByTagName("th");
 				Array.from(ths).forEach( th => {
-					glossaryMap.set(th.id, th.nextSibling.nextSibling.innerHTML)
+					glossaryMap.set(th.id, th.nextSibling.nextSibling.innerText)
 				});
 			}
 		};
