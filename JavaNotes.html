@@ -110,7 +110,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h2><a id="java" href="#java">Java</a></h2>
+						<h2><a href="#java" id="java-up">Java</a></h2>
 						<h3><a href="#jsp">Jakarta(Java) Server Pages</a></h3>
 						<h3><a href="#servlets">Jakarta(Java) Servlets</a></h3>
 					</details>
@@ -890,7 +890,7 @@
 			</li>
 
 			<li>
-				<h4 style="margin-bottom: 0;">Heap pollution</h4>
+				<h4 class="margin-bottom-0">Heap pollution</h4>
 				Heap pollution occurs when a variable of a parameterized type refers to an object that is not of that parameterized type<br>
 				Heap pollution occurs when mixing raw types and parameterized types or when performing unchecked casts
 			</li>
@@ -913,7 +913,7 @@
 		<hr>
 
 		<div id="instanceof">
-			<h3 style="margin-bottom:5px;"><code>instanceof</code> <small>operator</small></h3>
+			<h3 class="margin-bottom-3"><code>instanceof</code> <small>operator</small></h3>
 			The <code>instanceof</code> operator compares an object to a specified type.<br>
 			Keep in mind that <code>null</code> is not an instance of anything.<br>
 			<span class="java16">Since 16</span> <i>pattern matching</i> was added:<br>
@@ -921,8 +921,22 @@
 		</div>
 		<hr>
 
+		<div id="java">
+			<h2 class="margin-bottom-3"><a href="#java-up">Java</a></h2>
+			Is <em class="get-title">OOP</em>,
+				<a href="ConnectedNotes.html#imperative">Imperative</a>,
+				<a href="ConnectedNotes.html#functional">Functional <small>(despite it is <span class="tomato">not</span> <a href="ConnectedNotes.html#declarative">Declarative</a>)</small></a>,
+				<a href="#generics">Generic</a>,
+				<a href="#concurrency">Concurrent</a>,
+				<em>Reflective</em><br>
+			and <span class="tomato">not</span> <a href="ConnectedNotes.html#declarative">Declarative</a>,
+				<a href="ConnectedNotes.html#reactive">Reactive</a>,
+				<em>Distributed</em>, <em>Logic</em>, <em>Pipeline</em>, <em>Visual</em> <small>and</small> <em>Rule-based</em>
+		</div>
+		<hr>
+
 		<div id="jsp">
-			<h3 style="margin-bottom:5px;">Java Server Pages / <em>Jakarta</em> Server Pages</h3>
+			<h3 class="margin-bottom-3">Java Server Pages / <em>Jakarta</em> Server Pages</h3>
 			Is a collection of technologies to create dynamically generated web pages based on <span class="get-title">HTML</span>, <span class="get-title">XML</span>, <span class="get-title">SOAP</span> or other document types.<br>
 			Architecturally, <span class="get-title">JSP</span> may be viewed as a high-level abstraction of <a href="#servlets">Jakarta(Java) Servlets</a>.<br>
 			Each <span class="get-title">JSP</span> servlet is cached and re-used until the original <span class="get-title">JSP</span> is modified.<br>
