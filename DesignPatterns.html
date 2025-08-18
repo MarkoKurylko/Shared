@@ -5,30 +5,22 @@
 	<title>Design Patterns</title>
 	<script src="js/glossary.js"></script>
 	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/animatedTarget.css">
 
 	<link rel="stylesheet" href="3dparty/highligthjs/styles/default.min.css">
 	<script src="3dparty/highligthjs/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
-	<style>
-		:target {
-			animation-name: bg-color;
-			animation-duration: 500ms;
-			animation-iteration-count: 2;
-			animation-direction: alternate;
-		}
-
-		@keyframes bg-color {
-			to {background-color: LightGreen;}
-		}
-	</style>
 </head>
 <body>
 	<a href="all.html">SiteMap</a>
 	<div class="indent"></div>
 
+	<h3 id="monolith-microservices-up"><a href="#monolith-microservices">Monolith vs Microservices</a></h3>
+
 	<p>
-		<em>Design pattern</em> is a general, <i>reusable</i> solution to a commonly occurring problem in many contexts in <i>software design</i>.
+		<b><em>Design pattern</em></b> is a general, <i>reusable</i> solution to a commonly occurring problem in many contexts in <i>software design</i>.
 	</p>
+
 
 	<details>
 		<summary><b>Creational</b> patterns are for object creation</summary>
@@ -404,6 +396,107 @@
 		</ul>
 	</details>
 
+	<hr class="height2">
+
+	<div>
+		<h3 id="monolith-microservices"><a href="#monolith-microservices-up">Monolith vs Microservices</a></h3>
+		<table class="collapse-border padding">
+			<tr>
+				<th colspan="2">Characteristics</th>
+				<th>Monolith</th>
+				<th>Microservices</th>
+			</tr>
+			<tr>
+				<th rowspan="3" class="grey">Development</th>
+				<th class="grey">Complexity</th>
+				<td class="back-light-green">Easy</td>
+				<td class="back-pink">Complex</td>
+			</tr>
+			<tr>
+				<th class="grey">Speed</th>
+				<td class="back-pink">Slow</td>
+				<td class="back-light-green">Fast</td>
+			</tr>
+			<tr>
+				<th class="grey">Debugging</th>
+				<td class="back-light-green">Easy</td>
+				<td class="back-pink">Hard</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Testing</th>
+				<td class="back-light-green">Easy</td>
+				<td class="back-pink">Complex</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Performance</th>
+				<td class="back-light-green">Faster</td>
+				<td class="back-pink">Slower</td>
+			</tr>
+			<tr>
+				<th rowspan="3" class="grey">Deployment</th>
+				<th class="grey">Complexity</th>
+				<td class="back-light-green">Easy</td>
+				<td class="back-pink">Complex</td>
+			</tr>
+			<tr>
+				<th class="grey">Continuous</th>
+				<td class="back-pink">No</td>
+				<td class="back-light-green">Yes</td>
+			</tr>
+			<tr>
+				<th class="grey">Unit Independence</th>
+				<td class="back-pink">No</td>
+				<td class="back-light-green">Yes</td>
+			</tr>
+			<tr>
+				<th class="grey">Scalability</th>
+				<th class="grey">Components</th>
+				<td class="back-pink">No</td>
+				<td class="back-light-green">Yes</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Reliability</th>
+				<td class="back-pink">Low</td>
+				<td class="back-light-green">High</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Flexibility</th>
+				<td class="back-pink">Bad</td>
+				<td class="back-light-green">Good</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Technology adoption</th>
+				<td class="back-pink">Bad</td>
+				<td class="back-light-green">Good</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Agility</th>
+				<td class="back-pink">Bad</td>
+				<td class="back-light-green">Good</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Infrastructure costs</th>
+				<td class="back-light-green">Linear</td>
+				<td class="back-pink">Exponential</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Organizational overhead</th>
+				<td class="back-light-green">No</td>
+				<td class="back-pink">Yes</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Standardization</th>
+				<td class="back-light-green">Good</td>
+				<td class="back-pink">Lack</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="grey">Clear ownership</th>
+				<td class="back-light-green">Yes</td>
+				<td class="back-pink">Lack</td>
+			</tr>
+		</table>
+	</div>
+	<hr>
 
 	<h2>Creational</h2>
 
