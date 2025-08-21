@@ -29,6 +29,7 @@
 .dark-blue     {color: DarkBlue}
 .midnight-blue {color: MidnightBlue}          /* -Blue- */
 .brown    {color: Brown}
+.saddle-brown {color: SaddleBrown}
 .orange   {color: Orange}
 .purple   {color: Purple}
 .grey     {color: Grey}
@@ -82,7 +83,7 @@
 
 .text-align-center  {text-align:center }
 .text-align-initial {text-align:initial}
-.padding-left-1em {padding-left: 1em}
+.padding-left, .padding-left-1em {padding-left: 1em}
 
 .code {color: DarkBlue}
 .bad-code {color: SaddleBrown}
@@ -124,16 +125,18 @@ ol.olWithMargin > li {margin: 10px 0;}
 	font-size: 20px;
 }
 
-.bold {font-weight: bold;}
-
 .pointer {cursor: pointer}
 .get-title { /* functional */
 	cursor: help;
 	color: MidnightBlue;
 }
 
-.bold {font-style: bold;}
-.italic {font-style: italic;}
+.bold,.b {font-weight: bold;}
+.italic, .i {font-style: italic;}
+.bi {
+	font-weight: bold;
+	font-style: italic;
+}
 
 .width100pct {width: 100%;}
 .height2     {height: 2px;}

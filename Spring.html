@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Spring Notes</title>
+	<link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+
+<div class="indent"></div>
+<a href="all.html">SiteMap</a>
+<div class="indent"></div>
+
+<code class="code">@EnableAutoConfiguration</code><br>
+attempts to automatically configure your Spring application based on the jar dependencies that you have added.<br>
+Example: if <code>HSQLDB</code> is on your classpath, and you have not manually configured any database connection beans,
+then Spring Boot auto-configures an in-memory database.<br>
+Should be applied to <code class="code">@Configuration</code> class.
+<hr>
+
+<code class="code">@SpringBootApplication</code><br>
+It is <code class="code">@SpringBootConfiguration</code>,
+<code class="code">@EnableAutoConfiguration</code>
+and <code class="code">@ComponentScan(excludeFilters={...})</code>
+<hr>
+
+<code class="code">@SpringBootConfiguration</code><br>
+It is stereotype of <code class="code">@Configuration</code>
+<hr>
+
+
+<div>
+	<a href="all.html">SiteMap</a>
+</div>
+
+
+<embed class="footer" src="./footer.html">
+</body>
+</html>

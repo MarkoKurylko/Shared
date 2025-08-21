@@ -53,6 +53,7 @@
 							<h4 class="padding-left-1em"><a href="#concurrentCollections"  >Concurrent Collections</a></h4>
 						<h3><a href="#completableFuture"><code>CompletableFuture</code></a></h3>
 						<h2><a href="#concurrency">Concurrency</a></h2>
+						<h4>Covariant return type</h4>
 					</details>
 				</td>
 			</tr>
@@ -61,7 +62,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#dataRaceCondition">Data Race & Race Condition</a></h3>
+						<h3><a href="#data-race-condition" id="data-race-up">Data Race & Race Condition</a></h3>
 						<h3><a href="#diamond">Diamond operator</a></h3>
 					</details>
 				</td>
@@ -128,6 +129,16 @@
 				</td>
 			</tr>
 			<tr>
+				<td><h1>M</h1></td>
+				<td>
+					<details>
+						<summary></summary>
+						<h3><a href="#method-signature" id="method-signature-up">Method signature</a></h3>
+					</details>
+				</td>
+			</tr>
+
+			<tr>
 				<td><h1>N</h1></td>
 				<td>
 					<details>
@@ -150,7 +161,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#dataRaceCondition">Race Condition <small>& Data Race</small></a></h3>
+						<h3><a href="#data-race-condition"><span id="race-condition-up">Race Condition</span> <small>& Data Race</small></a></h3>
 						<h3><a href="#referenceType">Reference Type</a></h3>
 						<h3><a href="#rtti">Runtime Type Identification (RTTI)</a></h3>
 					</details>
@@ -163,6 +174,7 @@
 						<summary></summary>
 						<h2><a href="#streams">Streams</a></h2>
 						<h3><a href="#safevarargs">@SafeVarargs</a></h3>
+						<h3><a href="#method-signature" id="signature-method-up">Signature of a Method</a></h3>
 						<h3 class="code-a"><a href="#spliterator"><code>Spliterator</code></a></h3>
 						<h3><a id="strictfp" href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
 						<h3><a href="#synchronized" class="code-a"><code>synchronized</code></a></h3>
@@ -184,7 +196,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#volatile" class="code-a"><code>volatile</code></a></h3>
+						<h3><a href="#volatile" class="code-a" id="volatile-up"><code>volatile</code></a></h3>
 					</details>
 				</td>
 			</tr>
@@ -366,7 +378,7 @@
 			<code class="code">synchronizedNavigableSet</code>, <code class="code">synchronizedNavigableMap</code><br>
 			Pay attention to that the <i>synchronized</i> collection does <span class="red"><b>not</b></span> mean they are <span class="red"><b>concurrent</b></span>.<br>
 			They are <i>thread-safe</i> and in case of concurrency their <span class="brown">performance</span> is expected to be very <span class="brown">low</span>.<br>
-			Moreover, despite they are called <i>tread-safe</i> they may fall into a <i>race condition</i>(TODO) or non-deterministic behavior in case of using it "as is".<br>
+			Moreover, despite they are called <i>tread-safe</i> they may fall into a <a href="#data-race-condition">race condition</a> or non-deterministic behavior in case of using it "as is".<br>
 			<i>Javadoc:</i> It is imperative that the user manually synchronize on the returned list when traversing it via <code class="code">Iterator</code>, <code class="code">Spliterator</code> or <code class="code">Stream</code>:
 			<pre class="margin-top-0">
 	List list = Collections.synchronizedList(new ArrayList());
@@ -616,15 +628,15 @@
 				<li><a href="#synchronized" class="code-a"><code>synchronized</code></a></li>
 				<li><a href="#synchronizedCollections">Synchronized Collections</a></li>
 				<li><a href="#concurrentCollections"  >Concurrent Collections</a></li>
-				<li><a href="#dataRaceCondition">Data Race & Race Condition</a></li>
+				<li><a href="#data-race-condition">Data Race & Race Condition</a></li>
 				<li><a href="#threadLocal" class="code-a"><code>ThreadLocal</code></a></li>
 				<li><a href="#volatile" class="code-a"><code>volatile</code></a></li>
 			</ul>
 		</div>
 		<hr>
 
-		<div id="dataRaceCondition">
-			<h3 class="margin-bottom-3">Data Race & Race Condition <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+		<div id="data-race-condition">
+			<h3 class="margin-bottom-3"><a href="#data-race-up">Data Race</a> & <a href="#race-condition-up">Race Condition</a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			<table class="collapse-border padding">
 				<tr>
 					<th>Data Race</th>
@@ -987,7 +999,7 @@
 		<hr>
 
 		<div id="servlets">
-			<h3 style="margin-bottom:5px;">Jakarta(Java) Servlets</h3>
+			<h3 class="margin-bottom-3">Jakarta(Java) Servlets</h3>
 			A Jakarta Servlet, <small>formerly Java Servlet</small> is a <em>Java software component</em> that extends the capabilities of a <em>server</em>.<br>
 			In principle, any servlets can extend the abstract <code class="code">GenericServlet implements <span class="midnight-blue" title="service(ServletRequest,ServletResponse)">Servlet</span></code> class; however, realistically speaking, all servlets extend the <code class="code">abstract HttpServlet</code> class.<br>
 			For applications using the servlet 3.0 specification or later, the <code class="code">@WebServlet</code> annotation can be used to map any servlet to one or more <span class="tooltip" title="Uniform Resource Locator">URL</span> patterns.
@@ -996,9 +1008,9 @@
 
 		<div id="lambdas">
 			<h2>λ Lambda Expressions <small class="java8">(Since 1.8)</small></h2>
-			<div style="padding-left:1em;">
-			<h3 id="lambdas-basis" style="margin-bottom:0;">Basis</h3>
-			<p style="margin-top: 4px;">Syntax: <code class="dark-blue">() <b>-&gt;</b> {}</code>
+			<div class="padding-left">
+			<h3 id="lambdas-basis" class="margin-bottom-0">Basis</h3>
+			<p class="margin-top-3">Syntax: <code class="dark-blue">() <b>-&gt;</b> {}</code>
 				or <code class="dark-blue">ClassNameOrInstance<b>::</b>methodName</code><br>
 
 				Technically <em>lambda</em> expression becomes an anonymous method of an enclosing class.
@@ -1021,8 +1033,8 @@
 			The <code>int</code> parameter is a parameter <b>captured</b> from the <code>methodOne()</code>
 			</div>
 
-			<h3 id="lambdas-mr" style="padding-left:1em; margin-bottom:0;">Method references</h3>
-			<table style="margin-left:1em" class="withCounter border">
+			<h3 id="lambdas-mr" class="padding-left margin-bottom-0">Method references</h3>
+			<table class="withCounter border margin-left">
 				<caption>Kinds of method references</caption>
 				<tbody>
 					<tr>
@@ -1071,9 +1083,16 @@
 		</div>
 		<hr>
 
+		<div id="method-signature">
+			<h3 class="margin-bottom-3"><a href="#method-signature-up">Method</a> <a href="#signature-method-up">signature</a></h3>
+			<em>Method signature</em> is a combination of the <b>name</b> and <b>parameter types</b>.<br>
+			<span class="red">Not</span> the modifiers, return type, parameter names exception list and body.
+		</div>
+		<hr>
+
 		<div id="nesting">
-			<h2>Nesting of classes</h2>
-			<table style="margin-left:1em" class="withCounter border">
+			<h2 class="margin-bottom-3">Nesting of classes</h2>
+			<table class="withCounter collapse-border margin-left padding">
 				<caption>Nesting</caption>
 				<tbody>
 					<tr>
@@ -1087,7 +1106,7 @@
 
 					<tr>
 						<td class="text-align-center">#</td>
-						<td colspan="2"><span style="color:saddlebrown;">Local class</span></td>
+						<td colspan="2"><span class="saddle-brown">Local class</span></td>
 						<td><code>public <span class="grey">[static]</span> void methodName {<br>
 										&nbsp;&nbsp;<b>class LocalClassName {}</b> <br>
 									}
@@ -1131,9 +1150,9 @@
 
 					<tr>
 						<td style="text-align: center;">#</td>
-									<td rowspan="2"><span style="color: red;">Nested</span></td>
-									<td style="color: darkred; border-color: black">Inner class <nobr><small>(non-static nested class)</small></nobr></td>
-									<td rowspan="2"><code>class OuterClass {<br>
+						<td rowspan="2"><span class="red">Nested</span></td>
+						<td><span class="dark-red">Inner class <nobr><small>(non-static nested class)</small></nobr></span></td>
+						<td rowspan="2"><code>class OuterClass {<br>
 																		&nbsp;&nbsp; ...<br>
 																&nbsp;&nbsp;class InnerClass {<br>
 																	&nbsp;&nbsp;&nbsp;&nbsp;...<br>
@@ -1143,10 +1162,10 @@
 																	&nbsp;&nbsp;}<br>
 														}
 										</code>
-									</td>
-									<td></td>
-									<td rowspan="2">Use it if your requirements are similar to those of a local class, you want to make the type more widely available, and you don't require access to local variables or method parameters</td>
-									<td>Use an inner class if you require access to an enclosing instance's non-public fields and methods</td>
+						</td>
+						<td></td>
+						<td rowspan="2">Use it if your requirements are similar to those of a local class, you want to make the type more widely available, and you don't require access to local variables or method parameters</td>
+						<td>Use an inner class if you require access to an enclosing instance's non-public fields and methods</td>
 						<td>1.1</td>
 					</tr>
 
@@ -1527,7 +1546,7 @@ class ClassOne {
 		<hr>
 
 		<div id="volatile">
-			<h3 class="code-a margin-bottom-3"><code>volatile</code> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			<h3 class="code-a margin-bottom-3"><a href="#volatile-up"><code>volatile</code></a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			<code>public <span class="grey">[static]</span> <b>volatile</b> long longVar = 1L;</code><br>
 			<code>private <span class="grey">[static]</span> <b>volatile</b> String string;</code>
 			<div class="indent"></div>
@@ -1535,6 +1554,10 @@ class ClassOne {
 			Any write to a <code class="code">volatile</code> variable establishes a <a href="#happens-before">happens-before</a> relationship with subsequent reads of that same variable.<br>
 			It also means, that when a thread reads a <code class="code">volatile</code> variable, it sees not just the latest change to the <code class="code">volatile</code>, but also the side effects of the code that led up the change.<br>
 			Using <code class="code">volatile</code> variables reduces the risk of memory consistency errors.
+			<div class="indent4"></div>
+			<span class="warning-sign fs20 orange"></span> While technically we can declare arrays and collections as <code>volatile</code>,
+			it does not make sense, due to <a href="#happens-before">happens-before</a> relationship will be established only to the reference variable,
+			but not to the cells of the container.
 		</div>
 
 		<hr class="height2">
@@ -1546,7 +1569,7 @@ class ClassOne {
 		<div class="indent"></div>
 
 		UserAgent: <span id="userAgent"></span><br>
-		<iframe style="border:0; height: 35px;" src="./footer.html"></iframe>
+		<iframe class="footer" src="./footer.html"></iframe>
 
 		<script>
 		function onLetterClick(event) {

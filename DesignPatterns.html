@@ -86,7 +86,7 @@
 			</tr>
 			<tr><td colspan="3"><hr></td></tr>
 			<tr>
-				<td><a href="#singleton">Singleton</a></td>
+				<td><a href="#singleton" id="singleton-up">Singleton</a></td>
 				<td>Ensure a class has only one instance, and provide a global point of access to it</td>
 				<td></td>
 			</tr>
@@ -107,8 +107,8 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td><a href="#prototype">Prototype</a></td>
-				<td>---</td>
+				<td><a href="#prototype" id="prototype-up">Prototype</a></td>
+				<td>The technique of creation new objects by cloning the existing one, to improve instantiation time and process</td>
 				<td>
 					When the types of <em>objects</em> to create is determined by a <em>prototypical instance</em>, which is cloned to produce new objects.<br>
 					When we have an instance of the class (prototype) and we’d like to create new objects by just copying the prototype
@@ -178,7 +178,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td><a href="#flyweight">Flyweight</a></td>
+				<td><a href="#flyweight" id="flyweight-up">Flyweight</a></td>
 				<td>Use sharing to support large numbers of similar objects efficiently</td>
 				<td></td>
 			</tr>
@@ -215,7 +215,7 @@
 			</tr>
 
 			<tr>
-				<td><a href="#proxy">Proxy</a></td>
+				<td><a href="#proxy" id="proxy-up">Proxy</a></td>
 				<td>
 					A <em>proxy</em>, in its most general form, is a class functioning as an interface to something else.<br>
 					In short, a proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes.<br>
@@ -307,7 +307,7 @@
 			</tr>
 
 			<tr>
-				<td><a href="#mediator">Mediator</a></td>
+				<td><a href="#mediator" id="mediator-up">Mediator</a></td>
 				<td>
 					With the mediator pattern, communication between objects is encapsulated within a mediator object.<br>
 					Objects no longer communicate directly with each other, but instead communicate through the mediator.<br>
@@ -539,10 +539,13 @@
 	<hr>
 
 	<div id="singleton">
-		<h3>Singleton</h3>
-		<h5>Downside/Drawbacks</h5>
+		<h3><a href="#singleton-up">Singleton</a></h3>
+		<h5 class="margin-bottom-3">Downside/Drawbacks</h5>
 		In case <code class="code">Singleton</code> is creating instance of itself - it violates <b>SRP</b>.<br>
-		Makes unit testing far more difficult, as it introduces <em>global state</em> into an application.
+		Makes unit testing far more difficult, as it introduces <em>global state</em> into an application.<br>
+
+		<div class="indent8"></div>
+		<b>Examples of creation:</b> Java Enum Singleton - it has <b class="i">serialization and thread-safety</b> guaranteed by the enum implementation itself, which ensures internally that only the single instance is available.
 	</div>
 	<hr>
 
@@ -573,7 +576,7 @@
 	<hr>
 
 	<div id="prototype">
-		<h3>Prototype</h3>
+		<h3><a href="#prototype-up">Prototype</a></h3>
 		Implement method <code class="code">clone()</code>/<code class="code">copy()</code>
 	</div>
 	<hr>
@@ -655,9 +658,11 @@
 	<hr>
 
 	<div id="flyweight">
-		<h3>Flyweight</h3>
+		<h3><a href="#flyweight-up">Flyweight</a></h3>
 		<details>
-			<summary>Flyweight example</summary>
+			<summary>Flyweight examples</summary>
+			<code class="code">String.intern()</code>
+			<div class="indent4"></div>
 			<iframe src="parts/FlyweightPatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
 		</details>
 	</div>
@@ -681,14 +686,16 @@
 	<hr>
 
 	<div id="proxy">
-		<h3>Proxy</h3>
+		<h3><a href="#proxy-up">Proxy</a></h3>
 		<ul>
 			<li>The access to an object should be controlled.</li>
 			<li>Additional functionality should be provided when accessing an object.</li>
 		</ul>
 		Possible usage scenarios:<br>
-		<h5 style="margin-bottom:2px;margin-top:2px;">Protection proxy</h5>
+		<h5 class="margin-top-bottom-3">Protection proxy</h5>
 		A protection proxy might be used to control access to a resource based on access rights.
+		<div class="indent"></div>
+		Usage examples: <a href="ConnectedNotes.html#aop" class="get-title">AOP</a>, Lazy loading in Hibernate
 	</div>
 	<hr>
 
@@ -820,7 +827,7 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 	<hr>
 
 	<div id="mediator">
-		<h3>Mediator</h3>
+		<h3><a href="#mediator-up">Mediator</a></h3>
 		<details>
 			<summary>Mediator example</summary>
 			<iframe src="parts/MediatorPatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
