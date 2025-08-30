@@ -51,7 +51,7 @@
 						<h2><a href="#collections">Collections</a></h2>
 							<h4 class="padding-left-1em"><a href="#synchronizedCollections">Synchronized Collections</a></h4>
 							<h4 class="padding-left-1em"><a href="#concurrentCollections"  >Concurrent Collections</a></h4>
-						<h3><a href="#completableFuture"><code>CompletableFuture</code></a></h3>
+						<h3><a href="#completableFuture" id="completableFutureUp"><code>CompletableFuture</code></a></h3>
 						<h2><a href="#concurrency">Concurrency</a></h2>
 						<h4>Covariant return type</h4>
 					</details>
@@ -103,6 +103,7 @@
 					<details>
 						<summary></summary>
 						<h3><a href="#instanceof"><code>instanceof</code> operator</a></h3>
+						<h3><a href="#interface" id="interface"><code>interface (TODO)</code></a></h3>
 					</details>
 				</td>
 			</tr>
@@ -577,14 +578,212 @@
 		<hr>
 
 		<div id="completableFuture">
-			<h2 class="margin-bottom-3"><code class="code">CompletableFuture</code> <small class="java8">(Since 1.8)</small> <a class="link-sign" href="#concurrency">Concurrency</a></h2>
+			<h2 class="margin-bottom-3"><code class="code"><a href="#completableFutureUp">CompletableFuture</a></code> <small class="java8">(Since 1.8)</small> <a class="link-sign" href="#concurrency">Concurrency</a></h2>
 			<code class="code">public class CompletableFuture&lt;T> implements Future&lt;T>, CompletionStage&lt;T></code><br>
-			The old <code class="code">get()</code> method is from the <code class="code">Future</code> interface for compatibility,<br>
-			the new <code class="code">join()</code> method is supposed to be used in new code.
+			<span class="warning-sign orange"></span>
+			Unlike <code class="code">FutureTask</code>, <b>CF</b> <span class="tomato"> has no direct control over the computation</span> that causes it to be completed, cancellation is treated as just another form of exceptional completion.
+
+			<div class="indent4"></div>
+			The old <code class="grey">get()</code> method is from the <code class="code">Future</code> interface for compatibility,
+			the new <code class="code b">join()</code> method is supposed to be used in new code.
+
+			<div class="indent4"></div>
+			For the cases then the <em class="b">executor</em> is not specified explicitly, the <span class="b dark-green">ForkJoinPool.commonPool()</span> is used.
+			<div class="indent4"></div>
+			<table class="border padding">
+				<tr>
+					<th>Group</th><th style="width: 20%;">Method</th><th>Base Interface</th><th colspan="2">Description</th><th>Since</th>
+				</tr>
+				<tr><th colspan="5">Static methods</th></tr>
+
+				<tr>
+					<td>allOf</td>
+					<td><code class="code">CompletableFuture&lt;Void> allOf(CompletableFuture&lt;?>... cfs)</code></td>
+					<td colspan="3">Returns a new CompletableFuture that is completed when <b>all</b> of the given CompletableFutures complete</td>
+				</tr>
+				<tr>
+					<td>anyOf</td>
+					<td><nobr><code class="code">CompletableFuture&lt;Object> anyOf(CompletableFuture&lt;?>... cfs)</code></nobr></td>
+					<td colspan="3">Returns a new CompletableFuture that is completed when <b>any</b> of the given CompletableFutures complete, with the result of that completed CF</td>
+				</tr>
+				<tr>
+					<td>completedFuture</td>
+					<td><code class="code">&lt;U> CompletableFuture&lt;U> completedFuture(U value)</code></td>
+					<td colspan="3">Returns a new CompletableFuture that is already completed with the given value</td>
+				</tr>
+				<tr>
+					<td rowspan="2">runAsync</td>
+					<td><code class="code">CompletableFuture&lt;Void> runAsync(Runnable runnable)</code></td>
+					<td colspan="3" rowspan="2">
+						Runs the runnable task asynchronously <i>in the given executor</i>, then returns <b class="grey">completed</b> CF.<br>
+						<span class="warning-sign blue"></span> The task execution starts right after <em>runAsync/supplyAsync</em> method call,
+						it does not wait of <em>get/join</em> methods invocations to start working on task
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">CompletableFuture&lt;Void> runAsync(Runnable r, Executor e)</code></td>
+				</tr>
+
+				<tr>
+					<th rowspan="2">supplyAsync</th>
+					<td><code class="code">&lt;U> CompletableFuture&lt;U> supplyAsync(Supplier&lt;U> supplier)</code></td>
+					<td colspan="3" rowspan="2">The same as <i>runAsync</i>, but returned with the value obtained by calling the given Supplier</td>
+				</tr>
+				<tr>
+					<td><code class="code"><nobr>&lt;U> CompletableFuture&lt;U> supplyAsync(Supplier&lt;U> s, Executor e)</nobr></code></td>
+				</tr>
+
+				<tr><th colspan="5">Instance methods</th></tr>
+
+				<tr>
+					<th rowspan="2" class="grey">get</th>
+					<td>
+						<code class="code">T get()</code>
+						<code>throws InterruptedException, ExecutionException</code>
+					</td>
+					<td><code class="code">Future</code></td>
+					<td rowspan="4" style="width: 5%;"><span class="warning-sign orange"></span> This is <nobr class="red b">blocking operation</nobr>!</td>
+					<td>
+						Waits if necessary for this future to complete, and then returns its result.<br>
+						Throws <span class="tomato">checked</span> exceptions. <b class="grey">Obsolete</b>, use <b class="green">join</b> instead
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<code class="code">T get(long timeout, TimeUnit unit)</code>
+						<code><nobr>throws InterruptedException, ExecutionException, TimeoutException</nobr></code>
+					</td>
+					<td><code class="code">Future</code></td>
+					<td>
+						Waits if necessary for at most the given time for this future to complete, and then returns its result, if available.<br>
+						Throws <code class="code">TimeoutException</code>
+					</td>
+				</tr>
+				<tr>
+					<th rowspan="2" class="green">join</th>
+					<td><code class="code">T getNow(T valueIfAbsent)</code></td>
+					<td></td>
+					<td>
+						Returns the result value (or throws any encountered exception) if completed, else returns the given <i>valueIfAbsent</i>.
+						Throws <span class="green">unchecked</span> exceptions
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code b">T join()</code></td>
+					<td></td>
+					<td>
+						Do the same as <b class="grey">get</b>, but call private <code>waitingGet(interruptible)</code> with <i>interruptible = false</i> parameter.<br>
+						Throws <span class="green">unchecked</span> exceptions
+					</td>
+				</tr>
+
+				<tr>
+					<td rowspan="8" class="i">completion</td>
+					<td><code class="code">boolean complete(T value)</code></td>
+					<td></td>
+					<td rowspan="3" style="width: 5%;"><span class="dark-orange">If not already completed</span></td>
+					<td colspan="1">
+						Sets the <span class="dark-green">CF's result value</span> to the given value
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">boolean completeExceptionally(Throwable ex)</code></td>
+					<td></td>
+					<td colspan="1">
+						Returns a new CF that is completed when this CF completes.<br>
+						Returns:<br>
+						<code class="code">true</code> - if this invocation caused this CF to transition to a completed state<br>
+						<code class="code">false</code> - if not
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">boolean cancel(boolean hasNoEffectInCF)</code></td>
+					<td><code class="code">Future</code></td>
+					<td>
+						Completes <span class="green">this CF</span> with a <code class="dark-red">CancellationException</code>.
+						Dependent CFs that have not already completed will also complete exceptionally,
+						with a <code class="dark-red">CompletionException</code> caused by this <code class="dark-red">CancellationException</code><br>
+						Returns:<br>
+						<code class="code">true</code> - if this task is now cancelled
+					</td>
+				</tr>
+
+				<tr>
+					<td><code class="code">void obtrude(T value)</code></td>
+					<td></td>
+					<td rowspan="2" style="width: 5%;"><span class="dark-red">Whether or not already completed</span></td>
+					<td colspan="1">
+						Forcibly sets or resets the value of <span class="green">this CF</span>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">void obtrudeException(Throwable ex)</code></td>
+					<td></td>
+					<td colspan="1">
+						Forcibly completes <span class="green">this CF</span> to throw an <i>exception</i> when <em>get/join</em> is invoked
+					</td>
+				</tr>
+
+				<tr>
+					<td><code class="code">CompletableFuture&lt;T> completeAsync(Supplier&lt;T> supplier)</code></td>
+					<td></td>
+					<td colspan="2" rowspan="2">
+						Completes <span class="green">this CF</span> with the result of the given Supplier function invoked from an asynchronous task using <em>the given executor</em>.
+					</td>
+					<td rowspan="2" class="java9 text-align-center">9</td>
+				</tr>
+				<tr>
+					<td><code class="code">CompletableFuture&lt;T> completeAsync(Supplier&lt;T> s, Executor e)</code></td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td><code class="code">CompletableFuture&lt;T> exceptionally(Function&lt;Throwable, T> fn)</code></td>
+					<td><code class="code">CompletionStage</code></td>
+					<td colspan="2">
+						Returns a <span class="blue">new CF</span> that is completed when <span class="green">this CF</span> completes.<br>
+						If <span class="green">this CF</span> completes <span class="dark-green">normally</span>, then the <span class="blue">returned CF</span> also completes normally, with the value of <span class="green">this CF</span>.<br>
+						If <span class="green">this CF</span> completes <span class="tomato">exceptionally</span>, the <em>exception</em> is passed to the provided <em>Function</em>,
+						then the <span class="blue">returned CF</span> completes with the result value of that <em>Function</em>.
+
+					</td>
+				</tr>
+
+				<tr>
+					<td rowspan="3">is*</td>
+					<td><code class="code">boolean isDone()</code></td>
+					<td><code class="code">Future</code></td>
+					<td colspan="2">Returns <code class="code">true</code> if completed in any fashion: normally, exceptionally, or via cancellation</td>
+				</tr>
+				<tr>
+					<td><code class="code">boolean isCancelled()</code></td>
+					<td><code class="code">Future</code></td>
+					<td colspan="2">Returns <code class="code">true</code> if this CompletableFuture was cancelled before it completed normally</td>
+				</tr>
+				<tr>
+					<td><code class="code">boolean isCompletedExceptionally()</code></td>
+					<td></td>
+					<td colspan="2">Returns <code class="code">true</code> if this CompletableFuture completed exceptionally, in any way</td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td><code class="code">int getNumberOfDependents()</code></td>
+					<td></td>
+					<td colspan="2">Returns the estimated number of CFs whose completions are awaiting completion of this CF</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><code class="code">CompletableFuture&lt;T> toCompletableFuture()</code></td>
+					<td><code class="code">CompletionStage</code></td>
+					<td colspan="2">The purpose of method is to get the <b><i>CF</i></b> instance from the CompletionStage</td>
+				</tr>
+			</table>
+
 			<div class="indent4"></div>
 			<details>
 				<summary>Example</summary>
-				<iframe src="parts/CompletableFutureExample.html" style="width:-webkit-fill-available; height:550px;"></iframe>
+				<iframe src="parts/CompletableFutureExample.html" class="iframe" style="height:550px"></iframe>
 			</details>
 		</div>
 		<hr>
@@ -1491,6 +1690,9 @@
 					it can be an instance or class field, or <span class="code">this</span> object.
 				</li>
 			</ul>
+
+			Two threads <b class="red">cannot</b> access two different <code>synchronized</code> methods of the same object at the same time,
+			as wel as <code>synchronized</code> blocks for the same object.
 
 			<pre>
 class ClassOne {

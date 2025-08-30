@@ -21,6 +21,7 @@
 .light-green        {color: LightGreen}
 .chart-reuse        {color: ChartReuse}
 .dark-green         {color: DarkGreen}
+.lime-green         {color: LimeGreen}
 .medium-aqua-marine {color: MediumAquaMarine} /* -Green- */
 .blue          {color: Blue}                  /* Blue */
 .navy          {color: Navy}
@@ -28,9 +29,10 @@
 .dodger-blue   {color: DodgerBlue}
 .dark-blue     {color: DarkBlue}
 .midnight-blue {color: MidnightBlue}          /* -Blue- */
-.brown    {color: Brown}
+.brown    {color: Brown}                      /* Brown */
 .saddle-brown {color: SaddleBrown}
-.orange   {color: Orange}
+.orange      {color: Orange}
+.dark-orange {color: DarkOrange}
 .purple   {color: Purple}
 .grey     {color: Grey}
 .dim-grey {color: DimGrey}
@@ -61,7 +63,7 @@
 	border-color: DarkGray;
 }
 .collapse-border {border-collapse: collapse}
-.padding, .padding th , .padding td {
+.padding th , .padding td {
 	padding-left : 5px;
 	padding-right: 5px;
 }
@@ -140,5 +142,7 @@ ol.olWithMargin > li {margin: 10px 0;}
 
 .width100pct {width: 100%;}
 .height2     {height: 2px;}
+
+.iframe { width:-webkit-fill-available; }
 
 .footer {border:0; height: 35px;}
