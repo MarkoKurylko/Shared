@@ -89,6 +89,21 @@
 
 .code {color: DarkBlue}
 .bad-code {color: SaddleBrown}
+.code-a code{
+	color: DarkBlue;
+	font-size: 17px;
+}
+.code-i code{
+	color: Blue;
+	font-size: 17px;
+}
+
+.zebra tr:nth-child(even) {
+	background-color: Beige;
+}
+.zebra tr:first-child {
+	background-color: LightBlue;
+}
 
 .indent4 {height: 4px}
 .indent8, .indent {height: 8px}

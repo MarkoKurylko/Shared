@@ -3,23 +3,6 @@
 	<head>
 		<title>Java Notes</title>
 		<link rel="stylesheet" href="css/common.css">
-		<style>
-			.zebra tr:nth-child(even) {
-				background-color: Beige;
-			}
-			.zebra tr:first-child {
-				background-color: LightBlue;
-			}
-
-			.code-a code{
-				color: DarkBlue;
-				font-size: 17px;
-			}
-			.code-i code{
-				color: Blue;
-				font-size: 17px;
-			}
-		</style>
 		<script src="js/glossary.js"></script>
 
 		<link rel="stylesheet" href="3dparty/highligthjs/styles/default.min.css">
@@ -27,8 +10,8 @@
 		<script>hljs.highlightAll();</script>
 	</head>
 	<body>
-		<div class="indent"></div>
-		<a href="all.html">SiteMap</a>
+	<div class="indent"></div>
+	<a href="all.html">SiteMap</a>
 
 	<table id="toc">
 			<tr>
@@ -52,7 +35,7 @@
 							<h4 class="padding-left-1em"><a href="#synchronizedCollections">Synchronized Collections</a></h4>
 							<h4 class="padding-left-1em"><a href="#concurrentCollections"  >Concurrent Collections</a></h4>
 						<h3><a href="#completableFuture" id="completableFutureUp"><code>CompletableFuture</code></a></h3>
-						<h2><a href="#concurrency">Concurrency</a></h2>
+						<h2><a href="#concurrency" id="concurrencyUp">Concurrency/MultiThreading</a></h2>
 						<h4>Covariant return type</h4>
 					</details>
 				</td>
@@ -67,6 +50,15 @@
 					</details>
 				</td>
 			</tr>
+		<tr>
+			<td><h1>E</h1></td>
+			<td>
+				<details>
+					<summary></summary>
+					<h3><a href="#executors" id="executorsUp">Executors</a></h3>
+				</details>
+			</td>
+		</tr>
 			<tr>
 				<td><h1>F</h1></td>
 				<td>
@@ -135,6 +127,7 @@
 					<details>
 						<summary></summary>
 						<h3><a href="#method-signature" id="method-signature-up">Method signature</a></h3>
+						<h2><a href="#concurrency" id="multiThreadingUp">MultiThreading/Concurrency</a></h2>
 					</details>
 				</td>
 			</tr>
@@ -789,7 +782,7 @@
 		<hr>
 
 		<div id="concurrency">
-			<h2 class="margin-bottom-3">Concurrency</h2>
+			<h2 class="margin-bottom-3"><a href="#concurrencyUp">Concurrency</a>/<a href="#multiThreadingUp">MultiThreading</a></h2>
 			A concurrent application's ability to execute in a timely manner is known as its <em>liveness</em>.<br>
 			Most common liveness problems:
 			<ul class="margin-top-3">
@@ -798,8 +791,7 @@
 					is a situation where two or more threads are blocked forever, waiting for each other.
 					<details>
 						<summary>Deadlock Example</summary>
-						<iframe id="deadlock" src="parts/DeadLockExample.html" style="width:-webkit-fill-available; height:405px;" >
-						</iframe>
+						<iframe id="deadlock" src="parts/DeadLockExample.html" class="iframe" style="height:405px"></iframe>
 					</details>
 				</li>
 				<li>
@@ -808,8 +800,7 @@
 					But in the same time they are <span class="green">not blocked</span> like in a <i>deadlock</i>.
 					<details>
 						<summary>Livelock Example</summary>
-						<iframe src="parts/LiveLockExample.html" class="width100pct" style="height:645px;" >
-						</iframe>
+						<iframe src="parts/LiveLockExample.html" class="width100pct" style="height:645px;"></iframe>
 					</details>
 				</li>
 				<li>
@@ -823,6 +814,7 @@
 			<ul class="margin-top-3">
 				<li><a href="#atomic">Atomic</a></li>
 				<li><a href="#completableFuture" class="code-a"><code>CompletableFuture</code></a></li>
+				<li><a href="#executors">Executors</a></li>
 				<li><a href="#forkJoin">Fork/Join</a></li>
 				<li><a href="#synchronized" class="code-a"><code>synchronized</code></a></li>
 				<li><a href="#synchronizedCollections">Synchronized Collections</a></li>
@@ -882,9 +874,35 @@
 		</div>
 		<hr>
 
+		<div id="executors">
+			<h3 class="margin-bottom-3"><a href="#executorsUp">Executors</a> <small class="java5">(Since 1.5)</small> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+
+			<code class="code">interface <b>Executor</b> {execute(Runnable)}</code><br>
+			<code class="code">interface <b>ExecutorService</b> extends Executor, AutoCloseable {invokeAll(); invokeAny(); shutdown[Now](); Future submit(Runnable/Callable); is*()}</code><br>
+			<code class="code">abstract class <b>AbstractExecutorService</b> implements ExecutorService</code><br>
+			<br>
+			<code class="code">class <b>ThreadPoolExecutor</b> extends AbstractExecutorService</code><br>
+			<code class="code">class <b>ScheduledThreadPoolExecutor</b> extends ThreadPoolExecutor implements ScheduledExecutorService</code><br>
+			<code class="code">class <b>ForkJoinPool</b> extends AbstractExecutorService</code><br>
+			<br>
+			<code class="code b">Executors</code> static helper class, provides executors with default or given ThreadFactory:<br>
+			<code>callable(Runnable)</code><br>
+			<code>defaultThreadFactory()</code><br>
+			<code>newCachedThreadPool(ThreadFactory)</code><br>
+			<code>newFixedThreadPool(int nThreads, ThreadFactory)</code><br>
+			<code>newScheduledThreadPool(int corePoolSize, ThreadFactory)</code><br>
+			<code>newSingleThreadExecutor(ThreadFactory)</code><br>
+			<code>newSingleThreadScheduledExecutor(ThreadFactory)</code><br>
+			<code>newThreadPerTaskExecutor(ThreadFactory)</code><br>
+			<code>newVirtualThreadPerTaskExecutor()</code><br>
+			<code>newWorkStealingPool()/(int parallelism)</code><br>
+			<code>unconfigurableExecutorService(ExecutorService)</code><br>
+			<code>unconfigurableScheduledExecutorService(ScheduledExecutorService)</code><br>
+		</div>
+		<hr>
 
 		<div id="functionalInterfaces">
-			<h2 class="margin-bottom-3">Functional Interfaces <small class="blue">(Since 1.8)</small></h2>
+			<h2 class="margin-bottom-3">Functional Interfaces <small class="java8">(Since 1.8)</small></h2>
 			The <i>ootb</i> functional interfaces are annotated with <code><b>@FunctionalInterface</b></code>.
 			This annotation is not a requirement for the compiler to recognize an interface as a functional interface.<br>
 			<i>Ootb</i> functional interfaces are located not only in <code class="code">java.util.function</code> package,
