@@ -31,7 +31,7 @@
 						<h2><a id="classes" href="#classes">Classes</a></h2>
 							<h3 class="padding-left-1em"><a href="#class"><code class="code">.class</code> literal</a></h3>
 							<h3 class="padding-left-1em"><a href="#nesting">Nesting of <em>classes</em></a></h3>
-						<h2><a href="#collections">Collections</a></h2>
+						<h2><a href="#collections" id="collectionsUP">Collections</a></h2>
 							<h4 class="padding-left-1em"><a href="#synchronizedCollections">Synchronized Collections</a></h4>
 							<h4 class="padding-left-1em"><a href="#concurrentCollections"  >Concurrent Collections</a></h4>
 						<h3><a href="#completableFuture" id="completableFutureUp"><code>CompletableFuture</code></a></h3>
@@ -277,7 +277,7 @@
 		<hr>
 
 		<div id="collections">
-			<h2>Collections <small class="java2">(Since 1.2)</small></h2>
+			<h2><a href="#collectionsUP">Collections</a> <small class="java2">(Since 1.2)</small></h2>
 			<object width="700" data="svg/Collections.svg"></object>
 			<table class="border">
 				<tr><th>Feature <small>(according to the contract)</small></th><th>List</th><th>Set</th></tr>
@@ -327,11 +327,158 @@
 			<br><i>Note</i>: the fail-fast behavior of iterators should be used only to detect bugs.
 			<div class="indent"></div>
 			<em id="weakly"><b>Weakly consistent</b></em> traversal of Iterators and <a href="#spliterator">Spliterators</a> (in opposition to <a href="#failFast"><i>Fail-Fast</i></a>):<br>
-			<ul style="margin-top: 0">
+			<ul class="margin-top-0">
 				<li>they may proceed concurrently with other operations</li>
 				<li>they will <span class="green">never</span> throw <code class="code">ConcurrentModificationException</code></li>
 				<li>they are guaranteed to traverse elements as they existed upon construction exactly once, and may (but are not guaranteed to) reflect any modifications subsequent to construction</li>
 			</ul>
+
+			<table class="border padding">
+				<caption><b>Collections</b> static helper class </caption>
+				<tr><th>Group</th><th>Method</th><th>Description</th></tr>
+
+				<tr>
+					<td rowspan="4">add<br>copy<br>fill</td>
+					<td><code class="code">@SafeVarargs boolean <b>addAll</b>(Collection&lt;T> c, T... elements)</code></td>
+					<td>
+						Returns: <code class="code">true</code> - if the collection changed as a result of the call
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>copy</b>(List&lt;? super T> destination, List&lt;? extends T> source)</code></td>
+					<td>Copies all of the elements from one list into another</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>fill</b>(List&lt;T> list, T object)</code></td>
+					<td>Replaces all of the elements of the specified list with the specified element</td>
+				</tr>
+				<tr>
+					<td><code class="code">List&lt;T> <b>nCopies</b>(int n, T o)</code></td>
+					<td>Returns an immutable list consisting of <code class="code">n</code> copies of the specified object</td>
+				</tr>
+
+				<tr>
+					<td>asLifoQueue</td>
+					<td><code class="code">Queue&lt;T> asLifoQueue(Deque&lt;T> deque)</code></td>
+					<td>
+						Returns a view of a <code class="code">Deque</code> as a <span class="get-title">LIFO</span> <code class="code">Queue</code>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="5">Search like operations</td>
+					<td><code class="code">int <b>binarySearch</b>(List&lt;T> list, T key[, Comparator&lt;T> c])</code></td>
+					<td>Searches the specified list for the specified object using the binary search algorithm</td>
+				</tr>
+				<tr>
+					<td><code class="code">boolean <b>disjoint</b>(Collection<?> c1, Collection<?> c2)</code></td>
+					<td>Returns <code class="code">true</code> if the two specified collections have no elements in common</td>
+				</tr>
+				<tr>
+					<td><code class="code">int <b>frequency</b>(Collection<?> c, Object o)</code></td>
+					<td>Returns the number of elements in the specified collection equal to the specified object</td>
+				</tr>
+				<tr>
+					<td><code class="code">int <b>indexOfSubList</b>(List<?> source, List<?> target)</code></td>
+					<td rowspan="2">Returns the starting position of the first/last occurrence of the specified target list within the specified source list</td>
+				</tr>
+				<tr>
+					<td><code class="code">int <b>lastIndexOfSubList</b>(List<?> source, List<?> target)</code></td>
+				</tr>
+
+				<tr>
+					<td>checked*</td>
+					<td><code class="code">Collection, Set, List, Map, Queue etc</code></td>
+					<td>
+						Returns a dynamically typesafe view of the specified collection.<br>
+						Purpose: debugging: will fail with <code class="code">ClassCastException</code> at the moment incorrectly typed element is trying to be added,
+						and not further somewhere in the code
+					</td>
+				</tr>
+				<tr>
+					<td>empty*</td>
+					<td><code class="code">Enumeration, Iterator, ListIterator, List, Set, Map etc</code></td>
+					<td>Returns a structure that has no elements</td>
+				</tr>
+				<tr>
+					<td>enumeration</td>
+					<td><code class="code">Enumeration&lt;T> enumeration(Collection&lt;T> c)</code></td>
+					<td>Returns an enumeration over the specified collection</td>
+				</tr>
+				<tr>
+					<td>list</td>
+					<td><code class="code">ArrayList&lt;T> list(Enumeration&lt;T> e)</code></td>
+					<td>Returns an array list containing the elements returned by the specified enumeration in the order they are returned by the enumeration</td>
+				</tr>
+
+				<tr>
+					<td>min/max</td>
+					<td><code class="code"><nobr>min/max(Collection&lt;T> collection[, Comparator&lt;T> comparator])</nobr></code></td>
+					<td>Returns the min/max element of the given collection, according to the natural ordering of its elements or the given Comparator</td>
+				</tr>
+
+				<tr>
+					<td rowspan="6">Modifications</td>
+					<td><code class="code">boolean <b>replaceAll</b>(List&lt;T> list, T old, T new)</code></td>
+					<td>Replaces all occurrences of one specified value in a list with another</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>reverse</b>(List<?> list)</code></td>
+					<td>Reverses the order of the elements in the specified list</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>rotate</b>(List<?> list, int distance)</code></td>
+					<td>Rotates the elements in the specified list by the specified distance</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>shuffle</b>(List<?> list[, Random rnd])</code></td>
+					<td>Randomly permute the specified list using the default/specified source of randomness</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>sort</b>(List<?> list[, Comparator&lt;T> c])</code></td>
+					<td>
+						Sorts the specified list into [ascending] order, according to the <em>natural ordering</em> of its elements or
+						by the specified comparator
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">void <b>swap</b>((List<?> list, int i, int j)</code></td>
+					<td>Swaps the elements at the specified positions in the specified list</td>
+				</tr>
+
+				<tr>
+					<th>Comparator</th>
+					<td><code class="code">Comparator&lt;T> <b>reverseOrder</b>([Comparator&lt;T> cmp])</code></td>
+					<td>
+						Returns a comparator that imposes the reverse of the <em>natural ordering</em> on a collection of objects that implement the <code class="code">Comparable</code> interface. OR<br>
+						Returns a comparator that imposes the reverse ordering of the specified comparator
+					</td>
+				</tr>
+
+				<tr>
+					<td rowspan="3">Singleton</td>
+					<td><code class="code">Set&lt;T> singleton(T o)</code></td>
+					<td rowspan="3">Returns an immutable collection/map containing only the specified object/KV.</td>
+				</tr>
+				<tr>
+					<td><code class="code">List&lt;T> singletonList(T o)</code></td>
+				</tr>
+				<tr>
+					<td><code class="code">Map&lt;K,V> singletonMap(K key, V value)</code></td>
+				</tr>
+
+				<tr>
+					<td><a href="#synchronizedCollections">Synchronized*</a></td>
+					<td><code class="code">synchronizedCollection</code></td>
+					<td>Returns a synchronized "thread-safe" collection backed by the specified collection</td>
+				</tr>
+				<tr>
+					<td>Unmodifiable*</td>
+					<td><code class="code">unmodifiableCollection</code></td>
+					<td>Returns an unmodifiable view of the specified collection</td>
+				</tr>
+
+			</table>
+			<div class="indent"></div>
 
 			<table class="border">
 				<caption>SequencedCollection <span class="java21">(since 21)</span></caption>
@@ -878,7 +1025,7 @@
 			<h3 class="margin-bottom-3"><a href="#executorsUp">Executors</a> <small class="java5">(Since 1.5)</small> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 
 			<code class="code">interface <b>Executor</b> {execute(Runnable)}</code><br>
-			<code class="code">interface <b>ExecutorService</b> extends Executor, AutoCloseable {invokeAll(); invokeAny(); shutdown[Now](); Future submit(Runnable/Callable); is*()}</code><br>
+			<code class="code">interface <b>ExecutorService</b> extends Executor, AutoCloseable {invokeAll(); invokeAny(); <span class="dark-green">awaitTermination(timeout, unit);</span> shutdown[Now](); Future submit(Runnable/Callable); is*()}</code><br>
 			<code class="code">abstract class <b>AbstractExecutorService</b> implements ExecutorService</code><br>
 			<br>
 			<code class="code">class <b>ThreadPoolExecutor</b> extends AbstractExecutorService</code><br>
