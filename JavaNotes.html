@@ -721,9 +721,11 @@
 			<h2 class="margin-bottom-3"><code class="code"><a href="#completableFutureUp">CompletableFuture</a></code> <small class="java8">(Since 1.8)</small> <a class="link-sign" href="#concurrency">Concurrency</a></h2>
 			<code class="code">public class CompletableFuture&lt;T> implements Future&lt;T>, CompletionStage&lt;T></code><br>
 			<span class="warning-sign orange"></span>
-			Unlike <code class="code">FutureTask</code>, <b>CF</b> <span class="tomato"> has no direct control over the computation</span> that causes it to be completed, cancellation is treated as just another form of exceptional completion.
+			Unlike <code class="code">FutureTask</code>, <b>CF</b> <span class="tomato"> has no direct control over the computation</span> that causes it to be completed, cancellation is treated as just another form of exceptional completion.<br>
+			<b>CF</b>s can be <i class="b">combined</i>, <i class="b">chained</i> or <i class="b">transformed</i> in any order.<br>
+			<code class="code">cfInstance.thenAccept().thenAppy().thenCombine().thenCompose().thenRun()...</code>
 
-			<div class="indent4"></div>
+			<div class="indent"></div>
 			The old <code class="grey">get()</code> method is from the <code class="code">Future</code> interface for compatibility,
 			the new <code class="code b">join()</code> method is supposed to be used in new code.
 
@@ -904,6 +906,45 @@
 					<td><code class="code">boolean isCompletedExceptionally()</code></td>
 					<td></td>
 					<td colspan="2">Returns <code class="code">true</code> if this CompletableFuture completed exceptionally, in any way</td>
+				</tr>
+
+				<tr>
+					<td rowspan="5">then*</td>
+					<td><code class="code"><nobr>CompletableFuture&lt;Void> then<b>Accept</b>(Consumer&lt;T>)</nobr></code></td>
+					<td rowspan="5"><code class="code">CompletionStage</code></td>
+					<td rowspan="5">
+						The methods are created just to fit arguments as <code class="code">Function</code>, <code class="code">Consumer</code> or <code class="code">Runnable.</code>
+						They all have an <em>Async</em> form and with <em>executor</em>.
+						Trigger condition: <span class="green">this CF</span> completes normally
+					</td>
+					<td colspan="1">The CF's result goes as an argument to the Consumer</td>
+				</tr>
+				<tr>
+					<td><code class="code"><nobr>CompletableFuture&lt;U> then<b>Apply</b>(Function&lt;T,U>)</nobr></code></td>
+					<td colspan="1">
+						The CF's result goes as an argument to the Function.<br>
+						Usage: Transformation of the result of a <code>CompletableFuture</code> call.<br>
+						Analogous of <code class="code">stream.map()</code>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code"><nobr>CompletableFuture&lt;V> then<b>Combine</b>(CompletionStage&lt;U>, BiFunction&lt;T,U,V>)</nobr></code></td>
+					<td colspan="1">
+						The analog of the <em>Apply</em> method, but with the <code class="code">BiFunction</code>.<br>
+						The CF's result and the result of provided CF go to the arguments of the <code class="code">BiFunction</code>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code"><nobr>CompletableFuture&lt;U> then<b>Compose</b>(Function&lt;T, CompletionStage&lt;U>>)</nobr></code></td>
+					<td colspan="1">
+						<span class="green">This CF</span> goes as an argument to the Function.<br>
+						Usage: <em class="b">Chaining</em> of <code class="code">CompletableFuture</code> methods.<br>
+						Analogous of <code class="code">stream.flatMap()</code>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code"><nobr>CompletableFuture&lt;Void> then<b>Run</b>(Runnable action)</nobr></code></td>
+					<td>Executes the given action</td>
 				</tr>
 
 				<tr>
