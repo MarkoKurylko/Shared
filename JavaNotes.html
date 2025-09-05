@@ -32,8 +32,10 @@
 							<h3 class="padding-left-1em"><a href="#class"><code class="code">.class</code> literal</a></h3>
 							<h3 class="padding-left-1em"><a href="#nesting">Nesting of <em>classes</em></a></h3>
 						<h2><a href="#collections" id="collectionsUP">Collections</a></h2>
+							<h4 class="padding-left-1em"><a href="#comparator" id="comparatorUp">Comparator</a></h4>
 							<h4 class="padding-left-1em"><a href="#synchronizedCollections">Synchronized Collections</a></h4>
 							<h4 class="padding-left-1em"><a href="#concurrentCollections"  >Concurrent Collections</a></h4>
+						<h4><a href="#collector" id="collectorUp">Collector</a>/<a href="#collectors" id="collectorsUp">Collectors</a></h4>
 						<h3><a href="#completableFuture" id="completableFutureUp"><code>CompletableFuture</code></a></h3>
 						<h2><a href="#concurrency" id="concurrencyUp">Concurrency/MultiThreading</a></h2>
 						<h4>Covariant return type</h4>
@@ -166,7 +168,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h2><a href="#streams">Streams</a></h2>
+						<h2><a href="#streams" id="streamsUp">Streams</a></h2>
 						<h3><a href="#safevarargs">@SafeVarargs</a></h3>
 						<h3><a href="#method-signature" id="signature-method-up">Signature of a Method</a></h3>
 						<h3 class="code-a"><a href="#spliterator"><code>Spliterator</code></a></h3>
@@ -446,8 +448,8 @@
 				</tr>
 
 				<tr>
-					<th>Comparator</th>
-					<td><code class="code">Comparator&lt;T> <b>reverseOrder</b>([Comparator&lt;T> cmp])</code></td>
+					<th><a href="#comparator">Comparator</a></th>
+					<td><code class="code">Comparator&lt;T> <b id="collectionsReverseOrder">reverseOrder</b>([Comparator&lt;T> cmp])</code></td>
 					<td>
 						Returns a comparator that imposes the reverse of the <em>natural ordering</em> on a collection of objects that implement the <code class="code">Comparable</code> interface. OR<br>
 						Returns a comparator that imposes the reverse ordering of the specified comparator
@@ -477,6 +479,22 @@
 					<td>Returns an unmodifiable view of the specified collection</td>
 				</tr>
 
+			</table>
+			<div class="indent"></div>
+
+			<table class="collapse-border padding" id="comparator">
+				<caption><a href="#comparatorUp">Comparator</a>&lt;T> interface <small class="java2">Since 1.2</small></caption>
+				<tr>
+					<td><code class="code pointer i" title="static">naturalOrder()</code></td>
+					<td>Returns a comparator that compares <code class="code">Comparable</code> objects in natural order</td>
+				</tr>
+				<tr>
+					<td><code class="code pointer i" title="static">reverseOrder()</code></td>
+					<td>
+						Returns a comparator that imposes the <b class="grey">reverse</b> of the <em>natural ordering</em><br>
+						Actually it is a link to the <span class="code">Collections.<i><a href="#collectionsReverseOrder">reverseOrder</a></i>()</span>
+					</td>
+				</tr>
 			</table>
 			<div class="indent"></div>
 
@@ -1653,14 +1671,14 @@
 		<hr>
 
 		<div id="rtti">
-			<h3 style="margin-bottom:3px">RTTI</h3>
-			Java does <span style="color:red">NOT have</span> Runtime Type Identification, it is from C++, Object Pascal, Delphi and etc<br>
+			<h3 class="margin-bottom-3">RTTI</h3>
+			Java does <span class="red">NOT have</span> Runtime Type Identification, it is from C++, Object Pascal, Delphi and etc<br>
 			Java has <em><b>Type introspection</b></em> implemented by <a href="#instanceof"><code>instanceof</code></a> operator
 		</div>
 		<hr>
 
 		<div id="spliterator">
-			<h3 class="code-a" style="margin-bottom:3px"><code>Spliterator <span class="java8">(Since 1.8)</span></code></h3>
+			<h3 class="code-a margin-bottom-3"><code>Spliterator <span class="java8">(Since 1.8)</span></code></h3>
 			<code>public interface Spliterator&lt;T&gt;</code><br>
 			An object for traversing and partitioning elements of a source.<br>
 			A <code class="code">Spliterator</code> may traverse elements individually <code class="code">tryAdvance()</code> or sequentially in bulk <code class="code">forEachRemaining()</code>.<br>
@@ -1700,8 +1718,8 @@
 					<td><code>int characteristics()</code></td>
 					<td>Can be <b>8</b> characteristics in OR conjunction:<br>
 						<code>ORDERED, DISTINCT, SORTED, SIZED, NONNULL, IMMUTABLE, CONCURRENT, SUBSIZED</code><br>
-						A top-level Spliterator <span style="color:red">should not</span> report both <code>CONCURRENT</code> and <code>IMMUTABLE</code>, since they are mutually exclusive.<br>
-						Sub-spliterators <span style="color:green">may report</span> <code>IMMUTABLE</code> <span style="color:green">and</span> <code>CONCURRENT</code>.
+						A top-level Spliterator <span class="red">should not</span> report both <code>CONCURRENT</code> and <code>IMMUTABLE</code>, since they are mutually exclusive.<br>
+						Sub-spliterators <span class="green">may report</span> <code>IMMUTABLE</code> <span class="green">and</span> <code>CONCURRENT</code>.
 						<div class="indent"></div>
 						Since it's an <code class="code">int</code> value, the check of particular <i>characteristic</i> should look like:<br>
 						<code>(characteristics() & CONCURRENT) == CONCURRENT</code>
@@ -1713,7 +1731,7 @@
 		<hr>
 
 		<div id="streams">
-			<h2 style="margin-bottom: 5px;">Streams <small class="java8">(Since 1.8)</small></h2>
+			<h2 class="margin-bottom-3"><a href="#streamsUp">Streams</a> <small class="java8">(Since 1.8)</small></h2>
 			Definition: The <em>Stream API</em> provides an implementation of the well-known <em>map-filter-reduce</em> algorithm to the JDK.
 			<div class="indent"></div>
 			The <em>Stream</em> interface avoids creating intermediate structures to store mapped or filtered objects.<br>
@@ -1728,15 +1746,15 @@
 			<br>
 			<ul>
 				<li>
-					An operation that returns another stream is called an <span style="color: goldenrod">intermediate operation</span>.<br>
+					An operation that returns another stream is called an <span class="golden-rod">intermediate operation</span>.<br>
 					Every time you call an intermediate operation on an existing stream, you create a new stream
 				</li>
 				<li>An operation that returns something else, including void, is called a <span class="green">terminal operation</span></li>
 			</ul>
-			Stream execution begins when the <span class="green"><b>terminal operation</b></span> is <span style="color: darkgreen">invoked</span>,
-			and <span style="color: red">ends</span> when the <span style="color: green"><b>terminal operation</b></span> <span style="color: darkred">completes</span>.
+			Stream execution begins when the <span class="green"><b>terminal operation</b></span> is <span class="dark-green">invoked</span>,
+			and <span class="red">ends</span> when the <span class="green"><b>terminal operation</b></span> <span class="dark-red">completes</span>.
 			(Except for the escape-hatch operations <code>iterator()</code> and <code>spliterator()</code>).<br>
-			<b>Non-interference</b> <small>(for most data sources)</small> means ensuring that the data source is <i style="color: green">not modified at all</i> during the execution of the stream pipeline.<br>
+			<b>Non-interference</b> <small>(for most data sources)</small> means ensuring that the data source is <i class="green">not modified at all</i> during the execution of the stream pipeline.<br>
 			<b>Associativity</b>. An operator or function (&#x058E;) is associative if the following holds:
 			<span class="code-a">
 				<code>(a</code> &#x058E; <code>b)</code> &#x058E; <code>c == a</code> &#x058E; <code>(b</code> &#x058E; <code>c)</code>
@@ -1749,19 +1767,20 @@
 			They have some terminal operations that do not exist in <code>Stream</code>:
 			<code>sum min max average summaryStatistics</code><br>
 			<em>Short-circuiting</em> methods in the Stream API can produce a result without having to process all the elements of your stream.<br>
-			<h4 style="margin-bottom: 0; margin-top: 10px;">Good practice</h4>
-			<ul style="margin-top: 0">
+
+			<h4 class="margin-bottom-0">Good practice</h4>
+			<ul class="margin-top-0">
 				<li>A stream is an object connected to a source. This source should not be modified by the stream itself.
 					Doing so will lead to unspecified results</li>
 				<li>Writing an operation that modifies some variables or fields outside the stream itself is a bad idea that can always be avoided.
 					A stream should not have any <em>side effects</em></li>
-				<li>Putting a <span style="color: red">stream in a loop</span> is <b>not</b> a very nice pattern of code</li>
+				<li>Putting a <span class="red">stream in a loop</span> is <b>not</b> a very nice pattern of code</li>
 				<li>
-					<code style="color: DarkMagenta">peek()</code> The purpose of this method is <span style="color: darkGreen">debugging</span>.
+					<code class="dark-magenta">peek()</code> The purpose of this method is <span class="dark-green">debugging</span>.
 					You should not use this method in your production code, because it may produce <i>side effects</i>
 				</li>
-				<li>
-					<b>Avoid</b> using a <code>reduce</code> method.
+				<li id="avoidStreamReduce">
+					<b>Avoid</b> using a <code class="dark-orange"><a href="#streamReduce">reduce</a>/<a href="#collectorsReducing">reducing</a></code> method.
 					You need to make sure that the binary operator you provide is associative, then you need to know if it has an identity element.
 					You need to check many points to make sure your code is correct and produces the results you expect.
 					If you can avoid using the <code>reduce()</code> method, then you definitely should, because it's very easy to make mistakes with it.<br>
@@ -1781,19 +1800,34 @@
 			While a <code>flatMap</code> may create an unknown number of elements to be processed in the resulting stream.
 			The Stream API loses track of the number of elements that will be processed in the resulting stream.
 
-			<h5 style="margin-bottom: 0; margin-top: 8px;">Stateful operations</h5>
+			<h5 class="margin-bottom-0">Stateful operations</h5>
 			<code class="code">limit()</code>, <code class="code">skip()</code>,<code class="code">findFirst()</code>
 			need to remember in what order the elements of the stream are processed and need to count the elements to produce a correct result.
 			Thus, they are called <em>stateful operations</em>, because they need to carry an internal state to work.
 
 			<br><br>
 			<table class="border padding">
+				<caption>Stream</caption>
 				<tr>
 					<th>Method</th>
 					<th>Simplified signature</th>
 					<th>Example</th>
 					<th>Description</th>
 				</tr>
+				<tr>
+					<td><code class="tooltip" title="static">Stream.of</code></td>
+					<td><code><span class="code">Stream</span>&lt;T&gt; of(<span class="code">T</span>... values)</code></td>
+					<td>
+						<code>Stream.of(new <span class="code">Integer</span>[] {1,2,3})</code><br>
+						<code class="strike">Stream.of(new <span class="red b">int</span>[] {1,2,3})</code>
+					</td>
+					<td>
+						<span class="warning-sign dark-orange"></span>
+						Pay attention to that arrays based on a primitive types will be considered as a single object.<br>
+						So use either a <em>Wrapper</em> classes arrays or <code class="code">IntStream.of()</code>
+					</td>
+				</tr>
+
 				<tr>
 					<td><code>map</code></td>
 					<td><code><span class="code">Stream</span>&lt;R&gt; map(<span class="code">Function</span>&lt;T,R&gt; mapper)</code></td>
@@ -1818,7 +1852,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><code>reduce</code></td>
+					<td><code class="warning-sign dark-orange" id="streamReduce"> reduce</code></td>
 					<td>
 						<code class="nowrap"><span class="code">Optional</span>&lt;R&gt; reduce(<span class="code">BinaryOperator</span>&lt;R&gt; combiner)</code><br>
 						<code class="nowrap">R reduce(R identity, <span class="code">BinaryOperator</span>&lt;R&gt; combiner)</code><br>
@@ -1826,6 +1860,7 @@
 					</td>
 					<td><code>reduce(0, <span class="nowrap">(r, string) -> r + string.length()</span>, Integer::sum)</code></td>
 					<td>
+						<a class="warning-sign dark-orange" href="#avoidStreamReduce"> Reduce is not considered as a best practice</a><br>
 						Performs a reduction on the elements of this stream.
 						<div class="indent"></div>
 						<code>identity</code> - the identity value for the <code>combiner</code> function.
@@ -1833,7 +1868,9 @@
 						<code>accumulator</code> - an <em>associative</em>, <em>non-interfering</em>, <em>stateless</em> function for incorporating an additional element into a result<br>
 						<code>combiner</code> - an <em>associative</em>, <em>non-interfering</em>, <em>stateless</em> function for combining two values
 						<small>(which must be compatible with the accumulator function if any)</small>
-						<small><code class="nowrap">combiner.apply(r, accumulator.apply(identity, t)) == accumulator.apply(r, t)</code></small>
+						<small><code class="nowrap">combiner.apply(r, accumulator.apply(identity, t)) == accumulator.apply(r, t)</code></small><br>
+						<div class="indent4"></div>
+						See also <a href="#collectorsReducing"><code>Collectors.reducing()</code></a>
 					</td>
 				</tr>
 				<tr>
@@ -1858,6 +1895,151 @@
 				</tr>
 			</table>
 			<div class="indent"></div>
+
+			<table class="collapse-border padding" id="collector">
+				<caption><a href="#collectorUp">Collector</a>&lt;T,A,R> interface</caption>
+				<tr>
+					<th><code class="code">supplier()</code></th>
+					<td>Creation of a new <span class="green">result container</span></td>
+				</tr>
+				<tr>
+					<th><code class="code">accumulator()</code></th>
+					<td>Incorporating a <span class="blue">new data element</span> into a <span class="green">result container</span></td>
+				</tr>
+				<tr>
+					<th><code class="code">combiner()</code></th>
+					<td>Combining two <span class="lime-green">result containers</span> into <span class="green">one RC</span></td>
+				</tr>
+				<tr>
+					<th><code class="code">finisher()</code></th>
+					<td class="grey">Performing an optional final transform on the <span class="green">result container</span></td>
+				</tr>
+			</table>
+			<div class="indent"></div>
+
+			<table class="border padding" id="collectors">
+				<caption><a href="#collectorsUp"><b>Collectors</b></a> static helper class [all methods return a <code class="code">Collector</code> instance]</caption>
+				<tr><th>Group</th><th>Method/Example</th><th>Description</th></tr>
+				<tr>
+					<td>Collecting with <em>finisher</em></td>
+					<td>
+						<code class="code"><nobr>&lt;T,A,RR> collectingAndThen(Collector&lt;T,A,R> downstream, Function&lt;R,RR> <em>finisher</em>)</nobr></code>
+						<div class="indent4"></div>
+						<code>collectingAndThen(Collectors.toList(), Collections::unmodifiableList)</code>
+					</td>
+					<td>Adapts a <code class="code">Collector</code> to perform an additional finishing transformation</td>
+				</tr>
+				<tr>
+					<td rowspan="4">to*</td>
+					<td><code class="code">&lt;T,?,Set&lt;T>> <b>toSet()</b></code></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><code class="code">&lt;T,?,List&lt;T>> <b>toList()</b></code></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><code class="code">&lt;T,?,C> toCollection(Supplier&lt;C> collectionFactory)</code></td>
+					<td>..in encounter order</td>
+				</tr>
+				<tr>
+					<td>
+						<code class="code">&lt;T,?,Map&lt;K,U>> toMap(Function&lt;T,K> keyMapper, Function&lt;T,U> valueMapper)</code><br>
+						<code class="code"><nobr>&lt;T,?,Map&lt;K,U>> toMap(Function&lt;T,K> kMapper, Function&lt;T,U> vMapper, BinaryOperator&lt;U> mergeFunction)</nobr></code><br>
+						<code class="code"><nobr>&lt;T,?,M> toMap(Function&lt;T,K> kMapper, Function&lt;T,U> vMapper, BinaryOperator&lt;U> mf, Supplier&lt;M> map)</nobr></code><br>
+						and the same for <code class="code">toConcurrentMap(..)</code>
+					</td>
+					<td>mergeFunction - a merge function, used to resolve collisions between values associated with the same key, as supplied to <code>Map.merge(Object v1, Object v2, BiFunction bf)</code></td>
+				</tr>
+
+				<tr>
+					<th rowspan="1">groupingBy</th>
+					<td>
+						<code class="code">&lt;T,?,<b>Map</b>&lt;K,<b>List</b>&lt;T>>> groupingBy(Function&lt;T,K> classifier)</code><br>
+						<code class="code">&lt;T,?,<b>Map</b>&lt;K,D>> groupingBy(Function&lt;T,K> classifier, Collector&lt;T,A,D> downstream)</code><br>
+						<div class="indent"></div>
+						<code class="code">&lt;T,K,D,A,M extends <b>Map</b>&lt;K,D>><br> Collector&ltT,?,M> groupingBy(Function&lt;T,K> classifier, Supplier&lt;M> <b>mapFactory</b>, Collector&lt;T,A,D> downstream)</code><br>
+						<div class="indent4"></div>
+						and the same for <code class="code">groupingByConcurrent(..)</code>
+						<div class="indent4"></div>
+						<code>Map&lt;Character, Set&lt;String>> result = Stream.of({"Zhaba", "Anton", "Ajax"})</code><br>
+						<code>.collect(<b>groupingBy</b>(<span class="blue">item -> item.charAt(0)</span>, <span class="green">() -> new TreeMap<>(Collections.reverseOrder()</span>, <span class="teal">toSet()</span>));</code><br>
+						<span class="font-size-smaller font-family-math dim-grey">Result: {Z=[Zhaba], A=[Anton, Ajax]}</span>
+					</td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td rowspan="1">counting</td>
+					<td><code class="code">&lt;T,?,<b>Long</b>> counting()</code></td>
+					<td>..counts the number of input elements</td>
+				</tr>
+
+				<tr>
+					<td rowspan="1">joining</td>
+					<td>
+						<code class="code">&lt;CharSequence,?,String> joining()</code><br>
+						<code class="code">&lt;CharSequence,?,String> joining(CharSequence delimiter)</code><br>
+						<code class="code">&lt;CharSequence,?,String> joining(CharSequence delimiter, CharSequence prefix, CharSequence suffix)</code><br>
+					</td>
+					<td>Returns a <code class="code">Collector</code> that concatenates the input elements into a <code class="code">String</code>, in encounter order</td>
+				</tr>
+				<tr>
+					<td rowspan="1">mapping</td>
+					<td>
+						<code class="code">&lt;T,?,R> mapping(Function&lt;T,U> mapper, Collector&lt;U,A,R> downstream)</code><br>
+						<div class="indent4"></div>
+						<code>mapping(Person::getLastName, toSet())</code>
+					</td>
+					<td><b class="grey">Adapts</b> a <code class="code">Collector</code> accepting elements of type <code class="code">U</code> to one accepting elements of type <code class="code">T</code> by applying a <em>mapper</em> to each input element before accumulation</td>
+				</tr>
+
+				<tr>
+					<td rowspan="1">min/max</td>
+					<td><code class="code">&lt;T,?,Optional&lt;T>> minBy/maxBy(Comparator&lt;T> comparator)</code></td>
+					<td>Returns a <code class="code">Collector</code> that produces the <em>min/max</em> element according to a given <code class="code">Comparator</code></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2">partitioning</td>
+					<td><code class="code">&lt;T,?,<b>Map</b>&lt;<b>Boolean</b>,List&lt;T>>> partitioningBy(Predicate&lt;T> predicate)</code></td>
+					<td>
+						Returns a <code class="code">Collector</code> which partitions the input elements according to a <code class="code">Predicate</code>, and organizes them into a <code class="code">Map&lt;Boolean, List&lt;T>></code>.<br>
+						<span class="warning-sign grey font-size-smaller"> The map keys will only be true/false due to Predicate returns primitive boolean, so no <code>null</code> key is possible</span>
+					</td>
+				</tr>
+				<tr>
+					<td><code class="code">&lt;T,?,<b>Map</b>&lt;<b>Boolean</b>,D>> partitioningBy(Predicate&lt;T> predicate, Collector&lt;T,A,D> downstream)</code></td>
+					<td>..reduces the values in each partition according to another <code class="code">Collector</code>, and organizes them into a <code class="code">Map&lt;Boolean,D></code> whose values are the result of the downstream reduction</td>
+				</tr>
+
+				<tr>
+					<td class="warning-sign dark-orange" id="collectorsReducing"> reducing</td>
+					<td>
+						<code class="code">&lt;T,?,Optional&lt;T>> reducing(BinaryOperator&lt;T> o)</code><br>
+						<code class="code">&lt;T,?,T> reducing(T identity, BinaryOperator&lt;T> o)</code><br>
+						<code class="code">&lt;T,?,U> reducing(T identity, Function&lt;T,U> mapper, BinaryOperator&lt;T> o)</code><br>
+						<div class="indent4"></div>
+						<code>Collectors.<i>reducing</i>("", String::<i>valueOf</i> , (a,b) -> a + b)</code>
+					</td>
+					<td>
+						<a class="warning-sign dark-orange" href="#avoidStreamReduce"> Reducing is not considered as a best practice</a><br>
+						Analogous to <code class="code"><a href="#streamReduce">stream.reduce()</a></code>.<br>
+						Returns a <code class="code">Collector</code> which performs a reduction of its input elements under a specified <code class="code">BinaryOperator</code>.<br>
+						Or with using provided identity.<br>
+						Or with using provided identity and mapper function<br>
+					</td>
+				</tr>
+
+				<tr>
+					<td rowspan="1">math</td>
+					<td><code class="code">averaging* summarizing* summing* with Double, Int, Long</code></td>
+					<td>Mathematical</td>
+				</tr>
+
+			</table>
+			<div class="indent"></div>
+
 			<em class="dark-blue">Downstream collector</em> is a Collector that is passed to the methods of <code>Collectors</code> class:<br>
 			<code>List&lt;String&gt; list = stream.collect(Collectors.collectingAndThen(<b>Collectors.toList()</b>, Collections::unmodifiableList));</code><br>
 			The <code><b>Collectors.toList()</b></code> is a <em>Downstream collector</em>.<br><code>Collections::unmodifiableList</code> is a <i>finisher</i>.<br>
