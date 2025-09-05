@@ -120,48 +120,51 @@
 
   <polyline points="100,400 100,260 210,260 210,230" class="line arrow" id="ListToCollection"/>
 
+  <line x1="250" y1="400" x2="250" y2="230" class="line arrow" id="ListToSC"/>
+
   <g class="java21">
-    <rect x="30" y="290" class="interface"/>
-    <text x="35" y="310" class="text14" >SequencedCollection</text>
-    <text x="35" y="360" class="text14" >Since: <tspan>21</tspan></text>
-    <line x1="100" y1="400" x2="100" y2="375" class="line arrow"/>
+    <rect x="180" y="290" class="interface"/>
+    <text x="185" y="310" class="text14" >SequencedCollection</text>
+    <text x="185" y="360" class="text14" >Since: <tspan>21</tspan></text>
+    <line x1="250" y1="400" x2="250" y2="375" class="line arrow"/>
   </g>
 
-  <rect x="30" y="400" class="interface"/>
-  <text x="75" y="430" class="text">List</text>
-  <text x="35" y="470" class="text14 java2">Since: <tspan>1.2</tspan></text>
 
-  <line x1="250" y1="290" x2="250" y2="230" class="line arrow"/>
-  <rect x="180" y="290" class="interface"/>
-  <text x="225" y="320" class="text">Set</text>
-  <text x="185" y="360" class="text14 java2">Since: <tspan>1.2</tspan></text>
+  <rect x="180" y="400" class="interface"/>
+  <text x="225" y="430" class="text">List</text>
+  <text x="185" y="470" class="text14 java2">Since: <tspan>1.2</tspan></text>
 
-  <line x1="250" y1="510" x2="250" y2="375" class="line arrow"/>
+
+  <rect x="30" y="290" class="interface"/>
+  <text x="75" y="320" class="text">Set</text>
+  <text x="35" y="360" class="text14 java2">Since: <tspan>1.2</tspan></text>
+
+  <line x1="100" y1="510" x2="100" y2="375" class="line arrow"/>
   <g class="java21">
-    <rect x="180" y="400" class="interface"/>
-    <text x="185" y="425" class="text20">SequencedSet</text>
-    <text x="185" y="470" class="text14">Since: <tspan>21</tspan></text>
-    <polyline points="180,440 175,440 175,390 130,390 130,375" class="line arrow" id="SStoSC"/>
-    <polyline points="320,550 323,550 323,390 280,390 280,375" class="line arrow" id="SortedSetToSet"/>
-    <polyline points="330,440 326,440 326,385 150,385 150,375" class="line arrow" id="DequeToSC"/>
-    <line x1="250" y1="510" x2="250" y2="485" class="line arrow"/>
+    <rect x="30" y="400" class="interface"/>
+    <text x="35" y="425" class="text20">SequencedSet</text>
+    <text x="35" y="470" class="text14">Since: <tspan>21</tspan></text>
+    <polyline points="170,440 175,440 175,385 200,385 200,375" class="line arrow" id="SequencedSetToSC"/>
+<!--    <polyline points="320,550 323,550 323,390 280,390 280,375" class="line arrow" id="SortedSetToSet"/>-->
+    <polyline points="330,440 326,440 326,385 300,385 300,375" class="line arrow" id="DequeToSC"/>
+    <line x1="100" y1="510" x2="100" y2="485" class="line arrow"/>
   </g>
 
-  <rect x="180" y="510" class="interface"/>
-  <text x="190" y="540" class="text">SortedSet</text>
-  <text x="185" y="580" class="text14 java2">Since: <tspan>1.2</tspan></text>
+  <rect x="30" y="510" class="interface"/>
+  <text x="40" y="540" class="text">SortedSet</text>
+  <text x="35" y="580" class="text14 java2">Since: <tspan>1.2</tspan></text>
 
-  <line x1="250" y1="730" x2="250" y2="595" class="line arrow"/>
+  <line x1="100" y1="730" x2="100" y2="595" class="line arrow"/>
   <g class="java6">
-    <rect x="180" y="620" class="interface"/>
-    <text x="185" y="645" class="text22">NavigableSet</text>
-    <text x="185" y="690" class="text14">Since: <tspan>1.6</tspan></text>
-    <line x1="250" y1="730" x2="250" y2="705" class="line arrow"/>
+    <rect x="30" y="620" class="interface"/>
+    <text x="35" y="645" class="text22">NavigableSet</text>
+    <text x="35" y="690" class="text14">Since: <tspan>1.6</tspan></text>
+    <line x1="100" y1="730" x2="100" y2="705" class="line arrow"/>
   </g>
 
-  <rect x="180" y="730" class="class"/>
-  <text x="195" y="760" class="text">TreeSet</text>
-  <text x="185" y="800" class="text14 java2">Since: <tspan>1.2</tspan></text>
+  <rect x="30" y="730" class="class"/>
+  <text x="45" y="760" class="text">TreeSet</text>
+  <text x="35" y="800" class="text14 java2">Since: <tspan>1.2</tspan></text>
 
   <!-- Queues -->
   <g class="java5">
