@@ -31,11 +31,11 @@
 <input id="search-input" type="text" title="Enter abbreviation or term" autofocus>
 <button name="Search" onclick="search()">Search</button>
 <div class="indent"></div>
-<div id="search-results" style="display: none;"></div>
+<div id="search-results" class="display-none"></div>
 <div class="indent"></div>
 <hr>
 
-<div id="topics" style="display: none">
+<div id="topics" class="display-none">
 	<input id ="select-all" type="radio" name="topics" checked>
 	<label for="select-all">Select All</label>
 	<input id="select-none" type="radio" name="topics">
@@ -604,7 +604,7 @@
 		</tr>
 		<tr>
 			<th id="HIPAA"></th>
-			<td>Health Insurance Portability and Accountability Act</td>
+			<td class="nowrap">Health Insurance Portability and Accountability Act</td>
 			<td class="template" data-id="GDPR"></td>
 		</tr>
 		<tr>
@@ -1758,9 +1758,9 @@
 <div class="indent"></div>
 
 <a href="all.html" id="sitemap-footer">SiteMap</a><br>
-<iframe style="border:0; height: 35px;" src="./footer.html"></iframe>
+<iframe class="footer" src="./footer.html"></iframe>
 
-<div id="templates" style="display: none;">
+<div id="templates" class="display-none">
 	<div id="ml"><a href="#GML"></a> -> <a href="#SGML"></a> -> [<a href="#XML"></a>, <a href="#HTML"></a> -> <a href="#XHTML"></a>]; <a href="#DTD"></a></div>
 	<div id="protocol"><a href="#IP"></a> <a href="#TCP-IP" id="tcpip">TCP/IP</a></div>
 	<div id="pc-interface"><a href="#IDE"></a>=<a href="#PATA"></a></div>
