@@ -112,6 +112,7 @@
 			<th id="AWS"></th>
 			<td>Amazon Web Services</td>
 			<td class="template" data-id="cloud"></td>
+			<td class="template" data-id="aws"></td>
 		</tr>
 	</table>
 </details>
@@ -167,6 +168,11 @@
 			<th id="CRUD"></th>
 			<td>Create Read Update Delete</td>
 			<td class="template" data-id="ql"></td>
+		</tr>
+		<tr>
+			<th id="CIDR"></th>
+			<td>Classless Inter-Domain Routing</td>
+			<td><a href="#IP"></a></td>
 		</tr>
 		<tr>
 			<th id="CORS"></th>
@@ -280,7 +286,7 @@
 
 <details open>
 	<summary><b>D</b></summary>
-	<table class="collapse-border padding sorted td2max-width-500">
+	<table class="collapse-border padding sorted td2max-width-500" data-colspan="2">
 		<tr>
 			<th id="DaaS">DaaS</th>
 			<td>Desktop as a Service</td>
@@ -312,7 +318,7 @@
 		<tr>
 			<th id="DHCP">DHCP</th>
 			<td>Dynamic Host Configuration Protocol</td>
-			<td class="template" data-id="protocol"></td>
+			<td class="template colspan" data-id="protocol"></td>
 		</tr>
 		<tr>
 			<th id="DNS">DNS</th>
@@ -617,27 +623,28 @@
 		<tr>
 			<th id="IaaS">IaaS</th>
 			<td>Infrastructure as a Service</td>
-			<td class="template" data-id="aaS"></td>
+			<td class="template colspan" data-id="aaS"></td>
 		</tr>
 		<tr>
 			<th id="IBAN"></th>
 			<td>International Bank Account Number</td>
-			<td class="template" data-id="banking"></td>
+			<td class="template colspan" data-id="banking"></td>
 		</tr>
 		<tr>
 			<th id="IEEE">IEEE</th>
 			<td>Institute <small>of</small> Electrical <small>and</small> Electronics Engineers</td>
-			<td></td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="ISDN"></th>
 			<td>Integrated Services Digital Network</td>
-			<td class="template" data-id="network"></td>
+			<td class="template colspan" data-id="network"></td>
 		</tr>
 		<tr>
 			<th id="IP">IP</th>
 			<td>Internet Protocol</td>
 			<td class="template colspan" data-id="protocol"></td>
+			<td><a href="#CIDR"></a></td>
 		</tr>
 		<tr>
 			<th id="I/O"></th>
@@ -647,32 +654,33 @@
 		<tr>
 			<th id="ICS">ICS</th>
 			<td>Internet Connection Sharing</td>
-			<td>Ms Windows</td>
+			<td class="colspan">Ms Windows</td>
 		</tr>
 		<tr>
 			<th id="IRC">IRC</th>
 			<td>Internet Relay Chat</td>
-			<td></td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="ISP">ISP</th>
 			<td>Internet Service Provider</td>
-			<td></td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="IRQ">IRQ</th>
 			<td>Interrupt ReQuest</td>
-			<td></td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="ISO"></th>
 			<td>International Organization for Standardization</td>
-			<td><img src="svg/iso.svg" alt="iso" class="svg-logo"></td>
+			<td class="colspan"><img src="svg/iso.svg" alt="iso" class="svg-logo"></td>
 		</tr>
 		<tr>
 			<th id="IAM"></th>
 			<td>Identity and Access Management</td>
 			<td class="template" data-id="security"></td>
+			<td class="template colspan" data-id="aws"></td>
 		</tr>
 		<tr>
 			<th id="ICMP">ICMP</th>
@@ -688,17 +696,17 @@
 		<tr>
 			<th id="IIFE">IIFE</th>
 			<td>Immediately Invoked Function Expression</td>
-			<td class="template" data-id="javascript"></td>
+			<td class="template colspan" data-id="javascript"></td>
 		</tr>
 		<tr>
 			<th id="IoT"></th>
 			<td>Internet of Things</td>
-			<td class="template" data-id="internet"></td>
+			<td class="template colspan" data-id="internet"></td>
 		</tr>
 		<tr>
 			<th id="IETF">IETF</th>
 			<td>Internet Engineering Task Force</td>
-			<td class="template" data-id="internet"></td>
+			<td class="template colspan" data-id="internet"></td>
 		</tr>
 		<tr>
 			<th id="IMAP"></th>
@@ -713,7 +721,7 @@
 		<tr>
 			<th id="IMEI"></th>
 			<td>International Mobile Equipment Identity</td>
-			<td class="template" data-id="telecom"></td>
+			<td class="template colspan" data-id="telecom"></td>
 		</tr>
 		<tr>
 			<th id="IDE"></th>
@@ -724,12 +732,12 @@
 		<tr>
 			<th id="IDE2" class="skip">IDE</th>
 			<td>Integrated Development Environment</td>
-			<td class="template" data-id="software"></td>
+			<td class="template colspan" data-id="software"></td>
 		</tr>
 		<tr>
 			<th id="idempotent">Idempotent</th>
 			<td>Repeated operation on an object does not change the result achieved at first execution</td>
-			<td></td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="imperative"></th>
@@ -737,12 +745,12 @@
 				How to do things. Statements. Var++. |
 				<a href="#OOP"></a>. Procedural. Parallel processing.
 			</td>
-			<td class="template" data-id="paradigm"></td>
+			<td class="template colspan" data-id="paradigm"></td>
 		</tr>
 		<tr>
 			<th id="iff"></th>
 			<td>If and only if</td>
-			<td>↔ ⇔ ≡</td>
+			<td class="colspan">↔ ⇔ ≡</td>
 		</tr>
 	</table>
 </details>
