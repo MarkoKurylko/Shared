@@ -48,6 +48,91 @@
 	<summary><b>A</b></summary>
 	<table class="collapse-border padding sorted">
 		<tr>
+			<th id="AMI" class="skip nowrap">AMI</th>
+			<td>Amazon Machine Image</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="ARN" class="skip nowrap">Amazon ARN</th>
+			<td>Amazon Resource Name</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="EC2" class="skip nowrap">Amazon EC2</th>
+			<td>Amazon Elastic Compute Cloud</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="ECS" class="skip nowrap">Amazon ECS</th>
+			<td>Amazon Elastic Container Service</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="EKS" class="skip nowrap">Amazon EKS</th>
+			<td>Amazon Elastic Kubernetes Service</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="S3" class="skip">Amazon S3</th>
+			<td>Amazon Simple Storage Service</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="EBS" class="skip nowrap">Amazon EBS</th>
+			<td>Amazon Elastic Block Storage</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="EFS" class="skip nowrap">Amazon EFS</th>
+			<td>Amazon Elastic File Storage</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="FSx" class="skip nowrap">Amazon FSx</th>
+			<td>Amazon File Storage for <b>x</b></td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="VPC" class="skip nowrap">Amazon VPC</th>
+			<td>Amazon Virtual Private Cloud</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="QLDB" class="skip nowrap">Amazon QLDB</th>
+			<td>Amazon Quantum Ledger Database</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="RDS" class="skip nowrap">Amazon RDS</th>
+			<td>Amazon Relational Database Service</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="SNS" class="skip nowrap">Amazon SNS</th>
+			<td>Amazon Simple Notification Service</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="ALB" class="skip nowrap">Amazon ALB</th>
+			<td>Amazon Application Load Balancing</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="ELB" class="skip nowrap">Amazon ELB</th>
+			<td>Amazon Elastic Load Balancing</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="KMS" class="skip nowrap">AWS KMS</th>
+			<td><a href="#AWS"></a> Key Management Service</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="ACM" class="skip nowrap">ACM</th>
+			<td><a href="#AWS"></a> Certificate Manager</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
 			<th id="ACID"></th>
 			<td>Atomicity Consistency Isolation Durability</td>
 			<td class="template" data-id="ql"></td>
@@ -111,8 +196,8 @@
 		<tr>
 			<th id="AWS"></th>
 			<td>Amazon Web Services</td>
-			<td class="template" data-id="cloud"></td>
 			<td class="template" data-id="aws"></td>
+			<td class="template" data-id="cloud"></td>
 		</tr>
 	</table>
 </details>
@@ -185,8 +270,13 @@
 			<td class="template" data-id="vulnerability"></td>
 		</tr>
 		<tr>
-			<th id="CRT">CRT</th>
+			<th id="CRT"></th>
 			<td>Cathode Ray Tube</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th id="CRM"></th>
+			<td>Customer Relationship Management</td>
 			<td></td>
 		</tr>
 		<tr>
@@ -296,6 +386,11 @@
 			<th id="DRaaS">DRaaS</th>
 			<td>Disaster Recovery as a Service</td>
 			<td class="template" data-id="aaS"></td>
+		</tr>
+		<tr>
+			<th id="DevOps"></th>
+			<td>Development and Operations</td>
+			<td class="template" data-id="software"></td>
 		</tr>
 		<tr>
 			<th id="deterministic">Deterministic</th>
@@ -603,6 +698,11 @@
 			<td class="template" data-id="CMS"></td>
 		</tr>
 		<tr>
+			<th id="HVAC"></th>
+			<td>Heating Ventilation and Air Conditioning</td>
+			<td></td>
+		</tr>
+		<tr>
 			<th id="HIPAA"></th>
 			<td class="nowrap">Health Insurance Portability and Accountability Act</td>
 			<td class="template" data-id="GDPR"></td>
@@ -621,9 +721,14 @@
 	<summary><b>I</b></summary>
 	<table class="collapse-border padding sorted td2max-width-500" data-colspan="2">
 		<tr>
-			<th id="IaaS">IaaS</th>
+			<th id="IaaS"></th>
 			<td>Infrastructure as a Service</td>
 			<td class="template colspan" data-id="aaS"></td>
+		</tr>
+		<tr>
+			<th id="IaC"></th>
+			<td>Infrastructure as Code</td>
+			<td class="template colspan" data-id="cloud"></td>
 		</tr>
 		<tr>
 			<th id="IBAN"></th>
@@ -722,6 +827,11 @@
 			<th id="IMEI"></th>
 			<td>International Mobile Equipment Identity</td>
 			<td class="template colspan" data-id="telecom"></td>
+		</tr>
+		<tr>
+			<th id="ISBN"></th>
+			<td>International Standard Book Number</td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="IDE"></th>
@@ -1128,7 +1238,6 @@
 		<tr>
 			<th id="OSI">OSI</th>
 			<td>Open Systems Interconnection</td>
-			<td></td>
 		</tr>
 		<tr>
 			<th id="OCP"></th>
@@ -1145,7 +1254,10 @@
 		<tr>
 			<th id="OOTB"></th>
 			<td>Out of the Box</td>
-			<td></td>
+		</tr>
+		<tr>
+			<th id="OLTP"></th>
+			<td>On<b>l</b>ine Transaction Processing</td>
 		</tr>
 	</table>
 </details>
@@ -1370,85 +1482,84 @@
 
 <details open>
 	<summary><b>S</b></summary>
-	<table class="collapse-border padding sorted" data-colspan="2">
+	<table class="collapse-border padding sorted" data-colspan="3">
 		<tr>
 			<th id="SaaS"></th>
 			<td>Software as a Service</td>
-			<td class="template" data-id="aaS"></td>
+			<td class="template colspan" data-id="aaS"></td>
 		</tr>
 		<tr>
 			<th id="scalability">Scalability</th>
 			<td>Is the property of a system to handle a growing amount of work</td>
-			<td></td>
 		</tr>
 		<tr>
 			<th id="SAML"></th>
 			<td>Security Assertion Markup Language</td>
 			<td class="template" data-id="ml"></td>
-			<td class="template" data-id="security"></td>
+			<td class="template colspan" data-id="security"></td>
 		</tr>
 		<tr>
 			<th id="SEPA"></th>
 			<td>Single Euro Payments Area</td>
-			<td class="template" data-id="banking"></td>
+			<td class="template colspan" data-id="banking"></td>
 		</tr>
 		<tr>
 			<th id="SMTP">SMTP</th>
 			<td>Simple mail transfer protocol</td>
-			<td class="template" data-id="protocol" colspan="2"></td>
+			<td class="template colspan" data-id="protocol" colspan="2"></td>
 		</tr>
 		<tr>
 			<th id="SOAP">SOAP</th>
 			<td><small>originally an acronym for</small> Simple Object Access Protocol</td>
-			<td class="template" data-id="protocol" colspan="2"></td>
+			<td class="template colspan" data-id="protocol" colspan="2"></td>
 		</tr>
 		<tr>
 			<th id="SAX"></th>
 			<td>Simple <a href="#API"></a> for <a href="#XML"></a></td>
-			<td>Is an alternative to <a href="#DOM"></a></td>
+			<td class="colspan">Is an alternative to <a href="#DOM"></a></td>
 		</tr>
 		<tr>
 			<th id="SVG">SVG</th>
 			<td>Scalable Vector Graphics</td>
 			<td class="template" data-id="graphics"></td>
-			<td><img src="svg/svg.svg" alt="svg" class="svg-logo"></td>
+			<td class="colspan"><img src="svg/svg.svg" alt="svg" class="svg-logo"></td>
 		</tr>
 		<tr>
 			<th id="SVN"></th>
 			<td>Apache Subversion. It is <a href="#CVC"></a></td>
-			<td class="template" data-id="version-control"></td>
+			<td class="template colspan" data-id="version-control"></td>
 		</tr>
 		<tr>
 			<th id="SSH"></th>
 			<td>Secure Shell Protocol</td>
-			<td class="template" data-id="protocol" colspan="2"></td>
+			<td class="template colspan" data-id="protocol" colspan="2"></td>
 		</tr>
 		<tr>
 			<th id="SSD"></th>
 			<td>Solid State Drive</td>
 			<td class="template" data-id="persistence"></td>
-			<td class="template" data-id="computer" data-dont-add="1"></td>
+			<td class="template colspan" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="SQL">SQL</th>
 			<td>Structured Query Language</td>
 			<td class="template" data-id="ql"></td>
-			<td class="template" data-id="sql-subgroup"></td>
+			<td class="template colspan" data-id="sql-subgroup"></td>
 		</tr>
 		<tr>
 			<th id="SSID"></th>
 			<td>Service Set IDentifier</td>
-			<td class="template" data-id="identifier"></td>
+			<td class="template colspan" data-id="identifier"></td>
 		</tr>
 		<tr>
 			<th id="SGML"></th>
 			<td>Standard Generalized Markup Language</td>
-			<td class="template" data-id="ml"></td>
+			<td class="template colspan" data-id="ml"></td>
 		</tr>
 		<tr>
 			<th id="SASL"></th>
 			<td>Simple Authentication and Security Layer</td>
-			<td class="template" data-id="data-security"></td>
+			<td class="template colspan" data-id="data-security"></td>
 		</tr>
 		<tr>
 			<th id="SLF4J"></th>
@@ -1459,29 +1570,28 @@
 			<th id="SATA"></th>
 			<td>Serial Advanced Technology Attachment</td>
 			<td class="template" data-id="pc-interface"></td>
-			<td class="template" data-id="computer" data-dont-add="1"></td>
+			<td class="template colspan" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="SDE"></th>
 			<td>Software Developer Engineer</td>
-			<td>The same as <a href="#SWE"></a></td>
 			<td class="template" data-id="software"></td>
+			<td class="colspan">The same as <a href="#SWE"></a></td>
 		</tr>
 		<tr>
 			<th id="SWE"></th>
 			<td>SoftWare Engineer</td>
-			<td>The same as <a href="#SDE"></a></td>
 			<td class="template" data-id="software"></td>
+			<td class="colspan">The same as <a href="#SDE"></a></td>
 		</tr>
 		<tr>
 			<th id="SSN"></th>
 			<td>Social Security Number</td>
-			<td></td>
 		</tr>
 		<tr>
 			<th id="SSO"></th>
 			<td>Single Sign-On</td>
-			<td class="template" data-id="security"></td>
+			<td class="template colspan" data-id="security"></td>
 		</tr>
 		<tr>
 			<th id="SPI"></th>
@@ -1491,29 +1601,41 @@
 		<tr>
 			<th id="SDLC"></th>
 			<td>Software Development Life Cycle</td>
-			<td></td>
+			<td class="template colspan" data-id="software"></td>
 		</tr>
 		<tr>
 			<th id="SDLC2" class="skip">SDLC</th>
 			<td>System Design Life Cycle</td>
-			<td class="template" data-id="system-design"></td>
+			<td class="template colspan" data-id="system-design"></td>
 		</tr>
 		<tr>
 			<th id="SIMM"></th>
 			<td>Single In-line Memory Module</td>
 			<td class="template" data-id="memory"></td>
-			<td class="template" data-id="computer" data-dont-add="1"></td>
+			<td class="template colspan" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
 			<th id="SOLID"></th>
 			<td><a href="#SRP"></a> <a href="#OCP"></a>; Liskov Substitution; Interface Segregation; Dependency Inversion</td>
-			<td class="template" data-id="software"></td>
+			<td class="template colspan" data-id="software"></td>
 		</tr>
 		<tr>
 			<th id="SRP"></th>
 			<td>Single Responsibility Principle</td>
 			<td class="template" data-id="SOLID"></td>
-			<td><a href="#SOLID"></a></td>
+			<td class="colspan"><a href="#SOLID"></a></td>
+		</tr>
+		<tr>
+			<th id="SSL"></th>
+			<td>Secure Sockets Layer</td>
+			<td class="template" data-id="protocol"></td>
+			<td class="template" data-id="cryptographic-protocol"></td>
+			<td class="colspan">Deprecated</td>
+		</tr>
+		<tr>
+			<th id="s/w"></th>
+			<td>Software</td>
+			<td class="template colspan" data-id="software"></td>
 		</tr>
 	</table>
 </details>
@@ -1537,6 +1659,12 @@
 			<th id="TCL"></th>
 			<td>Transaction Control Language</td>
 			<td class="template" data-id="sql-subgroup"></td>
+		</tr>
+		<tr>
+			<th id="TLS"></th>
+			<td>Transport Layer Security</td>
+			<td class="template" data-id="protocol"></td>
+			<td class="template" data-id="cryptographic-protocol"></td>
 		</tr>
 		<tr>
 			<th id="TDD"></th>
