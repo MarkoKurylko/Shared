@@ -128,13 +128,30 @@
 			<td class="template" data-id="aws"></td>
 		</tr>
 		<tr>
-			<th id="ACM" class="skip nowrap">ACM</th>
+			<th id="AWSCDK" class="skip nowrap">AWS CDK</th>
+			<td><a href="#AWS"></a> Cloud Development Kit</td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+
+		<tr>
+			<th id="AWSCLI" class="skip nowrap">AWS CLI</th>
+			<td><a href="#AWS"></a> <a href="#CLI"></a></td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+		<tr>
+			<th id="AWSCDKCLI" class="skip nowrap">AWS CDK CLI</th>
+			<td><a href="#AWSCDK">AWS CDK</a> <a href="#CLI"></a></td>
+			<td class="template" data-id="aws"></td>
+		</tr>
+
+		<tr>
+			<th id="ACM"></th>
 			<td><a href="#AWS"></a> Certificate Manager</td>
 			<td class="template" data-id="aws"></td>
 		</tr>
 		<tr>
 			<th id="ACID"></th>
-			<td>Atomicity Consistency Isolation Durability</td>
+			<td class="nowrap">Atomicity Consistency Isolation Durability</td>
 			<td class="template" data-id="ql"></td>
 		</tr>
 		<tr>
@@ -199,6 +216,11 @@
 			<td class="template" data-id="aws"></td>
 			<td class="template" data-id="cloud"></td>
 		</tr>
+		<tr>
+			<th id="AWT"></th>
+			<td>Abstract Window Toolkit</td>
+			<td class="template" data-id="java"></td>
+		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -248,6 +270,12 @@
 			<th id="CORBA">CORBA</th>
 			<td>Common Object Request Broker Architecture</td>
 			<td></td>
+		</tr>
+		<tr>
+			<th id="CNCF"></th>
+			<td>Cloud Native Computing Foundation</td>
+			<td><a href="#K8s"></a></td>
+			<td><img src="svg/cncf.svg" alt="cncf" class="svg-logo"></td>
 		</tr>
 		<tr>
 			<th id="CRUD"></th>
@@ -309,7 +337,7 @@
 				Command-Line Interface<hr class="margin3px">
 				Command-Line Interpreter
 			</td>
-			<td></td>
+			<td><a href="#AWSCLI">AWS CLI</a> <a href="#AWSCDKCLI">AWS CDK CLI</a></td>
 		</tr>
 		<tr>
 			<th id="CTE"></th>
@@ -600,6 +628,11 @@
 	<summary><b>G</b></summary>
 	<table class="collapse-border padding sorted">
 		<tr>
+			<th id="GA"></th>
+			<td>General Availability</td>
+			<td class="template" data-id="software"></td>
+		</tr>
+		<tr>
 			<th id="GPU"></th>
 			<td>Graphics Processing Unit</td>
 			<td class="template" data-id="processor"></td>
@@ -834,13 +867,13 @@
 			<td class="colspan"></td>
 		</tr>
 		<tr>
-			<th id="IDE"></th>
+			<th id="IDE2" class="skip">IDE</th>
 			<td>Integrated Drive Electronics</td>
 			<td class="template" data-id="pc-interface"></td>
 			<td class="template" data-id="computer" data-dont-add="1"></td>
 		</tr>
 		<tr>
-			<th id="IDE2" class="skip">IDE</th>
+			<th id="IDE"></th>
 			<td>Integrated Development Environment</td>
 			<td class="template colspan" data-id="software"></td>
 		</tr>
@@ -885,6 +918,11 @@
 			<td class="template" data-id="java"></td>
 		</tr>
 		<tr>
+			<th id="JVMS"></th>
+			<td>Java Virtual Machine Specification</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
 			<th id="JVM"></th>
 			<td>Java Virtual Machine</td>
 			<td class="template" data-id="java"></td>
@@ -897,6 +935,16 @@
 		<tr>
 			<th id="JSR"></th>
 			<td>Java Specification Request</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JLS"></th>
+			<td>Java Language Specification</td>
+			<td class="template" data-id="java"></td>
+		</tr>
+		<tr>
+			<th id="JFC"></th>
+			<td>Java Foundation Classes</td>
 			<td class="template" data-id="java"></td>
 		</tr>
 		<tr>
@@ -1014,6 +1062,12 @@
 			<th id="KTLO"></th>
 			<td>Keeping The Lights On</td>
 			<td></td>
+		</tr>
+		<tr>
+			<th id="K8s"></th>
+			<td>Kubernetes</td>
+			<td><a href="#CNCF"></a></td>
+			<td><img src="svg/K8s.svg" alt="K8s" class="svg-logo"></td>
 		</tr>
 	</table>
 </details>
@@ -1291,6 +1345,16 @@
 			<th id="PING">PING</th>
 			<td>Packet InterNet Groper</td>
 			<td class="colspan"><a href="#ICMP">ICMP</a></td>
+		</tr>
+		<tr>
+			<th id="PIN"></th>
+			<td>Personal Identification Number</td>
+			<td class="colspan"></td>
+		</tr>
+		<tr>
+			<th id="PED"></th>
+			<td><a href="#PIN"></a> Entry Device</td>
+			<td class="colspan"></td>
 		</tr>
 		<tr>
 			<th id="PNG"></th>
@@ -1915,7 +1979,7 @@
 	const hrefs = document.getElementsByTagName("a");
 	Array.from(hrefs).forEach( link => {
 		if (link.id) return;
-		link.innerHTML = link.href.split("#")[1];
+		if (!link.innerHTML) link.innerHTML = link.href.split("#")[1];
 	});
 
 	function sortTable(table) {
