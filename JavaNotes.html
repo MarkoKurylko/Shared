@@ -1808,12 +1808,13 @@
 
 			<br><br>
 			<table class="border padding">
-				<caption>Stream</caption>
+				<caption>Stream <small>interface</small></caption>
 				<tr>
 					<th>Method/Group</th>
 					<th>Simplified signature</th>
 					<th>Example</th>
 					<th>Description</th>
+					<th>Since</th>
 				</tr>
 				<tr>
 					<td><code class="tooltip" title="static">Stream.of</code></td>
@@ -1825,8 +1826,9 @@
 					<td>
 						<span class="warning-sign dark-orange"></span>
 						Pay attention to that arrays based on a primitive types will be considered as a single object.<br>
-						So use either a <em>Wrapper</em> classes arrays or <code class="code">IntStream.of()</code>
+						So use either a <em>Wrapper</em> classes arrays or <code class="code">IntStream.of()</code> or <code class="code">Arrays.stream(primitive/&lt;T> array)</code>
 					</td>
+					<td rowspan="25" class="java8">1.8</td>
 				</tr>
 				<tr>
 					<td><code class="tooltip" title="static">Stream.generate</code></td>
@@ -1981,17 +1983,6 @@
 				</tr>
 
 				<tr>
-					<td rowspan="2"><code>toArray</code></td>
-					<td><code class="nowrap"><span class="code">Object</span>[] toArray()</code></td>
-					<td><code></code></td>
-					<td rowspan="2"></td>
-				</tr>
-				<tr>
-					<td><code class="nowrap"><b>A</b>[] toArray(<span class="code">IntFunction</span>&lt;<b>A</b>[]> generator)</code></td>
-					<td><code>toArray(Person[]::new)</code></td>
-				</tr>
-
-				<tr>
 					<td>min/max</td>
 					<td><code class="nowrap"><span class="code">Optional</span>&lt;T> min/max(<span class="code">Comparator</span>&lt;T&gt; comparator)</code></td>
 					<td></td>
@@ -2012,6 +2003,24 @@
 						<span class="warning-sign blue"></span>
 						<span class="grey">This method exists mainly to support debugging, where you want to see the elements as they flow past a certain point in a pipeline</span>
 					</td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"><code>toArray</code></td>
+					<td><code class="nowrap"><span class="code">Object</span>[] toArray()</code></td>
+					<td><code></code></td>
+					<td rowspan="2"></td>
+				</tr>
+				<tr>
+					<td><code class="nowrap"><b>A</b>[] toArray(<span class="code">IntFunction</span>&lt;<b>A</b>[]> generator)</code></td>
+					<td><code>toArray(Person[]::new)</code></td>
+				</tr>
+				<tr>
+					<td rowspan="2"><code>toList</code></td>
+					<td><code class="nowrap">default <span class="code">List</span>&lt;T> toList()</code></td>
+					<td></td>
+					<td></td>
+					<td rowspan="10" class="java16">16</td>
 				</tr>
 			</table>
 			<div class="indent"></div>
