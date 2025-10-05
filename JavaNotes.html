@@ -1133,6 +1133,7 @@
 					<td>
 						Represents a function that accepts one argument and produces a result<hr>
 						Returns a function that always returns its input argument. <i>F(x) = x</i>
+						<a href="#functionIdentityStreamCollectorsCounting">example</a>
 					</td>
 					<td rowspan="11" class="java8">1.8</td>
 				</tr>
@@ -1478,7 +1479,7 @@
 						<td class="text-align-center">#</td>
 							<td>Reference to an instance method of a particular object</td>
 							<td><code><em>classInstance</em>::<em>instanceMethodName</em></code></td>
-							<td></td>
+							<td><code>this::toString<br>super::toString</code></td>
 					</tr>
 
 					<tr>
@@ -2090,7 +2091,7 @@
 
 				<tr>
 					<td rowspan="1">counting</td>
-					<td><code class="code">&lt;T,?,<b>Long</b>> counting()</code></td>
+					<td><code class="code">&lt;T,?,<b>Long</b>> counting()</code> <a href="#functionIdentityStreamCollectorsCounting">example</a></td>
 					<td>..counts the number of input elements</td>
 				</tr>
 
@@ -2162,16 +2163,26 @@
 			<em class="dark-blue">Downstream collector</em> is a Collector that is passed to the methods of <code>Collectors</code> class:<br>
 			<code>List&lt;String&gt; list = stream.collect(Collectors.collectingAndThen(<b>Collectors.toList()</b>, Collections::unmodifiableList));</code><br>
 			The <code><b>Collectors.toList()</b></code> is a <em>Downstream collector</em>.<br><code>Collections::unmodifiableList</code> is a <i>finisher</i>.<br>
+
 			<div class="indent"></div>
 			<details>
-				<summary id="collectingAndThenWithMaxBy">collectingAndThen & maxBy example</summary>
+				<summary id="collectingAndThenWithMaxBy"><code>collectingAndThen</code> & <code>maxBy</code> example</summary>
 				<pre><code class="language-java">		record Employee(String name, String department, double salary) {}
 		Collector&lt;Employee, ?, Optional&lt;Employee>> downstream = Collectors.<b>maxBy</b>(Comparator.comparingDouble(Employee::salary));
 		Collector&lt;Employee, ?, Double> downstreamFinished = Collectors.collectingAndThen(downstream, o -> o.orElseThrow().salary);
 
-		Map<&lt;String, Double> result =
-		employees.stream().collect(Collectors.groupingBy(Employee::department, HashMap::new, downstreamFinished));
+		Map&lt;String, Double> result =
+			employees.stream().collect(Collectors.groupingBy(Employee::department, HashMap::new, downstreamFinished));
 		// {Finance=58000.0, HR=50000.0, IT=70000.0}</code></pre>
+			</details>
+
+			<div class="indent"></div>
+			<details>
+				<summary id="functionIdentityStreamCollectorsCounting"><code>Function.identity()</code> & <code>Collectors.counting()</code></summary>
+				<pre><code class="language-java">		List&lt;String> words = Arrays.asList("apple", "banana", "apple", "cherry", "banana", "apple");
+
+		Map&lt;String, Long> wordFrequency = words.stream()
+			.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));</code></pre>
 			</details>
 
 			<div class="indent"></div>
