@@ -108,7 +108,7 @@
 						<summary></summary>
 						<h2><a href="#java" id="java-up">Java</a></h2>
 						<h3><a href="#jsp">Jakarta(Java) Server Pages</a></h3>
-						<h3><a href="#servlets">Jakarta(Java) Servlets</a></h3>
+						<h3><a href="#servlets" id="servletsUp">Jakarta(Java) Servlets</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -169,6 +169,7 @@
 					<details>
 						<summary></summary>
 						<h2><a href="#streams" id="streamsUp">Streams</a></h2>
+						<h3><a href="#servlets">Servlets</a></h3>
 						<h3><a href="#safevarargs">@SafeVarargs</a></h3>
 						<h3><a href="#method-signature" id="signature-method-up">Signature of a Method</a></h3>
 						<h3 class="code-a"><a href="#spliterator"><code>Spliterator</code></a></h3>
@@ -1423,10 +1424,28 @@
 		<hr>
 
 		<div id="servlets">
-			<h3 class="margin-bottom-3">Jakarta(Java) Servlets</h3>
+			<h3 class="margin-bottom-3"><a href="#servletsUp">Jakarta(Java) Servlets</a></h3>
 			A Jakarta Servlet, <small>formerly Java Servlet</small> is a <em>Java software component</em> that extends the capabilities of a <em>server</em>.<br>
 			In principle, any servlets can extend the abstract <code class="code">GenericServlet implements <span class="midnight-blue" title="service(ServletRequest,ServletResponse)">Servlet</span></code> class; however, realistically speaking, all servlets extend the <code class="code">abstract HttpServlet</code> class.<br>
-			For applications using the servlet 3.0 specification or later, the <code class="code">@WebServlet</code> annotation can be used to map any servlet to one or more <span class="tooltip" title="Uniform Resource Locator">URL</span> patterns.
+			For applications using the servlet 3.0 specification or later, the <code class="code">@WebServlet</code> annotation can be used to map any servlet to one or more <span class="tooltip" title="Uniform Resource Locator">URL</span> patterns.<br>
+			<div class="indent4"></div>
+			<code class="code">void init(ServletConfig config) throws ServletException</code> -
+			Called <small>(exactly once after instantiating the servlet)</small> by the servlet container to indicate to a servlet that the servlet is being placed into service.<br>
+			The servlet container cannot place the servlet into service if the <code>init</code> method:
+			<ol class="margin-top-bottom-0">
+				<li>Throws a <code>ServletException</code></li>
+				<li>Does not return within a time period defined by the Web server</li>
+			</ol>
+
+			<div class="indent4"></div>
+			<code class="code">void service(ServletRequest,ServletResponse) <small>throws ServletException,IOException</small></code> -
+			Can be called only after the servlet's <code>init()</code> method has completed successfully.
+
+			<div class="indent4"></div>
+			<code class="code">void destroy()</code> -
+			Called by the servlet container to indicate to a servlet that the servlet is being taken out of service.<br>
+			After the servlet container calls this method, it will not call the <code>service</code> method again on this servlet.<br>
+			This method gives the servlet an opportunity to clean up any resources that are being held.
 		</div>
 		<hr>
 
