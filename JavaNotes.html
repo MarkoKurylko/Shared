@@ -109,6 +109,7 @@
 						<h2><a href="#java" id="java-up">Java</a></h2>
 						<h3><a href="#jsp">Jakarta(Java) Server Pages</a></h3>
 						<h3><a href="#servlets" id="servletsUp">Jakarta(Java) Servlets</a></h3>
+						<h3><a href="#filters"  id="filtersUp" >Jakarta(Java) Filters</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -1446,6 +1447,30 @@
 			Called by the servlet container to indicate to a servlet that the servlet is being taken out of service.<br>
 			After the servlet container calls this method, it will not call the <code>service</code> method again on this servlet.<br>
 			This method gives the servlet an opportunity to clean up any resources that are being held.
+		</div>
+		<div id="filters">
+			<h3 class="margin-bottom-3"><a href="#filtersUp">Jakarta(Java) Filters</a></h3>
+			Purpose: modifying request and response, but <em>not</em> processing the request,
+			because request processing is on the <em>servlet</em> responsibility.<br>
+			Filters are chained in the same order as they described in <code>web.xml</code>.<br>
+			Note the reverse order during the response processing.<br>
+			Request -> F1(request) -> F2(request) -> ... -> Fn(request) -> <b>Servlet(r,r)</b> -> Fn(response) -> ... -> F2(response) -> F1(response) -> Response
+			<div class="indent4"></div>
+			<em>Spring Security</em> is based on <em>filters</em>.<br>
+			<div class="indent4"></div>
+			Filter interface:<br>
+			<code class="code">void init(ServletConfig config) throws ServletException</code><br>
+			<code class="code">void doFilter(ServletRequest,ServletResponse,<b>FilterChain</b>)</code><br>
+			<code class="code">void destroy()</code>
+			<div class="indent4"></div>
+			web.xml:<br>
+			<pre>
+			&lt;web-app>
+				&lt;filter>...&lt;/filter>
+				&lt;filter-mapping>...&lt;/filter-mapping>
+				&lt;servlet>...&lt;/servlet>
+				&lt;servlet-mapping>...&lt;/servlet-mapping>
+			&lt;/web-app></pre>
 		</div>
 		<hr>
 
