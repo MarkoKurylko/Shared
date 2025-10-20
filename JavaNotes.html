@@ -1370,6 +1370,29 @@
 			and <span class="tomato">not</span> <a href="ConnectedNotes.html#declarative">Declarative</a>,
 				<a href="ConnectedNotes.html#reactive">Reactive</a>,
 				<em>Distributed</em>, <em>Logic</em>, <em>Pipeline</em>, <em>Visual</em> <small>and</small> <em>Rule-based</em>
+
+			<div class="indent"></div>
+			Java 17:
+			Release features:
+			1) Sealed classes. Constraints:<br>
+				All permitted subclasses must belong to the same module as the sealed class.<br>
+				Every permitted subclass must explicitly extend the sealed class.<br>
+				Every permitted subclass must define a modifier: final, sealed, or non-sealed.<br>
+			2) New macOS Rendering Pipeline and other macOS features<br>
+			3) Enhanced Pseudo-Random Number Generators:<br>
+			Legacy random classes, such as java.util.Random, SplittableRandom and SecureRandom now extend the new RandomGenerator interface<br>
+			4) Foreign Function & Memory API (Incubator):<br>
+			efficiently invoking foreign functions (i.e., code outside the JVM), and by safely accessing foreign memory (i.e., memory not managed by the JVM)<br>
+			Replace the Java Native Interface (JNI)<br>
+			<br>
+			Removals:<br>
+			1) Strongly Encapsulate JDK Internals, with exceptions for such as sun.misc.Unsafe<br>
+			2) The Remote Method Invocation (RMI) Activation mechanism has been removed.<br>
+			3) Remove the Experimental AOT(Ahead of Time) and JIT Compiler.<br>
+			<br>
+			Preview:<br>
+			1) Pattern Matching for switch (Preview).
+
 		</div>
 		<hr>
 
@@ -1447,6 +1470,14 @@
 			Called by the servlet container to indicate to a servlet that the servlet is being taken out of service.<br>
 			After the servlet container calls this method, it will not call the <code>service</code> method again on this servlet.<br>
 			This method gives the servlet an opportunity to clean up any resources that are being held.
+
+			<div class="indent4"></div>
+			<h5 class="margin-top-bottom-0">Threading Model</h5>
+			<ul class="margin-top-0">
+				<li>Each incoming request runs in <b>its own thread</b></li>
+				<li>Servlets must be <b>thread-safe</b></li>
+				<li>Shared resources must be <em>synchronized</em></li>
+			</ul>
 		</div>
 		<div id="filters">
 			<h3 class="margin-bottom-3"><a href="#filtersUp">Jakarta(Java) Filters</a></h3>
@@ -1672,6 +1703,18 @@
 		</div>
 		<hr>
 
+		<div id="records">
+			<h3>Records</h3>
+			<code class="code">record Triangle&lt;C extends Coordinate> (C top, C left, C right) implements Shape { }</code><br>
+			<code class="code">new Triangle(c1, c2, c3);</code><br>
+			Implicitly final, methods: equals & hashCode (based on their components’ values, not object identity), toString. Getters without "get", no setters.
+			Compact constructor. Can use Generics. Can implement interfaces.<br>
+			We <b>cannot</b> add the extends clause to the declaration since every record class implicitly extends the abstract class Record, and Java doesn’t allow multiple inheritance.
+			Can have static variable and initializers, but not instance.
+			Records can be inner and local.
+		</div>
+		<hr>
+
 		<div id="referenceType">
 			<h3 class="margin-bottom-3">Reference Type</h3>
 			Java <span class="brown">Reference Type</span> stores an <em>8-byte identifier</em>.
@@ -1831,6 +1874,7 @@
 					If you can avoid using the <code>reduce()</code> method, then you definitely should, because it's very easy to make mistakes with it.<br>
 					In fact, you should use a <code>reduce()</code> method as a last resort, only if you have no other solution
 				</li>
+				<li>Do filter as early as possible</li>
 			</ul>
 			<span class="java9">(Since 9)</span> <code>dropWhile(predicate)</code> and <code>takeWhile(predicate)</code> work as "one-off" semaphore,
 			that means from the time <em>predicate</em> result is switched their value, there is no effect of switching its value back.
@@ -1895,11 +1939,15 @@
 				</tr>
 
 				<tr>
-					<td><code>map</code></td>
+					<td rowspan="2"><code>map</code></td>
 					<td><code><span class="code">Stream</span>&lt;R&gt; map(<span class="code">Function</span>&lt;T,R&gt; mapper)</code></td>
 					<td><code>map(<span class="code">String</span>::length)</code></td>
 					<td>Making a new stream of values returned by <em>mapper</em> function</td>
 				</tr>
+				<tr>
+					<td><code> mapToInt mapToDouble mapToLong</code></td>
+				</tr>
+
 				<tr>
 					<td><code>flatMap</code></td>
 					<td><code class="nowrap"><span class="code">Stream</span>&lt;R&gt; flatMap(<span class="code">Function</span>&lt;T, <span class="code">Stream</span>&lt;R&gt;&gt; mapper)</code></td>
