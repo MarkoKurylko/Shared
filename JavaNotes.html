@@ -78,7 +78,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h2><a href="#generics">Generics</a></h2>
+						<h2><a id="genericsUp" href="#generics">Generics</a></h2>
 					</details>
 				</td>
 			</tr>
@@ -512,7 +512,7 @@
 					<td><code>list.get(0)</code></td>
 					<td>
 						<code>set.iterator().next()</code><br>
-						<code>set.stream.findFirst()</code>
+						<code>set.stream().findFirst()</code>
 					</td>
 				</tr>
 				<tr>
@@ -1260,7 +1260,7 @@
 		<hr>
 
 		<div id="generics">
-			<h2>Generics <small class="java5">(Since 1.5)</small></h2>
+			<h2><a href="#genericsUp">Generics</a> <small class="java5">(Since 1.5)</small></h2>
 			<ul class="ulWithMargin">
 			<li> The reason why Generics were added to the Java language — to enforce type safety at compile time</li>
 			<li>
@@ -1282,7 +1282,8 @@
 					Foo&lt;?&gt; // <b class="peru">unbounded</b> wildcard<br>
 					Foo&lt;? extends Class&gt; // <b class="green">upper</b> bounded wildcard<br>
 					Foo&lt;? super Class&gt; // <b class="brown">lower</b> bounded wildcard
-				</code>
+				</code><br>
+				<span class="get-title">PECS</span>
 			</li>
 			<li>
 				<h3 id="diamond" style="margin-bottom: 0;"><b>&lt;&gt;</b>Diamond operator</h3>
@@ -1853,7 +1854,7 @@
 			The Stream API gives <b>4</b> interfaces: <code>Stream</code>, <code>IntStream</code>, <code>LongStream</code> and <code>DoubleStream</code>.<br>
 			Last three streams use primitive types for numbers instead of the wrapper types to avoid boxing and unboxing.<br>
 			They have some terminal operations that do not exist in <code>Stream</code>:
-			<code>sum min max average summaryStatistics</code><br>
+			<code class="pointer" title="min() max() are w/o comparators">sum min() max() average summaryStatistics</code><br>
 			<em>Short-circuiting</em> methods in the Stream API can produce a result without having to process all the elements of your stream.<br>
 
 			<h4 class="margin-bottom-0">Good practice</h4>
