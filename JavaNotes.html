@@ -79,6 +79,7 @@
 				<td>
 					<details>
 						<summary></summary>
+						<h2><a id="garbageCollectorUp" href="#garbageCollector">Garbage Collector</a></h2>
 						<h2><a id="genericsUp" href="#generics">Generics</a></h2>
 					</details>
 				</td>
@@ -111,6 +112,7 @@
 						<h3><a href="#jsp">Jakarta(Java) Server Pages</a></h3>
 						<h3><a href="#servlets" id="servletsUp">Jakarta(Java) Servlets</a></h3>
 						<h3><a href="#filters"  id="filtersUp" >Jakarta(Java) Filters</a></h3>
+						<h3><a href="#jmm" id="jmmUp">JMM todo</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -1272,6 +1274,50 @@
 		</div>
 		<hr>
 
+		<div id="garbageCollector">
+			<h2><a href="#garbageCollectorUp">Garbage Collector (GC)</a></h2>
+			Characteristics:
+			<ul class="margin-top-0">
+				<li><b>Footprint</b> - the memory the Java app is using, the goal of GC is to reduce it</li>
+				<li><b>Throughput</b> - <span class="get-title">CPU</span> time spent on GC</li>
+				<li><b>Latency</b> - the pause times</li>
+			</ul>
+			Types:
+			<ul class="ul-with-margin margin-top-0">
+				<li>
+					<b>Serial GC</b> uses a single thread to perform all garbage collection work.<br>
+					Best-suited to single processor machines.<br>
+					Selected by default on certain HW and OS configurations.<br>
+					<span class="green">Minimal Footprint</span>, good Throughput, <span class="red">highest Latency</span>
+					<code class="code">-XX:+UseSerialGC</code>
+				</li>
+				<li>
+					<b>Parallel GC</b> similar to Serial, but has multiple threads used to speed up GC.<br>
+					Intended for applications with medium-sized to large-sized data sets that are run on multiprocessor or multithreaded HW.<br>
+					<span class="black">Modest Footprint</span>, <span class="red">top Throughput</span>, <span class="tomato">high Latency</span>
+					<code class="code">-XX:+UseParallelGC</code>
+				</li>
+				<li>
+					<b>G1GC</b> <em>Garbage-First</em>. Is the default collector.<br>
+					Targeted for multiprocessor machines scaling to a large amount of memory.
+					G1 is a generational, incremental, parallel, mostly concurrent, stop-the-world, and evacuating GC.
+					Similar to other collectors, G1 splits the heap into (virtual) young and old generations.<br>
+					<span class="black">Moderate Footprint</span>, <span class="blue">moderate Throughput</span>, <span class="green">low Latency</span>
+					<code class="code">-XX:+UseG1GC</code><br>
+					<code class="code">-XX:MaxGCPauseMillis=<i>ms</i></code> - target max GC pause time (in ms)
+				</li>
+				<li>
+					<b>ZGC</b> scalable low latency garbage collector.<br>
+					Performs all expensive work concurrently, without stopping the execution of application threads for more than a few <i>ms</i>.<br>
+					Suitable for applications which require low latency. Supports heap sizes from 8MB to 16TB.<br>
+					<span class="blue">Sizeable Footprint</span>, <span class="blue">moderate Throughput</span>, <span class="lime-green">ultra-low Latency</span>
+					<code class="code">-XX:+UseZGC</code>
+				</li>
+			</ul>
+			<code class="code">-XX:+PrintGCDetails</code>
+		</div>
+		<hr>
+
 		<div id="generics">
 			<h2><a href="#genericsUp">&uarr;</a><a href="#genericsUp">Generics</a><a href="#genericsJava">&darr;</a> <small class="java5">(Since 1.5)</small></h2>
 			<ul class="ulWithMargin">
@@ -2283,7 +2329,7 @@
 			<details>
 				<summary id="collectingAndThenWithMaxBy"><code>collectingAndThen</code> & <code>maxBy</code> example</summary>
 				<pre><code class="language-java">		record Employee(String name, String department, double salary) {}
-		Collector&lt;Employee, ?, Optional&lt;Employee>> downstream = Collectors.<b>maxBy</b>(Comparator.comparingDouble(Employee::salary));
+		Collector&lt;Employee, ?, Optional&lt;Employee>> downstream = Collectors.maxBy(Comparator.comparingDouble(Employee::salary));
 		Collector&lt;Employee, ?, Double> downstreamFinished = Collectors.collectingAndThen(downstream, o -> o.orElseThrow().salary);
 
 		Map&lt;String, Double> result =

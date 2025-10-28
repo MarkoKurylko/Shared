@@ -118,7 +118,7 @@
 	color: MidnightBlue;
 }
 
-ul.ulWithMargin > li {margin: 10px 0;}
+ul.ulWithMargin > li, ul.ul-with-margin > li {margin: 10px 0;}
 ol.olWithMargin > li {margin: 10px 0;}
 
 .nowrap {
