@@ -90,6 +90,15 @@
 		</td>
 	</tr>
 	<tr>
+		<td><h1>L</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3><a href="#looseCoupling" id="looseCouplingUp">Loose Coupling</a></h3>
+			</details>
+		</td>
+	</tr>
+	<tr>
 		<td><h1>O</h1></td>
 		<td>
 			<details>
@@ -124,7 +133,8 @@
 		<td>
 			<details>
 				<summary></summary>
-				<h2><a href="#solid">SOLID</a></h2>
+				<h2><a href="#solid" id="solidUp">SOLID</a></h2>
+				<h2><a href="#sql" id="sqlUp">SQL</a></h2>
 			</details>
 		</td>
 	</tr>
@@ -1093,7 +1103,7 @@
 <hr>
 
 <div id="looseCoupling">
-	<h3><a href="#looseCouplingUp">Loose coupling</a></h3>
+	<h3><a href="#looseCouplingUp">Loose Coupling</a></h3>
 	Loose coupling between modules means that modules does not depend on each other OR this dependency is minimal.<br>
 	See also <a href="#highCohesion">High Cohesion</a>
 </div>
@@ -1405,7 +1415,7 @@
 <hr>
 
 <div id="solid">
-	<h2>SOLID</h2>
+	<h2><a href="#solidUp">SOLID</a></h2>
 	<ul class="ulWithMargin">
 		<li>
 			<b>Single responsibility principle</b>
@@ -1462,6 +1472,84 @@
 				<iframe id="dip" src="parts/DIPExample.html" style="width:-webkit-fill-available; height:570px;" >
 				</iframe>
 			</details>
+		</li>
+	</ul>
+</div>
+<hr>
+
+<div id="sql">
+	<h2><a href="#sqlUp">SQL</a></h2>
+
+	<h4 class="margin-bottom-3">Table Join types</h4>
+	<table>
+		<tr>
+			<td>
+				<table class="collapse-border padding">
+					<tr><th>A</th></tr>
+					<tr><td>1</td></tr>
+					<tr><td>2</td></tr>
+				</table>
+			</td>
+			<td>
+				<table class="collapse-border padding">
+					<tr><th>B</th></tr>
+					<tr><td>1</td></tr>
+					<tr><td>3</td></tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<ul>
+		<li>
+			<b>CROSS JOIN</b> - a <em>Cartesian product</em>, all possible combinations of all rows. A default join type
+			<table class="collapse-border padding">
+				<tr><th>A</th><th>B</th></tr>
+				<tr><td>1</td><td>1</td></tr>
+				<tr><td>1</td><td>3</td></tr>
+				<tr><td>2</td><td>1</td></tr>
+				<tr><td>2</td><td>3</td></tr>
+			</table>
+		</li>
+		<li>
+			<b>FULL OUTER JOIN</b> - returns the rows from tables matched to the <i>join</i> condition and others rows,
+			but with the <i>NULL</i> values from the opposite table
+			<table class="collapse-border padding">
+				<tr><th>A</th><th>B</th></tr>
+				<tr><td>1</td><td>1</td></tr>
+				<tr><td>2</td><td><i>NULL</i></td></tr>
+				<tr><td><i>NULL</i></td><td>3</td></tr>
+			</table>
+		</li>
+		<li>
+			<b>LEFT/RIGHT OUTER JOIN</b> - returns the rows from tables matched to the <i>join</i> condition and rows from the LEFT/RIGHT table,
+			but with the <i>NULL</i> values from the opposite table
+			<table>
+				<tr>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>LEFT</small></caption>
+							<tr><th>A</th><th>B</th></tr>
+							<tr><td>1</td><td>1</td></tr>
+							<tr><td>2</td><td><i>NULL</i></td></tr>
+						</table>
+					</td>
+					<td>
+						<table class="collapse-border padding">
+							<caption><small>RIGHT</small></caption>
+							<tr><th>A</th><th>B</th></tr>
+							<tr><td>1</td><td>1</td></tr>
+							<tr><td><i>NULL</i></td><td>3</td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<b>INNER JOIN</b> - returns only the rows from tables matched to the <i>join</i> condition
+			<table class="collapse-border padding">
+				<tr><th>A</th><th>B</th></tr>
+				<tr><td>1</td><td>1</td></tr>
+			</table>
 		</li>
 	</ul>
 </div>
