@@ -37,6 +37,7 @@
 			<details>
 				<summary></summary>
 				<h2><a href="#case-types" id="case-types-up">Case Types</a></h2>
+				<h4><a href="#composition" id="compositionUp">Composition</a></h4>
 			</details>
 		</td>
 	</tr>
@@ -103,7 +104,7 @@
 		<td>
 			<details>
 				<summary></summary>
-				<h2><a href="#oop" id="oop-up">Object-Oriented Programming</a></h2>
+				<h2><a href="#oop" id="oopUp">Object-Oriented Programming</a></h2>
 			</details>
 		</td>
 	</tr>
@@ -1111,23 +1112,33 @@
 
 
 <div id="oop">
-	<h2><a href="#oop-up">Object-Oriented Programming</a></h2>
+	<h2><a href="#oopUp">Object-Oriented Programming</a></h2>
 	Encapsulation, Abstraction, Inheritance, Polymorphism.<br>
 	<div class="indent4"></div>
 
-	<em><b>Inheritance</b></em> uses <em class="grey"><b>is-a</b></em> relationship.<br>
-
-	<em><b>Composition uses</b></em> <em class="grey"><b>has-a</b></em> relationship.
-	Related objects are the part of the container, so with destruction of a container they will be destroyed too.
-	It is a <em class="tomato">Strong association</em>.<br>
-
-	<em><b>Aggregation</b></em> uses <em class="grey"><b>has-a</b></em> relationship.
-	Container only hold the references of contained objects. Destruction of a container does not affect them.
-	It is a <em class="green">Weak association</em> and <em>one-way relationship</em>.
-	<br>
-
-	Composition and Aggregation are the two special forms(extension) of <em>Association</em>
-	<br>
+	Relationships:
+	<ul class="margin-top-bottom-0">
+		<li><em><b>Inheritance</b></em> uses <em class="grey"><b>is-a</b></em> relationship</li>
+		<li>
+			<em><b>Association</b></em> is a relationship between two <b class="dim-grey">independent</b> classes where objects of one class use or interact with objects of another class.<br>
+			It is a "using" relationship that can be one-to-one, one-to-many, or many-to-many, and both objects have their own lifespans.<br>
+			<em>Association</em> defines <em>structural</em> relationship between classes of objects that allows one object instance to cause another to perform an action on its behalf.<br>
+			Key characteristics of association: Independent objects, "Using" relationship, Unidirectional or bidirectional.<br>
+			Special forms(extension) of <em>Association</em>:
+			<ul>
+				<li>
+					<em><b><a href="#compositionUp" id="composition">Composition</a></b></em> uses <em class="grey"><b>has-a</b></em> relationship.
+					Related objects are the part of the container, so with destruction of a container they will be destroyed too.
+					It is a <em class="tomato">Strong association</em>
+				</li>
+				<li>
+					<em><b>Aggregation</b></em> uses <em class="grey"><b>has-a</b></em> relationship.
+					Container only hold the references of contained objects. Destruction of a container does not affect them.
+					It is a <em class="green">Weak association</em> and <em>one-way relationship</em>.
+				</li>
+			</ul>
+		</li>
+	</ul>
 
 	<br>
 	Polymorphism in Java:<br>

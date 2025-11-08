@@ -19,7 +19,8 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#atomic">Atomic</a></h3>
+						<h3><a href="#atomic" id="atomicUp">Atomic</a></h3>
+						<h3><a href="#arrays" id="arraysUp">Arrays</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -28,7 +29,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h2><a id="classes" href="#classes">Classes</a></h2>
+						<h2><a href="#classes" id="classesUp">Classes</a></h2>
 							<h3 class="padding-left-1em"><a href="#class"><code class="code">.class</code> literal</a></h3>
 							<h3 class="padding-left-1em"><a href="#nesting">Nesting of <em>classes</em></a></h3>
 						<h2><a href="#collections" id="collectionsUP">Collections</a></h2>
@@ -47,7 +48,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#data-race-condition" id="data-race-up">Data Race & Race Condition</a></h3>
+						<h3><a href="#dataRaceCondition" id="data-race-up">Data Race & Race Condition</a></h3>
 						<h3><a href="#diamond">Diamond operator</a></h3>
 					</details>
 				</td>
@@ -108,11 +109,11 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h2><a href="#java" id="java-up">Java</a></h2>
-						<h3><a href="#jsp">Jakarta(Java) Server Pages</a></h3>
+						<h2><a href="#java" id="javaUp">Java</a></h2>
+						<h3><a href="#jsp" id="jspUp">Jakarta(Java) Server Pages</a></h3>
 						<h3><a href="#servlets" id="servletsUp">Jakarta(Java) Servlets</a></h3>
 						<h3><a href="#filters"  id="filtersUp" >Jakarta(Java) Filters</a></h3>
-						<h3><a href="#jmm" id="jmmUp">JMM todo</a></h3>
+						<h2><a href="#jm" id="jmUp">Java Memory Structure</a></h2>
 					</details>
 				</td>
 			</tr>
@@ -124,6 +125,7 @@
 						<h2><a href="#lambdas">Lambda Expressions</a></h2>
 						<h3 class="padding-left-1em"><a href="#lambdas-basis">Basis</a></h3>
 						<h3 class="padding-left-1em"><a href="#lambdas-mr">Method references</a></h3>
+						<h3><a href="#loops" id="loopsUp">Loops</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -161,9 +163,10 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#data-race-condition"><span id="race-condition-up">Race Condition</span> <small>& Data Race</small></a></h3>
-						<h3><a href="#referenceType">Reference Type</a></h3>
-						<h3><a href="#rtti">Runtime Type Identification (RTTI)</a></h3>
+						<h3><a href="#dataRaceCondition"><span id="raceConditionUp">Race Condition</span> <small>& Data Race</small></a></h3>
+						<h3><a href="#record" id="recordUp">Record</a></h3>
+						<h3><a href="#referenceType" id="referenceTypeUp">Reference Type</a></h3>
+						<h3><a href="#rtti" id="rttiUp">Runtime Type Identification (RTTI)</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -180,6 +183,7 @@
 						<h3><a id="strictfp" href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
 						<h3><a href="#synchronized" class="code-a"><code>synchronized</code></a></h3>
 						<h4><a href="#synchronizedCollections">Synchronized Collections</a></h4>
+						<h4>Shallow copy / deep copy todo</h4>
 					</details>
 				</td>
 			</tr>
@@ -189,6 +193,7 @@
 					<details>
 						<summary></summary>
 						<h3><a href="#threadLocal" class="code-a"><code>ThreadLocal</code></a></h3>
+						<h3><a href="#try" id="tryUp">Try catch finally</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -207,6 +212,7 @@
 					<details>
 						<summary></summary>
 						<h3><a href="#weakly">Weakly consistence (iterator)</a></h3>
+						<h4>WeakHashMap todo</h4>
 					</details>
 				</td>
 			</tr>
@@ -258,6 +264,20 @@
 					But <strong class="grey">the <span class="get-title">JMM</span> does not guarantee</strong> atomicity for <code class="code">long</code> and <code class="code">double</code>, so portable code <strong>should not rely on it</strong>
 				</li>
 			</ul>
+		</div>
+		<hr>
+
+		<div id="arrays">
+			<h3><a href="#arraysUp">Arrays</a></h3>
+			Max array size is <code class="code">Integer.MAX_VALUE</code>.<br>
+			<code class="code">boolean[] ba = new boolean[-200];</code> will compile, but will return <code class="fire-brick">NegativeArraySizeException</code> at Runtime.
+		</div>
+		<hr>
+
+		<div id="classes">
+			<h2><a href="#classesUp">Classes</a></h2>
+			Top level classes <span class="tomato">cannot</span> be <code class="code">static</code>.<br>
+			<code>abstract</code> classes <span class="tomato">cannot</span> be <code>final</code>, <small>that is logical</small>.
 		</div>
 		<hr>
 
@@ -377,19 +397,19 @@
 					<td>Searches the specified list for the specified object using the binary search algorithm</td>
 				</tr>
 				<tr>
-					<td><code class="code">boolean <b>disjoint</b>(Collection<?> c1, Collection<?> c2)</code></td>
+					<td><code class="code">boolean <b>disjoint</b>(Collection&lt;?> c1, Collection&lt;?> c2)</code></td>
 					<td>Returns <code class="code">true</code> if the two specified collections have no elements in common</td>
 				</tr>
 				<tr>
-					<td><code class="code">int <b>frequency</b>(Collection<?> c, Object o)</code></td>
+					<td><code class="code">int <b>frequency</b>(Collection&lt;?> c, Object o)</code></td>
 					<td>Returns the number of elements in the specified collection equal to the specified object</td>
 				</tr>
 				<tr>
-					<td><code class="code">int <b>indexOfSubList</b>(List<?> source, List<?> target)</code></td>
+					<td><code class="code">int <b>indexOfSubList</b>(List&lt;?> source, List&lt;?> target)</code></td>
 					<td rowspan="2">Returns the starting position of the first/last occurrence of the specified target list within the specified source list</td>
 				</tr>
 				<tr>
-					<td><code class="code">int <b>lastIndexOfSubList</b>(List<?> source, List<?> target)</code></td>
+					<td><code class="code">int <b>lastIndexOfSubList</b>(List&lt;?> source, List&lt;?> target)</code></td>
 				</tr>
 
 				<tr>
@@ -429,26 +449,26 @@
 					<td>Replaces all occurrences of one specified value in a list with another</td>
 				</tr>
 				<tr>
-					<td><code class="code">void <b>reverse</b>(List<?> list)</code></td>
+					<td><code class="code">void <b>reverse</b>(List&lt;?> list)</code></td>
 					<td>Reverses the order of the elements in the specified list</td>
 				</tr>
 				<tr>
-					<td><code class="code">void <b>rotate</b>(List<?> list, int distance)</code></td>
+					<td><code class="code">void <b>rotate</b>(List&lt;?> list, int distance)</code></td>
 					<td>Rotates the elements in the specified list by the specified distance</td>
 				</tr>
 				<tr>
-					<td><code class="code">void <b>shuffle</b>(List<?> list[, Random rnd])</code></td>
+					<td><code class="code">void <b>shuffle</b>(List&lt;?> list[, Random rnd])</code></td>
 					<td>Randomly permute the specified list using the default/specified source of randomness</td>
 				</tr>
 				<tr>
-					<td><code class="code">void <b>sort</b>(List<?> list[, Comparator&lt;T> c])</code></td>
+					<td><code class="code">void <b>sort</b>(List&lt;T> list[, Comparator&lt;T> c])</code></td>
 					<td>
 						Sorts the specified list into [ascending] order, according to the <em>natural ordering</em> of its elements or
-						by the specified comparator
+						by the specified comparator. If comparator is not specified, then <code>T</code> should implement <code>Comparable</code>
 					</td>
 				</tr>
 				<tr>
-					<td><code class="code">void <b>swap</b>((List<?> list, int i, int j)</code></td>
+					<td><code class="code">void <b>swap</b>((List&lt;?> list, int i, int j)</code></td>
 					<td>Swaps the elements at the specified positions in the specified list</td>
 				</tr>
 
@@ -542,7 +562,7 @@
 			<code class="code">synchronizedNavigableSet</code>, <code class="code">synchronizedNavigableMap</code><br>
 			Pay attention to that the <i>synchronized</i> collection does <span class="red"><b>not</b></span> mean they are <span class="red"><b>concurrent</b></span>.<br>
 			They are <i>thread-safe</i> and in case of concurrency their <span class="brown">performance</span> is expected to be very <span class="brown">low</span>.<br>
-			Moreover, despite they are called <i>tread-safe</i> they may fall into a <a href="#data-race-condition">race condition</a> or non-deterministic behavior in case of using it "as is".<br>
+			Moreover, despite they are called <i>tread-safe</i> they may fall into a <a href="#dataRaceCondition">race condition</a> or non-deterministic behavior in case of using it "as is".<br>
 			<i>Javadoc:</i> It is imperative that the user manually synchronize on the returned list when traversing it via <code class="code">Iterator</code>, <code class="code">Spliterator</code> or <code class="code">Stream</code>:
 			<pre class="margin-top-0">
 	List list = Collections.synchronizedList(new ArrayList());
@@ -1021,6 +1041,8 @@
 					so the thread cannot get a chance to acquire the lock.
 				</li>
 			</ul>
+			todo: Thread interrupt() - only marks thread with the "interrupted" status if thread is working normally
+			(not blocked, wait, sleep, join etc.)<br>
 			Related links:
 			<ul class="margin-top-3">
 				<li><a href="#atomic">Atomic</a></li>
@@ -1030,15 +1052,15 @@
 				<li><a href="#synchronized" class="code-a"><code>synchronized</code></a></li>
 				<li><a href="#synchronizedCollections">Synchronized Collections</a></li>
 				<li><a href="#concurrentCollections"  >Concurrent Collections</a></li>
-				<li><a href="#data-race-condition">Data Race & Race Condition</a></li>
+				<li><a href="#dataRaceCondition">Data Race & Race Condition</a></li>
 				<li><a href="#threadLocal" class="code-a"><code>ThreadLocal</code></a></li>
 				<li><a href="#volatile" class="code-a"><code>volatile</code></a></li>
 			</ul>
 		</div>
 		<hr>
 
-		<div id="data-race-condition">
-			<h3 class="margin-bottom-3"><a href="#data-race-up">Data Race</a> & <a href="#race-condition-up">Race Condition</a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+		<div id="dataRaceCondition">
+			<h3 class="margin-bottom-3"><a href="#data-race-up">Data Race</a> & <a href="#raceConditionUp">Race Condition</a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			<table class="collapse-border padding">
 				<tr>
 					<th>Data Race</th>
@@ -1276,6 +1298,7 @@
 
 		<div id="garbageCollector">
 			<h2><a href="#garbageCollectorUp">Garbage Collector (GC)</a></h2>
+			GC cleans <a href="#heapMemory">Heap memory</a>.<br>
 			Characteristics:
 			<ul class="margin-top-0">
 				<li><b>Footprint</b> - the memory the Java app is using, the goal of GC is to reduce it</li>
@@ -1420,16 +1443,19 @@
 		<hr>
 
 		<div id="java">
-			<h2 class="margin-bottom-3"><a href="#java-up">Java</a></h2>
-			Is <em class="get-title">OOP</em>,
-				<a href="ConnectedNotes.html#imperative">Imperative</a>,
+			<h2 class="margin-bottom-3"><a href="#javaUp">Java</a></h2>
+			Is <b class="dim-grey">Multi-paradigm</b>: <em class="get-title">OOP</em><small>(by its organizational model)</small>,
+			<a href="ConnectedNotes.html#imperative">Imperative</a> <small>(by its execution model, but <span class="tomato">not</span> <em>Procedural</em> in its paradigm)</small>,
 				<a href="ConnectedNotes.html#functional">Functional <small>(despite it is <span class="tomato">not</span> <a href="ConnectedNotes.html#declarative">Declarative</a>)</small></a>,
 				<a id="genericsJava" href="#generics">Generic</a>,
 				<a href="#concurrency">Concurrent</a>,
-				<em>Reflective</em><br>
+				<em>Reflective</em>, <em>Dynamic</em><br>
 			and <span class="tomato">not</span> <a href="ConnectedNotes.html#declarative">Declarative</a>,
 				<a href="ConnectedNotes.html#reactive">Reactive</a>,
-				<em>Distributed</em>, <em>Logic</em>, <em>Pipeline</em>, <em>Visual</em> <small>and</small> <em>Rule-based</em>
+				<em>Distributed</em>, <em>Logic</em>, <em>Pipeline</em>, <em>Visual</em> <small>and</small> <em>Rule-based</em><br>
+			The fact that Java supports primitive types makes it <span class="tomato">not pure</span> <em class="get-title">OOP</em>.<br>
+			Type System: <b class="dim-grey">Static</b> and <b class="dim-grey">Strong</b><br>
+			Data is strictly <em>passed by value</em> <small class="grey">(not by reference)</small>
 
 			<div class="indent"></div>
 			Java 17:
@@ -1456,8 +1482,44 @@
 		</div>
 		<hr>
 
+		<div id="jm">
+			<h2><a href="#jmUp">Java Memory Structure</a></h2>
+			<h4 class="margin-bottom-3">Stack memory</h4>
+			Execution of a thread. It called <em>Stack</em>(<small class="get-title">LIFO</small>) because it consists of method execution blocks, organized in a Stack,
+			but the data inside each block can be accessed on demand.<br>
+			It contains primitive values that are specific to a method and references to objects referred from the method that are in a heap.<br>
+			Whenever we call <span class="green">a new method</span>, <span class="dark-green">a new block</span> is created on top of the stack.<br>
+			When the method finishes execution, its corresponding stack frame is flushed, the flow goes back to the calling method, and space becomes available for the next method.
+			<ul class="margin-top-3">
+				<li>It grows and shrinks as new methods are called and returned, respectively</li>
+				<li>Variables inside the stack exist only as long as the method that created them is running</li>
+				<li>It’s automatically allocated and deallocated when the method finishes execution</li>
+				<li>If this memory is full, Java throws <code class="code">java.lang.StackOverFlowError</code></li>
+				<li>Access to this memory is fast when compared to heap memory</li>
+				<li>This memory is threadsafe, as each thread operates in its own stack</li>
+			</ul>
+
+			<h4 class="margin-bottom-3" id="heapMemory">Heap memory</h4>
+			Keeps the static members.<br>
+			Keeps the other todo.<br>
+			From Java 7 the String Pool is stored in the Heap<br>
+			<code class="code">java.lang.OutOfMemoryError</code><br>
+			<code class="code">-Xms512m -Xmx2048m</code><br>
+			Todo
+
+			<h4 class="margin-bottom-3">Metaspace</h4>
+			<small class="gray">Old <em>PermGen</em> space is replaced by Metaspace since Java 8.</small><br>
+			Only stores the class metadata.<br>
+			Lives in native memory.<br>
+			Metadata contains information about the objects in the heap - class definitions, method tables, and <em>related information</em><br>
+			The Metaspace is not fixed in size and can grow dynamically.<br>
+			<code class="code">-XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m</code><br>
+
+		</div>
+		<hr>
+
 		<div id="jsp">
-			<h3 class="margin-bottom-3">Java Server Pages / <em>Jakarta</em> Server Pages</h3>
+			<h3 class="margin-bottom-3"><a href="#jspUp">Java Server Pages</a> / <em>Jakarta</em> Server Pages</h3>
 			Is a collection of technologies to create dynamically generated web pages based on <span class="get-title">HTML</span>, <span class="get-title">XML</span>, <span class="get-title">SOAP</span> or other document types.<br>
 			Architecturally, <span class="get-title">JSP</span> may be viewed as a high-level abstraction of <a href="#servlets">Jakarta(Java) Servlets</a>.<br>
 			Each <span class="get-title">JSP</span> servlet is cached and re-used until the original <span class="get-title">JSP</span> is modified.<br>
@@ -1642,6 +1704,12 @@
 		</div>
 		<hr>
 
+		<div id="loops">
+			<h3><a href="#loopsUp">Loops</a></h3>
+			<code class="code">for(;;) // infinite loop</code>
+		</div>
+		<hr>
+
 		<div id="method-signature">
 			<h3 class="margin-bottom-3"><a href="#method-signature-up">Method</a> <a href="#signature-method-up">signature</a></h3>
 			<em>Method signature</em> is a combination of the <b>name</b> and <b>parameter types</b>.<br>
@@ -1763,13 +1831,20 @@
 		</div>
 		<hr>
 
-		<div id="records">
-			<h3>Records</h3>
-			<code class="code">record Triangle&lt;C extends Coordinate> (C top, C left, C right) implements Shape { }</code><br>
-			<code class="code">new Triangle(c1, c2, c3);</code><br>
-			Implicitly final, methods: equals & hashCode (based on their components’ values, not object identity), toString. Getters without "get", no setters.
-			Compact constructor. Can use Generics. Can implement interfaces.<br>
-			We <b>cannot</b> add the extends clause to the declaration since every record class implicitly extends the abstract class Record, and Java doesn’t allow multiple inheritance.
+		<div id="record">
+			<h3 class="margin-bottom-3"><a href="#recordUp">Record</a></h3>
+			<code class="code">record Triangle&lt;C extends Coordinate> (C top, C left, C right) implements Shape {</code><br>
+			<code class="code margin-left">Triangle {</code><br>
+			<code class="code margin-left-2">// compact constructor</code><br>
+			<code class="code margin-left">	}}</code><br>
+			<code class="code">new Triangle(c1, c2, c3);</code>
+			<div class="indent"></div>
+			Implicitly final<br>
+			Methods: <code class="code">equals</code> & <code class="code">hashCode</code> <small>(based on their components’ values, not object identity)</small>, <code class="code">toString</code>. Getters without "get", no setters.<br>
+			Compact constructor. <small>The purpose of <em>CC</em> is to reduce boilerplate of constructor parameters.</small><br>
+			Can use <a href="#generics">Generics</a>.<br>
+			Can implement interfaces.<br>
+			We <b>cannot</b> add the extends clause to the declaration since every record class implicitly extends the <code class="code">abstract class <b>Record</b></code>, and Java doesn’t allow multiple inheritance.
 			Can have static variable and initializers, but not instance.
 			Records can be inner and local.
 		</div>
@@ -2438,6 +2513,13 @@ class ClassOne {
 		</div>
 		<hr>
 
+		<div id="try">
+			<h3><a href="#tryUp">Try catch finally</a></h3>
+			<code class="code">finally</code> will not be executed if <code class="code">System.exit()</code>,
+			fatal errors like <code class="code">java.lang.StackOverFlowError</code>, Memory access error, etc.
+		</div>
+		<hr>
+
 		<div id="volatile">
 			<h3 class="code-a margin-bottom-3"><a href="#volatile-up"><code>volatile</code></a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			<code>public <span class="grey">[static]</span> <b>volatile</b> long longVar = 1L;</code><br>
@@ -2455,7 +2537,7 @@ class ClassOne {
 
 		<hr class="height2">
 		Tools used: <a href="https://highlightjs.org/">highlight.js</a><br>
-		Sources: Wikipedia, Oracle, dev.java<br>
+		Sources: Wikipedia, Oracle®, dev.java, Baeldung<br>
 
 		<div class="indent"></div>
 		<a href="all.html">SiteMap</a>

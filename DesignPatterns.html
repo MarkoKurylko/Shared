@@ -228,7 +228,7 @@
 			</tr>
 
 			<tr>
-				<td><a href="#twin">Twin</a></td>
+				<td><a href="#twin" id="twinUp">Twin</a></td>
 				<td>
 					Allows to model <em>multiple inheritance</em> in programming languages that do not support multiple inheritance.<br>
 					This pattern avoids many of the problems with multiple inheritance.
@@ -700,7 +700,7 @@
 	<hr>
 
 	<div id="twin">
-		<h3>Twin</h3>
+		<h3><a href="#twinUp">Twin</a></h3>
 		Instead of having a single class which is derived from two super-classes,
 		have two separate sub-classes each derived from one of the two super-classes.
 		These two sub-classes are closely coupled, so, both can be viewed as a Twin object having two ends.
@@ -720,7 +720,7 @@
 			twin.resume();
 		}
 
-		public void draw() {|
+		public void draw() {}
 	}
 
 	public class BallThread extends Thread {
