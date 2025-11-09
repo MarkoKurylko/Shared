@@ -317,43 +317,71 @@
 			Getting a <code>true</code> value does <b>not</b> mean that all the elements of the other collection have been applied;
 			it means that <b>at least one</b> has been applied.
 			<br><br>
-			<b>ArrayList</b> vs <b>LinkedList</b><br>
+
+			<code><b>ArrayList</b></code>:
+			The <code>size</code>, <code>isEmpty</code>, <code>get</code>, <code>set</code>,
+			<code>iterator</code>, and <code>listIterator</code> operations run in constant time.
+			The <code>add</code> operation runs in <i>amortized constant time</i> - adding <i>n</i> elements requires O(n) time.
+			All of the other operations run in linear time (roughly speaking).
+			The constant factor is low compared to that for the <code>LinkedList</code> implementation.<br>
+			<code>contains</code> requires <var>O(n)</var> time. It uses the <code>indexOf(object)</code> method to check if the object is in the list.
+			That means it should iterate all elements in a worse case.<br>
+			The <code>iterator</code> and <code>listIterator</code> methods are <a href="#failFast">fail-fast</a>.<br>
+
+			<code class="b">ArrayList</code> vs <code class="b">LinkedList</code><br>
 			What was true for linked lists when computing was invented in the 60's does not hold anymore,
 			and the capacity of linked lists to outperform arrays on insertion and deletion operations is greatly diminished by modern hardware, CPU caches, and pointer chasing.
 			Iterating over the elements of an <code>ArrayList</code> is much faster that over the elements of a <code>LinkedList</code>,
 			mainly due to pointer chasing and CPU cache misses.<br>
 			There are still cases where a linked list is faster than an array.
-			A doubly-linked list (LinkedList) can access its first and last element faster than an ArrayList can.
-			So if your application needs a Last In, First Out (LIFO) stack, or a First In, First Out (FIFO) waiting queue, then choosing a LinkedList is probably your best choice.
+			A doubly-linked list (<code>LinkedList</code>) can access its first and last element faster than an <code>ArrayList</code> can.
+			So if your application needs a <span class="get-title">LIFO</span>/stack, or a <span class="get-title">FIFO</span> waiting queue, then choosing a <code>LinkedList</code> is probably your best choice.
+
 			<br><br>
-			<b>SubList & SubSet</b><br>
+			<code><b>HashSet</b></code>: <code>contains</code> and <code>add</code>, <code>remove</code>, <code>size</code>
+			requires <var>O(1)</var> time <small>(the case 1 element in the bucket)</small>.
+			Because under the hood <code>HashSet</code> is using a <a href="#hashMap"><code>HashMap</code></a> (only the keys part).
+
+			<br><br>
+			<b class="i">SubList & SubSet</b><br>
 			<code>list.subList(start, end)</code> & <code>set.subSet(from, to)</code><br>
 			Note that the returned list/set is a <em>view</em> on the main list/set. Thus, any modification operation on the sub-collection is reflected on the main collection and vice versa.
 			<br><br>
+
+			<code id="hashMap"><b>HashMap</b></code>
+			is based on "buckets" array: <code>Node&lt;K,V>[] table</code>. The array cells contains only the first <code>Node</code>s of the buckets.
+			The Nodes form the linked list<small class="grey">(not the <code>java.util.LinkedList</code>)</small>.
+			<span class="nowrap">Since <span class="java8">Java 1.8</span> in case bucket size is > <b>8</b>,</span>
+			the bucket is being rebuilt with <code>TreeNode</code>, forming the <a href="ConnectedNotes.html#redBlackTree">RBT</a>.<br>
+			The array index for the <code>key</code> is calculated using <em>hash</em>,
+			so, in other words, the index of a key is always known and there is no need to iterate through the <em>array</em> to find the <em>bucket</em>.<br>
+			Thus, the <code>get(key)</code> operation takes <var>O(1)</var> time (in case of <b>1</b> element in the bucket),
+			otherwise it's called a <em class="tomato">collision</em>:
+			<var>O(n)</var> for linked list and <var>O(log n)</var> for RBT.<br>
+			<pre>	table[0] → Node(key1).next → Node(key2).next → ...
+	table[1] → Node(keyM) // no collision
+	table[2] → TreeNode(key3) → [TreeNode(key4) → [...], TreeNode(key5) → [...])]
+	table[3] → null</pre>
+			Default <em>load-factor</em> is 0.75, and <em>initialCapacity</em> is 16,
+			thus, by default you can hold 12<small>(16*0.75)</small> entries in the <code>HashMap</code>.
+			<em>Capacity</em> is the <code>length</code> of the inner array table.
+
+			<div class="indent4"></div>
+			<code><b>TreeMap</b></code> is based on a <a href="ConnectedNotes.html#redBlackTree">RBT</a>
+
+			<br><br>
+			<code><b>EnumMap</b></code> and <code><b>EnumSet</b></code> should be used if keys are of enum type, for more efficiency.
+
+			<br><br>
 			<em><b>Notes:</b></em> For Maps & Sets: Using <span class="red">mutable key</span> is an <span class="red">antipattern</span>, and you should definitely avoid doing that.
+
 			<br><br>
-			<code><b>TreeMap</b></code> is based on a <a href="ConnectedNotes.html#redBlackTree">Red Black Tree (RBT)</a>
-			<br><br>
-			<code><b>ArrayList</b></code>: The <code>size</code>, <code>isEmpty</code>, <code>get</code>, <code>set</code>,
-				<code>iterator</code>, and <code>listIterator</code> operations run in constant time.
-				The <code>add</code> operation runs in <i>amortized constant time</i> - adding <i>n</i> elements requires O(n) time.
-				All of the other operations run in linear time (roughly speaking).
-				The constant factor is low compared to that for the <code>LinkedList</code> implementation.<br>
-				<code>contains</code> requires O(n) time. It uses the <code>indexOf(object)</code> method to check if the object is in the list.
-				That means it should iterate all elements in a worse case.<br>
-			<code><b>HashSet</b></code>: <code>contains</code> and <code>add</code>, <code>remove</code>, <code>size</code>
-				requires O(1) time (the case 1 element in the bucket). Internal bucket structure (HashMap) allows such speed.
-				But in case hash collision may occur, the time can be O(n) / O(log n).<br>
-				Java 7+ with LinkedList - O(n)<br>
-				Java 8+ with RBT - O(log n)
-			<br><br>
-			<em id="failFast"><b>Fail-fast</b></em>: <code>ArrayList</code>:
-				The iterators returned by this class's <code>iterator</code> and <code>listIterator</code> methods are <i>fail-fast</i>:
-				if the list is structurally modified at any time after the iterator is created,
+			<em id="failFast"><b>Fail-fast</b></em>:
+				if a collection is structurally modified at any time after the iterator is created,
 				in any way except through the iterator's own <code>remove</code> or <code>add</code> methods, the iterator will throw a <code>ConcurrentModificationException</code>.
 			<br><i>Note</i>: the fail-fast behavior of iterators should be used only to detect bugs.
 			<div class="indent"></div>
-			<em id="weakly"><b>Weakly consistent</b></em> traversal of Iterators and <a href="#spliterator" id="spliteratorCollections">Spliterators</a> (in opposition to <a href="#failFast"><i>Fail-Fast</i></a>):<br>
+			<em id="weakly"><b>Weakly consistent</b></em><small>(fail-safe)</small> traversal of Iterators and <a href="#spliterator" id="spliteratorCollections">Spliterators</a> (in opposition to <a href="#failFast"><i>Fail-Fast</i></a>):<br>
 			<ul class="margin-top-0">
 				<li>they may proceed concurrently with other operations</li>
 				<li>they will <span class="green">never</span> throw <code class="code">ConcurrentModificationException</code></li>

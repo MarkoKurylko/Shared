@@ -91,6 +91,7 @@
 .text-align-initial {text-align:initial}
 .padding-left, .padding-left-1em {padding-left: 1em}
 
+var {color: DarkGreen}
 .code, code {color: DarkBlue}
 .bad-code {color: SaddleBrown}
 .code-a code{
