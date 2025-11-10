@@ -92,7 +92,8 @@
 .padding-left, .padding-left-1em {padding-left: 1em}
 
 var {color: DarkGreen}
-.code, code {color: DarkBlue}
+.code {color: DarkBlue}
+code {color: MidnightBlue}
 .bad-code {color: SaddleBrown}
 .code-a code{
 	color: DarkBlue;
@@ -146,6 +147,7 @@ ol.olWithMargin > li {margin: 10px 0;}
 .fs20 {
 	font-size: 20px;
 }
+.smaller {font-size: smaller}
 
 .pointer {cursor: pointer}
 .get-title { /* functional */

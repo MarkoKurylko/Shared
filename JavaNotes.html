@@ -100,7 +100,7 @@
 					<details>
 						<summary></summary>
 						<h3><a href="#instanceof"><code>instanceof</code> operator</a></h3>
-						<h3><a href="#interface" id="interface"><code>interface (TODO)</code></a></h3>
+						<h3><a href="#interface" id="interfaceUp"><code>interface</code></a></h3>
 					</details>
 				</td>
 			</tr>
@@ -1470,6 +1470,18 @@
 		</div>
 		<hr>
 
+		<div id="interface">
+			<h3><a href="#interfaceUp"><code>interface</code></a></h3>
+			Interface can have:<br>
+			- public abstract methods (they are public and abstract by default) <br>
+			- <code>public static final</code> fields (they are "psf" by default)<br>
+			<span class="java8">Since 1.8</span>:<br>
+			- Can have <code>default</code> instance methods and static methods<br>
+			<span class="java9">Since 9</span>:<br>
+			- Can have private instance methods
+		</div>
+		<hr>
+
 		<div id="java">
 			<h2 class="margin-bottom-3"><a href="#javaUp">Java</a></h2>
 			Is <b class="dim-grey">Multi-paradigm</b>: <em class="get-title">OOP</em><small>(by its organizational model)</small>,
@@ -2016,7 +2028,8 @@
 			The Stream API gives <b>4</b> interfaces: <code>Stream</code>, <code>IntStream</code>, <code>LongStream</code> and <code>DoubleStream</code>.<br>
 			Last three streams use primitive types for numbers instead of the wrapper types to avoid boxing and unboxing.<br>
 			They have some terminal operations that do not exist in <code>Stream</code>:
-			<code class="pointer" title="min() max() are w/o comparators">sum min() max() average summaryStatistics</code><br>
+			<code class="pointer" title="min() max() are w/o comparators">sum min() max() average summaryStatistics</code>.<br>
+			<code>IntStream</code> and <code>LongStream</code> have also static <code>range(from, toExclusive)</code> and <code>rangeClosed(from, to)</code> helper methods.<br>
 			<em>Short-circuiting</em> methods in the Stream API can produce a result without having to process all the elements of your stream.<br>
 
 			<h4 class="margin-bottom-0">Good practice</h4>
@@ -2212,7 +2225,7 @@
 				</tr>
 				<tr>
 					<td><code class="nowrap"><span class="code">Stream</span>&lt;T> filter(<span class="code">Predicate</span>&lt;T&gt; predicate)</code></td>
-					<td><code>filter(item -> item != null)</code></td>
+					<td><code>filter(Objects::nonNull)</code></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -2226,15 +2239,19 @@
 					<td>Returns a stream consisting of the remaining elements of this stream after <b class="dim-grey">discarding the first</b> <code><b>n</b></code> elements of the stream</td>
 				</tr>
 				<tr>
-					<td><code class="nowrap"><span class="code">Stream</span>&lt;T> sorted()</code></td>
+					<td><code class="nowrap black"><span class="code">Stream</span>&lt;T> <b>sorted()</b></code></td>
 					<td></td>
 					<td rowspan="2">
 						sorted according to natural order or to the provided <code>Comparator</code>
 					</td>
 				</tr>
 				<tr>
-					<td><code class="nowrap"><span class="code">Stream</span>&lt;T> sorted(<span class="code">Comparator</span>&lt;T&gt; comparator)</code></td>
-					<td></td>
+					<td><code class="nowrap black"><span class="code">Stream</span>&lt;T> <b>sorted</b>(<span class="code">Comparator</span>&lt;T&gt; comparator)</code></td>
+					<td>
+						<code class="dim-gray">record Person(String name, int age) {}</code>
+						<div class="indent4"></div>
+						<code class="black smaller">stream.sorted(Comparator.comparingInt(Person::age).<span class="code">thenComparing</span>(Person::name))</code>
+					</td>
 				</tr>
 
 				<tr>
@@ -2292,7 +2309,7 @@
 				</tr>
 				<tr>
 					<th><code class="code">combiner()</code></th>
-					<td>Combining two <span class="lime-green">result containers</span> into <span class="green">one RC</span></td>
+					<td>Combining two <span class="lime-green">result containers</span> into one <span class="green">result container</span></td>
 				</tr>
 				<tr>
 					<th><code class="code">finisher()</code></th>
@@ -2417,7 +2434,7 @@
 
 				<tr>
 					<td rowspan="1">math</td>
-					<td><code class="code">averaging* summarizing* summing* with Double, Int, Long</code></td>
+					<td><code class="code">averaging* <span class="dim-grey pointer" title="statistics">summarizing*</span> summing* with Double, Int, Long</code></td>
 					<td>Mathematical</td>
 				</tr>
 
