@@ -93,7 +93,7 @@
 
 var {color: DarkGreen}
 .code {color: DarkBlue}
-code {color: MidnightBlue}
+code {color: DarkSlateGrey}
 .bad-code {color: SaddleBrown}
 .code-a code{
 	color: DarkBlue;

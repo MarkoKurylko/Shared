@@ -2080,6 +2080,7 @@
 					<th>Description</th>
 					<th>Since</th>
 				</tr>
+				<tr><td colspan="4" class="text-align-center">static</td><tr>
 				<tr>
 					<td><code class="tooltip" title="static">Stream.of</code></td>
 					<td><code><span class="code">Stream</span>&lt;T&gt; of(<span class="code">T</span>... values)</code></td>
@@ -2092,7 +2093,7 @@
 						Pay attention to that arrays based on a primitive types will be considered as a single object.<br>
 						So use either a <em>Wrapper</em> classes arrays or <code class="code">IntStream.of()</code> or <code class="code">Arrays.stream(primitive/&lt;T> array)</code>
 					</td>
-					<td rowspan="25" class="java8">1.8</td>
+					<td rowspan="28" class="java8">1.8</td>
 				</tr>
 				<tr>
 					<td><code class="tooltip" title="static">Stream.generate</code></td>
@@ -2114,6 +2115,7 @@
 					</td>
 				</tr>
 
+				<tr><td colspan="4" class="text-align-center">instance</td><tr>
 				<tr>
 					<td rowspan="2"><code>map</code></td>
 					<td><code><span class="code">Stream</span>&lt;R&gt; map(<span class="code">Function</span>&lt;T,R&gt; mapper)</code></td>
@@ -2160,7 +2162,7 @@
 				</tr>
 				<tr>
 					<td>
-						<code class="nowrap"><b>R</b> collect(<br>
+						<code class="nowrap black"><b>R</b> collect(<br>
 						<span class="code">Supplier</span>&lt;<b>R</b>&gt; supplier, <span class="code">BiConsumer</span>&lt;<b>R</b>,T&gt; accumulator, <span class="code">BiConsumer</span>&lt;<b>R</b>,<b>R</b>&gt; combiner<br>)</code>
 					</td>
 					<td><code>collect(ArrayList::new, ArrayList::add, ArrayList::addAll)</code></td>
@@ -2341,13 +2343,13 @@
 				</tr>
 				<tr>
 					<td><code class="code">&lt;T,?,C> toCollection(Supplier&lt;C> collectionFactory)</code></td>
-					<td>..in encounter order</td>
+					<td>..in encounter order. <code>C extends Collection&lt;T></code></td>
 				</tr>
 				<tr>
 					<td>
 						<code class="code">&lt;T,?,Map&lt;K,U>> toMap(Function&lt;T,K> keyMapper, Function&lt;T,U> valueMapper)</code><br>
-						<code class="code"><nobr>&lt;T,?,Map&lt;K,U>> toMap(Function&lt;T,K> kMapper, Function&lt;T,U> vMapper, BinaryOperator&lt;U> mergeFunction)</nobr></code><br>
-						<code class="code"><nobr>&lt;T,?,M> toMap(Function&lt;T,K> kMapper, Function&lt;T,U> vMapper, BinaryOperator&lt;U> mf, Supplier&lt;M> map)</nobr></code><br>
+						<code class="code nowrap">&lt;T,?,Map&lt;K,U>> toMap(Function&lt;T,K> kMapper, Function&lt;T,U> vMapper, BinaryOperator&lt;U> mergeFunction)</code><br>
+						<code class="code nowrap" >&lt;T,?,M> toMap(Function&lt;T,K> kMapper, Function&lt;T,U> vMapper, BinaryOperator&lt;U> mf, Supplier&lt;M> map)</code><br>
 						and the same for <code class="code">toConcurrentMap(..)</code>
 					</td>
 					<td>mergeFunction - a merge function, used to resolve collisions between values associated with the same key, as supplied to <code>Map.merge(Object v1, Object v2, BiFunction bf)</code></td>
