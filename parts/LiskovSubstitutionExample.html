@@ -14,6 +14,7 @@
     public static void main(String[] args) {
         test(new ExtOK());
         test(new ExtFail()); // Compile error, Java do force LSP
+        test(new ExtRuntimeFail()); // Compile OK, but RTE
     }
 
     static void test(Liskov.Base base) {
@@ -38,6 +39,14 @@
         @Override
         private void method() {
             System.out.println("ExtFail");
+        }
+    }
+
+    // This class is violating Liskov substitution 2
+    static class ExtRuntimeFail extends Base {
+        @Override
+        public void method() {
+            throw new RuntimeException("Unsupported");
         }
     }
 

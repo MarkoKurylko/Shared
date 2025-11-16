@@ -49,7 +49,7 @@
 				<h2><a href="#db-normal-forms">Database normal forms</a></h2>
 				<h2>Data Structures</h2>
 					<h3 class="padding-left-1em"><a href="#tree-data-structures">Tree Data Structures</a></h3>
-				<h3><a href="#diamond-problem" id="diamond-problem-up">Diamond problem</a></h3>
+				<h3><a href="#diamondProblem" id="diamondProblemUp">Diamond problem</a></h3>
 			</details>
 		</td>
 	</tr>
@@ -984,9 +984,9 @@
 </div>
 <hr>
 
-<div id="diamond-problem">
-	<h3><a href="#diamond-problem-up">Diamond problem</a></h3>
-	Occurs with <span class="bi">multiple inheritance</span> of methods. Java resolves it using explicit override.
+<div id="diamondProblem">
+	<h3><a href="#diamondProblemUp">Diamond problem</a></h3>
+	<a href="JavaNotes.html#diamondProblem">In Java</a>
 </div>
 <hr>
 
@@ -1431,8 +1431,10 @@
 		<li>
 			<b>Single responsibility principle</b>
 			<div class="indent4"></div>
-			There should never be more than one reason for a class to change.<br>
-			In other words, every class should have only one responsibility
+			There should never be more than <b class="dim-grey">one</b> <em>reason</em> for a class to be changed.
+			Means class <code>code</code> can be changed, and it should be only for 1 <em class="dark-red">type of activity</em>.<br>
+			In other words, every class should have only one responsibility.<br>
+			"God-object" is an example of the antipattern of this.
 		</li>
 		<li>
 			<b>Open–closed principle</b>
@@ -1441,6 +1443,7 @@
 			That is, such an entity can allow its behaviour to be extended without modifying its source code.<br>
 			In other words, from the very beginning, the code should be written in a <em class="green">way</em> it should not be changed in the future,
 			in case the functionality is needed to be extended.<br>
+			Pros: Less regression testing. less errors<br>
 			<details>
 				<summary>Java example</summary>
 				<iframe id="ocp" src="parts/OCPExample.html" style="width:-webkit-fill-available; height:655px;" >

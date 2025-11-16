@@ -49,7 +49,8 @@
 					<details>
 						<summary></summary>
 						<h3><a href="#dataRaceCondition" id="data-race-up">Data Race & Race Condition</a></h3>
-						<h3><a href="#diamond">Diamond operator</a></h3>
+						<h3><a href="#diamond" id="diamondUp">Diamond operator</a></h3>
+						<h3><a href="#diamondProblem" id="diamondProblemUp">Diamond problem</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -90,7 +91,7 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#happens-before">Happens-before relationship</a></h3>
+						<h3><a href="#happensBefore" id="happensBeforeUp">Happens-before relationship</a></h3>
 					</details>
 				</td>
 			</tr>
@@ -99,8 +100,8 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#instanceof"><code>instanceof</code> operator</a></h3>
-						<h3><a href="#interface" id="interfaceUp"><code>interface</code></a></h3>
+						<h3><a href="#instanceof" id="instanceofUp" class="code-a"><code>instanceof</code> operator</a></h3>
+						<h3><a href="#interface" id="interfaceUp" class="code-a"><code>interface</code></a></h3>
 					</details>
 				</td>
 			</tr>
@@ -192,7 +193,8 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#threadLocal" class="code-a"><code>ThreadLocal</code></a></h3>
+						<h3><a href="#thread" id="threadUp" class="code-a"><code>Thread</code></a></h3>
+						<h3><a href="#threadLocal" id="threadLocalUp" class="code-a"><code>ThreadLocal</code></a></h3>
 						<h3><a href="#try" id="tryUp">Try catch finally</a></h3>
 					</details>
 				</td>
@@ -1069,18 +1071,18 @@
 					so the thread cannot get a chance to acquire the lock.
 				</li>
 			</ul>
-			todo: Thread interrupt() - only marks thread with the "interrupted" status if thread is working normally
-			(not blocked, wait, sleep, join etc.)<br>
 			Related links:
 			<ul class="margin-top-3">
 				<li><a href="#atomic">Atomic</a></li>
 				<li><a href="#completableFuture" class="code-a"><code>CompletableFuture</code></a></li>
 				<li><a href="#executors">Executors</a></li>
 				<li><a href="#forkJoin">Fork/Join</a></li>
+				<li><a href="#happensBefore">Happens-before relationship</a></li>
 				<li><a href="#synchronized" class="code-a"><code>synchronized</code></a></li>
 				<li><a href="#synchronizedCollections">Synchronized Collections</a></li>
 				<li><a href="#concurrentCollections"  >Concurrent Collections</a></li>
 				<li><a href="#dataRaceCondition">Data Race & Race Condition</a></li>
+				<li><a href="#thread" class="code-a"><code>Thread</code></a></li>
 				<li><a href="#threadLocal" class="code-a"><code>ThreadLocal</code></a></li>
 				<li><a href="#volatile" class="code-a"><code>volatile</code></a></li>
 			</ul>
@@ -1132,6 +1134,15 @@
 				<summary>Data Race & Race Condition <small>(Read-Modify-Write)</small> Example</summary>
 				<iframe src="parts/DataRaceExample.html" class="width100pct" style="height: 295px;"></iframe>
 			</details>
+		</div>
+		<hr>
+
+		<div id="diamondProblem">
+			<h3><a href="#diamondProblemUp">Diamond problem</a></h3>
+			Occurs with <span class="bi">multiple inheritance</span> of classes with the same method signatures.<br>
+			Was not an issue in Java <span class="java8">before 1.8</span>.
+			Now can occur because of <code>default</code> methods in <a href="#interface">interfaces</a>.
+			Needs explicit override to resolve.
 		</div>
 		<hr>
 
@@ -1396,7 +1407,7 @@
 				<span class="get-title">PECS</span>
 			</li>
 			<li>
-				<h3 id="diamond" class="margin-bottom-0"><b>&lt;&gt;</b>Diamond operator</h3>
+				<h3 id="diamond" class="margin-bottom-0"><b>&lt;&gt;</b><a href="#diamondUp">Diamond operator</a></h3>
 				<samp class="java7">Since 1.7</samp>: <code>List&lt;String&gt; list = new ArrayList<b>&lt;&gt;</b>();</code><br>
 				<samp class="java9">Since &nbsp;&nbsp;9</samp>: <code>List&lt;String&gt; list = new List<b>&lt;&gt;</b>() {...}; // added support of anonymous classes</code>
 			</li>
@@ -1462,7 +1473,7 @@
 		<hr>
 
 		<div id="instanceof">
-			<h3 class="margin-bottom-3"><code>instanceof</code> <small>operator</small></h3>
+			<h3 class="margin-bottom-3 code-a"><a href="#instanceofUp"><code>instanceof</code></a> <small>operator</small></h3>
 			The <code>instanceof</code> operator compares an object to a specified type.<br>
 			Keep in mind that <code>null</code> is not an instance of anything.<br>
 			<span class="java16">Since 16</span> <i>pattern matching</i> was added:<br>
@@ -1471,7 +1482,7 @@
 		<hr>
 
 		<div id="interface">
-			<h3><a href="#interfaceUp"><code>interface</code></a></h3>
+			<h3 class="margin-bottom-3"><a href="#interfaceUp" class="code-a"><code>interface</code></a></h3>
 			Interface can have:<br>
 			- public abstract methods (they are public and abstract by default) <br>
 			- <code>public static final</code> fields (they are "psf" by default)<br>
@@ -2505,7 +2516,13 @@
 			</ul>
 
 			Two threads <b class="red">cannot</b> access two different <code>synchronized</code> methods of the same object at the same time,
-			as wel as <code>synchronized</code> blocks for the same object.
+			as wel as <code>synchronized</code> blocks for the same object.<br>
+			But for the <code>synchronized</code> methods of the two different instances of the <span class="brown">class</span> there is no <em>concurrency</em> <small>(which is logical)</small>.
+
+			<div class="indent4"></div>
+			<code class="code">object.wait()</code> can temporarily release the monitor and give other threads a chance to acquire the monitor.<br>
+			In this way, the object <em>lock</em> can be lost <b class="dim-grey">inside</b> the <code>synchronized</code> code,
+			and then can be re-acquired when another thread will call <code>object.notify()/notifyAll()</code>.
 
 			<pre>
 class ClassOne {
@@ -2521,7 +2538,7 @@ class ClassOne {
 			In this example the <code class="red">monitor</code> string it is just the object that plays role of the <em>monitor lock</em> or <em class="get-title">mutex</em>.
 			It can be any type and according to the best practice it should be <code class="code">final</code> to avoid consequences in case monitor object is rewritten.
 
-			<h4 id="happens-before" class="margin-bottom-0"><em>Happens-before relationship</em></h4>
+			<h4 id="happensBefore" class="margin-bottom-0"><a href="#happensBeforeUp"><em>Happens-before relationship</em></a></h4>
 			<i>Happens-before relationship</i> means that if it is established (between threads) on a <span class="dark-red">variable</span>,
 			then the <span class="red">changes</span> on a <span class="dark-red">variable</span> will be visible to the other threads
 			only if the <code class="code">write</code> operation in <span class="blue">one thread</span>
@@ -2535,8 +2552,26 @@ class ClassOne {
 		</div>
 		<hr>
 
+		<div id="thread">
+			<h3 class="code-a margin-bottom-3"><a href="#threadUp" class="code-a"><code>Thread</code></a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			<code>public class <b>Thread</b> implements <b>Runnable</b></code><br>
+			<code>Thread.State</code>:<br>
+			<ul class="margin-top-0">
+				<li><code class="b">NEW</code> - not yet started</li>
+				<li><code class="b">RUNNABLE</code> - started, running</li>
+				<li><code class="b">BLOCKED</code> - blocked waiting for a monitor lock</li>
+				<li><code class="b">WAITING</code></li>
+				<li><code class="b">TIMED_WAITING</code></li>
+				<li><code class="b">TERMINATED</code> - <span class="red"> cannot be restarted</span></li>
+			</ul>
+
+			Thread <code>interrupt()</code> - only marks thread with the "interrupted" status if thread is working normally
+			(not blocked, wait, sleep, join etc.)<br>
+		</div>
+		<hr>
+
 		<div id="threadLocal">
-			<h3 class="code-a margin-bottom-3"><code>ThreadLocal</code> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			<h3 class="code-a margin-bottom-3"><a href="#threadLocalUp"><code>ThreadLocal</code></a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			<code class="code">java.lang.ThreadLocal&lt;T></code><br>
 			Variable that has independently initialized <em><b class="dim-grey">copy</b></em> of its generic type <code>&lt;T></code> for each <code class="code">Thread</code>.<br>
 			If the variable has no value for the current thread, and <code class="code">get()</code> method called, then <code class="code">initialValue()</code> is invoked for initialization first.
@@ -2570,15 +2605,16 @@ class ClassOne {
 		<div id="volatile">
 			<h3 class="code-a margin-bottom-3"><a href="#volatile-up"><code>volatile</code></a> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			<code>public <span class="grey">[static]</span> <b>volatile</b> long longVar = 1L;</code><br>
+			<code>longVar++; //but this is still <span class="tomato">not</span> <a href="#atomic">Atomic</a></code><br>
 			<code>private <span class="grey">[static]</span> <b>volatile</b> String string;</code>
 			<div class="indent"></div>
 			Changes to a <code class="code">volatile</code> variable are always visible to other threads.<br>
-			Any write to a <code class="code">volatile</code> variable establishes a <a href="#happens-before">happens-before</a> relationship with subsequent reads of that same variable.<br>
+			Any write to a <code class="code">volatile</code> variable establishes a <a href="#happensBefore">happens-before</a> relationship with subsequent reads of that same variable.<br>
 			It also means, that when a thread reads a <code class="code">volatile</code> variable, it sees not just the latest change to the <code class="code">volatile</code>, but also the side effects of the code that led up the change.<br>
 			Using <code class="code">volatile</code> variables reduces the risk of memory consistency errors.
 			<div class="indent4"></div>
 			<span class="warning-sign fs20 orange"></span> While technically we can declare arrays and collections as <code>volatile</code>,
-			it does not make sense, due to <a href="#happens-before">happens-before</a> relationship will be established only to the reference variable,
+			it does not make sense, due to <a href="#happensBefore">happens-before</a> relationship will be established only to the reference variable,
 			but not to the cells of the container.
 		</div>
 

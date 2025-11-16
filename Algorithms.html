@@ -15,7 +15,13 @@
 
 	<table id="toc">
 		<tr>
-			<td></td>
+			<td>
+				<details open>
+					<summary><h1 id="dpUp"><a href="#dp">Dynamic programming</a></h1></summary>
+				</details>
+			</td>
+		</tr>
+		<tr>
 			<td>
 				<details open>
 					<summary><h1>Sorting</h1></summary>
@@ -33,6 +39,69 @@
 	</table>
 
 	<hr class="height2">
+
+	<div id="dp">
+		<h2><a href="#dpUp">Dynamic programming</a></h2>
+		1) Memoization == top-down == recursive:<br>
+			Fibonacci <var>f(n) = f(n-1) + f(n-2)</var><br>
+		<img src="svg/TopDown.svg" alt="td">
+		<pre><code class="language-java">    int f(int n) {
+        if (memo[n] > 0 ) return memo[n];
+        if (n < 2) return n;
+        return memo[n] = f(n - 1) + f(n - 2);
+    }</code></pre>
+
+		2) Tabulation == bottom-up == non-recursive<br>
+		<img src="svg/BottomUp.svg" alt="bu" height="300"><br>
+		<pre><code class="language-java">    int bottomUp(int n) {
+        if (n < 2) return n;
+
+        int tabulation[] = new int[n + 1];
+        tabulation[0] = 0;
+        tabulation[1] = 1;
+        for (int i = 2; i < n + 1; i++) {
+            tabulation[i] = tabulation[i - 2] + tabulation[i - 1];
+        }
+
+        return tabulation[n];
+    }</code></pre>
+
+		3) Counting Paths in a 2D Array<br>
+		<pre><code class="language-java">    boolean[][] mapMatrix = {
+                {true, false, false},
+                {true, false, false},
+                {true, true, true}
+        };
+
+    routeExists(0, 0, 2, 2, mapMatrix);
+
+    boolean routeExists(int fromRow, int fromColumn, int toRow, int toColumn, boolean[][] mapMatrix) {
+        if (!mapMatrix[toRow][toColumn]) return false;
+
+        int maxRow = mapMatrix.length;
+        int maxCol = mapMatrix[0].length;
+        boolean[][] visited = new boolean[maxRow][maxCol];
+
+        return tryCell(fromRow, fromColumn, toRow, toColumn, mapMatrix, visited);
+    }
+
+    boolean tryCell(int row, int col,  int toRow, int toCol, boolean[][] matrix, boolean[][] visited) {
+        if (row == toRow && col == toCol) return true;
+
+        if (row >= 0 && col >= 0 && row < matrix.length && col < matrix[0].length && !visited[row][col]) {
+            visited[row][col] = true;
+            if (!matrix[row][col]) return false;
+            if (tryCell(row + 1, col, toRow, toCol, matrix, visited)) return true;
+            if (tryCell(row, col + 1, toRow, toCol, matrix, visited)) return true;
+            if (tryCell(row - 1, col, toRow, toCol, matrix, visited)) return true;
+            if (tryCell(row, col - 1, toRow, toCol, matrix, visited)) return true;
+        }
+        return false;
+    }</code></pre>
+
+		4) 0 1 Knapsack
+	</div>
+	<hr>
 
 	<div id="selection">
 		<h3 class="margin-bottom-3">Selection</h3>
