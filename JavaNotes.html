@@ -135,7 +135,9 @@
 				<td>
 					<details>
 						<summary></summary>
-						<h3><a href="#method-signature" id="method-signature-up">Method signature</a></h3>
+						<h3><a href="#methodSignature" id="methodSignatureUp">Method signature</a></h3>
+						<h2><a href="#modules" id="modulesUp">Modules</a></h2>
+
 						<h2><a href="#concurrency" id="multiThreadingUp">MultiThreading/Concurrency</a></h2>
 					</details>
 				</td>
@@ -176,10 +178,11 @@
 				<td>
 					<details>
 						<summary></summary>
+						<h3><a href="#sealed" id="sealedUp">Sealed classes</a></h3>
 						<h2><a href="#streams" id="streamsUp">Streams</a></h2>
 						<h3><a href="#servlets">Servlets</a></h3>
 						<h3><a href="#safevarargs">@SafeVarargs</a></h3>
-						<h3><a href="#method-signature" id="signature-method-up">Signature of a Method</a></h3>
+						<h3><a href="#methodSignature" id="signatureMethodUp">Signature of a Method</a></h3>
 						<h3 class="code-a"><a href="#spliterator" id="spliteratorUp"><code>Spliterator</code></a></h3>
 						<h3><a id="strictfp" href="#strictfp">strictfp (versions from 1.2 to 16)</a></h3>
 						<h3><a href="#synchronized" class="code-a"><code>synchronized</code></a></h3>
@@ -1761,10 +1764,38 @@
 		</div>
 		<hr>
 
-		<div id="method-signature">
-			<h3 class="margin-bottom-3"><a href="#method-signature-up">Method</a> <a href="#signature-method-up">signature</a></h3>
+		<div id="methodSignature">
+			<h3 class="margin-bottom-3"><a href="#methodSignatureUp">Method</a> <a href="#signatureMethodUp">signature</a></h3>
 			<em>Method signature</em> is a combination of the <b>name</b> and <b>parameter types</b>.<br>
 			<span class="red">Not</span> the modifiers, return type, parameter names exception list and body.
+		</div>
+		<hr>
+
+		<div id="modules">
+			<h2><a href="#modulesUp">Modules</a></h2>
+			A Module is a group of closely related packages and resources along with a new module descriptor file.<br>
+			<em>module-info.java</em><br>
+			<code class="code">
+				<span class="help navy" title="allows reflection of private types">[open]</span> <b>module</b> com.example.module.name {<br>
+				<span class="margin-left">requires [<span class="help navy" title="force downstream">transitive</span>/<span class="help navy" title="compile-time-only dependency">static</span>] moduleName;</span><br>
+				<span class="margin-left">exports packageName [to moduleName [, moduleNameN]];</span><br>
+				<span class="margin-left help navy" title="allows reflection of private types">opens packageName [to moduleName [, moduleNameN]];</span><br>
+				<span class="margin-left">uses TypeName;</span><br>
+				<span class="margin-left">provides TypeName with ImplName [, ImplNameN]; // implementations</span><br>
+				}
+			</code>
+
+			<div class="indent4"></div>
+			<span class="warning-sign fs20 blue"></span> JAR file can contain <span class="red">only <b>1</b></span> module.<br>
+			By default, a module doesn’t expose any of its API to other modules -- strong encapsulation.<br>
+
+			<div class="indent4"></div>
+
+			The <em>unnamed module</em> concept is similar to the default package. Therefore, it’s not considered a real module, but can be viewed as the default module.
+			If a class is not a member of a named module, then it will be automatically considered as part of this unnamed module.
+
+			<div class="indent4"></div>
+			<code>java --list-modules</code>
 		</div>
 		<hr>
 
@@ -2001,6 +2032,14 @@
 				</tr>
 			</table>
 
+		</div>
+		<hr>
+
+		<div id="sealed">
+			<h3><a href="#sealedUp">Sealed classes/interfaces</a></h3>
+			<code>sealed ... permits ...</code><br>
+			Then the extending/implementing class should be <code>final</code>, <code>sealed</code> or <code>non-sealed</code>.<br>
+			Records can extend/implement sealed classes, and they don't need the modifier because they are already <code>final</code>.
 		</div>
 		<hr>
 
@@ -2333,7 +2372,7 @@
 
 			<table class="border padding" id="collectors">
 				<caption><a href="#collectorsUp"><b>Collectors</b></a> static helper class [all methods return a <code class="code">Collector</code> instance]</caption>
-				<tr><th>Group</th><th>Method/Example</th><th>Description</th></tr>
+				<tr><th>Group</th><th>Method/Example</th><th>Description</th><th>Since</th></tr>
 				<tr>
 					<td>Collecting with <em>finisher</em></td>
 					<td>
@@ -2342,6 +2381,7 @@
 						<code>collectingAndThen(Collectors.toList(), Collections::unmodifiableList)</code> <a href="#collectingAndThenWithMaxBy">example</a>
 					</td>
 					<td>Adapts a <code class="code">Collector</code> to perform an additional finishing transformation</td>
+					<td rowspan="14" class="java8">1.8</td>
 				</tr>
 				<tr>
 					<td rowspan="4">to*</td>
@@ -2450,6 +2490,36 @@
 					<td><code class="code">averaging* <span class="dim-grey pointer" title="statistics">summarizing*</span> summing* with Double, Int, Long</code></td>
 					<td>Mathematical</td>
 				</tr>
+
+				<tr>
+					<td>filtering</td>
+					<td></td>
+					<td></td>
+					<td rowspan="2" class="java9">9</td>
+				</tr>
+				<tr>
+					<td>flatMapping</td>
+					<td></td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td>toUnmodifiable*</td>
+					<td>List/Set/Map</td>
+					<td></td>
+					<td rowspan="1" class="java10">10</td>
+				</tr>
+
+				<tr>
+					<td rowspan="1">teeing</td>
+					<td><code class="code">teeing(Collector downstream1, Collector downstream2, BiFunction merger)</code></td>
+					<td>
+						Returns a Collector that is a composite of two downstream collectors.<br>
+						Every element passed to the resulting collector is processed by both downstream collectors, then their results are merged using the specified merge function into the final result
+					</td>
+					<td class="java12">12</td>
+				</tr>
+
 
 			</table>
 			<div class="indent"></div>
