@@ -46,7 +46,7 @@
 		<td>
 			<details>
 				<summary></summary>
-				<h2><a href="#db-normal-forms">Database normal forms</a></h2>
+				<h2><a href="#dbNormalForms" id="dbNormalFormsUp">Database normal forms</a></h2>
 				<h2>Data Structures</h2>
 					<h3 class="padding-left-1em"><a href="#tree-data-structures">Tree Data Structures</a></h3>
 				<h3><a href="#diamondProblem" id="diamondProblemUp">Diamond problem</a></h3>
@@ -286,8 +286,18 @@
 </div>
 <hr>
 
-<div id="db-normal-forms">
-	<h2>Database normal forms</h2>
+<div id="dbNormalForms">
+	<h2><a href="#dbNormalFormsUp">Database normal forms</a></h2>
+	Brief:<br>
+	<ul class="margin-top-0">
+		<li value="1"><span>1NF requires each column to hold atomic values and no repeating groups, + PK</span></li>
+		<li value="2"><span>2NF no partial dependence on a composite key — every non-key must depend on the whole key</span></li>
+		<li value="3"><span>3NF no transitive dependencies — non-keys depend only on the key, not on other non-keys</span></li>
+		<li value="4"><span>BCNF for every <a href="#fd">functional dependency</a> X→Y, X must be a candidate key (fixes edge cases like overlapping keys)</span></li>
+		<li value="5"><span>4NF removes multi-valued dependencies</span></li>
+		<li value="6"><span>5NF (PJNF) eliminates join dependencies, decomposing so tables can be losslessly recombined without spurious(pseudo) tuple</span></li>
+	</ul>
+
 	<em>Terminology</em>:<br>
 	<div class="indent"></div>
 	Table is a <i>Relation</i>.
@@ -324,7 +334,8 @@
 			Field should not contain a set of values or a nested record. (Scalar columns)<br>
 			All rows are unique<br>
 			<span class="warning-sign fs18 blue"></span>
-			<span class="fire-brick">Primary key</span> <span class="green">may not</span> be present yet.
+			<span class="fire-brick">Primary key</span> <span class="red">should</span> be present.<br>
+			And therefore all rows should be unique.
 			<div class="indent"></div>
 			<table class="collapse-border padding">
 				<tr>
@@ -1493,6 +1504,7 @@
 
 <div id="sql">
 	<h2><a href="#sqlUp">SQL</a></h2>
+	<code class="code">SELECT – FROM – JOIN – ON – WHERE – GROUP BY – HAVING – ORDER BY – LIMIT</code><br>
 
 	<h4 class="margin-bottom-3">Table Join types</h4>
 	<table>
@@ -1566,6 +1578,26 @@
 			</table>
 		</li>
 	</ul>
+	<code class="code">UNION</code> - excluding duplicates.<br>
+	<code class="code">UNION ALL</code> - <span class="green">including</span> duplicates.<br>
+	<code class="code">INTERSECT</code> to select common records from two tables.<br>
+	<code class="code">EXCEPT/MINUS</code> returns only the records obtained by the first query but not the second one.<br>
+
+	<div class="indent4"></div>
+	<code class="code">LIKE</code> <b>%</b> - any chars, <b>_</b> - strictly one char.<br>
+	<code class="code">DENSE_RANK()</code> - density/frequency ranking.<br>
+	<code class="code">RANK()</code> - ranking over partitioning(or without),
+	It's just an independent <em>row_number</em> within the partitions/groups, can be duplicated for partitioned rows with the same values.
+	<span class="warning-sign fs18 tomato"> Produces Gaps</span>: 1 1 3 - Gap is 1; 1 2 2 2 5 - Gap is 2 rows.
+	todo example<br>
+	<em class="get-title">CTE</em> - Specifies a temporary named result set, like a View. <code>WITH cte_name AS (SELECT ...)</code><br>
+	<code>COALESCE(v1, v2, c1)</code><br>
+
+
+	<div class="indent4"></div>
+	A <em>stored procedure</em> is a <b class="dim-grey">precompiled</b> set of SQL statements executed as a unit to perform a task.<br>
+	<em>Correlated subquery</em> - depends on its outer query, <em>non correlated</em> - is not.<br>
+	<em>Clustered index</em> forces the order of rows of the table on physical level, therefore can be only 1 per table.
 </div>
 <hr>
 
