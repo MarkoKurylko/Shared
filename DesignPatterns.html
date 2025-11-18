@@ -129,7 +129,7 @@
 				<td><a href="#adapter">Adapter <small>(Wrapper, or Translator)</small></a></td>
 				<td>
 					Allows the interface of an existing class to be used as another interface.<br>
-					An adapter allows two incompatible interfaces to work together.
+					An adapter allows two incompatible interfaces to work together, so it changes the interface.
 				</td>
 				<td></td>
 			</tr>
@@ -219,6 +219,7 @@
 				<td>
 					A <em>proxy</em>, in its most general form, is a class functioning as an interface to something else.<br>
 					In short, a proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes.<br>
+					Proxy does NOT change the interface.
 				</td>
 				<td>
 					Use of the proxy can simply be <em>forwarding</em> to the real object, or can provide additional logic.
@@ -392,7 +393,14 @@
 	<details>
 		<summary><b>Architectural</b> patterns</summary>
 		<ul>
-			<li id="mvc">MVC</li>
+			<li id="mvc">MVC
+Old:<pre>
+User → Controller → Model
+            ↘        ↑
+              View ←─┘</pre><br>
+				New:<br>
+				User → Controller → Model → Controller → View
+			</li>
 		</ul>
 	</details>
 
