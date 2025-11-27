@@ -549,7 +549,7 @@ User → Controller → Model
 	<div id="singleton">
 		<h3><a href="#singleton-up">Singleton</a></h3>
 		<h5 class="margin-bottom-3">Downside/Drawbacks</h5>
-		In case <code class="code">Singleton</code> is creating instance of itself - it violates <b>SRP</b>.<br>
+		In case <code class="code">Singleton</code> is creating instance of itself — it violates <b class="get-title">SRP</b>.<br>
 		Makes unit testing far more difficult, as it introduces <em>global state</em> into an application.<br>
 
 		<div class="indent8"></div>
@@ -563,8 +563,9 @@ User → Controller → Model
 		until the <span class="get-title">JVM</span> determines that <code class="code">LazyHolder</code> must be executed.
 		The static class <code class="code">LazyHolder</code> is only executed when the static method <code class="code">getInstance</code> is invoked on the class <code class="code">Something</code>,
 		and the first time this happens the <span class="get-title">JVM</span> will load and initialize the <code class="code">LazyHolder</code> class.
+		This is <span class="green">Thread-safe</span> and <span class="dark-green">Concurrent</span>.
 		<div class="indent8"></div>
-		<iframe src="parts/LazyLoadedSingletonExample.html" style="width:-webkit-fill-available; height:220px;"></iframe>
+		<iframe src="parts/LazyLoadedSingletonExample.html" class="iframe height-220"></iframe>
 	</div>
 	<hr>
 

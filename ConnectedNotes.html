@@ -113,8 +113,9 @@
 		<td>
 			<details>
 				<summary></summary>
-				<h2><a href="#privacyByDesign">Privacy by Design</a></h2>
-				<h2><a href="#programming" id="programming-up">Programming</a></h2>
+				<h2><a href="#privacyByDesign" id="privacyByDesignUp">Privacy by Design</a></h2>
+				<h2><a href="#programming" id="programmingUp">Programming</a></h2>
+				<h3><a href="#proxy" id="proxyUp">Proxy</a></h3>
 			</details>
 		</td>
 	</tr>
@@ -244,14 +245,14 @@
 	Binary Tree can be:
 	<ul class="margin-top-0">
 		<li>
-			<b>Full</b> - every node has either 0 or 2 children
+			<b>Full</b> — every node has either 0 or 2 children
 			<img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Full_binary.svg" alt="Full BT" width="100px">
 		</li>
 		<li>
-			<b>Complete</b> - every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible
+			<b>Complete</b> — every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible
 			<img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Complete_binary2.svg" alt="Complete BT" width="100px">
 		</li>
-		<li><b>Perfect</b> - always <em><b>Full</b></em> and <em><b>Complete</b></em></li>
+		<li><b>Perfect</b> — always <em><b>Full</b></em> and <em><b>Complete</b></em></li>
 		<li><b>Balanced</b></li>
 		<li><b>Degenerate</b></li>
 	</ul>
@@ -312,7 +313,7 @@
 	<em class="hot-pink" id="super-key">Super Key</em> – a set<small>(superset)</small> of attributes that uniquely identifies a record, but it may include extra attributes that are not necessary for uniqueness.<br>
 	<div class="indent"></div>
 
-	<em class="dark-red" id="c-key">Candidate Key</em> <small>(or just the <i><b>key</b></i>)</small> - <em><b>[Def. 1]</b></em> Any set of columns that have a unique combination of values in each row.
+	<em class="dark-red" id="c-key">Candidate Key</em> <small>(or just the <i><b>key</b></i>)</small> - <em><b>[Def. 1]</b></em> Any set of columns that has a unique combination of values in each row.
 		<em><b>[Def. 2]</b></em> A minimal set of attributes that uniquely identifies a record in a <i>Relation</i>. It contains no unnecessary attributes.
 	<em><b>[Def. Hugo Kornelis]</b></em> All other columns depend on the <i>key</i>.<br>
 	<div class="indent"></div>
@@ -326,7 +327,7 @@
 	<div class="indent"></div>
 	<em class="purple">Foreign Key</em> – a field in one table that refers to the <i class="fire-brick">primary key</i> in another table, establishing a relationship between tables.<br>
 	<br>
-	Each next <i>normal form</i> complies with previous normal form <small>(except 6NF)</small>.
+	Each next <i>normal form</i> complies with the previous normal form <small>(except 6NF)</small>.
 	<ul>
 		<li>
 			<h4 class="margin-bottom-3">1NF <small>⚓ Color set</small></h4>
@@ -388,7 +389,7 @@
 							<tr><td>Object-1</td><td>Trivial</td><td>Square</td><td>45</td></tr>
 							<tr><td>Object-2</td><td>Non-Trivial</td><td>Triangle</td><td>55</td></tr>
 						</table>
-						"Type" depends only on Object's <b class="dark-blue">Name</b>, therefore it does not comply with 2NF
+						"Type" depends only on the Object's <b class="dark-blue">Name</b>; therefore, it does not comply with 2NF
 					</td>
 					<td>
 						<table class="collapse-border padding">
@@ -406,7 +407,7 @@
 							<tr><td>Object-1</td><td>Square</td><td>45</td></tr>
 							<tr><td>Object-2</td><td>Triangle</td><td>55</td></tr>
 						</table>
-						The <i>Price</i> depends on whole <i>{Name & Shape}</i> combination, but not on <i>Name</i> or <i>Shape</i> separately.
+						The <i>Price</i> depends on a whole <i>{Name & Shape}</i> combination, but not on <i>Name</i> or <i>Shape</i> separately.
 					</td>
 				</tr>
 			</table>
@@ -414,7 +415,7 @@
 		<li>
 			<h4 class="margin-bottom-3">3NF <small>⚓ Manufacturer & Country; Non-transitive FD</small></h4>
 			Every <i class="medium-aqua-marine">non-prime attribute</i> of a <i>Relation</i> is <a href="#transitive-fd">non-transitively</a> dependent on each <i class="dark-red">candidate key</i>.<br>
-			But, <i>key/prime</i> attributes <span class="green">can</span> be <a href="#transitive-fd">transitively</a> dependent on any <i class="dark-red">candidate key</i>.<br>
+			But <i>key/prime</i> attributes <span class="green">can</span> be <a href="#transitive-fd">transitively</a> dependent on any <i class="dark-red">candidate key</i>.<br>
 			<div class="indent"></div>
 			<table class="collapse-border padding">
 				<tr>
@@ -583,7 +584,7 @@
 						<i>FD-1</i>: (AREA, NUMBER) → PLACE<br>
 						<i>FD-2</i>: PLACE → AREA<br>
 						<div class="indent4"></div>
-						For FD-1 the conditions is met, because this FD is not trivial, but <code>(AREA, NUMBER)</code> is a <i>super-key</i>.<br>
+						For FD-1 the conditions are met, because this FD is not trivial, but <code>(AREA, NUMBER)</code> is a <i>super-key</i>.<br>
 						For RD-2 the conditions are not met, because it's not trivial and <code>PLACE</code> is not a <i>super-key</i>, <br>
 						so the <i>Relation</i> is not <i>BCNF</i>.
 					</td>
@@ -682,7 +683,7 @@
 						<code class="code">{Restaurant} → {DeliveryArea}</code><br>
 						<div class="indent4"></div>
 						The keys are {Restaurant,PizzaVariety} & {Restaurant,DeliveryArea},
-						and due to the schema does not have the multivalued <a href="#fd">FDs</a>, it's comply with 4NF.
+						and due to the schema does not have the multivalued <a href="#fd">FDs</a>, it complies with 4NF.
 					</td>
 				</tr>
 			</table>
@@ -771,7 +772,7 @@
 					<td colspan="3">
 						The same example from above <small class="fire-brick">('not comply' column)</small>, but with the additional condition of
 						<a href="#fd">FD</a> <code class="code">SP → J</code>.<br>
-						Then, the <i>Relation</i> become <i>ETNF</i>, but not 5NF.
+						Then, the <i>Relation</i> becomes <i>ETNF</i>, but not 5NF.
 					</td>
 				</tr>
 			</table>
@@ -861,8 +862,8 @@
 				<tr>
 					<td></td>
 					<td colspan="3">
-						Here we have a <i>Relation</i> from the example above, but with the different business rule: <br>
-						The <b>Expert</b>s can choose the <b>Day</b>s for the <b>Topic</b> they are capable.
+						Here we have a <i>Relation</i> from the example above but with the different business rule: <br>
+						The <b>Expert</b>s can choose the <b>Day</b>s for the <b>Topic</b> they are capable of
 						<table class="collapse-border padding">
 							<caption><small>by Hugo Kornelis</small></caption>
 							<tr><th>Day</th><th>Expert</th><th>Topic</th></tr>
@@ -879,7 +880,7 @@
 						For e.g. <span class="green">Hugo</span> doesn't want to talk about <span class="purple">DB Normalization</span> on <span class="dark-blue">Mondays</span>.<br>
 						In this case the backward composition of tables will create a <em class="red">phantom</em> row:
 						<span class="dark-blue">Monday</span>-<span class="green">Hugo</span>-<span class="purple">Normalization</span>.<br>
-						So further decomposition is impossible and the table is already in 5NF according to the business rules.
+						So, further decomposition is impossible and the table is already in 5NF according to the business rules.
 					</td>
 				</tr>
 			</table>
@@ -904,7 +905,7 @@
 					</ul>
 				</li>
 				<li>Every constraint must be implied by the keys and domains</li>
-				<li>Often impractical, therefore it's mostly of academic interest only</li>
+				<li>Often impractical, therefore, it's mostly of academic interest only</li>
 			</ul>
 
 			<div class="indent"></div>
@@ -915,7 +916,7 @@
 				</tr>
 				<tr>
 					<td>
-						<b>Thickness</b> is determined by number of pages.
+						<b>Thickness</b> is determined by the number of pages.
 						But <b>Pages</b> is not a <i>key</i>.
 						<table class="collapse-border padding">
 							<caption><small>Book</small></caption>
@@ -1095,7 +1096,7 @@
 	<div class="indent4"></div>
 
 	<em><b>[Def. Hugo Kornelis]</b></em><br>
-	Deconstruct table in a smaller parts<br>
+	Deconstruct the table in smaller parts<br>
 	Join the smaller parts<br>
 	Guaranteed to get the original table
 </div>
@@ -1116,7 +1117,7 @@
 
 <div id="looseCoupling">
 	<h3><a href="#looseCouplingUp">Loose Coupling</a></h3>
-	Loose coupling between modules means that modules does not depend on each other OR this dependency is minimal.<br>
+	Loose coupling between modules means that modules do not depend on each other OR this dependency is minimal.<br>
 	See also <a href="#highCohesion">High Cohesion</a>
 </div>
 <hr>
@@ -1133,7 +1134,7 @@
 		<li>
 			<em><b>Association</b></em> is a relationship between two <b class="dim-grey">independent</b> classes where objects of one class use or interact with objects of another class.<br>
 			It is a "using" relationship that can be one-to-one, one-to-many, or many-to-many, and both objects have their own lifespans.<br>
-			<em>Association</em> defines <em>structural</em> relationship between classes of objects that allows one object instance to cause another to perform an action on its behalf.<br>
+			<em>Association</em> defines a <em>structural</em> relationship between classes of objects that allows one object instance to cause another to perform an action on its behalf.<br>
 			Key characteristics of association: Independent objects, "Using" relationship, Unidirectional or bidirectional.<br>
 			Special forms(extension) of <em>Association</em>:
 			<ul>
@@ -1144,7 +1145,7 @@
 				</li>
 				<li>
 					<em><b>Aggregation</b></em> uses <em class="grey"><b>has-a</b></em> relationship.
-					Container only hold the references of contained objects. Destruction of a container does not affect them.
+					Container only holds the references of contained objects. Destruction of a container does not affect them.
 					It is a <em class="green">Weak association</em> and <em>one-way relationship</em>.
 				</li>
 			</ul>
@@ -1163,7 +1164,7 @@
 	<ol class="olWithMargin">
 		<li>
 			<b>Principle #1: Proactive, Not Reactive; Preventive, Not Remedial</b><br>
-			No amount of privacy measures <b><i>post factum</i></b> can really keep a fundamentally non-private technology or system from enabling the misuse of personal data.
+			No number of privacy measures <b><i>post factum</i></b> can really keep a fundamentally non-private technology or system from enabling the misuse of personal data.
 		</li>
 		<li>
 			<b>Principle #2: User Privacy as the Default Setting</b><br>
@@ -1173,7 +1174,7 @@
 		<li>
 			<b>Principle #3: Privacy Embedded Into Design</b><br>
 			Start the privacy and security conversation when planning your system.
-			You will find that it’s quite difficult and inefficient to try and add these features later in an already-built technology.
+			You will find that it’s quite challenging and inefficient to try and add these features later in an already-built technology.
 		</li>
 		<li>
 			<b>Principle #4: Full Functionality—Positive-Sum, Not Zero-Sum</b><br>
@@ -1182,7 +1183,7 @@
 		</li>
 		<li>
 			<b>Principle #5: End-to-End Security—Full Lifecycle Protection</b><br>
-			The lifecycle of personal data starts at the point of collection and ends when it’s finally destroyed or deleted after you no longer need it.
+			The lifecycle of personal data starts at the point of a collection and ends when it’s finally destroyed or deleted after you no longer need it.
 			Consumer data should be protected right from the start and up until it’s been deleted.
 		</li>
 		<li>
@@ -1199,7 +1200,7 @@
 <hr>
 
 <div id="programming">
-	<h2><a href="#programming-up">Programming</a></h2>
+	<h2><a href="#programmingUp">Programming</a></h2>
 	<table class="collapse-border padding">
 		<tr>
 			<th>Imperative</th>
@@ -1234,14 +1235,25 @@
 	and does <span class="green">not depend</span> on further changes of <code class="code">a</code> and <code class="code">b</code>.
 
 	<h5 class="margin-bottom-3" id="declarative">Declarative</h5>
-	Describes <em class="blue"><b>what</b></em> the program must accomplish in terms of the <em>problem domain</em>,
+	Describes <em class="blue"><b>what</b></em> the program must achieve in terms of the <em>problem domain</em>,
 	and <span class="tomato">not</span> <em class="green"><b>how</b></em>.
 
 	<h5 class="margin-bottom-3" id="reactive"><a href="#reactiveUp">Reactive</a></h5>
 	Based on <em>data streams</em> and the propagation of change.
 	That is, for <code class="code">c = a + b</code>,
 	<code class="code">c</code> will be automatically updated
-	in case <code class="code">a</code> or <code class="code">b</code> are changed after moment of <code class="code">c</code> assignment.
+	in case <code class="code">a</code> or <code class="code">b</code> are changed after the moment of <code class="code">c</code> assignment.
+</div>
+<hr>
+
+<div id="proxy">
+	<h3><a href="#proxyUp">Proxy</a></h3>
+	<b>Forward proxy</b> - before the internet, after the clients - enforce security policies, control access to websites, and mask the client's IP address to protect privacy and anonymity<br>
+	[CL1, CL2 ... CLn → FP] → Internet
+
+	<div class="indent"></div>
+	<b>Reverse proxy</b> - after the internet, before the business servers (LB etc., cache)<br>
+	Internet → [RP → S1, S2 ... Sn]
 </div>
 <hr>
 
@@ -1271,7 +1283,7 @@
     <br>
 
     RBT is a self-balancing, that means it must rearrange itself on add and delete operations.<br>
-    The inner self-balancing operation are: left and right shift (means switching parent and child), switch color.
+    The inner self-balancing operation are: left and right shift (means switching parent and child), switch colour.
 
     <br><br>
     Space Complexity: <b><em>O(n)</em></b> <small> The memory space that algorithm uses in the process of work, depending on amount of input data.</small>
@@ -1328,7 +1340,7 @@
 			</details>
 		</li>
 		<li>
-			<b>Layered system</b> – a client cannot ordinarily tell whether it is connected directly to the end server, or to an intermediary along the way
+			<b>Layered system</b> – a client cannot ordinarily tell whether it is connected directly to the end server or to an intermediary along the way
 			<details>
 				<summary><small>Web app layers example</small></summary>
 				<table class="collapse-border">
@@ -1341,7 +1353,7 @@
 		</li>
 		<li>
 			<em>Code on demand</em> <small>(optional)</small> –
-			<small>servers are able to temporarily extend or customize the functionality of a client by transferring logic to the client that can be executed within a standard virtual machine.<br>
+			<small>servers are able to temporarily extend or customise the functionality of a client by transferring logic to the client that can be executed within a standard virtual machine.<br>
 				Example: Javascript
 			</small>
 		</li>
@@ -1487,14 +1499,14 @@
 			1. High-level modules should not depend/import on low-level modules, but both should depend on abstractions.<br>
 			2. Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.<br>
 			Modules should be loosely coupled.<br>
-			The 2nd part means that interfaces and abstract classes should <span class="red">not</span> reference any implementations,
+			The 2<small>nd</small> part means that interfaces and abstract classes should <span class="red">not</span> reference any implementations
 			but should only reference interfaces and abstract classes.<br>
 			Final Notes: <br>
-			- Implementations classes should not extend other implementations, only interfaces and abstract classes<br>
-			- Method parameter's should not reference implementations, only interfaces and abstract classes
+			— Implementation classes should not extend other implementations, only interfaces and abstract classes<br>
+			— Method parameter's should not reference implementations, only interfaces and abstract classes
 			<details>
 				<summary>Java example</summary>
-				<iframe id="dip" src="parts/DIPExample.html" style="width:-webkit-fill-available; height:570px;" >
+				<iframe id="dip" src="parts/DIPExample.html" class="iframe height-570">
 				</iframe>
 			</details>
 		</li>
@@ -1527,7 +1539,7 @@
 	</table>
 	<ul>
 		<li>
-			<b>CROSS JOIN</b> - a <em>Cartesian product</em>, all possible combinations of all rows. A default join type
+			<b>CROSS JOIN</b> — a <em>Cartesian product</em>, all possible combinations of all rows. A default join type
 			<table class="collapse-border padding">
 				<tr><th>A</th><th>B</th></tr>
 				<tr><td>1</td><td>1</td></tr>
@@ -1537,7 +1549,7 @@
 			</table>
 		</li>
 		<li>
-			<b>FULL OUTER JOIN</b> - returns the rows from tables matched to the <i>join</i> condition and others rows,
+			<b>FULL OUTER JOIN</b> - returns the rows from tables matched to the <i>join</i> condition and other rows,
 			but with the <i>NULL</i> values from the opposite table
 			<table class="collapse-border padding">
 				<tr><th>A</th><th>B</th></tr>
@@ -1589,7 +1601,7 @@
 	<code class="code">RANK()</code> - ranking over partitioning(or without),
 	It's just an independent <em>row_number</em> within the partitions/groups, can be duplicated for partitioned rows with the same values.
 	<span class="warning-sign fs18 tomato"> Produces Gaps</span>: 1 1 3 - Gap is 1; 1 2 2 2 5 - Gap is 2 rows.
-	todo example<br>
+	Todo example<br>
 	<em class="get-title">CTE</em> - Specifies a temporary named result set, like a View. <code>WITH cte_name AS (SELECT ...)</code><br>
 	<code>COALESCE(v1, v2, c1)</code><br>
 
@@ -1597,7 +1609,7 @@
 	<div class="indent4"></div>
 	A <em>stored procedure</em> is a <b class="dim-grey">precompiled</b> set of SQL statements executed as a unit to perform a task.<br>
 	<em>Correlated subquery</em> - depends on its outer query, <em>non correlated</em> - is not.<br>
-	<em>Clustered index</em> forces the order of rows of the table on physical level, therefore can be only 1 per table.
+	<em>Clustered index</em> forces the order of the rows in the table on physical level, therefore, can be only 1 per table.
 </div>
 <hr>
 
@@ -1629,7 +1641,7 @@
 		<li>
 			<h4 class="margin3px">Read uncommitted</h4>
 			This is the <i>lowest</i> isolation level.
-			In this level, <a href="#dirty-reads">dirty reads</a> are allowed, so one transaction may see <i>not-yet-committed</i> changes made by other transactions.
+			At this level, <a href="#dirty-reads">dirty reads</a> are allowed, so one transaction may see <i>not-yet-committed</i> changes made by other transactions.
 		</li>
 		<li>
 			<h4 class="margin3px">Read committed</h4>
@@ -1645,7 +1657,7 @@
 			<h4 class="margin3px">Repeatable reads</h4>
 			A lock-based <i>concurrency control</i> <span class="get-title">DBMS</span> implementation
 			keeps <span class="dark-green">read</span> and <span class="dark-red">write</span> locks <small>(acquired on selected data)</small> until the end of the <span class="green">transaction</span>.
-			Range-locks are not managed, so <a href="#phantom-reads">phantom reads</a> can occur.
+			Range locks are not managed, so <a href="#phantom-reads">phantom reads</a> can occur.
 			<div class="indent4"></div>
 			<span class="red">Write skew</span> is possible in some systems.
 			<em>Write skew</em> is a phenomenon where two writes are allowed to the same column(s) in a table by two different writers <small>(who have previously read the columns they are updating)</small>,

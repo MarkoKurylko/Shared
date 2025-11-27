@@ -171,6 +171,9 @@ ol.olWithMargin > li {margin: 10px 0;}
 .width100pct {width: 100%;}
 .height2     {height: 2px;}
 
+.height-220  {height: 220px}
+.height-570  {height: 570px}
+
 .display-none {display: none;}
 
 .iframe { width:-webkit-fill-available; }
