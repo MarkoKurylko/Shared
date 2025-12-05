@@ -240,7 +240,7 @@
 				</li>
 			</ul>
 			Atomic actions cannot be interleaved, so they can be used without fear of thread interference.
-			However, this does not eliminate all need to synchronize atomic actions, because memory consistency errors are still possible.
+			However, this does not eliminate all needs to synchronize atomic actions, because memory consistency errors are still possible.
 			Using <a href="#volatile"><code>volatile</code></a> variables reduces the risk of memory consistency errors.
 			<div class="indent"></div>
 			The <code class="code">java.util.concurrent.atomic</code> package defines classes that support atomic operations on single variables.
@@ -254,7 +254,7 @@
 			<div class="indent"></div>
 			For simple classes <a href="#synchronized"><code>synchronized</code></a> blocks/methods are an acceptable solution.
 			But for more complicated classes there may be a need to avoid the liveness impact of unnecessary synchronization.
-			Replacing the fields with an <code class="code">Atomic</code> variant allows to prevent thread interference without resorting to synchronization.
+			Replacing the fields with an <code class="code">Atomic</code> variant allows preventing thread interference without resorting to synchronization.
 
 			<div class="indent"></div>
 			<span class="orange">
@@ -313,7 +313,7 @@
 			<object width="700" data="svg/Collections.svg"></object>
 			<table class="border">
 				<tr><th>Feature <small>(according to the contract)</small></th><th>List</th><th>Set</th></tr>
-				<tr><td>Remembers the elements order</td><td>&#x2705;</td><td>&#x274C;</td></tr>
+				<tr><td>Remembers the elements' order</td><td>&#x2705;</td><td>&#x274C;</td></tr>
 				<tr><td>Can have duplicates</td><td>&#x2705;</td><td>&#x274C;</td></tr>
 			</table>
 			<br>
@@ -345,7 +345,7 @@
 			<br><br>
 			<code><b>HashSet</b></code>: <code>contains</code> and <code>add</code>, <code>remove</code>, <code>size</code>
 			requires <var>O(1)</var> time <small>(the case 1 element in the bucket)</small>.
-			Because under the hood <code>HashSet</code> is using a <a href="#hashMap"><code>HashMap</code></a> (only the keys part).
+			Because under the hood <code>HashSet</code> is using a <a href="#hashMap"><code>HashMap</code></a> (only the keys' part).
 
 			<br><br>
 			<b class="i">SubList & SubSet</b><br>
@@ -354,7 +354,7 @@
 			<br><br>
 
 			<code id="hashMap"><b>HashMap</b></code>
-			is based on "buckets" array: <code>Node&lt;K,V>[] table</code>. The array cells contains only the first <code>Node</code>s of the buckets.
+			is based on "buckets" array: <code>Node&lt;K,V>[] table</code>. The array cells contain only the first <code>Node</code>s of the buckets.
 			The Nodes form the linked list<small class="grey">(not the <code>java.util.LinkedList</code>)</small>.
 			<span class="nowrap">Since <span class="java8">Java 1.8</span> in case bucket size is > <b>8</b>,</span>
 			the bucket is being rebuilt with <code>TreeNode</code>, forming the <a href="ConnectedNotes.html#redBlackTree">RBT</a>.<br>
@@ -375,7 +375,7 @@
 			<code><b>TreeMap</b></code> is based on a <a href="ConnectedNotes.html#redBlackTree">RBT</a>
 
 			<br><br>
-			<code><b>EnumMap</b></code> and <code><b>EnumSet</b></code> should be used if keys are of enum type, for more efficiency.
+			<code><b>EnumMap</b></code> and <code><b>EnumSet</b></code> should be used if keys are of the enum type, for more efficiency.
 
 			<br><br>
 			<em><b>Notes:</b></em> For Maps & Sets: Using <span class="red">mutable key</span> is an <span class="red">antipattern</span>, and you should definitely avoid doing that.
@@ -450,7 +450,7 @@
 					<td><code class="code">Collection, Set, List, Map, Queue etc</code></td>
 					<td>
 						Returns a dynamically typesafe view of the specified collection.<br>
-						Purpose: debugging: will fail with <code class="code">ClassCastException</code> at the moment incorrectly typed element is trying to be added,
+						Purpose: debugging: will fail with <code class="code">ClassCastException</code> at the moment an incorrectly typed element is trying to be added,
 						and not further somewhere in the code
 					</td>
 				</tr>
@@ -550,7 +550,7 @@
 					<td><code class="code pointer i" title="static">reverseOrder()</code></td>
 					<td>
 						Returns a comparator that imposes the <b class="grey">reverse</b> of the <em>natural ordering</em><br>
-						Actually it is a link to the <span class="code">Collections.<i><a href="#collectionsReverseOrder">reverseOrder</a></i>()</span>
+						Actually, it is a link to the <span class="code">Collections.<i><a href="#collectionsReverseOrder">reverseOrder</a></i>()</span>
 					</td>
 				</tr>
 			</table>
@@ -583,7 +583,7 @@
 
 			<h4 id="synchronizedCollections" class="margin-bottom-0">Synchronized Collections <a class="link-sign" href="#concurrency">Concurrency</a></h4>
 			The <span class="code-a"><code>Collections</code></span> class provides several static methods
-			to create synchronized <i>(thread-safe)</i> collections using wrapper pattern.
+			to create synchronized <i>(thread-safe)</i> collections using a wrapper pattern.
 			It simply makes a source collection to be an internal <i>mutex</i> and adds a <code class="code">synchronized (mutex)</code> block
 			to the every method of a new collection.<br>
 			<code class="code">synchronizedCollection</code>,
@@ -595,7 +595,7 @@
 			<code class="code">synchronizedNavigableSet</code>, <code class="code">synchronizedNavigableMap</code><br>
 			Pay attention to that the <i>synchronized</i> collection does <span class="red"><b>not</b></span> mean they are <span class="red"><b>concurrent</b></span>.<br>
 			They are <i>thread-safe</i> and in case of concurrency their <span class="brown">performance</span> is expected to be very <span class="brown">low</span>.<br>
-			Moreover, despite they are called <i>tread-safe</i> they may fall into a <a href="#dataRaceCondition">race condition</a> or non-deterministic behavior in case of using it "as is".<br>
+			Moreover, despite they being called <i>tread-safe</i> they may fall into a <a href="#dataRaceCondition">race condition</a> or non-deterministic behavior in case of using it "as is".<br>
 			<i>Javadoc:</i> It is imperative that the user manually synchronize on the returned list when traversing it via <code class="code">Iterator</code>, <code class="code">Spliterator</code> or <code class="code">Stream</code>:
 			<pre class="margin-top-0">
 	List list = Collections.synchronizedList(new ArrayList());
@@ -835,7 +835,7 @@
 					<td colspan="3" rowspan="2">
 						Runs the runnable task asynchronously <i>in the given executor</i>, then returns <b class="grey">completed</b> CF.<br>
 						<span class="warning-sign blue"></span> The task execution starts right after <em>runAsync/supplyAsync</em> method call,
-						it does not wait of <em>get/join</em> methods invocations to start working on task
+						it does not wait for <em>get/join</em> methods invocations to start working on the task
 					</td>
 				</tr>
 				<tr>
@@ -862,7 +862,7 @@
 					<td><code class="code">Future</code></td>
 					<td rowspan="4" style="width: 5%;"><span class="warning-sign orange"></span> This is <nobr class="red b">blocking operation</nobr>!</td>
 					<td>
-						Waits if necessary for this future to complete, and then returns its result.<br>
+						Waits if necessary for this future to complete and then returns its result.<br>
 						Throws <span class="tomato">checked</span> exceptions. <b class="grey">Obsolete</b>, use <b class="green">join</b> instead
 					</td>
 				</tr>
@@ -1027,13 +1027,13 @@
 					<td></td>
 					<td><code class="code">int getNumberOfDependents()</code></td>
 					<td></td>
-					<td colspan="2">Returns the estimated number of CFs whose completions are awaiting completion of this CF</td>
+					<td colspan="2">Returns the estimated number of CFs, whose completions are awaiting completion of this CF</td>
 				</tr>
 				<tr>
 					<td></td>
 					<td><code class="code">CompletableFuture&lt;T> toCompletableFuture()</code></td>
 					<td><code class="code">CompletionStage</code></td>
-					<td colspan="2">The purpose of method is to get the <b><i>CF</i></b> instance from the CompletionStage</td>
+					<td colspan="2">The purpose of the method is to get the <b><i>CF</i></b> instance from the CompletionStage</td>
 				</tr>
 			</table>
 
@@ -1070,7 +1070,7 @@
 				<li>
 					<b>Starvation</b><br>
 					Starvation is a situation where a thread is unable to gain regular access to shared resources and is unable to make progress.<br>
-					Example: some thread cannot get a lock on object to do their job, because other threads uses synchronized methods of this object constantly,
+					Example: some thread cannot get a lock on an object to do their job, because other threads uses synchronized methods of this object constantly,
 					so the thread cannot get a chance to acquire the lock.
 				</li>
 			</ul>
@@ -1099,7 +1099,7 @@
 					<th>Data Race</th>
 					<td>
 						Two or more threads access shared data <span class="tomato">concurrently</span>,
-						and at least one them tries to modify that data in the same time
+						and at least one of them tries to modify that data at the same time
 					</td>
 				</tr>
 				<tr>
@@ -1129,7 +1129,7 @@
 			</ul>
 			<h5 class="margin-0">Approaches to prevent race conditions:</h5>
 			<ul class="margin-top-bottom-3">
-				<li><em>Avoiding shared state:</em> Immutable objects, <a href="#threadLocal">Thread-local variables</a>, etc</li>
+				<li><em>Avoiding shared state:</em> Immutable objects, <a href="#threadLocal">Thread-local variables</a>, etc.</li>
 				<li><em>Using synchronizations and atomic operations:</em> Lock, mutex, <a href="#atomic">Atomic</a> </li>
 			</ul>
 			<div class="indent4"></div>
@@ -1538,6 +1538,7 @@
 
 		<div id="jm">
 			<h2><a href="#jmUp">Java Memory Structure</a></h2>
+			<object width="1100" data="svg/JavaMemory.svg"></object>
 			<h4 class="margin-bottom-3">Stack memory</h4>
 			Execution of a thread. It called <em>Stack</em>(<small class="get-title">LIFO</small>) because it consists of method execution blocks, organized in a Stack,
 			but the data inside each block can be accessed on demand.<br>
@@ -1909,7 +1910,7 @@
 			<code class="code">optional.orElseGet(() -&gt; "NullObject")</code> will not.
 			<div class="indent"></div>
 			<code class="code">OptionalInt</code>, <code class="code">OptionalLong</code> and <code class="code">OptionalDouble</code>
-			classes are available <i>ootb</i> for  respective primitive types.
+			classes are available <i>ootb</i> for respective primitive types.
 		</div>
 		<hr>
 
@@ -1926,8 +1927,8 @@
 			Compact constructor. <small>The purpose of <em>CC</em> is to reduce boilerplate of constructor parameters.</small><br>
 			Can use <a href="#generics">Generics</a>.<br>
 			Can implement interfaces.<br>
-			We <b>cannot</b> add the extends clause to the declaration since every record class implicitly extends the <code class="code">abstract class <b>Record</b></code>, and Java doesn’t allow multiple inheritance.
-			Can have static variable and initializers, but not instance.
+			We <b>cannot</b> add the <em>extends</em> clause to the declaration since every record class implicitly extends the <code class="code">abstract class <b>Record</b></code>, and Java doesn’t allow multiple inheritance.
+			Can have static variables and initializers, but not instance.
 			Records can be inner and local.
 		</div>
 		<hr>
@@ -2269,7 +2270,7 @@
 				<tr>
 					<td rowspan="6">
 						operations<br>
-						<small>(all of them are an intermediate)</small>
+						<small>(all of them are intermediate)</small>
 					</td>
 					<td><code class="nowrap"><span class="code">Stream</span>&lt;T> distinct()</code></td>
 					<td><code></code></td>
@@ -2605,7 +2606,7 @@ class ClassOne {
 	}
 }
 			</pre>
-			In this example the <code class="red">monitor</code> string it is just the object that plays role of the <em>monitor lock</em> or <em class="get-title">mutex</em>.
+			In this example the <code class="red">monitor</code> string it is just the object that plays a role of the <em>monitor lock</em> or <em class="get-title">mutex</em>.
 			It can be any type and according to the best practice it should be <code class="code">final</code> to avoid consequences in case monitor object is rewritten.
 
 			<h4 id="happensBefore" class="margin-bottom-0"><a href="#happensBeforeUp"><em>Happens-before relationship</em></a></h4>
