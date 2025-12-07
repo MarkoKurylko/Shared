@@ -10,6 +10,7 @@
 
       .fill-white { fill: white }
       .fill-green { fill: green }
+      .fill-light-green { fill: LightGreen }
       .fill-blue  { fill: blue  }
 
       .line {
@@ -34,11 +35,11 @@
     </style>
   </defs>
 
-    <rect x="10" y="130" class="base" style="fill: LightGreen" width="1070" height="340" />
-    <text class="text30 fill-green" x="410" y="160">Threads Memory</text>
+    <rect x="10"  y="130" class="base fill-light-green" width="1070" height="340"/>
+    <text x="545" y="160" class="text30 fill-green" text-anchor="middle">Threads Memory</text>
 
-    <rect x="20" y="210" class="base" width="620" height="240"/>
-    <text class="text22" x="220" y="200">JVM Stacks</text>
+    <rect x="20"  y="210" class="base" width="620" height="240"/>
+    <text x="330" y="200" class="text22" text-anchor="middle">JVM Stacks</text>
 
     <rect x="30" y="230" class="base fill-white" width="180" height="200"/>
     <text class="text22" x="75" y="250">Thread 0</text>
@@ -80,7 +81,7 @@
 
     <!-- Native Method Stacks -->
     <rect x="660" y="210" class="base" width="410" height="240" />
-    <text class="text22" x="660" y="200">Native Method Stacks</text>
+    <text class="text22" x="865" y="200" text-anchor="middle">Native Method Stacks</text>
 
     <rect x="670" y="230" class="base fill-white" width="110" height="200" />
     <text class="text22" x="680" y="250">Thread 0</text>
@@ -95,12 +96,12 @@
 
     <!-- Heap -->
     <rect x="10" y="510" class="base" style="fill: SkyBlue" width="1070" height="340"/>
-    <text class="text30 fill-green" x="550" y="540" text-anchor="middle">Heap Memory</text>
+    <text class="text30 fill-green" x="545" y="540" text-anchor="middle">Heap Memory</text>
 
-    <rect x="20" y="570" class="base" style="fill: PaleGreen" width="260" height="40"/>
-    <text x="110" y="600" class="text22 fill-green">Young</text>
-    <rect x="20" y="610" class="base" style="fill: LightGreen" width="100" height="100"/>
-    <text x="40" y="665" class="text22 fill-green">Eden</text>
+    <rect x="20"  y="570" class="base" style="fill: PaleGreen" width="260" height="40"/>
+    <text x="150" y="600" class="text22 fill-green" text-anchor="middle">Young</text>
+    <rect x="20"  y="610" class="base fill-light-green" width="100" height="100"/>
+    <text x="70"  y="665" class="text22 fill-green" text-anchor="middle">Eden</text>
     <rect x="120" y="610" class="base" style="fill: MediumSpringGreen" width="30" height="100"/>
     <text x="140" y="695" class="text20" transform="rotate(-90 140 695)">Survivor</text>
     <rect x="150" y="610" class="base" style="fill: MediumSpringGreen" width="30" height="100"/>
@@ -109,10 +110,10 @@
     <text x="200" y="665" class="text22 fill-green">Virtual</text>
 
     <rect x="280" y="570" class="base" style="fill: DodgerBlue" width="260" height="40"/>
-    <text x="390" y="600" class="text22 fill-green">Old</text>
+    <text x="410" y="600" class="text22 fill-green" text-anchor="middle">Old</text>
     <rect x="280" y="610" class="base" style="fill: SteelBlue" width="140" height="100"/>
     <rect x="420" y="610" class="base" style="fill: LightSteelBlue" width="120" height="100"/>
-    <text x="440" y="665" class="text22 fill-green">Virtual</text>
+    <text x="480" y="665" class="text22 fill-green" text-anchor="middle">Virtual</text>
     <rect x="20"  y="710" class="base" style="fill: LightBlue" width="520" height="30"/>
     <text x="35"  y="730" class="text19 fill-green i">Default Arrangement of Generations in the Serial Collector</text>
 
@@ -128,11 +129,11 @@
     <text x="350" y="815" class="text30">Class statics</text>
 
     <!-- Native Memory -->
-    <rect x="10" y="890" class="base" style="fill: LightSalmon" width="1070" height="380"/>
-    <text class="text30 fill-green" x="550" y="920" text-anchor="middle">Native Memory</text>
+    <rect x="10"  y="890" class="base" style="fill: LightSalmon" width="1070" height="380"/>
+    <text x="545" y="920" class="text30 fill-green" text-anchor="middle">Native Memory</text>
 
-    <rect x="30"  y="980" class="base" style="fill: DarkSalmon" width="1030" height="280"/>
-    <text x="550" y="1010" class="text25 fill-green" text-anchor="middle">Metaspace / Class Metadata</text>
+    <rect x="30"  y="980"  class="base" style="fill: DarkSalmon" width="1030" height="280"/>
+    <text x="545" y="1010" class="text25 fill-green" text-anchor="middle">Metaspace / Class Metadata</text>
 
     <text x="50"  y="1040" class="text22" id="constantPool">• Constant Pool (symbolic info)</text>
     <text x="360" y="1040" class="text19">[Class names, Field names and descriptors, Method names and descriptors ...]</text>

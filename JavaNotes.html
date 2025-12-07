@@ -114,7 +114,7 @@
 						<h3><a href="#jsp" id="jspUp">Jakarta(Java) Server Pages</a></h3>
 						<h3><a href="#servlets" id="servletsUp">Jakarta(Java) Servlets</a></h3>
 						<h3><a href="#filters"  id="filtersUp" >Jakarta(Java) Filters</a></h3>
-						<h2><a href="#jm" id="jmUp">Java Memory Structure</a></h2>
+						<h2><a href="#jm" id="jmUp">JVM Memory Structure / Run-Time Data Areas</a></h2>
 					</details>
 				</td>
 			</tr>
@@ -169,6 +169,7 @@
 						<h3><a href="#dataRaceCondition"><span id="raceConditionUp">Race Condition</span> <small>& Data Race</small></a></h3>
 						<h3><a href="#record" id="recordUp">Record</a></h3>
 						<h3><a href="#referenceType" id="referenceTypeUp">Reference Type</a></h3>
+						<h3><a href="#jm" id="rtdaUp">Run-Time Data Areas</a></h3>
 						<h3><a href="#rtti" id="rttiUp">Runtime Type Identification (RTTI)</a></h3>
 					</details>
 				</td>
@@ -1537,13 +1538,13 @@
 		<hr>
 
 		<div id="jm">
-			<h2><a href="#jmUp">Java Memory Structure</a></h2>
+			<h2><a href="#jmUp">JVM Memory Structure</a> / <a href="#rtdaUp">Run-Time Data Areas</a></h2>
 			<object width="1100" data="svg/JavaMemory.svg"></object>
 			<h4 class="margin-bottom-3">Stack memory</h4>
-			Execution of a thread. It called <em>Stack</em>(<small class="get-title">LIFO</small>) because it consists of method execution blocks, organized in a Stack,
-			but the data inside each block can be accessed on demand.<br>
+			Execution of a thread. It is called <em>Stack</em> (<small class="get-title">LIFO</small>) because it consists of method execution <em>frames</em>, organized in a Stack,
+			but the data inside each <em>frame</em> can be accessed on demand.<br>
 			It contains primitive values that are specific to a method and references to objects referred from the method that are in a heap.<br>
-			Whenever we call <span class="green">a new method</span>, <span class="dark-green">a new block</span> is created on top of the stack.<br>
+			Whenever we call <span class="green">a new method</span>, <span class="dark-green">a new <em>frame</em></span> is created on top of the stack.<br>
 			When the method finishes execution, its corresponding stack frame is flushed, the flow goes back to the calling method, and space becomes available for the next method.
 			<ul class="margin-top-3">
 				<li>It grows and shrinks as new methods are called and returned, respectively</li>
@@ -1556,11 +1557,11 @@
 
 			<h4 class="margin-bottom-3" id="heapMemory">Heap memory</h4>
 			Keeps the static members.<br>
-			Keeps the other todo.<br>
+			Keeps the classes' instances.<br>
 			From Java 7 the String Pool is stored in the Heap<br>
 			<code class="code">java.lang.OutOfMemoryError</code><br>
-			<code class="code">-Xms512m -Xmx2048m</code><br>
-			Todo
+			<code class="code">-Xms512m</code> -- minimum Heap size<br>
+			<code class="code">-Xmx2048m</code> -- maximum Heap size<br>
 
 			<h4 class="margin-bottom-3">Metaspace</h4>
 			<small class="gray">Old <em>PermGen</em> space is replaced by Metaspace since Java 8.</small><br>
@@ -1568,8 +1569,8 @@
 			Lives in native memory.<br>
 			Metadata contains information about the objects in the heap - class definitions, method tables, and <em>related information</em><br>
 			The Metaspace is not fixed in size and can grow dynamically.<br>
-			<code class="code">-XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m</code><br>
-
+			<code class="code">-XX:MetaspaceSize=128m</code> -- to avoid early garbage collections induced for class metadata.<br>
+			<code class="code">-XX:MaxMetaspaceSize=512m</code> -- if not specified, then it is limited by physical memory.<br>
 		</div>
 		<hr>
 
