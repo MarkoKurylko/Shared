@@ -32,8 +32,9 @@ CommandLineRunner and ApplicationRunner interfaces<br>
 <hr>
 
 By default, Spring and Spring Boot create beans eagerly, not lazily.<br>
-<code>@Lazy @Bean</code>
-<code>@Configuration @Lazy</code>
+<code>@Lazy @Bean</code><br>
+<code>@Lazy @Configuration { @Lazy(false) @Bean // to override for a bean }</code><br>
+<code>@Lazy @Component; @Lazy @Autowired // mandatory for lazy for autowired then</code><br>
 <code>@SpringBootApplication(lazyInitialization = true)</code>
 <hr>
 
