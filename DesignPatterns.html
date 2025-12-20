@@ -29,7 +29,7 @@
 				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
 			</tr>
 			<tr>
-				<td><a href="#builder-downlink" id="builder-uplink">Builder</a></td>
+				<td id="builderUp"><a href="#builder">Builder</a></td>
 				<td>
 					Separates the construction of a complex object from its representation.<br>
 					Gives more readability in Java code
@@ -37,7 +37,7 @@
 				<td>When need to create different representations of a complex object <small>(with the same construction process) </small></td>
 			</tr>
 			<tr>
-				<td><a href="#DI">Dependency injection</a></td>
+				<td id="diUp"><a href="#DI">Dependency injection</a></td>
 				<td>
 					DI is a programming technique in which an object or function <span class="green">receives</span> other objects or functions that it requires, as opposed to <span class="tomato">creating</span> them internally.<br>
 					DI aims to <em>separate the concerns</em> of constructing objects and using them, leading to <em>loosely coupled</em> programs
@@ -45,10 +45,10 @@
 			</tr>
 			<tr>
 				<td><a id="lazyInitialization" href="#lazyInitialization">Lazy initialization</a></td>
-				<td>Tactic of delaying the creation of an object, the calculation of a value, or some other expensive process until the first time it is needed</td>
+				<td>Tactic of delaying the creation of an object, the calculation of a value, or some other expensive process until needed for the first time</td>
 			</tr>
 			<tr>
-				<td><a href="#objectPool">Object Pool</a></td>
+				<td id="objectPoolUp"><a href="#objectPool">Object Pool</a></td>
 				<td>
 					Uses a set of initialized objects kept ready to use – a "pool" – rather than allocating and destroying them on demand.<br>
 					<small>
@@ -81,13 +81,13 @@
 				</td>
 			</tr>
 			<tr>
-				<td><a href="#abstractFactory">Abstract factory</a></td>
+				<td id="abstractFactoryUp"><a href="#abstractFactory">Abstract factory</a></td>
 				<td>Provide an interface for creating <i><b>families</b></i> of related or dependent objects without specifying their concrete classes</td>
 			</tr>
 			<tr><td colspan="3"><hr></td></tr>
 			<tr>
 				<td><a href="#singleton" id="singleton-up">Singleton</a></td>
-				<td>Ensure a class has only one instance, and provide a global point of access to it</td>
+				<td>Ensure a class has only one instance and provide a global point of access to it</td>
 				<td></td>
 			</tr>
 			<tr>
@@ -102,15 +102,15 @@
 				</td>
 			</tr>
 			<tr>
-				<td><a href="#multiton">Multiton</a></td>
-				<td>Ensure a class has only named instances, and provide a global point of access to them</td>
+				<td id="multitonUp"><a href="#multiton">Multiton</a></td>
+				<td>Ensure a class has only named instances and provide a global point of access to them</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td><a href="#prototype" id="prototype-up">Prototype</a></td>
 				<td>The technique of creation new objects by cloning the existing one, to improve instantiation time and process</td>
 				<td>
-					When the types of <em>objects</em> to create is determined by a <em>prototypical instance</em>, which is cloned to produce new objects.<br>
+					When the types of <em>objects</em> to create are determined by a <em>prototypical instance</em>, which is cloned to produce new objects.<br>
 					When we have an instance of the class (prototype) and we’d like to create new objects by just copying the prototype
 				</td>
 			</tr>
@@ -126,7 +126,7 @@
 				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
 			</tr>
 			<tr>
-				<td><a href="#adapter">Adapter <small>(Wrapper, or Translator)</small></a></td>
+				<td id="adapterUp"><a href="#adapter">Adapter <small>(Wrapper, or Translator)</small></a></td>
 				<td>
 					Allows the interface of an existing class to be used as another interface.<br>
 					An adapter allows two incompatible interfaces to work together, so it changes the interface.
@@ -134,12 +134,12 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td><a href="#bridge">Bridge</a></td>
+				<td><a href="#bridge" id="bridgeUp">Bridge</a></td>
 				<td>Decouple an <span class="medium-aqua-marine">abstraction</span> from its <span class="dark-green">implementation</span> allowing <b><i>them</i></b> to vary independently</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><a href="#composite">Composite</a></td>
+				<td><a href="#composite" id="compositeUp">Composite</a></td>
 				<td>
 					Is a <em>partitioning</em> DP.
 					The composite pattern describes a group of objects that are treated the same way as a single instance of the same type of object.
@@ -148,22 +148,22 @@
 				<td>Tree-like structures</td>
 			</tr>
 			<tr>
-				<td><a href="#decorator">Decorator</a></td>
-				<td>Allows behavior to be added to an individual object, dynamically, without affecting the behavior of other instances of the same class.</td>
+				<td><a href="#decorator" id="decoratorUp">Decorator</a></td>
+				<td>Allows behavior to be added to an individual object, dynamically, without affecting the behavior of the other instances of the same class.</td>
 				<td>The decorator pattern can be used to extend <em>(decorate)</em> the functionality of a certain object</td>
 			</tr>
 			<tr>
-				<td><a href="#delegation">Delegation</a></td>
+				<td><a href="#delegation" id="delegationUp">Delegation</a></td>
 				<td>Extend a class by composition instead of subclassing</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><a href="#extensionObject">Extension object</a></td>
+				<td><a href="#extensionObject" id="extensionObjectUp">Extension object</a></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td><a href="#facade" id="facade">Facade</a></td>
+				<td>Facade</td>
 				<td>
 					Facade encapsulates a complex subsystem behind a simple interface.<br>
 					It hides much of the complexity and makes the subsystem easy to use.<br>
@@ -178,13 +178,13 @@
 				</td>
 			</tr>
 			<tr>
-				<td><a href="#flyweight" id="flyweight-up">Flyweight</a></td>
+				<td><a href="#flyweight" id="flyweightUp">Flyweight</a></td>
 				<td>Use sharing to support large numbers of similar objects efficiently</td>
 				<td></td>
 			</tr>
 
 			<tr>
-				<td><a href="#frontController">Front Controller</a></td>
+				<td><a href="#frontController" id="frontControllerUp">Front Controller</a></td>
 				<td>Use a controller as the initial point of contact for handling a request.
 					The controller manages the handling of the request, including invoking security services such as authentication and authorization, delegating business processing, managing the choice of an appropriate view, handling errors, and managing the selection of content creation strategies
 				</td>
@@ -204,7 +204,7 @@
 			</tr>
 
 			<tr>
-				<td><a href="#module">Module</a></td>
+				<td><a href="#module" id="moduleUp">Module</a></td>
 				<td>
 					Group several related elements, such as classes, singletons, methods, globally used, into a single conceptual entity.
 				</td>
@@ -215,23 +215,23 @@
 			</tr>
 
 			<tr>
-				<td><a href="#proxy" id="proxy-up">Proxy</a></td>
+				<td><a href="#proxy" id="proxyUp">Proxy</a></td>
 				<td>
 					A <em>proxy</em>, in its most general form, is a class functioning as an interface to something else.<br>
 					In short, a proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes.<br>
 					Proxy does NOT change the interface.
 				</td>
 				<td>
-					Use of the proxy can simply be <em>forwarding</em> to the real object, or can provide additional logic.
-					In the proxy, extra functionality can be provided, for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
-					For the client, usage of a proxy object is similar to using the real object, because both implement the same interface.
+					Use of the proxy can simply be <em>forwarding</em> to the real object or can provide additional logic.
+					In the proxy, extra functionality can be provided, for example, caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
+					For the client, usage of a proxy object is similar to using the real object because both implement the same interface.
 				</td>
 			</tr>
 
 			<tr>
 				<td><a href="#twin" id="twinUp">Twin</a></td>
 				<td>
-					Allows to model <em>multiple inheritance</em> in programming languages that do not support multiple inheritance.<br>
+					Allows model <em>multiple inheritance</em> in programming languages that do not support multiple inheritance.<br>
 					This pattern avoids many of the problems with multiple inheritance.
 				</td>
 				<td>
@@ -256,14 +256,14 @@
 			</tr>
 
 			<tr>
-				<td><a href="#command">Command</a></td>
+				<td><a href="#command" id="commandUp">Command</a></td>
 				<td>An object is used to <em>encapsulate</em> all information needed to perform an action or trigger an event at a later time.
 					This information includes the method name, the object that owns the method and values for the method parameters.</td>
 				<td></td>
 			</tr>
 
 			<tr>
-				<td><a href="#fluentInterface">Fluent Interface</a></td>
+				<td><a href="#fluentInterface" id="fluentInterfaceUp">Fluent Interface</a></td>
 				<td>
 					Relies extensively on <em>method chaining</em>.
 					Its goal is to increase code legibility by creating a <span class="get-title" data-id="2">DSL</span>.<br>
@@ -276,7 +276,7 @@
 			</tr>
 
 			<tr>
-				<td><a href="#interpreter" >Interpreter</a></td>
+				<td><a href="#interpreter" id="interpreterUp">Interpreter</a></td>
 				<td>
 					Defines a way to interpret and evaluate language grammar or expressions.
 					It provides a mechanism to evaluate sentences in a language by representing their grammar as a set of classes.
@@ -299,7 +299,7 @@
 			</tr>
 
 			<tr>
-				<td><a href="#iterator" id="iterator">Iterator</a></td>
+				<td>Iterator</td>
 				<td>
 					Is used to traverse a <em>container</em> and access the container's elements.
 					The iterator pattern decouples <em>algorithms</em> from containers; in some cases, algorithms are necessarily container-specific and thus cannot be decoupled
@@ -308,52 +308,52 @@
 			</tr>
 
 			<tr>
-				<td><a href="#mediator" id="mediator-up">Mediator</a></td>
+				<td><a href="#mediator" id="mediatorUp">Mediator</a></td>
 				<td>
 					With the mediator pattern, communication between objects is encapsulated within a mediator object.<br>
-					Objects no longer communicate directly with each other, but instead communicate through the mediator.<br>
+					Objects no longer communicate directly with each other but instead communicate through the mediator.<br>
 					This reduces the dependencies between communicating objects, thereby reducing coupling.
 				</td>
 				<td></td>
 			</tr>
 
 			<tr>
-				<td><a href="#nullObject">Null Object</a></td>
+				<td><a href="#nullObject" id="nullObjectUp">Null Object</a></td>
 				<td>An <em>object</em> with no referenced value or with defined neutral <em>(null)</em> behavior</td>
 				<td></td>
 			</tr>
 
 			<tr>
-				<td><a href="#servant" id="servant">Servant</a></td>
+				<td>Servant</td>
 				<td>
 					Defines common functionality for a group of classes.<br>
 					The servant pattern is also frequently called <em>helper</em> class or <em>utility</em> class implementation for a given set of classes.
-					The <em>helper</em> classes generally have no objects hence they have all <em><b>static methods</b></em> that act upon different kinds of class objects
+					The <em>helper</em> classes generally have no objects, hence they have all <em><b>static methods</b></em> that act upon different kinds of class objects
 				</td>
 				<td>
-					Similar to <a href="#command">Command</a>, but <em>Servant</em> offers some functionality to the <em>objects</em>,
+					Similar to <a href="#commandUp">Command</a>, but <em>Servant</em> offers some functionality to the <em>objects</em>,
 					and <em>Command</em> modifies <em>objects</em> with some functionality
 				</td>
 			</tr>
 
 			<tr>
-				<td><a href="#specification">Specification</a></td>
+				<td><a href="#specification" id="specificationUp">Specification</a></td>
 				<td><em>Business rules</em> can be recombined by chaining the business rules together using <em>boolean logic</em></td>
 				<td></td>
 			</tr>
 
 			<tr>
-				<td><a href="#state-downlink" id="state-uplink">State</a></td>
+				<td><a href="#state" id="stateUp">State</a></td>
 				<td>
 					Allows an object to alter its behavior when its internal state changes.<br>
 					This pattern is close to the concept of <em>finite-state machines</em>.<br>
-					The <i>State</i> pattern can be interpreted as a <a href="#strategy-uplink">Strategy</a> pattern
+					The <i>State</i> pattern can be interpreted as a <a href="#strategyUp">Strategy</a> pattern
 				</td>
 				<td></td>
 			</tr>
 
 			<tr>
-				<td><a href="#strategy-uplink" id="strategy-uplink">Strategy</a></td>
+				<td id="strategyUp">Strategy</td>
 				<td>
 					Enables selecting an <em>algorithm</em> at runtime.
 					Instead of implementing a single algorithm directly, code receives runtime instructions as to which in a family of algorithms to use
@@ -362,7 +362,7 @@
 			</tr>
 
 			<tr>
-				<td><a href="#visitor" id="visitor">Visitor</a></td>
+				<td>Visitor</td>
 				<td>
 					Separates the algorithm from the object structure.<br>
 					New operations can be added to existing object structures without modifying the structures.<br>
@@ -380,7 +380,7 @@
 				<th>Name</th><th>Description</th><th style="width: 40%;">When to apply</th>
 			</tr>
 			<tr>
-				<td><a href="#activeObject-downlink" id="activeObject-uplink">ActiveObject</a></td>
+				<td><a href="#activeObject" id="activeObjectUp">ActiveObject</a></td>
 				<td>
 					Decouples method execution from method invocation for objects that each reside in their own thread of control.<br>
 					The goal is to introduce <em>concurrency</em>,
@@ -509,7 +509,7 @@ User → Controller → Model
 	<h2>Creational</h2>
 
 	<div id="abstractFactory">
-		<h3>Abstract factory</h3>
+		<h3><a href="#abstractFactoryUp">Abstract factory</a></h3>
 		<a href="https://refactoring.guru/design-patterns/abstract-factory/java/example">Java example</a>
 		<details>
 			<summary>UML</summary>
@@ -518,25 +518,25 @@ User → Controller → Model
 	</div>
 	<hr>
 
-	<div id="builder-downlink">
-		<h3><a href="#builder-uplink">Builder</a></h3>
+	<div id="builder">
+		<h3><a href="#builderUp">Builder</a></h3>
 		Example 1: (Pay attention to that <code class="code">ClassWithBuilder</code> does not have setters)
 		<iframe src="parts/ClassWithBuilderExample.html" style="width:-webkit-fill-available; height:615px;"></iframe>
 
 		Example 2: Java class <code class="code">StringBuilder</code> and Java <i>Streams</i>
 		<div class="indent"></div>
-		Example 3: Since Java 1.8 there is possible to construct <i>GenericBuilder</i> using lambda expressions
+		Example 3: Since Java 1.8 there's been possible to construct <i>GenericBuilder</i> using lambda expressions
 		(like at <i>Baeldung</i>), but in this case base class will need to have public setters.
 	</div>
 	<hr>
 
 	<div id="DI">
-		<h3>Dependency injection</h3>
+		<h3><a href="#diUp">Dependency injection</a></h3>
 	</div>
 	<hr>
 
 	<div id="objectPool">
-		<h3>Object Pool</h3>
+		<h3><a href="#objectPoolUp">Object Pool</a></h3>
 		Java supports <a href="#threadPool">thread pooling</a> via <code class="code">java.util.concurrent.ExecutorService</code> and other related classes.
 	</div>
 	<hr>
@@ -570,7 +570,7 @@ User → Controller → Model
 	<hr>
 
 	<div id="multiton">
-		<h3>Multiton</h3>
+		<h3><a href="#multitonUp">Multiton</a></h3>
 		Generalizes the <em>Singleton</em> pattern.
 		Whereas the <em>singleton</em> allows only one instance of a class to be created,
 		the multiton pattern allows for the controlled creation of multiple instances,
@@ -594,7 +594,7 @@ User → Controller → Model
 	<h2>Structural</h2>
 
 	<div id="adapter">
-		<h3>Adapter</h3>
+		<h3><a href="#adapterUp">Adapter</a></h3>
 		Example: the <span class="get-title">DOM</span>.
 
 		<ul class="ulWithMargin">
@@ -612,7 +612,7 @@ User → Controller → Model
 	<hr>
 
 	<div id="bridge">
-		<h3>Bridge</h3>
+		<h3><a href="#bridgeUp">Bridge</a></h3>
 		<iframe src="parts/BridgePatternExample.html" style="width:-webkit-fill-available; height:420px;"></iframe>
 		<details>
 			<summary>Bridge visualization</summary>
@@ -622,11 +622,11 @@ User → Controller → Model
 	<hr>
 
 	<div id="composite">
-		<h3>Composite</h3>
+		<h3><a href="#compositeUp">Composite</a></h3>
 		<ul class="ulWithMargin">
 			<li><b>Component</b> - the base interface for all the objects in the composition</li>
 			<li><b>Leaf</b> - implements the <i>Component</i>, <span class="red">cannot have</span> child components</li>
-			<li><b>Composite</b> - implements the <i>Component</i>, <span class="green">can have</span> child components (leafs or other composites)</li>
+			<li><b>Composite</b> - implements the <i>Component</i>, <span class="green">can have</span> child components (leaves or other composites)</li>
 		</ul>
 		<details>
 			<summary>Wiki UML</summary>
@@ -636,7 +636,7 @@ User → Controller → Model
 	<hr>
 
 	<div id="decorator">
-		<h3>Decorator</h3>
+		<h3><a href="#decoratorUp">Decorator</a></h3>
 		<details>
 			<summary>Decorator visualization</summary>
 			<img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Decorator_UML_class_diagram.svg" alt="Decorator">
@@ -649,7 +649,7 @@ User → Controller → Model
 	<hr>
 
 	<div id="delegation">
-		<h3>Delegation</h3>
+		<h3><a href="#delegationUp">Delegation</a></h3>
 		<details>
 			<summary>Delegation example</summary>
 			<iframe src="parts/DelegationPatternExample.html" style="width:-webkit-fill-available; height:650px;"></iframe>
@@ -658,7 +658,7 @@ User → Controller → Model
 	<hr>
 
 	<div id="extensionObject">
-		<h3>Extension Object</h3>
+		<h3><a href="#extensionObjectUp">Extension Object</a></h3>
 		<details>
 			<summary>Extension Object example</summary>
 			<iframe src="parts/ExtensionObjectPatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
@@ -667,7 +667,7 @@ User → Controller → Model
 	<hr>
 
 	<div id="flyweight">
-		<h3><a href="#flyweight-up">Flyweight</a></h3>
+		<h3><a href="#flyweightUp">Flyweight</a></h3>
 		<details>
 			<summary>Flyweight examples</summary>
 			<code class="code">String.intern()</code>
@@ -678,7 +678,7 @@ User → Controller → Model
 	<hr>
 
 	<div id="frontController">
-		<h3>Front Controller</h3>
+		<h3><a href="#frontControllerUp">Front Controller</a></h3>
 		The controller provides a centralized entry point that controls and manages Web request handling.
 		By centralizing decision points and controls, the controller also helps reduce the amount of Java code, called <em>scriptlets</em>, embedded in the <span class="get-title">JSP</span>.<br>
 		The <em>controller</em> is the initial contact point for handling all requests in the system. The controller may delegate to a helper to complete authentication and authorization of a user or to initiate contact retrieval.<br>
@@ -687,7 +687,7 @@ User → Controller → Model
 	<hr>
 
 	<div id="module">
-		<h3>Module</h3>
+		<h3><a href="#moduleUp">Module</a></h3>
 		<em>Java</em> supports <em>packaging</em>, that is a reduced version of <em>module</em>.<br>
 		Java 9 introduces <em>modules</em> as is.<br>
 		<code class="code">import module jep476mod2;</code>
@@ -695,7 +695,7 @@ User → Controller → Model
 	<hr>
 
 	<div id="proxy">
-		<h3><a href="#proxy-up">Proxy</a></h3>
+		<h3><a href="#proxyUp">Proxy</a></h3>
 		<ul>
 			<li>The access to an object should be controlled.</li>
 			<li>Additional functionality should be provided when accessing an object.</li>
@@ -712,7 +712,7 @@ User → Controller → Model
 		<h3><a href="#twinUp">Twin</a></h3>
 		Instead of having a single class which is derived from two super-classes,
 		have two separate sub-classes each derived from one of the two super-classes.
-		These two sub-classes are closely coupled, so, both can be viewed as a Twin object having two ends.
+		These two sub-classes are closely coupled, so both can be viewed as a Twin object having two ends.
 		<pre class="code">
 	public class BallItem {
 		BallThread <b>twin</b>;
@@ -745,7 +745,7 @@ User → Controller → Model
 	<hr>
 
 	<div id="command">
-		<h3>Command</h3>
+		<h3><a href="#commandUp">Command</a></h3>
 		<ul class="ulWithMargin">
 			<li>
 				<b class="red">command</b> - knows about <span class="green">receiver</span> and invokes a method of the <span class="green">receiver</span>.
@@ -775,7 +775,7 @@ User → Controller → Model
 	<hr>
 
 	<div id="fluentInterface">
-		<h3>Fluent Interface</h3>
+		<h3><a href="#fluentInterfaceUp">Fluent Interface</a></h3>
 		<details>
 			<summary>Example</summary>
 			<pre class="language-java"><code>Collection mockCollection = EasyMock.createMock(Collection.class);
@@ -814,7 +814,7 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 	<hr>
 
 	<div id="interpreter">
-		<h3>Interpreter</h3>
+		<h3><a href="#interpreterUp">Interpreter</a></h3>
 		<details>
 			<summary>Example</summary>
 			<pre class="language-java"><code>class Client {
@@ -836,7 +836,7 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 	<hr>
 
 	<div id="mediator">
-		<h3><a href="#mediator-up">Mediator</a></h3>
+		<h3><a href="#mediatorUp">Mediator</a></h3>
 		<details>
 			<summary>Mediator example</summary>
 			<iframe src="parts/MediatorPatternExample.html" style="width:-webkit-fill-available; height:750px;"></iframe>
@@ -845,7 +845,7 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 	<hr>
 
 	<div id="nullObject">
-		<h3>Null Object</h3>
+		<h3><a href="#nullObjectUp">Null Object</a></h3>
 		<details>
 			<summary>Example</summary>
 			<pre class="language-java"><code>class NullObjectPattern {
@@ -872,7 +872,7 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 	<hr>
 
 	<div id="specification">
-		<h3>Specification</h3>
+		<h3><a href="#specificationUp">Specification</a></h3>
 		<details>
 			<summary>Example</summary>
 			<pre class="language-java"><code>
@@ -889,8 +889,8 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 	</div>
 	<hr>
 
-	<div id="state-downlink">
-		<h3><a href="#state-uplink">State</a></h3>
+	<div id="state">
+		<h3><a href="#stateUp">State</a></h3>
 		<ul>
 			<li>An object should change its behavior when its internal state changes</li>
 			<li>State-specific behavior should be defined <b>independently</b>. That is, adding new states should not affect the behavior of existing states</li>
@@ -902,8 +902,8 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 	</div>
 	<hr>
 
-	<div id="activeObject-downlink">
-		<h3><a href="#activeObject-uplink">Active Object</a></h3>
+	<div id="activeObject">
+		<h3><a href="#activeObjectUp">Active Object</a></h3>
 		<details>
 			<summary>Example</summary>
 			<pre class="language-java"><code>	private double val;
@@ -916,6 +916,6 @@ pk.pack( nm ).gridx(1).gridy(0).fillx();</code>
 
 	<div class="indent"></div>
 	<a href="all.html">SiteMap</a><br>
-	<iframe style="border:0; height: 35px;" src="./footer.html"></iframe>
+	<iframe class="footer" src="./footer.html"></iframe>
 </body>
 </html>
