@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Glossary for IT</title>
+	<link rel="icon" type="image/x-icon" href="ico/favicon.ico">
 	<link rel="stylesheet" href="css/common.css">
 	<script src="js/glossary.js"></script>
 	<style>
@@ -2018,7 +2019,6 @@
 <script>
 	// Fetch data from rawMap
 	rawMap.forEach((value, key, map) => {
-		console.log(key.charAt(0));
 		let parentTable = document.getElementById(key.charAt(0));
 		let newRow = parentTable.insertRow(-1);
 		let th = document.createElement('th');
