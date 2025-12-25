@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HibernateJPA</title>
+	<link rel="stylesheet" href="css/common.css">
+	<script src="js/toc.js"></script>
+	<script src="js/glossary.js"></script>
+</head>
+<body>
+<a href="all.html">SiteMap</a>
+<div class="indent"></div>
+
+<table id="toc">
+	<tr>
+		<td><h1>C</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3 id="compositePKUp"><a href="#compositePK">Composite Primary Keys</a></h3>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>H</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2 id="lifecycleUp"><a href="#lifecycle">Hibernate/JPA Entity Lifecycle</a></h2>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>M</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3 id="mapsIdUp"><a href="#mapsId"><code>@MapsId</code></a></h3>
+				<h3 id="mappedByUp"><a href="#mappedByUp"><code>mappedBy Todo</code></a></h3>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>O</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h2 id="lockingUp"><a href="#locking">Optimistic/Pessimistic Locking</a></h2>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
+		<td><h1>T</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3 id="temporalUp"><a href="#temporal"><code>@Temporal</code></a></h3>
+			</details>
+		</td>
+	</tr>
+
+</table>
+
+<hr class="height2">
+
+<div id="compositePK">
+	<h2><a href="#compositePKUp">Composite Primary Keys</a></h2>
+	Package: <code>jakarta.persistence</code><br>
+	<div class="indent4"></div>
+	<code>@IdClass</code><br>
+	<pre>		@Entity
+		<b>@IdClass</b>(EmployeePK.class)
+		public class Employee {
+			<b>@Id</b> // 1
+			String empName;
+			<b>@Id</b> // 2
+			Date birthDay;
+		}
+
+		public record EmployeePK(String empName, Date birthDay) {
+			// - non-abstract class or record
+			// - public or protected constructor with no parameters (if not record)
+			// - correct equals() and hashCode() methods
+		}
+	</pre>
+
+	<code>@EmbeddedId</code><br>
+	<pre>		@Entity
+		public class Employee {
+			@Id long empId;
+			String name;
+		}
+
+		@Embeddable
+		public class DependentId {
+			String name;
+			long empid; // corresponds to primary key type of Employee
+		}
+
+		@Entity
+		public class Dependent {
+			<b>@EmbeddedId</b> DependentId id;
+
+			<a href="#mapsId">@MapsId</a>("empid") // will throw empid value from the Employee through the DependentId class
+			@ManyToOne Employee emp;
+		}</pre>
+</div>
+<hr>
+
+<div id="lifecycle">
+	<h2><a href="#lifecycleUp">Hibernate/JPA Entity Lifecycle</a></h2>
+
+	<h4 class="margin-bottom-3">Transient <small>(new)</small></h4>
+	An <em>entity</em> object that has <b>no</b> representation in the persistent store(DB) and is not managed by any <em>Session/EM</em>.<br>
+	<code>em.persist(entity)</code>
+
+	<h4 class="margin-bottom-3">Managed</h4>
+	A <em>managed entity</em> is a representation of a database table row <small>(can bew a new that does not yet exist in DB)</small>.<br>
+	This is managed by the currently running <em>Session</em> or <em>Entity Manager</em>.<br>
+	Every change made on it will be tracked to the <em>persistence context</em> as a <em>Dirty Entity</em>.<br>
+	It will be Propagated to the database automatically depending on the <code>FlushMode</code>.
+
+	<h4 class="margin-bottom-3">Detached</h4>
+	A <em>detached entity</em> is just an ordinary entity <span class="get-title">POJO</span>,
+	not tracked anymore by any <em>persistence context</em>.<br>
+	The main difference from the <em>transient</em> entity is that detached entity <b>has</b> representation in the persistent store(DB).<br>
+	If we have a <span class="get-title">POJO</span> entity without an <em>Id</em>, we can make a conclusion that it is a <em>transient</em> entity,
+	but not vice versa.
+
+	<h4 class="margin-bottom-3">Deleted</h4>
+
+</div>
+<hr>
+
+<div id="mapsId">
+	<h3><a href="#mapsIdUp"><code>@MapsId</code></a></h3>
+	Package: <code>jakarta.persistence</code><br>
+	Purpose: to pass PK value from the parent entity to the child PK.<br>
+	for <code>@OneToOne</code> and <code>@ManyToOne</code> relations.<br>
+	PK can be <a href="#compositePK">composite</a>.<br>
+	<div class="indent4"></div>
+
+	<pre>		@Entity
+		public class Person {
+			@Id private int id;
+			@OneToOne(mappedBy = "person")
+			private Address address;
+		}
+
+		@Entity
+		public class Address {
+			@Id private int id;
+			<b>@MapsId</b> @OneToOne private Person person;
+		}</pre>
+
+</div>
+<hr>
+
+<div id="locking">
+	<h2><a href="#lockingUp">Optimistic/Pessimistic Locking</a></h2>
+</div>
+<hr>
+
+<div id="temporal">
+	<h3><a href="#temporalUp"><code>@Temporal</code></a></h3>
+	Mapping for <code>java.util.Date</code> and <code>java.util.Calendar</code>
+	<div class="indent4"></div>
+	<code>
+		@Temporal([DATE/TIME/TIMESTAMP])<br>
+		java.util.Date startDate;
+	</code>
+</div>
+<hr>
+
+<a href="all.html">SiteMap</a><br>
+<iframe class="footer" src="./footer.html"></iframe>
+
+</body>
+</html>

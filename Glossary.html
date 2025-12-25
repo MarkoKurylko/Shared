@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Glossary for IT</title>
 	<link rel="stylesheet" href="css/common.css">
+	<script src="js/glossary.js"></script>
 	<style>
 		th {color: DarkSlateGrey; letter-spacing: 0.0625em;}
 		summary {color: DarkSlateGrey;}
@@ -46,7 +47,7 @@
 
 <details open>
 	<summary><b>A</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="A" class="collapse-border padding sorted">
 		<tr>
 			<th id="AMI" class="skip nowrap">AMI</th>
 			<td>Amazon Machine Image</td>
@@ -246,7 +247,7 @@
 
 <details open>
 	<summary><b>B</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="B" class="collapse-border padding sorted">
 		<tr>
 			<th id="BCP">BCP</th>
 			<td>Business Continuity Plan</td>
@@ -284,7 +285,7 @@
 
 <details open>
 	<summary><b>C</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="C" class="collapse-border padding sorted">
 		<tr>
 			<th id="CORBA">CORBA</th>
 			<td>Common Object Request Broker Architecture</td>
@@ -426,7 +427,7 @@
 
 <details open>
 	<summary><b>D</b></summary>
-	<table class="collapse-border padding sorted td2max-width-500" data-colspan="2">
+	<table id="D" class="collapse-border padding sorted td2max-width-500" data-colspan="2">
 		<tr>
 			<th id="DaaS">DaaS</th>
 			<td>Desktop as a Service</td>
@@ -567,7 +568,7 @@
 
 <details open>
 	<summary><b>E</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="E" class="collapse-border padding sorted">
 		<tr>
 			<th id="ECMA">ECMA</th>
 			<td>European Computer Manufacturers Association</td>
@@ -620,7 +621,7 @@
 
 <details open>
 	<summary><b>F</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="F" class="collapse-border padding sorted">
 		<tr>
 			<th id="FaaS"></th>
 			<td>Function as a Service</td>
@@ -653,7 +654,7 @@
 
 <details open>
 	<summary><b>G</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="G" class="collapse-border padding sorted">
 		<tr>
 			<th id="GA"></th>
 			<td>General Availability</td>
@@ -728,7 +729,7 @@
 
 <details open>
 	<summary><b>H</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="H" class="collapse-border padding sorted">
 		<tr>
 			<th id="HATEOAS">HATEOAS</th>
 			<td>Hypermedia as the Engine of Application State</td>
@@ -779,7 +780,7 @@
 
 <details open>
 	<summary><b>I</b></summary>
-	<table class="collapse-border padding sorted td2max-width-500" data-colspan="2">
+	<table id="I" class="collapse-border padding sorted td2max-width-500" data-colspan="2">
 		<tr>
 			<th id="IaaS"></th>
 			<td>Infrastructure as a Service</td>
@@ -928,7 +929,7 @@
 
 <details open>
 	<summary><b>J</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="J" class="collapse-border padding sorted">
 		<tr>
 			<th id="JDK"></th>
 			<td>Java Development Kit</td>
@@ -1078,7 +1079,7 @@
 
 <details open>
 	<summary><b>K</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="K" class="collapse-border padding sorted">
 		<tr>
 			<th id="KISS"></th>
 			<td>
@@ -1109,7 +1110,7 @@
 
 <details open>
 	<summary><b>L</b></summary>
-	<table class="collapse-border padding sorted" data-colspan="2">
+	<table id="L" class="collapse-border padding sorted" data-colspan="2">
 		<tr>
 			<th id="LXC"></th>
 			<td>LinuX Containers</td>
@@ -1179,7 +1180,7 @@
 
 <details open>
 	<summary><b>M</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="M" class="collapse-border padding sorted">
 		<tr>
 			<th id="MaaS">MaaS</th>
 			<td>Metal as a Service</td>
@@ -1251,7 +1252,7 @@
 
 <details open>
 	<summary><b>N</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="N" class="collapse-border padding sorted">
 		<tr>
 			<th id="non-deterministic">Non-Deterministic</th>
 			<td>Different results for the same input data</td>
@@ -1303,7 +1304,7 @@
 
 <details open>
 	<summary><b>O</b></summary>
-	<table class="collapse-border padding sorted" data-colspan="4">
+	<table id="O" class="collapse-border padding sorted" data-colspan="4">
 		<tr>
 			<th id="OAuth"></th>
 			<td>Open Authorization</td>
@@ -1363,7 +1364,7 @@
 
 <details open>
 	<summary><b>P</b></summary>
-	<table class="collapse-border padding sorted" data-colspan="7">
+	<table id="P" class="collapse-border padding sorted" data-colspan="7">
 		<tr>
 			<th id="PC"></th>
 			<td>Personal Computer</td>
@@ -1424,11 +1425,6 @@
 			<th id="PMDL">PMDL</th>
 			<td>Promotion Model Definition Language</td>
 			<td class="template colspan" data-id="atg+"></td>
-		</tr>
-		<tr>
-			<th id="POJO">POJO</th>
-			<td>Plain Old Java Object</td>
-			<td class="template colspan" data-id="java"></td>
 		</tr>
 		<tr>
 			<th id="PAM"></th>
@@ -1498,7 +1494,7 @@
 
 <details open>
 	<summary><b>Q</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="Q" class="collapse-border padding sorted">
 		<tr>
 			<th id="QoS">QoS</th>
 			<td>Quality of Service</td>
@@ -1510,7 +1506,7 @@
 
 <details open>
 	<summary><b>R</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="R" class="collapse-border padding sorted">
 		<tr>
 			<th id="RGB"></th>
 			<td><span class="red">Red</span> <span class="green">Green</span> <span class="blue">Blue</span></td>
@@ -1600,7 +1596,7 @@
 
 <details open>
 	<summary><b>S</b></summary>
-	<table class="collapse-border padding sorted" data-colspan="3">
+	<table id="S" class="collapse-border padding sorted" data-colspan="3">
 		<tr>
 			<th id="SaaS"></th>
 			<td>Software as a Service</td>
@@ -1766,7 +1762,7 @@
 
 <details open>
 	<summary><b>T</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="T" class="collapse-border padding sorted">
 		<tr>
 			<th id="TCP-IP" class="skip">TCP/IP</th>
 			<td>Transmission Control Protocol / Internet Protocol</td>
@@ -1801,7 +1797,7 @@
 
 <details open>
 	<summary><b>U</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="U" class="collapse-border padding sorted">
 		<tr>
 			<th id="UUID"></th>
 			<td>Universally Unique IDentifier</td>
@@ -1850,7 +1846,7 @@
 
 <details open>
 	<summary><b>V</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="V" class="collapse-border padding sorted">
 		<tr>
 			<th id="VoIP"></th>
 			<td>Voice over Internet Protocol</td>
@@ -1884,7 +1880,7 @@
 
 <details open>
 	<summary><b>W</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="W" class="collapse-border padding sorted">
 		<tr>
 			<th id="WLAN"></th>
 			<td>Wireless <a href="#LAN"></a></td>
@@ -1943,7 +1939,7 @@
 
 <details open>
 	<summary><b>X</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="X" class="collapse-border padding sorted">
 		<tr>
 			<th id="XHR"></th>
 			<td>XMLHttpRequest</td>
@@ -1981,7 +1977,7 @@
 
 <details open>
 	<summary><b>Y</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="Y" class="collapse-border padding sorted">
 		<tr>
 			<th id="YAML"></th>
 			<td>YAML Ain't Markup Language™ <small class="grey">(Yet Another Markup Language)</small></td>
@@ -1998,7 +1994,7 @@
 
 <details open>
 	<summary><b>Z</b></summary>
-	<table class="collapse-border padding sorted">
+	<table id="Z" class="collapse-border padding sorted">
 		<tr>
 			<th id="ZTNA">ZTNA</th>
 			<td>Zero Trust Network Access</td>
@@ -2020,6 +2016,28 @@
 </div>
 
 <script>
+	// Fetch data from rawMap
+	rawMap.forEach((value, key, map) => {
+		console.log(key.charAt(0));
+		let parentTable = document.getElementById(key.charAt(0));
+		let newRow = parentTable.insertRow(-1);
+		let th = document.createElement('th');
+		th.id = key;
+		newRow.appendChild(th);
+
+		let i = 1;
+		let descriptionCell = newRow.insertCell(i++);
+		let description = document.createTextNode(value.title);
+		descriptionCell.appendChild(description);
+
+		Array.from(value.groups).forEach( group => {
+			let cell = newRow.insertCell(i++);
+			cell.className = "template";
+			cell.dataset.id = group;
+		});
+	});
+
+
 	function createHrefLink(link, label) {
 		const element = document.createElement("a");
 		element.innerHTML = label;

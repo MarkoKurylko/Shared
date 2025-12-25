@@ -1,4 +1,17 @@
 const glossaryMap = new Map();
+const rawMap = new Map();
+
+rawMap.set("BaaS", { title: "Backend as a Service", groups: ["aaS"]});
+
+rawMap.set("ETF", { title: "Exchange-Traded Fund", groups: []});
+
+rawMap.set("MCQ", { title: "Multiple Choice Question", groups: []});
+rawMap.set("MCP", { title: "Model Context Protocol", groups: ["ai", "protocol"]});
+
+rawMap.set("POJO", { title: "Plain Old Java Object", groups: ["java"]});
+
+rawMap.set("ROI", { title: "Return on Investment", groups: []});
+
 
 	function getGlossary() {
 		const xhttp = new XMLHttpRequest();
@@ -15,18 +28,26 @@ const glossaryMap = new Map();
 		xhttp.send();
 	}
 
-	getGlossary();
+	if (!document.URL.startsWith("file") && !document.URL.includes("Glossary.html")) {
+		getGlossary();
+	}
 
-document.addEventListener("DOMContentLoaded", (event) => {
-	const glossaryElements = document.getElementsByClassName('get-title');
-	Array.from(glossaryElements).forEach( (glossaryElement) => {
-		glossaryElement.addEventListener("mouseover", (event) => {
-				if (!event.target.title) {
-					const withId = event.target.dataset.id ? event.target.dataset.id : '';
-					const key = event.target.dataset.case == undefined ? event.target.innerHTML : event.target.innerHTML.toUpperCase();
-					event.target.title = glossaryMap.get(key + withId);
-				}
-			}
-		);
-	});
-});
+	if (!document.URL.includes("Glossary.html")) {
+		rawMap.forEach((value, key, map) => {
+				glossaryMap.set(key, value.title)
+			});
+
+		document.addEventListener("DOMContentLoaded", (event) => {
+			const glossaryElements = document.getElementsByClassName('get-title');
+			Array.from(glossaryElements).forEach( (glossaryElement) => {
+				glossaryElement.addEventListener("mouseover", (event) => {
+						if (!event.target.title) {
+							const withId = event.target.dataset.id ? event.target.dataset.id : '';
+							const key = event.target.dataset.case == undefined ? event.target.innerHTML : event.target.innerHTML.toUpperCase();
+							event.target.title = glossaryMap.get(key + withId);
+						}
+					}
+				);
+			});
+		});
+	}
