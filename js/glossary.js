@@ -18,6 +18,7 @@ rawMap.set("POJO", { title: "Plain Old Java Object", groups: ["java"]});
 rawMap.set("ROI", { title: "Return on Investment", groups: []});
 rawMap.set("RGB", { html: [{tag: "span", class: "red", text: "Red"}, {tag: "span", class: "green", text: "Green"}, {tag: "span", class: "blue", text: "Blue"}], groups: []});
 
+rawMap.set("UoW", { title: "Unit of Work", groups: ["jpa", "dp"]});
 
 	function getGlossary() {
 		const xhttp = new XMLHttpRequest();
