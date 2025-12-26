@@ -1,16 +1,22 @@
 const glossaryMap = new Map();
 const rawMap = new Map();
 
+rawMap.set("ATM", { title: "Automated Teller Machine", groups: []});
+
 rawMap.set("BaaS", { title: "Backend as a Service", groups: ["aaS"]});
 
 rawMap.set("ETF", { title: "Exchange-Traded Fund", groups: []});
 
+rawMap.set("JAX-WS", { title: "Java #API for #XML Web Services", groups: ["java"], classes: ["nowrap"]});
+
+rawMap.set("MD", { title: "Markdown Documentation", groups: []});
 rawMap.set("MCQ", { title: "Multiple Choice Question", groups: []});
 rawMap.set("MCP", { title: "Model Context Protocol", groups: ["ai", "protocol"]});
 
 rawMap.set("POJO", { title: "Plain Old Java Object", groups: ["java"]});
 
 rawMap.set("ROI", { title: "Return on Investment", groups: []});
+rawMap.set("RGB", { html: [{tag: "span", class: "red", text: "Red"}, {tag: "span", class: "green", text: "Green"}, {tag: "span", class: "blue", text: "Blue"}], groups: []});
 
 
 	function getGlossary() {

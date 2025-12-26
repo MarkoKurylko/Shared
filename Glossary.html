@@ -1509,11 +1509,6 @@
 	<summary><b>R</b></summary>
 	<table id="R" class="collapse-border padding sorted">
 		<tr>
-			<th id="RGB"></th>
-			<td><span class="red">Red</span> <span class="green">Green</span> <span class="blue">Blue</span></td>
-			<td></td>
-		</tr>
-		<tr>
 			<th id="RGBA"></th>
 			<td><span class="red">Red</span> <span class="green">Green</span> <span class="blue">Blue</span> Alpha</td>
 			<td></td>
@@ -2017,33 +2012,68 @@
 </div>
 
 <script>
-	// Fetch data from rawMap
-	rawMap.forEach((value, key, map) => {
-		let parentTable = document.getElementById(key.charAt(0));
-		let newRow = parentTable.insertRow(-1);
-		let th = document.createElement('th');
-		th.id = key;
-		newRow.appendChild(th);
-
-		let i = 1;
-		let descriptionCell = newRow.insertCell(i++);
-		let description = document.createTextNode(value.title);
-		descriptionCell.appendChild(description);
-
-		Array.from(value.groups).forEach( group => {
-			let cell = newRow.insertCell(i++);
-			cell.className = "template";
-			cell.dataset.id = group;
-		});
-	});
-
-
 	function createHrefLink(link, label) {
 		const element = document.createElement("a");
 		element.innerHTML = label;
 		element.href = "#" + link;
 		return element;
 	}
+
+	// Fetch data from rawMap
+	rawMap.forEach((value, key, map) => {
+		let parentTable = document.getElementById(key.charAt(0));
+		let newRow = parentTable.insertRow(-1);
+		let th = document.createElement('th');
+		th.id = key;
+		if (value.classes) {
+			th.classList.add(value.classes[0]);
+		}
+		newRow.appendChild(th);
+
+		let i = 1;
+		let descriptionCell = newRow.insertCell(i++);
+
+		if (value.html) {
+			for (const block of value.html) {
+				const tag = document.createElement(block.tag);
+				tag.classList.add(block.class);
+				let description = document.createTextNode(block.text);
+				tag.appendChild(description);
+				descriptionCell.appendChild(tag);
+				const spaceNode = document.createTextNode(' ');
+				descriptionCell.appendChild(spaceNode);
+			}
+		}
+		else
+		if (value.title.includes('#')) {
+			let titleArray = value.title.split(" ");
+			let nodeText = "";
+			for (const word of titleArray) {
+				if (word.startsWith('#')) {
+					let description = document.createTextNode(nodeText + " ");
+					descriptionCell.appendChild(description);
+					let a = createHrefLink(word.substr(1), word.substr(1));
+					descriptionCell.appendChild(a);
+					nodeText = " ";
+				} else {
+					nodeText += word;
+				}
+			}
+		} else {
+			let description = document.createTextNode(value.title);
+			descriptionCell.appendChild(description);
+		}
+
+		Array.from(value.groups).forEach( group => {
+			let cell = newRow.insertCell(i++);
+			cell.className = "template";
+			cell.dataset.id = group;
+		});
+
+		if (i === 2) {
+			newRow.insertCell(i++);
+		}
+	});
 
 	// fill the tables headers
 	const ths = document.getElementsByTagName("th");
