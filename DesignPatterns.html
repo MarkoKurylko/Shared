@@ -379,11 +379,12 @@
 					- Flushes them together as one coordinated action<br>
 					<div class="indent"></div>
 					In JPA/Hibernate:<br>
-					- The <em>Persistence Context</em> / <em>EntityManager</em> is the <b>Unit of Work</b><br>
+					- The <em>Persistence Context</em> / <em>EntityManager</em> / <em>Session</em> is the <b>Unit of Work</b><br>
 					- Managed entities are tracked automatically<br>
 					- Dirty checking happens at flush time
 					<div class="indent"></div>
-					The Unit of Work answers: <i>What changed during this business operation?</i>
+					The Unit of Work answers: <i>What changed during this business operation?</i><br>
+					Defines a transactional boundary for a set of operations on persistent objects.
 				</td>
 			</tr>
 		</table>

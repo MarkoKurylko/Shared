@@ -1962,11 +1962,6 @@
 			<td>E<b>x</b>tended Detection and Response</td>
 			<td class="template" data-id="security"></td>
 		</tr>
-		<tr>
-			<th id="XSS"></th>
-			<td><em class="fire-brick">Cross</em>-Site Scripting</td>
-			<td class="template" data-id="vulnerability"></td>
-		</tr>
 	</table>
 </details>
 <div class="indent"></div>
@@ -2035,13 +2030,15 @@
 
 		if (value.html) {
 			for (const block of value.html) {
-				const tag = document.createElement(block.tag);
-				tag.classList.add(block.class);
 				let description = document.createTextNode(block.text);
-				tag.appendChild(description);
-				descriptionCell.appendChild(tag);
-				const spaceNode = document.createTextNode(' ');
-				descriptionCell.appendChild(spaceNode);
+				if (block.tag) {
+					const tag = document.createElement(block.tag);
+					if (block.class) tag.classList.add(block.class);
+					tag.appendChild(description);
+					descriptionCell.appendChild(tag);
+				} else {
+					descriptionCell.appendChild(description);
+				}
 			}
 		}
 		else

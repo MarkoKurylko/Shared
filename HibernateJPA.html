@@ -24,6 +24,16 @@
 	</tr>
 
 	<tr>
+		<td><h1>G</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3 id="generatedValueUp"><a href="#generatedValue"><code>@GeneratedValue</code></a></h3>
+			</details>
+		</td>
+	</tr>
+
+	<tr>
 		<td><h1>H</h1></td>
 		<td>
 			<details>
@@ -119,6 +129,67 @@
 			<a href="#mapsId">@MapsId</a>("empid") // will throw empid value from the Employee through the DependentId class
 			@ManyToOne Employee emp;
 		}</pre>
+</div>
+<hr>
+
+<div id="generatedValue">
+	<h3><a href="#generatedValueUp"><code>@GeneratedValue</code></a></h3>
+	<code>package jakarta.persistence</code>
+	<div class="indent4"></div>
+	<code>
+		@Id<br>
+		@GeneratedValue // @GeneratedValue(strategy = GenerationType.AUTO)<br>
+		private Long id;<br>
+	</code>
+
+	<h4 class="margin-bottom-0">Strategies</h4>
+	<ul class="ul-with-margin margin-top-0">
+		<li>
+			<b class="dark-green">GenerationType.AUTO</b> - the default, it will try to use sequence strategy at the DB level,
+			and it actually depends on DB.
+			<div class="indent4"></div>
+			<code>
+				@Id<br>
+				@GeneratedValue<br>
+				private UUID id;<br>
+			</code>
+			In this case Hibernate will use its own class <small>(not annotation)</small> <code>org.hibernate.id.UUIDGenerator</code> to generate UUID
+		</li>
+		<li><b class="grey">GenerationType.UUID</b><br>
+			<code>
+				@Id<br>
+				@GeneratedValue(strategy = GenerationType.UUID) // <span class="get-title">RFC</span> 4122, since Jakarta EE 10 (JPA 3.1)<br>
+				private java.util.UUID id;<br>
+			</code>
+			<div class="indent"></div>
+			<code>
+				@Id<br>
+				@org.hibernate.annotations.UuidGenerator // Since Hibernate 6.0<br>
+				private UUID/String id;
+			</code>
+		</li>
+		<li><b class="tomato">GenerationType.IDENTITY</b> - simplest, relies on an auto-incremented database column,
+			but not the best for performance, in particular for Hibernate
+		</li>
+		<li>
+			<b class="green">GenerationType.SEQUENCE</b> - the best choice for performance.
+			<code>
+				@Id<br>
+				@GeneratedValue(strategy = GenerationType.SEQUENCE)<br>
+				private Long id;<br>
+			</code>
+			If nothing is specified, Hibernate will request the next value from its default sequence.<br>
+			Use <code>@SequenceGenerator</code> and <code>generator</code> property in <code>@GeneratedValue</code> if you need custom.
+		</li>
+		<li>
+			<b class="red">GenerationType.TABLE</b> - outdated.
+			It simulates a sequence by storing and updating its current value in a database table which requires the use of <a href="#locking" class="red">pessimistic locks</a>.<br>
+			It slows down the application.<br>
+			<code>@TableGenerator</code> and <code>generator</code> property of <code>@GeneratedValue</code> for customization.
+		</li>
+	</ul>
+
+
 </div>
 <hr>
 
