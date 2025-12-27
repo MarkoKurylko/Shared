@@ -523,19 +523,9 @@
 			<td></td>
 		</tr>
 		<tr>
-			<th id="DVD"></th>
-			<td>Digital Video Disk</td>
-			<td></td>
-		</tr>
-		<tr>
 			<th id="DSL"></th>
 			<td>Digital Subscriber Line</td>
 			<td></td>
-		</tr>
-		<tr>
-			<th id="DSL2" class="skip">DSL</th>
-			<td>Domain-Specific Language</td>
-			<td class="template" data-id="computer-language"></td>
 		</tr>
 		<tr>
 			<th id="DLC"></th>
@@ -2018,10 +2008,13 @@
 	rawMap.forEach((value, key, map) => {
 		let parentTable = document.getElementById(key.charAt(0));
 		let newRow = parentTable.insertRow(-1);
-		let th = document.createElement('th');
+		const th = document.createElement('th');
 		th.id = key;
 		if (value.classes) {
 			th.classList.add(value.classes[0]);
+		}
+		if (value.th) {
+			th.appendChild(document.createTextNode(value.th));
 		}
 		newRow.appendChild(th);
 
@@ -2047,8 +2040,7 @@
 			let nodeText = "";
 			for (const word of titleArray) {
 				if (word.startsWith('#')) {
-					let description = document.createTextNode(nodeText + " ");
-					descriptionCell.appendChild(description);
+					descriptionCell.appendChild(document.createTextNode(nodeText + " "));
 					let a = createHrefLink(word.substr(1), word.substr(1));
 					descriptionCell.appendChild(a);
 					nodeText = " ";
@@ -2057,12 +2049,12 @@
 				}
 			}
 		} else {
-			let description = document.createTextNode(value.title);
-			descriptionCell.appendChild(description);
+			descriptionCell.appendChild(document.createTextNode(value.title));
 		}
 
 		Array.from(value.groups).forEach( group => {
-			let cell = newRow.insertCell(i++);
+			if (!group) return;
+			const cell = newRow.insertCell(i++);
 			cell.className = "template";
 			cell.dataset.id = group;
 		});

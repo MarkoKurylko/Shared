@@ -5,6 +5,14 @@ rawMap.set("ATM", { title: "Automated Teller Machine", groups: []});
 
 rawMap.set("BaaS", { title: "Backend as a Service", groups: ["aaS"]});
 
+rawMap.set("CJK", { title: "Chinese Japanese Korean", groups: []});
+
+rawMap.set("DTAP", { title: "Development, Testing, Acceptance and Production", groups: ["software"]});
+rawMap.set("DPI",  { title: "Deep Packet Inspection", groups: ["security"]});
+rawMap.set("DVD",  { title: "Digital Video Disk", groups: ["digital-video"]});
+rawMap.set("DVR",  { title: "Digital Video Recorder", groups: ["digital-video"]});
+rawMap.set("DSL2", { title: "Domain-Specific Language", th: "DSL", groups: ["computer-language"], classes: ["skip"]});
+
 rawMap.set("ETF", { title: "Exchange-Traded Fund", groups: []});
 
 rawMap.set("JAX-WS", { title: "Java #API for #XML Web Services", groups: ["java"], classes: ["nowrap"]});
@@ -17,6 +25,8 @@ rawMap.set("POJO", { title: "Plain Old Java Object", groups: ["java"]});
 
 rawMap.set("ROI", { title: "Return on Investment", groups: []});
 rawMap.set("RGB", { html: [{tag: "span", class: "red", text: "Red"}, {text:" "}, {tag: "span", class: "green", text: "Green"}, {text:" "}, {tag: "span", class: "blue", text: "Blue"}], groups: []});
+
+rawMap.set("SHA", { title: "Secure Hash Algorithms", groups: ["security"]});
 
 rawMap.set("UoW", { title: "Unit of Work", groups: ["jpa", "dp"]});
 
