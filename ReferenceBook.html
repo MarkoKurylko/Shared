@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Reference Book</title>
+	<link rel="icon" type="image/x-icon" href="ico/favicon.ico">
+	<link rel="stylesheet" href="css/common.css">
+	<script src="js/reference.js"></script>
+	<script src="js/referenceBook.js"></script>
+	<style>
+		th {color: DarkSlateGrey; letter-spacing: 0.0625em;}
+		summary {color: DarkSlateGrey;}
+	</style>
+</head>
+<body>
+
+<div class="indent"></div>
+<a href="all.html">SiteMap</a>
+
+<div id="content"></div>
+
+<a href="all.html" id="sitemap-footer">SiteMap</a><br>
+<iframe class="footer" src="./footer.html"></iframe>
+
+<script>
+	const contentTag = document.getElementById("content");
+
+	for (var i = 65; i <= 90; i++) {
+		const letter = String.fromCharCode(i);
+		const details = document.createElement("details");
+		details.setAttribute("open", "open");
+
+		const summary = document.createElement("summary");
+		summary.className = "b";
+		summary.appendChild(document.createTextNode(letter));
+		details.appendChild(summary);
+
+		const table = document.createElement("table");
+		table.id = letter;
+		table.className = "collapse-border padding sorted";
+		details.appendChild(table);
+
+		contentTag.appendChild(details);
+
+		const indentDiv = document.createElement("div");
+		indentDiv.className = "indent";
+		contentTag.appendChild(indentDiv);
+	}
+
+	parseMap(referenceBookMap);
+</script>
+
+</body>
+</html>
