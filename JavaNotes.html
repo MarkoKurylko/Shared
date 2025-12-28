@@ -1064,10 +1064,11 @@
 			<ul class="margin-top-3">
 				<li>
 					<b>Deadlock</b><br>
-					is a situation where two or more threads are blocked forever, waiting for each other.
+					is a situation where two or more threads are blocked forever, waiting for each other.<br>
+					See also <a href="ConnectedNotes.html#dbDeadlocks">Database Deadlocks</a>
 					<details>
 						<summary>Deadlock Example</summary>
-						<iframe id="deadlock" src="parts/DeadLockExample.html" class="iframe" style="height:405px"></iframe>
+						<iframe id="deadlock" src="parts/DeadLockExample.html" class="iframe height-400"></iframe>
 					</details>
 				</li>
 				<li>
@@ -1076,7 +1077,7 @@
 					But in the same time they are <span class="green">not blocked</span> like in a <i>deadlock</i>.
 					<details>
 						<summary>Livelock Example</summary>
-						<iframe src="parts/LiveLockExample.html" class="width100pct" style="height:645px;"></iframe>
+						<iframe src="parts/LiveLockExample.html" class="iframe height-650"></iframe>
 					</details>
 				</li>
 				<li>
@@ -2431,7 +2432,7 @@
 						<div class="indent4"></div>
 						<code>Map&lt;Character, Set&lt;String>> result = Stream.of({"Zhaba", "Anton", "Ajax"})</code><br>
 						<code class="nowrap">.collect(<b>groupingBy</b>(<span class="blue">item -> item.charAt(0)</span>, <span class="green">() -> new TreeMap<>(Collections.reverseOrder())</span>, <span class="teal">toSet()</span>));</code><br>
-						<span class="font-size-smaller font-family-math dim-grey">Result: {Z=[Zhaba], A=[Anton, Ajax]}</span>
+						<span class="smaller font-family-math dim-grey">Result: {Z=[Zhaba], A=[Anton, Ajax]}</span>
 					</td>
 					<td></td>
 				</tr>
@@ -2472,7 +2473,7 @@
 					<td><code class="code">&lt;T,?,<b>Map</b>&lt;<b>Boolean</b>,List&lt;T>>> partitioningBy(Predicate&lt;T> predicate)</code></td>
 					<td>
 						Returns a <code class="code">Collector</code> which partitions the input elements according to a <code class="code">Predicate</code>, and organizes them into a <code class="code">Map&lt;Boolean, List&lt;T>></code>.<br>
-						<span class="warning-sign grey font-size-smaller"> The map keys will only be true/false due to Predicate returns primitive boolean, so no <code>null</code> key is possible</span>
+						<span class="warning-sign grey smaller"> The map keys will only be true/false due to Predicate returns primitive boolean, so no <code>null</code> key is possible</span>
 					</td>
 				</tr>
 				<tr>

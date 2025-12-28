@@ -96,6 +96,7 @@ var {color: DarkGreen}
 .code {color: DarkBlue}
 code {color: DarkSlateGrey}
 .bad-code {color: SaddleBrown}
+.exception {color: FireBrick}
 .code-a code{
 	color: DarkBlue;
 	font-size: 17px;
@@ -142,6 +143,7 @@ ol.olWithMargin > li {margin: 10px 0;}
 	content: '\1F517';
 }
 
+/* Fonts */
 .fs18 {
 	font-size: 18px;
 }
@@ -150,13 +152,6 @@ ol.olWithMargin > li {margin: 10px 0;}
 }
 .smaller {font-size: smaller}
 
-.pointer {cursor: pointer}
-.help {cursor: help}
-.get-title { /* functional */
-	cursor: help;
-	color: MidnightBlue;
-}
-
 .bold,.b {font-weight: bold;}
 .italic, .i {font-style: italic;}
 .bi {
@@ -164,15 +159,24 @@ ol.olWithMargin > li {margin: 10px 0;}
 	font-style: italic;
 }
 
-.font-size-smaller {font-size: smaller}
 .font-family-math  {font-family: math}
 .strike {text-decoration: line-through}
+/* end Fonts */
+
+.pointer {cursor: pointer}
+.help {cursor: help}
+.get-title { /* functional */
+	cursor: help;
+	color: MidnightBlue;
+}
 
 .width100pct {width: 100%;}
 .height2     {height: 2px;}
 
 .height-220  {height: 220px}
+.height-400  {height: 400px}
 .height-570  {height: 570px}
+.height-650  {height: 650px}
 
 .display-none {display: none;}
 

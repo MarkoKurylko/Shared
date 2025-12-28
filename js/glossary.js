@@ -23,12 +23,17 @@ rawMap.set("MCP", { title: "Model Context Protocol", groups: ["ai", "protocol"]}
 
 rawMap.set("POJO", { title: "Plain Old Java Object", groups: ["java"]});
 
+rawMap.set("RED", { title: "Rate, Errors, Duration", groups: ["metrics"]});
 rawMap.set("ROI", { title: "Return on Investment", groups: []});
 rawMap.set("RGB", { html: [{tag: "span", class: "red", text: "Red"}, {text:" "}, {tag: "span", class: "green", text: "Green"}, {text:" "}, {tag: "span", class: "blue", text: "Blue"}], groups: []});
 
 rawMap.set("SHA", { title: "Secure Hash Algorithms", groups: ["security"]});
+rawMap.set("SLA", { title: "Service Level Agreement", groups: ["service-level"]});
+rawMap.set("SLI", { title: "Service Level Indicator", groups: ["service-level"]});
+rawMap.set("SLO", { title: "Service Level Objective", groups: ["service-level"]});
 
 rawMap.set("UoW", { title: "Unit of Work", groups: ["jpa", "dp"]});
+rawMap.set("USE", { title: "Utilization, Saturation, Errors", groups: ["metrics"]});
 
 rawMap.set("XSS", { html: [{tag: "em", class: "fire-brick", text: "Cross"}, {text:"-Site Scripting"}], groups: ["vulnerability"]});
 

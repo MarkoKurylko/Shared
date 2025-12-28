@@ -244,6 +244,67 @@
 
 <div id="locking">
 	<h2><a href="#lockingUp">Optimistic/Pessimistic Locking</a></h2>
+	<code>jakarta.persistence.LockModeType</code><br>
+	<code>LockModeType.NONE</code> - default, if not specified.<br>
+
+	<code>@jakarta.persistence.Version</code> - <small>should be mapped to the primary table of the entity.</small>
+	<div class="indent4"></div>
+
+	<pre>
+		@Entity
+		class Entity {
+			@Id private Long id;
+			private String name;
+
+			@Version
+			private long version;
+		}</pre>
+
+	OPTIMISTIC and PESSIMISTIC modes prevent from <a href="ConnectedNotes.html#dirtyReads">Dirty reads</a> and <a href="ConnectedNotes.html#nonRepeatableReads">Non-repeatable read</a>.<br>
+	OPTIMISTIC modes are not required to be supported on non-versioned objects by the provider
+	<code class="exception smaller">(PersistenceException)</code>.<br>
+	The persistence implementation must support <code>PESSIMISTIC_READ</code> and <code>PESSIMISTIC_WRITE</code> with non-versioned entities as well as with versioned entities.
+
+	<ul class="ul-with-margin">
+		<li>
+			<code class="b">OPTIMISTIC</code> <small>(<code>READ</code> old name)</small> -
+			Assumes there will be no conflict.<br>
+			If the entity is changed by the transaction, when the <code>@Version</code> is updated and vise versa.<br>
+			If, at the time of transaction <b>T1</b> commit, <code>@Version</code> is changed by another transaction <b>T2</b>,
+			then an <code class="exception">OptimisticLockException</code> is thrown and <b>T1</b> is marked for rollback.
+		</li>
+		<li>
+			<code class="b">OPTIMISTIC_FORCE_INCREMENT</code> <small>(<code>WRITE</code> old name)</small> -
+			the same as <code>OPTIMISTIC</code>, but increments <code>@Version</code> even if entity is not changed by the <b>T1</b>.<br>
+			This is <em>signalling</em> behaviour, it shows to other transactions that something is changed overall in the data.
+		</li>
+		<li>
+			<code class="b">PESSIMISTIC_READ</code> - <em>PESSIMISTIC</em> modes are used to immediately obtain long-term database locks.<br>
+			Used <b class="red">only</b> to read data! But in the same time <span class="green">does not block</span> other transaction to read the same entity.
+			And prevents from <em>update</em> or <em>delete</em> operations on the entity.
+		</li>
+		<li>
+			<code class="b">PESSIMISTIC_WRITE</code> - used to write data.
+			<b class="red">Prevents</b> other transaction from <em>read</em>, <em>update</em> or <em>delete</em> data on the entity.
+		</li>
+		<li>
+			<code class="b">PESSIMISTIC_FORCE_INCREMENT</code> - the same as <code>PESSIMISTIC_WRITE</code>,
+			but in addition forces the <code>@Version</code> increment.
+		</li>
+	</ul>
+
+	<code>org.hibernate.LockMode</code> have additional non-JPA types:
+	<ul class="ul-with-margin">
+		<li>
+			<code class="b">UPGRADE_NOWAIT</code> - Oracle-style: tries to obtain <code>PESSIMISTIC_WRITE</code> immediately,
+			throws an <code class="exception">Exception</code> if cannot obtain.
+		</li>
+		<li>
+			<code class="b">UPGRADE_SKIPLOCKED</code> - Oracle-style: tries to obtain <code>PESSIMISTIC_WRITE</code> immediately,
+			does not throw an exception if cannot obtain, but requested row is <b class="red">not</b> returned from the database.
+		</li>
+	</ul>
+
 </div>
 <hr>
 
