@@ -1164,13 +1164,19 @@
 
 		<div id="exceptions">
 			<h3 class="margin-bottom-3"><a href="#exceptionsUp">Exceptions</a></h3>
-			<code>Throwable -> [Error, Exception ->[Checked, RuntimeException -> [UnChecked]]]</code> <br>
+			<code>Throwable -> [Error, Exception ->[Checked, RuntimeException -> [UnChecked]]]</code><br>
 
 			<div class="indent"></div>
-			<code class="code">NoClassDefFoundError</code> - if the <span class="get-title">JVM</span> or a <code>ClassLoader</code> tries to load the definition of a class,
+			<span class="warning-sign fs20 orange"></span> <code class="exception">IOException</code>,
+			<code class="exception">FileNotFoundException</code>,
+			<code class="exception">MalformedURLException</code> etc. are the <b class="red">checked</b> exceptions,
+			because they extend <code class="exception">Exception</code>, not <code class="grey">RuntimeException</code>.
+
+			<div class="indent"></div>
+			<code class="exception">NoClassDefFoundError</code> - if the <span class="get-title">JVM</span> or a <code>ClassLoader</code> tries to load the definition of a class,
 			that was available at compile time, but no longer available at Runtime.<br>
 
-			<code class="code">ClassNotFoundException</code> - when an application tries to load a class through its string name using <em>Reflections</em>.
+			<code class="exception">ClassNotFoundException</code> - when an application tries to load a class through its string name using <em>Reflections</em>.
 		</div>
 		<hr>
 

@@ -6,6 +6,7 @@ rawMap.set("ATM", { title: "Automated Teller Machine", groups: []});
 rawMap.set("BaaS", { title: "Backend as a Service", groups: ["aaS"]});
 
 rawMap.set("CJK", { title: "Chinese Japanese Korean", groups: []});
+rawMap.set("CMT", { title: "Container Managed Transaction", groups: ["jta"]});
 
 rawMap.set("DTAP", { title: "Development, Testing, Acceptance and Production", groups: ["software"]});
 rawMap.set("DPI",  { title: "Deep Packet Inspection", groups: ["security"]});
@@ -31,6 +32,8 @@ rawMap.set("SHA", { title: "Secure Hash Algorithms", groups: ["security"]});
 rawMap.set("SLA", { title: "Service Level Agreement", groups: ["service-level"]});
 rawMap.set("SLI", { title: "Service Level Indicator", groups: ["service-level"]});
 rawMap.set("SLO", { title: "Service Level Objective", groups: ["service-level"]});
+
+rawMap.set("TX", { title: "Transaction", groups: ["dbms"]});
 
 rawMap.set("UoW", { title: "Unit of Work", groups: ["jpa", "dp"]});
 rawMap.set("USE", { title: "Utilization, Saturation, Errors", groups: ["metrics"]});
