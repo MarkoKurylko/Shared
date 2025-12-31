@@ -85,6 +85,16 @@
 		</td>
 	</tr>
 
+	<tr>
+		<td><h1>V</h1></td>
+		<td>
+			<details>
+				<summary></summary>
+				<h3 id="versionUp"><a href="#version"><code>@Version</code></a></h3>
+			</details>
+		</td>
+	</tr>
+
 </table>
 
 <hr class="height2">
@@ -248,9 +258,13 @@
 	<code>jakarta.persistence.LockModeType</code><br>
 	<code>LockModeType.NONE</code> - default, if not specified.<br>
 
-	<code>@jakarta.persistence.Version</code> - <small>should be mapped to the primary table of the entity.</small>
-	<div class="indent4"></div>
+	<code id="version"><a href="#versionUp">@jakarta.persistence.Version</a></code> - <small>should be mapped to the primary table of the entity.</small><br>
+	<span class="warning-sign fs20 orange"></span>
+	Version field itself and all the related versioned entities like <code>ManyToOne</code> etc should not fall into
+	<code class="exception">NullPointerException</code> for the <code>@Version</code> field.
+	Otherwise, not obvious exceptions can occur. Check the Version fields in DB, it should have values by default.
 
+	<div class="indent4"></div>
 	<pre>
 		@Entity
 		class Entity {
