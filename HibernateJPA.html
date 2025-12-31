@@ -70,6 +70,7 @@
 			<details>
 				<summary></summary>
 				<h3 id="temporalUp"><a href="#temporal"><code>@Temporal</code></a></h3>
+				<h3 id="transactionalUp"><a href="#transactional"><code>@Transactional</code></a></h3>
 			</details>
 		</td>
 	</tr>
@@ -316,6 +317,38 @@
 		@Temporal([DATE/TIME/TIMESTAMP])<br>
 		java.util.Date startDate;
 	</code>
+</div>
+<hr>
+
+<div id="transactional">
+	<h3><a href="#transactionalUp"><code>@Transactional</code></a></h3>
+	<code>@javax.transaction.Transactional</code><br>
+	<code>@org.springframework.transaction.annotation.Transactional</code><br>
+	Hibernate does not have its own <code>Transactional</code>
+	<div class="indent"></div>
+
+	Spring supports the <code>@javax.transaction.Transactional</code>
+
+	<p><span class="warning-sign fs20 orange"></span> Pay attention to that <code>@Transactional</code> methods called from the same instance
+		will not be treated as <code>@Transactional</code>
+	</p>
+
+	<div class="indent"></div>
+	<table class="collapse-border padding border-grey td-align-center dark-slate-grey">
+		<tr class="black">
+			<th>Propagation</th>
+			<th>No running Tx</th>
+			<th>Tx Exists</th>
+		</tr>
+		<tr><th>REQUIRED</th><td class="plus-sign"></td><td><span class="join-sign"></span></td></tr>
+		<tr><th>REQUIRES_NEW</th><td class="plus-sign"></td><td class="pause-sign"></td></tr>
+		<tr><th>SUPPORTS</th><td class="minus-sign"></td><td class="join-sign"></td></tr>
+		<tr><th>NOT_SUPPORTED</th><td class="minus-sign"></td><td class="pause-sign"></td></tr>
+		<tr><th>MANDATORY</th><td class="collision-sign"></td><td class="join-sign"></td></tr>
+		<tr><th>NEVER</th><td class="minus-sign"></td><td class="collision-sign"></td></tr>
+		<tr><td colspan="3"> Spring specific</td></tr>
+		<tr><th class="help" title="Creates Savepoint">NESTED</th><td class="plus-sign"></td><td class="join-sign"></td></tr>
+	</table>
 </div>
 <hr>
 
