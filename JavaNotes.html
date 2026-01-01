@@ -826,12 +826,13 @@
 				<tr>
 					<th>Group</th><th class="width20pct">Method</th><th>Base Interface</th><th colspan="2">Description</th><th>Since</th>
 				</tr>
-				<tr><th colspan="5">Static methods</th></tr>
+				<tr><th colspan="6">Static methods</th></tr>
 
 				<tr>
 					<td>allOf</td>
 					<td><code class="code">CompletableFuture&lt;Void> allOf(CompletableFuture&lt;?>... cfs)</code></td>
 					<td colspan="3">Returns a new CompletableFuture that is completed when <b>all</b> of the given CompletableFutures complete</td>
+					<td rowspan="7" class="java8">1.8</td>
 				</tr>
 				<tr>
 					<td>anyOf</td>
@@ -865,7 +866,7 @@
 					<td><code class="code nowrap">&lt;U> CompletableFuture&lt;U> supplyAsync(Supplier&lt;U> s, Executor e)</code></td>
 				</tr>
 
-				<tr><th colspan="5">Instance methods</th></tr>
+				<tr><th colspan="6">Instance methods</th></tr>
 
 				<tr>
 					<th rowspan="2" class="grey">get</th>
@@ -879,6 +880,7 @@
 						Waits if necessary for this future to complete and then returns its result.<br>
 						Throws <span class="tomato">checked</span> exceptions. <b class="grey">Obsolete</b>, use <b class="green">join</b> instead
 					</td>
+					<td rowspan="9" class="java8">1.8</td>
 				</tr>
 				<tr>
 					<td>
@@ -976,9 +978,9 @@
 						Returns a <span class="blue">new CF</span> that is completed when <span class="green">this CF</span> completes.<br>
 						If <span class="green">this CF</span> completes <span class="dark-green">normally</span>, then the <span class="blue">returned CF</span> also completes normally, with the value of <span class="green">this CF</span>.<br>
 						If <span class="green">this CF</span> completes <span class="tomato">exceptionally</span>, the <em>exception</em> is passed to the provided <em>Function</em>,
-						then the <span class="blue">returned CF</span> completes with the result value of that <em>Function</em>.
-
+						then the <span class="blue">returned CF</span> completes with the result value of that <em>Function</em>
 					</td>
+					<td rowspan="11" class="java8 text-align-center">1.8</td>
 				</tr>
 
 				<tr>
@@ -2197,6 +2199,7 @@
 				</tr>
 				<tr>
 					<td><code> mapToInt mapToDouble mapToLong</code></td>
+					<td colspan="2"></td>
 				</tr>
 
 				<tr>
