@@ -222,8 +222,8 @@
 		<li><b>Shape:</b> Binary Heap is a <em>Complete Binary Tree</em></li>
 		<li>
 			<b>Heap:</b> choose<br>
-			<em>max-heap</em>: the key stored in each node >= the keys in the node's children<br>
-			<em>min-heap</em>: the key stored in each node <= the keys in the node's children
+			<em>max-heap</em>: the key stored in each node &gt;= the keys in the node's children<br>
+			<em>min-heap</em>: the key stored in each node &lt;= the keys in the node's children
 		</li>
 	</ul>
 	Used in <a href="Algorithms.html#heap">Heap sort</a>
@@ -249,11 +249,11 @@
 	<ul class="margin-top-0">
 		<li>
 			<b>Full</b> — every node has either 0 or 2 children
-			<img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Full_binary.svg" alt="Full BT" width="100px">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Full_binary.svg" alt="Full BT" width="100">
 		</li>
 		<li>
 			<b>Complete</b> — every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible
-			<img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Complete_binary2.svg" alt="Complete BT" width="100px">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Complete_binary2.svg" alt="Complete BT" width="100">
 		</li>
 		<li><b>Perfect</b> — always <em><b>Full</b></em> and <em><b>Complete</b></em></li>
 		<li><b>Balanced</b></li>
@@ -312,12 +312,12 @@
 	<h2><a href="#dbNormalFormsUp">Database normal forms</a></h2>
 	Brief:<br>
 	<ul class="margin-top-0">
-		<li value="1"><span>1NF requires each column to hold atomic values and no repeating groups, + PK</span></li>
-		<li value="2"><span>2NF no partial dependence on a composite key — every non-key must depend on the whole key</span></li>
-		<li value="3"><span>3NF no transitive dependencies — non-keys depend only on the key, not on other non-keys</span></li>
-		<li value="4"><span>BCNF for every <a href="#fd">functional dependency</a> X→Y, X must be a candidate key (fixes edge cases like overlapping keys)</span></li>
-		<li value="5"><span>4NF removes multi-valued dependencies</span></li>
-		<li value="6"><span>5NF (PJNF) eliminates join dependencies, decomposing so tables can be losslessly recombined without spurious(pseudo) tuple</span></li>
+		<li><span>1NF requires each column to hold atomic values and no repeating groups, + PK</span></li>
+		<li><span>2NF no partial dependence on a composite key — every non-key must depend on the whole key</span></li>
+		<li><span>3NF no transitive dependencies — non-keys depend only on the key, not on other non-keys</span></li>
+		<li><span>BCNF for every <a href="#fd">functional dependency</a> X→Y, X must be a candidate key (fixes edge cases like overlapping keys)</span></li>
+		<li><span>4NF removes multi-valued dependencies</span></li>
+		<li><span>5NF (PJNF) eliminates join dependencies, decomposing so tables can be losslessly recombined without spurious(pseudo) tuple</span></li>
 	</ul>
 
 	<em>Terminology</em>:<br>
@@ -933,7 +933,7 @@
 			<table class="collapse-border padding">
 				<tr>
 					<th class="fire-brick text-align-center">Does not comply</th>
-					<th class="green text-align-center" colspan="3">Comply</th>
+					<th class="green text-align-center" colspan="2">Comply</th>
 				</tr>
 				<tr>
 					<td>
