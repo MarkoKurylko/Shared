@@ -484,7 +484,7 @@
 
 				<tr>
 					<td>min/max</td>
-					<td><code class="code"><nobr>min/max(Collection&lt;T> collection[, Comparator&lt;T> comparator])</nobr></code></td>
+					<td><code class="code nowrap">min/max(Collection&lt;T> collection[, Comparator&lt;T> comparator])</code></td>
 					<td>Returns the min/max element of the given collection, according to the natural ordering of its elements or the given Comparator</td>
 				</tr>
 
@@ -590,6 +590,8 @@
 				</tr>
 				<tr>
 					<td><code>addFirst addLast removeFirst removeLast reversed()</code></td>
+					<td></td>
+					<td></td>
 				</tr>
 			</table>
 
@@ -822,7 +824,7 @@
 			<div class="indent4"></div>
 			<table class="border padding">
 				<tr>
-					<th>Group</th><th style="width: 20%;">Method</th><th>Base Interface</th><th colspan="2">Description</th><th>Since</th>
+					<th>Group</th><th class="width20pct">Method</th><th>Base Interface</th><th colspan="2">Description</th><th>Since</th>
 				</tr>
 				<tr><th colspan="5">Static methods</th></tr>
 
@@ -833,7 +835,7 @@
 				</tr>
 				<tr>
 					<td>anyOf</td>
-					<td><nobr><code class="code">CompletableFuture&lt;Object> anyOf(CompletableFuture&lt;?>... cfs)</code></nobr></td>
+					<td><code class="code nowrap">CompletableFuture&lt;Object> anyOf(CompletableFuture&lt;?>... cfs)</code></td>
 					<td colspan="3">Returns a new CompletableFuture that is completed when <b>any</b> of the given CompletableFutures complete, with the result of that completed CF</td>
 				</tr>
 				<tr>
@@ -860,7 +862,7 @@
 					<td colspan="3" rowspan="2">The same as <i>runAsync</i>, but returned with the value obtained by calling the given Supplier</td>
 				</tr>
 				<tr>
-					<td><code class="code"><nobr>&lt;U> CompletableFuture&lt;U> supplyAsync(Supplier&lt;U> s, Executor e)</nobr></code></td>
+					<td><code class="code nowrap">&lt;U> CompletableFuture&lt;U> supplyAsync(Supplier&lt;U> s, Executor e)</code></td>
 				</tr>
 
 				<tr><th colspan="5">Instance methods</th></tr>
@@ -872,7 +874,7 @@
 						<code>throws InterruptedException, ExecutionException</code>
 					</td>
 					<td><code class="code">Future</code></td>
-					<td rowspan="4" style="width: 5%;"><span class="warning-sign orange"></span> This is <nobr class="red b">blocking operation</nobr>!</td>
+					<td rowspan="4" class="width5pct"><span class="warning-sign orange"></span> This is <span class="red b nowrap">blocking operation</span>!</td>
 					<td>
 						Waits if necessary for this future to complete and then returns its result.<br>
 						Throws <span class="tomato">checked</span> exceptions. <b class="grey">Obsolete</b>, use <b class="green">join</b> instead
@@ -881,7 +883,7 @@
 				<tr>
 					<td>
 						<code class="code">T get(long timeout, TimeUnit unit)</code>
-						<code><nobr>throws InterruptedException, ExecutionException, TimeoutException</nobr></code>
+						<code class="nowrap">throws InterruptedException, ExecutionException, TimeoutException</code>
 					</td>
 					<td><code class="code">Future</code></td>
 					<td>
@@ -911,7 +913,7 @@
 					<td rowspan="8" class="i">completion</td>
 					<td><code class="code">boolean complete(T value)</code></td>
 					<td></td>
-					<td rowspan="3" style="width: 5%;"><span class="dark-orange">If not already completed</span></td>
+					<td rowspan="3" class="width5pct"><span class="dark-orange">If not already completed</span></td>
 					<td colspan="1">
 						Sets the <span class="dark-green">CF's result value</span> to the given value
 					</td>
@@ -941,7 +943,7 @@
 				<tr>
 					<td><code class="code">void obtrude(T value)</code></td>
 					<td></td>
-					<td rowspan="2" style="width: 5%;"><span class="dark-red">Whether or not already completed</span></td>
+					<td rowspan="2" class="width5pct"><span class="dark-red">Whether or not already completed</span></td>
 					<td colspan="1">
 						Forcibly sets or resets the value of <span class="green">this CF</span>
 					</td>
@@ -998,7 +1000,7 @@
 
 				<tr>
 					<td rowspan="5">then*</td>
-					<td><code class="code"><nobr>CompletableFuture&lt;Void> then<b>Accept</b>(Consumer&lt;T>)</nobr></code></td>
+					<td><code class="code nowrap">CompletableFuture&lt;Void> then<b>Accept</b>(Consumer&lt;T>)</code></td>
 					<td rowspan="5"><code class="code">CompletionStage</code></td>
 					<td rowspan="5">
 						The methods are created just to fit arguments as <code class="code">Function</code>, <code class="code">Consumer</code> or <code class="code">Runnable.</code>
@@ -1008,7 +1010,7 @@
 					<td colspan="1">The CF's result goes as an argument to the Consumer</td>
 				</tr>
 				<tr>
-					<td><code class="code"><nobr>CompletableFuture&lt;U> then<b>Apply</b>(Function&lt;T,U>)</nobr></code></td>
+					<td><code class="code nowrap">CompletableFuture&lt;U> then<b>Apply</b>(Function&lt;T,U>)</code></td>
 					<td colspan="1">
 						The CF's result goes as an argument to the Function.<br>
 						Usage: Transformation of the result of a <code>CompletableFuture</code> call.<br>
@@ -1016,14 +1018,14 @@
 					</td>
 				</tr>
 				<tr>
-					<td><code class="code"><nobr>CompletableFuture&lt;V> then<b>Combine</b>(CompletionStage&lt;U>, BiFunction&lt;T,U,V>)</nobr></code></td>
+					<td><code class="code nowrap">CompletableFuture&lt;V> then<b>Combine</b>(CompletionStage&lt;U>, BiFunction&lt;T,U,V>)</code></td>
 					<td colspan="1">
 						The analog of the <em>Apply</em> method, but with the <code class="code">BiFunction</code>.<br>
 						The CF's result and the result of provided CF go to the arguments of the <code class="code">BiFunction</code>
 					</td>
 				</tr>
 				<tr>
-					<td><code class="code"><nobr>CompletableFuture&lt;U> then<b>Compose</b>(Function&lt;T, CompletionStage&lt;U>>)</nobr></code></td>
+					<td><code class="code nowrap">CompletableFuture&lt;U> then<b>Compose</b>(Function&lt;T, CompletionStage&lt;U>>)</code></td>
 					<td colspan="1">
 						<span class="green">This CF</span> goes as an argument to the Function.<br>
 						Usage: <em class="b">Chaining</em> of <code class="code">CompletableFuture</code> methods.<br>
@@ -1031,7 +1033,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><code class="code"><nobr>CompletableFuture&lt;Void> then<b>Run</b>(Runnable action)</nobr></code></td>
+					<td><code class="code nowrap">CompletableFuture&lt;Void> then<b>Run</b>(Runnable action)</code></td>
 					<td>Executes the given action</td>
 				</tr>
 
@@ -1052,7 +1054,7 @@
 			<div class="indent4"></div>
 			<details>
 				<summary>Example</summary>
-				<iframe src="parts/CompletableFutureExample.html" class="iframe" style="height:550px"></iframe>
+				<iframe src="parts/CompletableFutureExample.html" class="iframe height-550"></iframe>
 			</details>
 		</div>
 		<hr>
@@ -1335,7 +1337,7 @@
 		<hr>
 
 		<div id="forkJoin">
-			<h3 style="margin-bottom-3">Fork/Join <span class="java7">(Since 1.7)</span> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
+			<h3 class="margin-bottom-3">Fork/Join <span class="java7">(Since 1.7)</span> <a class="link-sign" href="#concurrency">Concurrency</a></h3>
 			The fork/join framework is an implementation of the <code class="code">ExecutorService</code> interface that helps you take advantage of multiple processors.<br>
 			It is designed for work that can be broken into smaller pieces recursively.<br>
 			The goal is to use all the available processing power to enhance the performance of your application.
@@ -1519,7 +1521,7 @@
 			<h2 class="margin-bottom-3"><a href="#javaUp">Java</a></h2>
 			Is <b class="dim-grey">Multi-paradigm</b>: <em class="get-title">OOP</em><small>(by its organizational model)</small>,
 			<a href="ConnectedNotes.html#imperative">Imperative</a> <small>(by its execution model, but <span class="tomato">not</span> <em>Procedural</em> in its paradigm)</small>,
-				<a href="ConnectedNotes.html#functional">Functional <small>(despite it is <span class="tomato">not</span> <a href="ConnectedNotes.html#declarative">Declarative</a>)</small></a>,
+			<a href="ConnectedNotes.html#functional">Functional</a> <small>(despite it is <span class="tomato">not</span> <a href="ConnectedNotes.html#declarative">Declarative</a>)</small>,
 				<a id="genericsJava" href="#generics">Generic</a>,
 				<a href="#concurrency">Concurrent</a>,
 				<em>Reflective</em>, <em>Dynamic</em><br>
@@ -1620,9 +1622,9 @@
 			Expression Language (EL) syntax: <code class="code">${javabean.variable}</code>.
 			<div class="indent"></div>
 			Jsp Tag libraries:<br>
-			<code class="code"><%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %></code> Core <code>&lt;c:set var="name"/&gt;</code> etc<br>
-			<code class="code"><%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %></code> i18n<br>
-			<code class="code"><%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %></code> Strings
+			<code class="code">&lt;%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %></code> Core <code>&lt;c:set var="name"/&gt;</code> etc<br>
+			<code class="code">&lt;%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %></code> i18n<br>
+			<code class="code">&lt;%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %></code> Strings
 			<div class="indent"></div>
 			To deploy and run Jakarta Server Pages, a compatible <em>web server</em> with a <em>servlet container</em>, such as <em>Apache Tomcat</em> is required.
 			<div class="indent"></div>
@@ -1761,7 +1763,7 @@
 										where <code>static &lt;T&gt; void sort(T[] array, Comparator&lt;? <a href="#genericsWildcards">super</a> T&gt; c)</code><br>
 										<em>Comparator</em> is a Functional interface with method <code>int compare(<span class="back-green">T o1, T o2</span>)</code>,<br>
 										while <em>String</em> <code>int compareToIgnoreCase(<span class="back-red">String str</span>)</code><br>
-									The equivalent lambda expression for the method reference <code>String::compareToIgnoreCase</code> would have the <span class="back-sky-blue">formal parameter list</span> <code><nobr class="back-light-green">(String a, String b)</nobr></code>.
+									The equivalent lambda expression for the method reference <code>String::compareToIgnoreCase</code> would have the <span class="back-sky-blue">formal parameter list</span> <code class="back-light-green nowrap">(String a, String b)</code>.
 									The method reference would invoke the method <code>a.compareToIgnoreCase(b)</code>.
 								</td>
 					</tr>
@@ -1854,8 +1856,9 @@
 					<tr>
 						<td class="text-align-center">#</td>
 						<td colspan="2"><span class="green">Anonymous class</span></td>
-							<td><code><nobr>new ExistingClassName() {//implementation}</nobr><br>
-									  <nobr>new ExistingInterfaceName() {//implementation}</nobr><br>
+							<td><code>
+								<span class="nowrap">new ExistingClassName() {//implementation}</span><br>
+								<span class="nowrap">new ExistingInterfaceName() {//implementation}</span><br>
 								</code>
 							</td>
 							<td>Anonymous classes are a convenient short form of <span class="dark-red">inner classes</span> that have no name, only an implementation</td>
@@ -1880,7 +1883,7 @@
 					<tr>
 						<td style="text-align: center;">#</td>
 						<td rowspan="2"><span class="red">Nested</span></td>
-						<td><span class="dark-red">Inner class <nobr><small>(non-static nested class)</small></nobr></span></td>
+						<td><span class="dark-red">Inner class <small class="nowrap">(non-static nested class)</small></span></td>
 						<td rowspan="2"><code>class OuterClass {<br>
 																		&nbsp;&nbsp; ...<br>
 																&nbsp;&nbsp;class InnerClass {<br>
@@ -1899,8 +1902,8 @@
 					</tr>
 
 					<tr>
-									<td style="text-align: center;">#</td>
-									<td style="color:magenta;"><nobr>Static nested class</nobr></td>
+									<td class="text-align-center">#</td>
+									<td class="magenta nowrap">Static nested class</td>
 									<td></td>
 									<td>Use a static nested class if you <b>don't</b> require access to an enclosing instance's non-public fields and methods</td>
 									<td>1.1</td>
@@ -1912,7 +1915,7 @@
 		<hr>
 
 		<div id="optional">
-			<h3 style="margin-bottom:5px;"><code>Optional</code> <small>class <span class="java8">(Since 1.8)</span></small></h3>
+			<h3 class="margin-bottom-5"><code>Optional</code> <small>class <span class="java8">(Since 1.8)</span></small></h3>
 			A container object which may or may not contain a non-<code>null</code> value.
 			If a value is present, <code>isPresent()</code> returns <code>true</code>.
 			If no value is present, the object is considered <i>empty</i> and <code>isPresent()</code> returns <code>false</code>.<br>
@@ -2360,11 +2363,11 @@
 					<td><code>toArray(Person[]::new)</code></td>
 				</tr>
 				<tr>
-					<td rowspan="2"><code>toList</code></td>
+					<td><code>toList</code></td>
 					<td><code class="nowrap">default <span class="code">List</span>&lt;T> toList()</code></td>
 					<td></td>
 					<td></td>
-					<td rowspan="10" class="java16">16</td>
+					<td class="java16">16</td>
 				</tr>
 			</table>
 			<div class="indent"></div>
@@ -2432,12 +2435,12 @@
 						<code class="code">&lt;T,?,<b>Map</b>&lt;K,<b>List</b>&lt;T>>> groupingBy(Function&lt;T,K> classifier)</code><br>
 						<code class="code">&lt;T,?,<b>Map</b>&lt;K,D>> groupingBy(Function&lt;T,K> classifier, Collector&lt;T,A,D> downstream)</code><br>
 						<div class="indent"></div>
-						<code class="code">&lt;T,K,D,A,M extends <b>Map</b>&lt;K,D>><br> Collector&ltT,?,M> groupingBy(Function&lt;T,K> classifier, Supplier&lt;M> <b>mapFactory</b>, Collector&lt;T,A,D> downstream)</code><br>
+						<code class="code">&lt;T,K,D,A,M extends <b>Map</b>&lt;K,D>><br> Collector&lt;T,?,M> groupingBy(Function&lt;T,K> classifier, Supplier&lt;M> <b>mapFactory</b>, Collector&lt;T,A,D> downstream)</code><br>
 						<div class="indent4"></div>
 						and the same for <code class="code">groupingByConcurrent(..)</code>
 						<div class="indent4"></div>
 						<code>Map&lt;Character, Set&lt;String>> result = Stream.of({"Zhaba", "Anton", "Ajax"})</code><br>
-						<code class="nowrap">.collect(<b>groupingBy</b>(<span class="blue">item -> item.charAt(0)</span>, <span class="green">() -> new TreeMap<>(Collections.reverseOrder())</span>, <span class="teal">toSet()</span>));</code><br>
+						<code class="nowrap">.collect(<b>groupingBy</b>(<span class="blue">item -> item.charAt(0)</span>, <span class="green">() -> new TreeMap&lt;>(Collections.reverseOrder())</span>, <span class="teal">toSet()</span>));</code><br>
 						<span class="smaller font-family-math dim-grey">Result: {Z=[Zhaba], A=[Anton, Ajax]}</span>
 					</td>
 					<td></td>
@@ -2665,7 +2668,7 @@ class ClassOne {
 			<code class="code">java.lang.ThreadLocal&lt;T></code><br>
 			Variable that has independently initialized <em><b class="dim-grey">copy</b></em> of its generic type <code>&lt;T></code> for each <code class="code">Thread</code>.<br>
 			If the variable has no value for the current thread, and <code class="code">get()</code> method called, then <code class="code">initialValue()</code> is invoked for initialization first.
-			<pre><code class="language-java">        ThreadLocal&lt;String> threadLocalVar = new ThreadLocal<>();
+			<pre><code class="language-java">        ThreadLocal&lt;String> threadLocalVar = new ThreadLocal&lt;>();
 
         Thread thread1 = new Thread( () -> {
             System.out.println("Setting T1");

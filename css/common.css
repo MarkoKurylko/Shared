@@ -199,10 +199,13 @@ ol.ol-with-margin > li {margin: 10px 0;}
 }
 
 .width100pct {width: 100%;}
+.width20pct  {width: 20%;}
+.width50pct  {width: 5%;}
 .height2     {height: 2px;}
 
 .height-220  {height: 220px}
 .height-400  {height: 400px}
+.height-550  {height: 550px}
 .height-570  {height: 570px}
 .height-650  {height: 650px}
 
