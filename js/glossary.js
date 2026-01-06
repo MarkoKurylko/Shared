@@ -5,6 +5,7 @@ rawMap.set("ATM", { title: "Automated Teller Machine", groups: []});
 
 rawMap.set("BaaS", { title: "Backend as a Service", groups: ["aaS"]});
 
+rawMap.set("CAN", { title: "Controller Area Network", groups: ["vehicle"]});
 rawMap.set("CJK", { title: "Chinese Japanese Korean", groups: []});
 rawMap.set("CMT", { title: "Container Managed Transaction", groups: ["jta"]});
 
@@ -16,7 +17,17 @@ rawMap.set("DSL2", { title: "Domain-Specific Language", th: "DSL", groups: ["com
 
 rawMap.set("ETF", { title: "Exchange-Traded Fund", groups: []});
 
+rawMap.set("GUID", { title: "Globally Unique IDentifier", groups: ["identifier"], notes: "The same as #UUID"});
+rawMap.set("UUID", { title: "Universally Unique IDentifier", groups: ["identifier"], notes: "The same as #GUID"});
+
 rawMap.set("JAX-WS", { title: "Java #API for #XML Web Services", groups: ["java"], classes: ["nowrap"]});
+rawMap.set("JIT", { title: "Just-In-Time", groups: ["java", "computing"]});
+rawMap.set("AOT", { title: "Ahead-Of-Time", groups: ["java", "computing"]});
+
+rawMap.set("IDE2", { title: "Integrated Drive Electronics", th: "IDE", groups: ["computer", "pc-interface"], notes: "The same as #PATA", classes: ["skip"]});
+rawMap.set("PATA", { title: "Parallel Advanced Technology Attachment", groups: ["computer", "pc-interface"], notes: "The same as #IDE2"});
+
+rawMap.set("LED", { title: "Light Emitting Diode", groups: []});
 
 rawMap.set("MD", { title: "Markdown Documentation", groups: []});
 rawMap.set("MCQ", { title: "Multiple Choice Question", groups: []});
@@ -37,8 +48,12 @@ rawMap.set("TX", { title: "Transaction", groups: ["dbms"]});
 
 rawMap.set("UoW", { title: "Unit of Work", groups: ["jpa", "dp"]});
 rawMap.set("USE", { title: "Utilization, Saturation, Errors", groups: ["metrics"]});
+rawMap.set("URI", { title: "Uniform Resource Identifier", groups: ["uniform-resource"], notes: "#URL is a subset of #URI"});
+rawMap.set("URL", { title: "Uniform Resource Locator",    groups: ["uniform-resource"], notes: "#URL is a subset of #URI"});
 
 rawMap.set("XSS", { html: [{tag: "em", class: "fire-brick", text: "Cross"}, {text:"-Site Scripting"}], groups: ["vulnerability"]});
+
+rawMap.set("ZTNA", { title: "Zero Trust Network Access", groups: []});
 
 	function getGlossary() {
 		const xhttp = new XMLHttpRequest();
