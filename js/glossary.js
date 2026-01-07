@@ -3,11 +3,38 @@ const rawMap = new Map();
 
 rawMap.set("ATM", { title: "Automated Teller Machine", groups: []});
 
+rawMap.set("AWS", { title: "Amazon Web Services", groups: ["aws", "cloud"]});
+rawMap.set("AMI", { title: "Amazon Machine Image", groups: ["aws"]});
+rawMap.set("ARN", { title: "Amazon Resource Name", groups: ["aws"]});
+rawMap.set("AmazonEC2", { title: "Amazon Elastic Compute Cloud", th: "Amazon EC2", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonECS", { title: "Amazon Elastic Container Service", th: "Amazon ECS", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonEKS", { title: "Amazon Elastic Kubernetes Service", th: "Amazon EKS", groups: ["aws"], classes: [["skip", "nowrap"]], notes: "#K8s"});
+rawMap.set("AmazonS3", { title: "Amazon Simple Storage Service", th: "Amazon S3", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonEBS", { title: "Amazon Elastic Block Storage", th: "Amazon EBS", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonEFS", { title: "Amazon Elastic File Storage", th: "Amazon EFS", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonFSx", { html: [{text:"Amazon File Storage for "}, {tag: "b", text: "x"}], th: "Amazon FSx", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonVPC", { title: "Amazon Virtual Private Cloud", th: "Amazon VPC", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonQLDB", { title: "Amazon Quantum Ledger Database", th: "Amazon QLDB", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonRDS", { title: "Amazon Relational Database Service", th: "Amazon RDS", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonSNS", { title: "Amazon Simple Notification Service", th: "Amazon SNS", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonSQS", { title: "Amazon Simple Queue Service", th: "Amazon SQS", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonALB", { title: "Amazon Application Load Balancing", th: "Amazon ALB", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonELB", { title: "Amazon Elastic Load Balancing", th: "Amazon ELB", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AmazonECR", { title: "Amazon Elastic Container Registry", th: "Amazon ECR", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("ACM", { title: "#AWS Certificate Manager", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AWSKMS", { title: "#AWS Key Management Service", th: "AWS KMS", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AWSSAM", { title: "#AWS Serverless Application Model", th: "AWS SAM", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AWSCLI", { title: "#AWS #CLI", th: "AWS CLI", groups: ["aws"], classes: [["skip", "nowrap"]]});
+rawMap.set("AWSCDK", { title: "#AWS Cloud Development Kit", th: "AWS CDK", groups: ["aws"], classes: [["skip", "nowrap"]]});
+
+rawMap.set("AWSCDKCLI", { html: [{tag: "a", href: "#AWSCDK", text: "AWS CDK"}, { text: " "}, {tag: "a", href: "#CLI", text: "CLI" }], th: "AWS CDK CLI", groups: ["aws"], classes: [["skip", "nowrap"]]});
+
 rawMap.set("BaaS", { title: "Backend as a Service", groups: ["aaS"]});
 
 rawMap.set("CAN", { title: "Controller Area Network", groups: ["vehicle"]});
 rawMap.set("CJK", { title: "Chinese Japanese Korean", groups: []});
 rawMap.set("CMT", { title: "Container Managed Transaction", groups: ["jta"]});
+rawMap.set("CLI", { html: [{text: "Command-Line Interface"}, {tag: "hr", class: "margin-3", text: ""}, {text: "Command-Line Interpreter"}], notes: "#AWSCLI.AWS_CLI #AWSCDKCLI.AWS_CDK_CLI", groups: []});
 
 rawMap.set("DTAP", { title: "Development, Testing, Acceptance and Production", groups: ["software"]});
 rawMap.set("DPI",  { title: "Deep Packet Inspection", groups: ["security"]});
