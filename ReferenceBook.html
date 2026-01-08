@@ -19,6 +19,9 @@
 
 <div id="content"></div>
 
+<table id="groupsTable" class="collapse-border padding sorted">
+</table>
+
 <a href="all.html" id="sitemap-footer">SiteMap</a><br>
 <iframe class="footer" src="./footer.html"></iframe>
 
@@ -47,7 +50,8 @@
 		contentTag.appendChild(indentDiv);
 	}
 
-	parseMap(referenceBookMap);
+	const groupsTable = document.getElementById("groupsTable"); // Groups
+	parseMap(referenceBookMap, groupsTable);
 </script>
 
 </body>

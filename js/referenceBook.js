@@ -9,3 +9,6 @@ referenceBookMap.set("declarative", { html: [{text:"What to do. Expressions. "},
 											 {text: " | "},
 											 {tag: "span", class: "nowrap", text: "Logic (facts and clauses). Functional. Database processing"}
 											 ], th: "Declarative", groups: ["paradigm"]});
+
+referenceBookMap.set("idempotent", {th:"Idempotent", title: "Repeated operation on an object does not change the result achieved at first execution", groups: [], notes:"Opposite is \"non-idempotent\""});
+referenceBookMap.set("imperative", {th:"Imperative", title: "How to do things. Statements. Var++. | TODO #OOP.| Procedural. Parallel processing", groups: ["paradigm"]});

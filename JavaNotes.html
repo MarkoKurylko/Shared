@@ -4,7 +4,7 @@
 		<title>Java Notes</title>
 		<link rel="icon" type="image/x-icon" href="ico/favicon.ico">
 		<link rel="stylesheet" href="css/common.css">
-		<script src="js/glossary.js"></script>
+		<script src="js/glossary.js" async></script>
 		<script src="js/toc.js"></script>
 
 		<link rel="stylesheet" href="3dparty/highligthjs/styles/default.min.css">
@@ -347,9 +347,9 @@
 
 			<code class="b">ArrayList</code> vs <code class="b">LinkedList</code><br>
 			What was true for linked lists when computing was invented in the 60's does not hold anymore,
-			and the capacity of linked lists to outperform arrays on insertion and deletion operations is greatly diminished by modern hardware, CPU caches, and pointer chasing.
+			and the capacity of linked lists to outperform arrays on insertion and deletion operations is greatly diminished by modern hardware, <span class="get-title">CPU</span> caches, and pointer chasing.
 			Iterating over the elements of an <code>ArrayList</code> is much faster that over the elements of a <code>LinkedList</code>,
-			mainly due to pointer chasing and CPU cache misses.<br>
+			mainly due to pointer chasing and <span class="get-title">CPU</span> cache misses.<br>
 			There are still cases where a linked list is faster than an array.
 			A doubly-linked list (<code>LinkedList</code>) can access its first and last element faster than an <code>ArrayList</code> can.
 			So if your application needs a <span class="get-title">LIFO</span>/stack, or a <span class="get-title">FIFO</span> waiting queue, then choosing a <code>LinkedList</code> is probably your best choice.
