@@ -1,8 +1,6 @@
 const glossaryMap = new Map();
 const rawMap = new Map();
 
-rawMap.set("ATM", { title: "Automated Teller Machine", groups: []});
-
 rawMap.set("AWS", { title: "Amazon Web Services", groups: ["aws", "cloud"]});
 rawMap.set("AMI", { title: "Amazon Machine Image", groups: ["aws"]});
 rawMap.set("ARN", { title: "Amazon Resource Name", groups: ["aws"]});
@@ -28,6 +26,7 @@ rawMap.set("AWSCLI", { title: "#AWS #CLI", th: "AWS CLI", groups: ["aws"], class
 rawMap.set("AWSCDK", { title: "#AWS Cloud Development Kit", th: "AWS CDK", groups: ["aws"], classes: [["skip", "nowrap"]]});
 rawMap.set("AWSCDKCLI", { html: [{tag: "a", href: "#AWSCDK", text: "AWS CDK"}, { text: " "}, {tag: "a", href: "#CLI", text: "CLI" }], th: "AWS CDK CLI", groups: ["aws"], classes: [["skip", "nowrap"]]});
 
+rawMap.set("ATM", { title: "Automated Teller Machine", groups: []});
 rawMap.set("ACID", {title: "Atomicity Consistency Isolation Durability", groups: ["ql"]});
 rawMap.set("ACL", {title: "Access Control List", groups: []});
 rawMap.set("AES", {title: "Advanced Encryption Standard", groups: [], notes: "#DES"});
@@ -35,7 +34,7 @@ rawMap.set("AJAX", {title: "Asynchronous JavaScript And XML", groups: ["javascri
 rawMap.set("AKA", {title: "Also Known As", groups: []});
 rawMap.set("ANSI", {title: "American National Standards Institute", groups: []});
 rawMap.set("AOP", {title: "Aspect Oriented Programming", groups: ["software"]});
-rawMap.set("API", {title: "Application Programming Interface", groups: []});
+rawMap.set("API", {title: "Application Programming Interface", groups: ["software"]});
 rawMap.set("ARP", {title: "Address Resolution Protocol", groups: ["protocol"]});
 rawMap.set("ASCII", {html: [{text: "American Standard Code"}, {tag: "small", text: " for "}, {text:"Information Interchange"}], groups: []});
 rawMap.set("ASIC", {title: "Application-Specific Integrated Circuit", groups: ["electronics"]});
@@ -181,39 +180,93 @@ rawMap.set("ISP", {title: "Internet Service Provider", groups: []});
 rawMap.set("JAX-WS", { title: "Java #API for #XML Web Services", groups: ["java"], classes: ["nowrap"]});
 rawMap.set("JIT", { title: "Just-In-Time", groups: ["java", "computing"]});
  rawMap.set("AOT", { title: "Ahead-Of-Time", groups: ["java", "computing"]});
+rawMap.set("JAAS", {title: "Java Authentication and Authorization Service", groups: ["java"]});
+rawMap.set("JCP", {title: "Java Community Process", groups: ["java"]});
+rawMap.set("JDBC", {title: "Java DataBase Connectivity", groups: ["java"]});
+rawMap.set("JDK", {title: "Java Development Kit", groups: ["java"]});
+rawMap.set("JDMK", {title: "Java Development Management Kit", groups: ["java"]});
+rawMap.set("JEP", {title: "#JDK Enhancement Proposal", groups: ["java"]});
+rawMap.set("JFC", {title: "Java Foundation Classes", groups: ["java"]});
+rawMap.set("JLS", {title: "Java Language Specification", groups: ["java"]});
+rawMap.set("JMM", {title: "Java Memory Model", groups: ["java"]});
+rawMap.set("JMS", {html: [{text: "Jakarta Messaging "}, {tag: "small", class: "grey", text: "(Java Message Service)"}], groups: ["java"]});
+rawMap.set("JMX", {html: [{text: "Java Management E"},{tag: "b", text:"x"},{text: "tensions"}], groups: ["java"]});
+rawMap.set("JMXMP", {html: [{text: "Java Management E"},{tag: "b", text:"x"},{text: "tensions Message Protocol"}], groups: ["java"]});
+rawMap.set("JNA", {title: "Java Native Access", groups: ["java"]});
+rawMap.set("JNDI", {html: [{text: "Java Naming "},{tag: "small", text:"and"},{text: " Directory Interface"}], groups: ["java"]});
+rawMap.set("JNI", {title: "Java Native Interface", groups: ["java"]});
+rawMap.set("JPA", {html: [{text: "Jakarta Persistence "}, {tag: "small", class:"grey", text:"(Java Persistence #API )"}], groups: ["java"]});
+rawMap.set("JPEG", {title: "Joint Photographic Experts Group", groups: ["graphics"]});
+rawMap.set("JPQL", {html: [{text: "Jakarta"}, {tag: "small", class:"grey", text:"(Java)"}, { text: " Persistence Query Language"}], groups: ["java", "ql"]});
+rawMap.set("JRE", {title: "Java Runtime Environment", groups: ["java"]});
+rawMap.set("JSON", {title: "JavaScript Object Notation", groups: ["javascript"], svg: "json"});
+rawMap.set("JSR", {title: "Java Specification Request", groups: ["java"]});
+rawMap.set("JSSE", {title: "Java Secure Socket Extension", groups: ["java"]});
+rawMap.set("JTA", {html: [{text: "Jakarta Transactions "}, {tag: "small", class:"grey", text:"(Java Transaction #API )"}], groups: ["java"]});
+rawMap.set("JUG", {title: "Java User Group", groups: ["java"]});
+rawMap.set("JVM", {title: "Java Virtual Machine", groups: ["java"]});
+rawMap.set("JVMS", {title: "Java Virtual Machine Specification", groups: ["java"]});
+rawMap.set("JWT", {title: "#JSON Web Token", groups: ["security"]});
 
-rawMap.set("LED", { title: "Light Emitting Diode", groups: []});
-rawMap.set("LIFO", { title: "Last In First Out", groups: ["cache"], notes: "LIFO is a Stack"});
-rawMap.set("FIFO", { title: "First In First Out", groups: ["cache"]});
+rawMap.set("K8s", {title: "Kubernetes", groups: ["container-orchestration"], notes: "#CNCF", svg: "K8s"});
+rawMap.set("KISS", {html: [{text: "Keep it simple, stupid!"}, {tag: "hr", class: "margin-3"}, {text: "Keep it short & simple"}], groups: ["design"]});
+rawMap.set("KTLO", {title: "Keeping The Lights On", groups: []});
+rawMap.set("KYC", {title: "Know Your Customer", groups: ["banking"]});
 
-rawMap.set("MD", { title: "Markdown Documentation", groups: []});
-rawMap.set("MCQ", { title: "Multiple Choice Question", groups: []});
-rawMap.set("MCP", { title: "Model Context Protocol", groups: ["ai", "protocol"]});
+rawMap.set("LED", {title: "Light Emitting Diode", groups: []});
+rawMap.set("LIFO", {title: "Last In First Out", groups: ["cache"], notes: "LIFO is a Stack"});
+ rawMap.set("FIFO", {title: "First In First Out", groups: ["cache"]});
+rawMap.set("LAN", {title: "Local Area Network", groups: ["network"]});
+rawMap.set("LDAP", {title: "Lightweight Directory Access Protocol", groups: ["protocol"]});
+rawMap.set("LFU", {title: "Least Frequently Used", groups: ["cache"]});
+rawMap.set("LRU", {title: "Least Recently Used", groups: ["cache"]});
+rawMap.set("LTE", {title: "Long-Term Evolution", groups: ["telecom"], notes: "3.95G"});
+rawMap.set("LTE+", {title: "#LTE Advanced", groups: ["telecom"], notes: "LTE-A, 4G+"});
+rawMap.set("LTS", {title: "Long-Term Support", groups: ["software"]});
+rawMap.set("LWC", {title: "Language of Wider Communication", groups: [], notes: [{tag: "a", href: "referenceBook.html#lingua_franca", text: "Lingua franca"}]});
+rawMap.set("LXC", {title: "LinuX Containers", groups: ["OS"]});
 
-rawMap.set("OSGi", { title: "Open Services Gateway initiative", groups: ["java"]});
+rawMap.set("MD", {title: "Markdown Documentation", groups: []});
+rawMap.set("MCQ", {title: "Multiple Choice Question", groups: []});
+rawMap.set("MCP", {title: "Model Context Protocol", groups: ["ai", "protocol"]});
+rawMap.set("MaaS", {title: "Metal as a Service", groups: ["aaS"]});
+rawMap.set("MAC", {html: [{text: "Media Access Control "}, {tag: "small", text: "address"}], groups: []});
+rawMap.set("MACH", {html: [{text: "Microservices, "}, {tag: "a", href: "#API"}, {text: "-first, Cloud-native and Headless"}], groups: ["architecture"]});
+rawMap.set("MAPI", {title: "Messaging Application Programming Interface", groups: [], notes: "Microsoft"});
+rawMap.set("MDM", {title: "Mobile Device Management", groups: []});
+rawMap.set("MDN", {title: "Mozilla Developer Network", groups: [], notes: "#MSDN"});
+rawMap.set("MIME", {title: "Multipurpose Internet Mail Extensions", groups: []});
+rawMap.set("MOSFET", {title: "Metal–Oxide–Semiconductor Field-Effect Transistor", groups: ["electronics"]});
+rawMap.set("MPEG", {title: "Motion Picture Experts Group", groups: ["graphics"]});
+rawMap.set("MSDN", {title: "MicroSoft Developer Network", groups: [], notes: "#MDN"});
+rawMap.set("MSRP", {title: "Manufacturer's Suggested Retail Price", groups: [], notes: "List price"});
+rawMap.set("mutex", {title: "Mutual exclusion", th: "Mutex", classes: ["skip"], groups: ["concurrency"]});
+rawMap.set("MVP", {title: "Minimum Viable Product", groups: []});
 
-rawMap.set("PLC", { title: "Programmable Logic Controller", groups: ["controller"]});
-rawMap.set("POJO", { title: "Plain Old Java Object", groups: ["java"]});
+rawMap.set("OSGi", {title: "Open Services Gateway initiative", groups: ["java"]});
 
-rawMap.set("RED", { title: "Rate, Errors, Duration", groups: ["metrics"]});
-rawMap.set("ROI", { title: "Return on Investment", groups: []});
-rawMap.set("RGB", { html: [{tag: "span", class: "red", text: "Red"}, {text:" "}, {tag: "span", class: "green", text: "Green"}, {text:" "}, {tag: "span", class: "blue", text: "Blue"}], groups: []});
+rawMap.set("PLC", {title: "Programmable Logic Controller", groups: ["controller"]});
+rawMap.set("POJO", {title: "Plain Old Java Object", groups: ["java"]});
 
-rawMap.set("SHA", { title: "Secure Hash Algorithms", groups: ["security"]});
-rawMap.set("SLA", { title: "Service Level Agreement", groups: ["service-level"]});
-rawMap.set("SLI", { title: "Service Level Indicator", groups: ["service-level"]});
-rawMap.set("SLO", { title: "Service Level Objective", groups: ["service-level"]});
+rawMap.set("RED", {title: "Rate, Errors, Duration", groups: ["metrics"]});
+rawMap.set("ROI", {title: "Return on Investment", groups: []});
+rawMap.set("RGB", {html: [{tag: "span", class: "red", text: "Red"}, {text:" "}, {tag: "span", class: "green", text: "Green"}, {text:" "}, {tag: "span", class: "blue", text: "Blue"}], groups: []});
 
-rawMap.set("TX", { title: "Transaction", groups: ["dbms"]});
+rawMap.set("SHA", {title: "Secure Hash Algorithms", groups: ["security"]});
+rawMap.set("SLA", {title: "Service Level Agreement", groups: ["service-level"]});
+rawMap.set("SLI", {title: "Service Level Indicator", groups: ["service-level"]});
+rawMap.set("SLO", {title: "Service Level Objective", groups: ["service-level"]});
 
-rawMap.set("UoW", { title: "Unit of Work", groups: ["jpa", "dp"]});
-rawMap.set("USE", { title: "Utilization, Saturation, Errors", groups: ["metrics"]});
-rawMap.set("URI", { title: "Uniform Resource Identifier", groups: ["uniform-resource"], notes: "#URL is a subset of #URI"});
-rawMap.set("URL", { title: "Uniform Resource Locator",    groups: ["uniform-resource"], notes: "#URL is a subset of #URI"});
+rawMap.set("TX", {title: "Transaction", groups: ["dbms"]});
 
-rawMap.set("XSS", { html: [{tag: "em", class: "fire-brick", text: "Cross"}, {text:"-Site Scripting"}], groups: ["vulnerability"]});
+rawMap.set("UoW", {title: "Unit of Work", groups: ["jpa", "dp"]});
+rawMap.set("USE", {title: "Utilization, Saturation, Errors", groups: ["metrics"]});
+rawMap.set("URI", {title: "Uniform Resource Identifier", groups: ["uniform-resource"], notes: "#URL is a subset of #URI"});
+rawMap.set("URL", {title: "Uniform Resource Locator",    groups: ["uniform-resource"], notes: "#URL is a subset of #URI"});
 
-rawMap.set("ZTNA", { title: "Zero Trust Network Access", groups: []});
+rawMap.set("XSS", {html: [{tag: "em", class: "fire-brick", text: "Cross"}, {text:"-Site Scripting"}], groups: ["vulnerability"]});
+
+rawMap.set("ZTNA", {title: "Zero Trust Network Access", groups: []});
 
 	function getGlossary() {
 		const xhttp = new XMLHttpRequest();

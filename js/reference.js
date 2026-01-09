@@ -5,7 +5,9 @@ function createHrefLink(link, label) {
 	return element;
 }
 
-function injectLinks(sourceText, parentElement) {
+function addTextWithLinks(sourceText, parentElement) {
+	if (!sourceText) return;
+	if (sourceText.includes('#')) {
 		const sourceTextArray = sourceText.split(" ");
 		let nodeText = "";
 		for (const word of sourceTextArray) {
@@ -25,6 +27,23 @@ function injectLinks(sourceText, parentElement) {
 			}
 		}
 		parentElement.appendChild(document.createTextNode(nodeText));
+	} else {
+		parentElement.appendChild(document.createTextNode(sourceText));
+	}
+}
+
+function addHtmlBlock(html, parent) {
+	for (const block of html) {
+		if (block.tag) {
+			const tag = document.createElement(block.tag);
+			if (block.href) tag.href = block.href;
+			if (block.class) tag.classList.add(block.class);
+			addTextWithLinks(block.text, tag);
+			parent.appendChild(tag);
+		} else {
+			addTextWithLinks(block.text, parent);
+		}
+	}
 }
 
 function createGroupTag(group, groupsTable) {
@@ -61,24 +80,10 @@ function parseMap(map, groupsTable) {
 
 		let i = 1;
 		let descriptionCell = newRow.insertCell(i++);
-
 		if (value.html) {
-			for (const block of value.html) {
-				let description = document.createTextNode(block.text);
-				if (block.tag) {
-					const tag = document.createElement(block.tag);
-					if (block.href) tag.href = block.href;
-					if (block.class) tag.classList.add(block.class);
-					tag.appendChild(description);
-					descriptionCell.appendChild(tag);
-				} else {
-					descriptionCell.appendChild(description);
-				}
-			}
-		} else if (value.title.includes('#')) {
-			injectLinks(value.title, descriptionCell);
+			addHtmlBlock(value.html, descriptionCell);
 		} else {
-			descriptionCell.appendChild(document.createTextNode(value.title));
+			addTextWithLinks(value.title, descriptionCell);
 		}
 
 		// Groups
@@ -100,10 +105,10 @@ function parseMap(map, groupsTable) {
 		//Notes
 		const notesCell = newRow.insertCell(i++);
 		if (value.notes) {
-			if (value.notes.includes('#')) {
-				injectLinks(value.notes, notesCell);
+			if (Array.isArray(value.notes)) {
+				addHtmlBlock(value.notes, notesCell);
 			} else {
-				notesCell.appendChild(document.createTextNode(value.notes));
+				addTextWithLinks(value.notes, notesCell);
 			}
 		}
 
