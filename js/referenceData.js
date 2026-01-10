@@ -1,6 +1,5 @@
 const referenceBookMap = new Map();
 
-
 referenceBookMap.set("deterministic", { title: "The same results for the same input data", th: "Deterministic", groups: ["determinism"]});
 referenceBookMap.set("non_deterministic", { title: "Different results for the same input data", th: "Non-Deterministic", groups: ["determinism"]});
 
