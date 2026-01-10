@@ -147,7 +147,7 @@ function addContentTables(contentTag) {
 		thsTextArray.forEach( thText => {
 			const th = document.createElement('th');
 			th.appendChild(document.createTextNode(thText));
-			th.classList.add("DimGray");
+			th.classList.add("dim-grey");
 			newRow.appendChild(th);
 		});
 
