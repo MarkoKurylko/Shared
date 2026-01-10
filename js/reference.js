@@ -37,6 +37,7 @@ function addHtmlBlock(html, parent) {
 		if (block.tag) {
 			const tag = document.createElement(block.tag);
 			if (block.href) tag.href = block.href;
+			if (block.title) tag.title = block.title;
 			if (block.class) tag.classList.add(block.class);
 			addTextWithLinks(block.text, tag);
 			parent.appendChild(tag);

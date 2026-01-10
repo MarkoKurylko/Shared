@@ -244,14 +244,72 @@ rawMap.set("MSRP", {title: "Manufacturer's Suggested Retail Price", groups: [], 
 rawMap.set("mutex", {title: "Mutual exclusion", th: "Mutex", classes: ["skip"], groups: ["concurrency"]});
 rawMap.set("MVP", {title: "Minimum Viable Product", groups: []});
 
+rawMap.set("NaaS", {title: "Network as a Service", groups: ["aaS"]});
+rawMap.set("NAT", {title: "Network Address Translation", groups: ["network"]});
+rawMap.set("NFC", {title: "Near-Field Communication", groups: ["protocol"]});
+rawMap.set("NFR", {title: "Non-functional requirement", groups: ["engineering", "system-design"]});
+rawMap.set("NFT", {title: "Non-Fungible Token", groups: ["blockchain"]});
+rawMap.set("NNTP", {title: "Network News Transport Protocol", groups: ["protocol"]});
+rawMap.set("NoSQL", {html: [{text: "Non-relational "}, {tag: "span", class: "tooltip", title : "Database", text: "DB"}, {text: " | Non #SQL | Not only #SQL"}], groups: ["ql"]});
+rawMap.set("NTP", {title: "Network Time Protocol", groups: ["protocol"]});
+
 rawMap.set("OSGi", {title: "Open Services Gateway initiative", groups: ["java"]});
+rawMap.set("OAuth", {title: "Open Authorization", groups: ["security", "authorization-protocol"], notes: "Web Authorization Protocol", svg: "Oauth"});
+rawMap.set("OCI", {title: "Open Container Initiative", groups: []});
+rawMap.set("OCP", {title: "Open/Closed Principle", groups: ["SOLID"], notes: "#SOLID1"});
+rawMap.set("OCR", {title: "Optical character recognition", groups: []});
+rawMap.set("OIDC", {title: "OpenID Connect", groups: ["authentication-protocol"], notes: "An authentication layer on top of the #OAuth 2.0"});
+rawMap.set("OLTP", {html: [{text: "On"}, {tag: "b", text: "l"}, {text: "ine Transaction Processing"}], groups: []});
+rawMap.set("OOP", {title: "Object Oriented Programming", groups: ["software"]});
+rawMap.set("OOTB", {title: "Out of the Box", groups: []});
+rawMap.set("OS1", {title: "Operating System",th: "OS", classes: ["skip"], groups: ["OS", "computer"]});
+rawMap.set("OSI", {title: "Open Systems Interconnection", groups: []});
 
 rawMap.set("PLC", {title: "Programmable Logic Controller", groups: ["controller"]});
 rawMap.set("POJO", {title: "Plain Old Java Object", groups: ["java"]});
+rawMap.set("P2P", {title: "Peer-to-Peer", groups: ["network"]});
+rawMap.set("PaaS", {title: "Platform as a Service", groups: ["aaS"]});
+rawMap.set("PAM", {title: "Pluggable Authentication Module", groups: ["software"]});
+rawMap.set("PAN", {title: "Personal Area Network", groups: ["network"]});
+rawMap.set("PC", {title: "Personal Computer", groups: ["computer", "processor", "pc-interface", "memory", "video", "persistence", "OS"]});
+rawMap.set("PDA", {title: "Personal Digital Assistant", groups: []});
+rawMap.set("PDF", {title: "Portable Document Format", groups: ["format"]});
+rawMap.set("PECS", {title: "Producer Extends Consumer Super", groups: ["java"]});
+rawMap.set("PED", {title: "#PIN Entry Device", groups: []});
+rawMap.set("PEMDAS", {title: "Parentheses, Exponents, Multiplication/Division, Addition/Subtraction", groups: []});
+rawMap.set("PGP", {title: "Pretty Good Privacy", groups: []});
+rawMap.set("PHI", {title: "Protected Health Information", groups: ["GDPR"]});
+rawMap.set("PII", {title: "Personally Identifiable Information", groups: ["GDPR"]});
+rawMap.set("PIN", {title: "Personal Identification Number", groups: []});
+rawMap.set("PING", {title: "Packet InterNet Groper", groups: [], notes: "#ICMP"});
+rawMap.set("PMDL", {title: "Promotion Model Definition Language", groups: ["atg+"]});
+rawMap.set("PNG", {title: "Portable Network Graphics", groups: ["graphics"]});
+rawMap.set("POM", {title: "Project Object Model", groups: ["software", "maven"]});
+rawMap.set("POP", {title: "Post Office Protocol", groups: ["protocol"], notes: "POP3"});
+rawMap.set("POX", {title: "Plain Old XML", groups: [], notes: "#XML"});
+rawMap.set("PPP", {title: "Point-to-Point Protocol", groups: ["protocol"]});
+rawMap.set("pub/sub", {title: "Publish-Subscribe", groups: ["design-pattern"]});
+
+rawMap.set("QoS", {title: "Quality of Service", groups: []});
 
 rawMap.set("RED", {title: "Rate, Errors, Duration", groups: ["metrics"]});
 rawMap.set("ROI", {title: "Return on Investment", groups: []});
 rawMap.set("RGB", {html: [{tag: "span", class: "red", text: "Red"}, {text:" "}, {tag: "span", class: "green", text: "Green"}, {text:" "}, {tag: "span", class: "blue", text: "Blue"}], groups: []});
+rawMap.set("RGB", {html: [{tag: "span", class: "red", text: "Red"}, {text:" "}, {tag: "span", class: "green", text: "Green"}, {text:" "}, {tag: "span", class: "blue", text: "Blue"}, {text: " Alfa"}], groups: []});
+rawMap.set("RGR", {html: [{tag: "span", class: "red", text: "Red"}, {text:" "}, {tag: "span", class: "green", text: "Green"}, { text: " Refactor"}], groups: ["tdd"]});
+rawMap.set("RAM", {title: "Random Access Memory", groups: ["memory", "computer"]});
+rawMap.set("RBAC", {title: "Role-Based Access Control", groups: []});
+rawMap.set("RDBMS", {title: "Relational DataBase Management System", groups: ["ql"]});
+rawMap.set("REST", {title: "Representational State Transfer", groups: ["restful"]});
+rawMap.set("RFC", {title: "Request for Comments", groups: ["internet"]});
+rawMap.set("RMI", {title: "Remote Method Invocation", groups: ["java"]});
+rawMap.set("RoHS", {title: "Restriction of Hazardous Substances", groups: []});
+rawMap.set("ROM", {title: "Read Only Memory", groups: ["memory", "computer"]});
+rawMap.set("RPC", {title: "Remote Procedure Call", groups: ["software"]});
+rawMap.set("RQL", {title: "Repository Query Language", groups: ["ql", "atg+"]});
+rawMap.set("RTF", {title: "Rich Text Format", groups: ["format"]});
+rawMap.set("RTFM", {title: "Read The Fucking Manual", groups: ["meme"]});
+rawMap.set("RTO", {title: "Return to Office", groups: []});
 
 rawMap.set("SHA", {title: "Secure Hash Algorithms", groups: ["security"]});
 rawMap.set("SLA", {title: "Service Level Agreement", groups: ["service-level"]});
