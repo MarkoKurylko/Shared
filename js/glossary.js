@@ -1,4 +1,5 @@
 const glossaryMap = new Map();
+const glossaryGroupMap = new Map();
 const rawMap = new Map();
 
 rawMap.set("AWS", { title: "Amazon Web Services", groups: ["aws", "cloud"]});
@@ -267,6 +268,8 @@ rawMap.set("URL", {title: "Uniform Resource Locator",    groups: ["uniform-resou
 rawMap.set("XSS", {html: [{tag: "em", class: "fire-brick", text: "Cross"}, {text:"-Site Scripting"}], groups: ["vulnerability"]});
 
 rawMap.set("ZTNA", {title: "Zero Trust Network Access", groups: []});
+
+glossaryGroupMap.set("ml", { text: "#GML -> #SGML -> [ #XML , #HTML -> #XHTML ]; #DTD"});
 
 	function getGlossary() {
 		const xhttp = new XMLHttpRequest();

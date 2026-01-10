@@ -860,12 +860,8 @@
 
 <hr>
 
-<div id="templates" class="displaynone">
+<div id="templates">
 	<table id="groupsTable" class="collapse-border padding sorted">
-		<tr>
-			<th class="skip">ML</th>
-			<td><div id="ml"><a href="#GML"></a> -> <a href="#SGML"></a> -> [<a href="#XML"></a>, <a href="#HTML"></a> -> <a href="#XHTML"></a>]; <a href="#DTD"></a></div></td>
-		</tr>
 	</table>
 </div>
 <div class="indent"></div>
@@ -876,6 +872,21 @@
 <script>
 	const groupsTable = document.getElementById("groupsTable"); // Groups
 	const templates = document.getElementById("templates"); // Groups
+
+	// Fetch data from glossaryGroupMap
+	if (typeof glossaryGroupMap !== 'undefined') {
+		glossaryGroupMap.forEach((value, key, map) => {
+			const newRow = groupsTable.insertRow(-1);
+			const th = document.createElement('th');
+			th.classList.add("skip");
+			th.appendChild(document.createTextNode(key));
+			newRow.appendChild(th);
+
+			const groupCell = newRow.insertCell(-1);
+			groupCell.id = key;
+			addTextWithLinks(value.text, groupCell);
+		});
+	}
 
 	// Fetch data from rawMap
 	if (typeof rawMap !== 'undefined') parseMap(rawMap, groupsTable);

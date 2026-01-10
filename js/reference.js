@@ -54,17 +54,15 @@ function createGroupTag(group, groupsTable) {
 		newRow.appendChild(th);
 
 		const groupsCell = newRow.insertCell(1);
-		const groupTag = document.createElement("DIV");
-		groupTag.id = group;
-		groupsCell.appendChild(groupTag);
+		groupsCell.id = group;
 
-		return groupTag;
+		return groupsCell;
 }
 
 function parseMap(map, groupsTable) {
 	map.forEach((value, key, map) => {
-		let parentTable = document.getElementById(key.charAt(0).toUpperCase());
-		let newRow = parentTable.insertRow(-1);
+		const parentTable = document.getElementById(key.charAt(0).toUpperCase());
+		const newRow = parentTable.insertRow(-1);
 		const th = document.createElement('th');
 		th.id = key;
 		if (value.classes) {
@@ -98,8 +96,10 @@ function parseMap(map, groupsTable) {
 			if (!groupTag) {
 				groupTag = createGroupTag(group, groupsTable);
 			}
-			groupTag.appendChild(document.createTextNode(" "));
-			groupTag.appendChild(createHrefLink(th.id, th.innerHTML ? th.innerHTML : th.id));
+			if (groupTag.innerHTML.indexOf("href=\"#" + th.id + "\"") < 0) {
+				groupTag.appendChild(document.createTextNode(" "));
+				groupTag.appendChild(createHrefLink(th.id, th.innerHTML ? th.innerHTML : th.id));
+			}
 		});
 
 		//Notes
