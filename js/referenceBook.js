@@ -18,3 +18,5 @@ referenceBookMap.set("imperative", {th:"Imperative", html: [{text: "How to do th
 
 referenceBookMap.set("lingua_franca", {th:"Lingua franca", html: [{text: "Bridge, common, trade, auxiliary or link language, or "},
 																  {tag: "span", class: "get-title", text: "LWC"}], groups: []});
+
+referenceBookMap.set("scalability", {th:"Scalability", title: "Is the property of a system to handle a growing amount of work", groups: []});
