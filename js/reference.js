@@ -125,3 +125,36 @@ function parseMap(map, groupsTable) {
 
 	});
 }
+
+function addContentTables(contentTag) {
+	for (var i = 65; i <= 90; i++) {
+		const letter = String.fromCharCode(i);
+		const details = document.createElement("details");
+		details.setAttribute("open", "open");
+
+		const summary = document.createElement("summary");
+		summary.className = "b";
+		summary.appendChild(document.createTextNode(letter));
+		details.appendChild(summary);
+
+		const table = document.createElement("table");
+		table.id = letter;
+		table.className = "collapse-border padding sorted";
+		details.appendChild(table);
+
+		const thsTextArray = ["Abbreviation", "Transcript", "Groups", "Notes", "Icon"];
+		const newRow = table.insertRow(-1);
+		thsTextArray.forEach( thText => {
+			const th = document.createElement('th');
+			th.appendChild(document.createTextNode(thText));
+			th.classList.add("DimGray");
+			newRow.appendChild(th);
+		});
+
+		contentTag.appendChild(details);
+
+		const indentDiv = document.createElement("div");
+		indentDiv.className = "indent";
+		contentTag.appendChild(indentDiv);
+	}
+}

@@ -34,204 +34,7 @@
 <div class="indent"></div>
 <hr>
 
-<div id="topics" class="display-none">
-	<input id ="select-all" type="radio" name="topics" checked>
-	<label for="select-all">Select All</label>
-	<input id="select-none" type="radio" name="topics">
-	<label for="select-none">Select None</label>
-	<div class="indent4"></div>
-</div>
-<hr>
-
-<details open>
-	<summary><b>A</b></summary>
-	<table id="A" class="collapse-border padding sorted">
-		<tr>
-			<th class="skip black">Abbreviation</th>
-			<th class="skip black">Transcript</th>
-			<th class="skip black">Groups</th>
-			<th class="skip black">Notes</th>
-			<th class="skip black">Icon</th>
-		</tr>
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>B</b></summary>
-	<table id="B" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>C</b></summary>
-	<table id="C" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>D</b></summary>
-	<table id="D" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>E</b></summary>
-	<table id="E" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>F</b></summary>
-	<table id="F" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>G</b></summary>
-	<table id="G" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>H</b></summary>
-	<table id="H" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>I</b></summary>
-	<table id="I" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>J</b></summary>
-	<table id="J" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>K</b></summary>
-	<table id="K" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>L</b></summary>
-	<table id="L" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>M</b></summary>
-	<table id="M" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>N</b></summary>
-	<table id="N" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>O</b></summary>
-	<table id="O" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>P</b></summary>
-	<table id="P" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>Q</b></summary>
-	<table id="Q" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>R</b></summary>
-	<table id="R" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>S</b></summary>
-	<table id="S" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>T</b></summary>
-	<table id="T" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>U</b></summary>
-	<table id="U" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>V</b></summary>
-	<table id="V" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>W</b></summary>
-	<table id="W" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>X</b></summary>
-	<table id="X" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>Y</b></summary>
-	<table id="Y" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
-<details open>
-	<summary><b>Z</b></summary>
-	<table id="Z" class="collapse-border padding sorted">
-	</table>
-</details>
-<div class="indent"></div>
-
+<div id="content"></div>
 <hr>
 
 <table id="groupsTable" class="collapse-border padding sorted"></table>
@@ -241,14 +44,16 @@
 <iframe class="footer" src="./footer.html"></iframe>
 
 <script>
-	const groupsTable = document.getElementById("groupsTable"); // Groups
+	const contentTag = document.getElementById("content");
+	addContentTables(contentTag);
+
+	const groupsTable = document.getElementById("groupsTable");
 
 	// Fetch data from glossaryGroupMap
 	if (typeof glossaryGroupMap !== 'undefined') {
 		glossaryGroupMap.forEach((value, key, map) => {
 			const newRow = groupsTable.insertRow(-1);
 			const th = document.createElement('th');
-			th.classList.add("skip");
 			th.appendChild(document.createTextNode(key));
 			newRow.appendChild(th);
 
@@ -264,8 +69,7 @@
 	// fill the tables headers
 	const ths = document.getElementsByTagName("th");
 	Array.from(ths).forEach( th => {
-		if (th.classList.contains('skip') || th.innerHTML) return;
-		th.innerHTML = th.id;
+		if (!th.innerHTML && !th.classList.contains('skip')) th.innerHTML = th.id;
 	});
 
 	// fill the <a> tags
